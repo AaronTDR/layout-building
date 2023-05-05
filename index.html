@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="grip layout practice 3" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">Name website</h1>
+      <div class="header__searchbar-container">
+        <label for="searchbar"></label>
+        <input class="header__searchbar-input" type="text" name="searchbar" id="searchbar">
+        <i class="fa-solid fa-magnifying-glass header__searchbar-icon"></i>
+      </div>
+      <div class="header__menu">
+        <ol class="header__menu-options">
+          <li class="header__menu-option">Register</li>
+          <li class="header__menu-option">Sing in</li>
+          <li class="header__menu-option">Wish List</li>
+        </ol>
+      </div>
+      <div class="header__shopping-cart-container">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+      </div>
+    </header>
+    <main class="main">
+      <article class="card--trends">
+        <header class="card--trends__header">
+          <h2 class="card--trends__title">Ofertas en tendencia</h2>
+        </header>
+        <picture class="card--trends-img-container">
+          <!-- Images from: https://www.pexels.com/search/discount/ -->
+          <source media="(min-width: 992px)" srcset="assets/img/cards/trends-large.webp">
+          <source media="(min-width: 600px)" srcset="assets/img/cards/trends-medium.webp">
+          <img src="assets/img/cards/trends-small.webp" alt="Productos en  tendencias." class="card--trends-img">
+        </picture>
+        <div class="card--trends__offers-container">
+          <div class="card--trends__offer-quantity-container">
+            <span class="card--trends__offer-quantity">Hasta un -43%</span><span class="card--trends__offer-day">Oferta
+              del
+              día</span>
+          </div>
+          <div class="card--trends__offer-extract-container">
+            <span class="card--trends__offer-extract">
+              Oferta en ropa y electronica
+            </span>
+          </div>
+        </div>
+        <div class="card--trends__footer-container">
+          <a class="card--trends__link"
+            href="https://www.amazon.com.mx/gp/goldbox/?ie=UTF8&_ref=dlx_gate_dd_dcl_vai_dt&pd_rd_w=LQj4l&content-id=amzn1.sym.de03da60-c559-4d7d-abae-6d262d0c171b&pf_rd_p=de03da60-c559-4d7d-abae-6d262d0c171b&pf_rd_r=F60RMD63WK4WP4TV4SHY&pd_rd_wg=v2PhV&pd_rd_r=abbc4658-5f65-4860-b441-d82baec974fb&ref_=pd_gw_unk"
+            rel="noopener noreferrer">Ver más</a>
+        </div>
+      </article>
+      <article class="card--offers">
+        <header class="card--offers__header">
+          <h2 class="card--offers__title">Descuentos en equipo gamer</h2>
+        </header>
+        <a class="card--offers__img-link"
+          href="https://www.amazon.com.mx/s?k=laptop+gaming&i=electronics&rh=p_n_deal_type%3A23565478011&dc&_encoding=UTF8&content-id=amzn1.sym.8f207eaa-8590-413b-867d-888bd4be378b&painterId=quad-category-card&pd_rd_r=abbc4658-5f65-4860-b441-d82baec974fb&pd_rd_w=2l5VS&pd_rd_wg=v2PhV&pf_rd_p=8f207eaa-8590-413b-867d-888bd4be378b&pf_rd_r=F60RMD63WK4WP4TV4SHY&qid=1677816909&rnid=23565476011&sprefix=lap%2Celectronics%2C199&ref=pd_gw_unk">
+          <figure class="card--offers__figure">
+            <picture class="card--offers-img-container">
+              <!-- Images from: https://www.pexels.com/search/discount/ -->
+              <source media="(min-width: 992px)" srcset="assets/img/cards/offers-large.webp">
+              <source media="(min-width: 600px)" srcset="assets/img/cards/offers-medium.webp">
+              <img src="assets/img/cards/offers-small.webp" alt="Imagen de tarjetas de credito de algunos bancos."
+                class="card--offers-img">
+            </picture>
+            <figcaption class="card--offers__img-figcaption">
+              Laptops
+            </figcaption>
+          </figure>
+        </a>
+      </article>
+      <article class="offers">
+        <h2>Descuentos en equipo</h2>
+        <picture class="offers-img-container">
+          <img src="" alt="" class="offers-img">
+        </picture>
+      </article>
+    </main>
+    <footer class="footer">
+      <div class="social">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
