@@ -201,16 +201,19 @@ body {
 }
 
 .card--trends__link {
+  display: inline-block;
+  width: 100%;
   font-size: 13px;
   color: rgb(0, 113, 133);
   text-decoration: none;
 }
 
 .card--trends__link:hover {
-  color: #f08804;
+  color: #bd4500;
   text-decoration-line: underline;
   text-decoration-color: currentcolor;
   -moz-text-decoration-color: currentcolor;
+  -moz-text-decoration-line: underline;
 }
 
 /* .offers__featured-link {
