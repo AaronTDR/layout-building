@@ -122,7 +122,7 @@ body {
 
 .card--trends,
 .bonus,
-.card--offers {
+.card--fashion {
   width: 326px;
   height: 510px;
   padding-left: 20px;
@@ -134,36 +134,41 @@ body {
 }
 
 .card--trends__header,
-.card--offers__header {
+.card--fashion__header {
   min-height: 50px;
   max-height: 50px;
   margin-bottom: 10px;
 }
 
 .card--trends__title,
-.card--offers__title {
+.card--fashion__title {
   margin: 0;
   font-size: 21px;
 }
 
-.card--offers__img-link {
+.card--trends__img-link,
+.card--fashion__img-link {
   color: red;
   text-decoration: none;
 }
 
-.card--offers__figure {
+.card--trends__img-link {
+  /* min-height: 300px; */
+}
+
+.card--fashion__figure {
   margin: 0;
 }
 
 .card--trends-img,
-.card--offers-img {
+.card--fashion-img {
   width: 100%;
   height: 300px;
   margin-bottom: 23px;
   object-fit: cover;
 }
 
-.card--trends__offers-container {
+.card--trends__offer-container {
   margin-bottom: 22px;
   cursor: pointer;
 }
@@ -216,7 +221,7 @@ body {
   -moz-text-decoration-line: underline;
 }
 
-/* .offers__featured-link {
+/* .fashion__featured-link {
   display: block;
   text-decoration: none;
   color: rgb(15, 17, 17);
