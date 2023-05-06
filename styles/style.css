@@ -120,6 +120,8 @@ body {
   padding: 20px;
 }
 
+/* *CARDS */
+/* TODO: shared properties cards*/
 .card--trends,
 .bonus,
 .card--fashion {
@@ -152,20 +154,16 @@ body {
   text-decoration: none;
 }
 
-.card--trends__img-link {
-  /* min-height: 300px; */
-}
-
-.card--fashion__figure {
-  margin: 0;
-}
-
 .card--trends-img,
 .card--fashion-img {
   width: 100%;
+  object-fit: cover;
+}
+
+/* *Trends individual properties*/
+.card--trends-img {
   height: 300px;
   margin-bottom: 23px;
-  object-fit: cover;
 }
 
 .card--trends__offer-container {
@@ -205,6 +203,10 @@ body {
   color: rgb(15, 17, 17);
 }
 
+.card--trends__footer-container {
+  margin-top: auto;
+}
+
 .card--trends__link {
   display: inline-block;
   width: 100%;
@@ -221,11 +223,50 @@ body {
   -moz-text-decoration-line: underline;
 }
 
-/* .fashion__featured-link {
-  display: block;
-  text-decoration: none;
+/* *Fashion individual properties */
+.card--fashion__figure {
+  margin: 0;
+}
+
+.card--fashion-img {
+  height: 233px;
+  margin-bottom: 0;
+}
+
+.card--fashion__img-figcaption {
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 700;
   color: rgb(15, 17, 17);
-} */
+}
+
+.related {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 80px;
+  gap: 5px;
+  width: 100%;
+  height: 80px;
+}
+
+.related__link {
+  text-decoration: none;
+}
+
+.related__figure {
+  margin: 0;
+}
+
+.related__figcaption {
+  font-size: 15px;
+  color: rgb(15, 17, 17);
+}
+
+.related__img {
+  width: 100%;
+  height: 75px;
+  object-fit: cover;
+}
 
 .footer {
   background-color: #232f3e;
