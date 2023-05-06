@@ -8,6 +8,16 @@
   src: url("assets/font/AmazonEmber_Bd.ttf") format("truetype");
 }
 
+/* *Vars: */
+:root {
+  /* Header vars */
+  /* Card vars */
+  /* Footer vars */
+  /* Site wide vars */
+  --main-background-color: #ffffff;
+  --main-color: #ffffff;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -33,11 +43,12 @@ body {
   padding-right: 10px;
 }
 
+/* *Header */
 .header {
   display: flex;
   align-items: center;
   background-color: #131921;
-  color: #ffffff;
+  color: var(--main-color);
 }
 
 .logo {
@@ -67,7 +78,7 @@ body {
   height: 60%;
   font-size: 1.1rem;
   background-color: transparent;
-  color: #ffffff;
+  color: var(--main-color);
   border: none;
   outline: none;
 }
@@ -109,9 +120,10 @@ body {
 
 .header__menu-option:hover,
 .header__shopping-cart-container:hover {
-  border: solid 1px #ffffff;
+  border: solid 1px var(--main-color);
 }
 
+/* *Main */
 .main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -122,67 +134,71 @@ body {
 
 /* *CARDS */
 /* TODO: shared properties cards*/
-.card--trends,
-.bonus,
-.card--fashion {
-  width: 326px;
-  height: 510px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding: 20px 20px 15px;
-  margin-bottom: 20px;
-  background-color: #ffffff;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 326px; /* --card-wrapper-width: 226px */
+  height: 420px; /* --card-wrapper-height: 420px */
+  padding: 20px; /* --card-wrapper-padding: 20px */
+  margin-bottom: 20px; /* --card-wrapper-bottom: 20px */
+  background-color: var(--main-background-color);
   color: #131921;
 }
 
-.card--trends__header,
-.card--fashion__header {
-  min-height: 50px;
-  max-height: 50px;
+.card--offer__header,
+.card--image-with-three-small__header {
   margin-bottom: 10px;
 }
 
-.card--trends__title,
-.card--fashion__title {
+.card--offer__title,
+.card--image-with-three-small__title {
   margin: 0;
   font-size: 21px;
 }
 
-.card--trends__img-link,
-.card--fashion__img-link {
+.card--offer__img-link,
+.card--image-with-three-small__img-link {
   color: red;
   text-decoration: none;
 }
 
-.card--trends-img,
-.card--fashion-img {
+.card--offer__img,
+.card--image-with-three-small-img {
   width: 100%;
   object-fit: cover;
+  height: 230px;
 }
 
-/* *Trends individual properties*/
-.card--trends-img {
-  height: 300px;
-  margin-bottom: 23px;
+.footer-card {
+  margin-top: auto;
 }
 
-.card--trends__offer-container {
-  margin-bottom: 22px;
+.footer-card__see-more-link {
+  display: inline-block;
+  width: 100%;
+  font-size: 13px;
+  color: rgb(0, 113, 133);
+  text-decoration: none;
+}
+
+/* TODO: individual properties*/
+.card--offer__offer-container {
   cursor: pointer;
 }
 
-.card--trends__offer-quantity-container {
+.card--offer__offer-quantity-container {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 4px;
   align-items: center;
 }
 
-.card--trends__offer-quantity {
+.card--offer__offer-quantity {
   margin-right: 6px;
   padding: 4px 6px;
   font-size: 13px;
-  color: #ffffff;
+  color: var(--main-color);
   background-color: #cc0c39;
   border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -191,31 +207,19 @@ body {
   -o-border-radius: 2px;
 }
 
-.card--trends__offer-day {
+.card--offer__offer-day {
   font-size: 12px;
   font-weight: 700;
   color: rgb(204, 12, 57);
 }
 
-.card--trends__offer-extract {
+.card--offer__offer-extract {
   font-size: 13px;
   font-weight: 700;
   color: rgb(15, 17, 17);
 }
 
-.card--trends__footer-container {
-  margin-top: auto;
-}
-
-.card--trends__link {
-  display: inline-block;
-  width: 100%;
-  font-size: 13px;
-  color: rgb(0, 113, 133);
-  text-decoration: none;
-}
-
-.card--trends__link:hover {
+.footer-card__see-more-link:hover {
   color: #bd4500;
   text-decoration-line: underline;
   text-decoration-color: currentcolor;
@@ -224,16 +228,16 @@ body {
 }
 
 /* *Fashion individual properties */
-.card--fashion__figure {
+.card--image-with-three-small__figure {
   margin: 0;
 }
 
-.card--fashion-img {
-  height: 233px;
+.card--image-with-three-small-img {
+  height: 145.4px;
   margin-bottom: 0;
 }
 
-.card--fashion__img-figcaption {
+.card--image-with-three-small__img-figcaption {
   margin-bottom: 15px;
   font-size: 15px;
   font-weight: 700;
