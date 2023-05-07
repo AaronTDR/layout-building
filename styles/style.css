@@ -16,6 +16,8 @@
   /* Site wide vars */
   --main-background-color: #ffffff;
   --main-color: #ffffff;
+  --link-color: #007185;
+  --offer-color: #cc0c39;
 }
 
 * {
@@ -159,7 +161,6 @@ body {
 
 .card--offer__img-link,
 .card--image-with-three-small__img-link {
-  color: red;
   text-decoration: none;
 }
 
@@ -178,7 +179,7 @@ body {
   display: inline-block;
   width: 100%;
   font-size: 13px;
-  color: rgb(0, 113, 133);
+  color: var(--link-color);
   text-decoration: none;
 }
 
@@ -199,7 +200,7 @@ body {
   padding: 4px 6px;
   font-size: 13px;
   color: var(--main-color);
-  background-color: #cc0c39;
+  background-color: var(--offer-color);
   border-radius: 2px;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -210,7 +211,7 @@ body {
 .card--offer__offer-day {
   font-size: 12px;
   font-weight: 700;
-  color: rgb(204, 12, 57);
+  color: var(--offer-color);
 }
 
 .card--offer__offer-extract {
