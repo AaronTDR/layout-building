@@ -210,6 +210,8 @@ body {
 }
 
 .card--offer__offer-quantity {
+  min-width: 90px;
+  max-width: 100px;
   margin-right: 6px;
   padding: 4px 6px;
   font-size: 13px;
