@@ -230,6 +230,11 @@ body {
   color: var(--offer-color);
 }
 
+.card--offer__offer-extract-container {
+  max-width: 316px;
+  max-height: 40.5px;
+  overflow: hidden;
+}
 .card--offer__offer-extract {
   font-size: 13px;
   font-weight: 700;
