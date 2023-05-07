@@ -193,7 +193,6 @@ body {
 
 /* TODO: individual properties*/
 .card--image-with-three-small__title-container {
-  max-width: 316px;
   max-height: 49px;
   overflow: hidden;
 }
@@ -231,7 +230,6 @@ body {
 }
 
 .card--offer__offer-extract-container {
-  max-width: 316px;
   max-height: 40.5px;
   overflow: hidden;
 }
@@ -284,8 +282,11 @@ body {
 }
 
 .related__figcaption {
+  max-width: 92px;
+  max-height: 40px;
   font-size: 15px;
   color: rgb(15, 17, 17);
+  overflow: hidden;
 }
 
 .related__img {
