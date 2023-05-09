@@ -171,9 +171,9 @@ body {
   padding: 20px;
 }
 
-/* *CARDS */
+/* TODO: CARS */
 /* TODO: shared properties cards*/
-.wrapper {
+.card-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -186,27 +186,26 @@ body {
 }
 
 .card--offer__header,
-.card--image-with-three-small__header {
+.card-theme__header {
   margin-bottom: 10px;
 }
 
 .card--offer__title,
-.card--image-with-three-small__title {
+.card-theme__title {
   margin: 0;
   font-size: var(--title-card-font-size);
   color: var(--card-text-color);
 }
 
 .card--offer__img-link,
-.card--image-with-three-small__img-link {
+.card-theme__img-link {
   text-decoration: none;
 }
 
 .card--offer__img,
-.card--image-with-three-small-img {
+.card-theme__img {
   width: 100%;
   object-fit: cover;
-  height: 230px;
 }
 
 .footer-card {
@@ -222,13 +221,13 @@ body {
 }
 
 /* TODO: individual properties*/
-.card--image-with-three-small__title-container {
-  max-height: 49px;
-  overflow: hidden;
-}
-
+/* TODO: card-offer */
 .card--offer__offer-container {
   cursor: pointer;
+}
+
+.card--offer__img {
+  height: 230px;
 }
 
 .card--offer__offer-quantity-container {
@@ -276,17 +275,22 @@ body {
   -moz-text-decoration-line: underline;
 }
 
-/* *Card image with three small images properties */
-.card--image-with-three-small__figure {
+/* TODO: Card-theme */
+.card-theme__title-container {
+  max-height: 49px;
+  overflow: hidden;
+}
+
+.card-theme__figure {
   margin: 0;
 }
 
-.card--image-with-three-small-img {
+.card-theme__img {
   height: 145.4px;
   margin-bottom: 0;
 }
 
-.card--image-with-three-small__img-figcaption {
+.card-theme__img-figcaption {
   margin-bottom: 15px;
   font-size: var(--related__figcaption-font-size);
   font-weight: var(--related__figcaption-font-weight);
@@ -327,7 +331,3 @@ body {
 .footer {
   background-color: #232f3e;
 }
-
-/*
-Debe haber una sección para mostrar productos destacados, otra para mostrar productos nuevos y una tercera para mostrar productos en oferta. Finalmente, debe haber un pie de página que contenga información de contacto y enlaces a las redes sociales.
-*/
