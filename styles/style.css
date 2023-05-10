@@ -25,6 +25,9 @@
   /* text */
   --card-text-color: rgb(15, 17, 17);
 
+  /* Extract text */
+  --extract-font-size: 13px;
+
   /* See more links */
   --font-size-see-more-link: 13px;
   --link-color: #007185;
@@ -38,10 +41,7 @@
   /* Offer day text */
   --offer-day-text-font-size: 12px;
 
-  /* Offer extract text */
-  --offer-extract-font-size: 13px;
-
-  /* *Card image with three small */
+  /* *Card theme */
   /* image caption text */
   --related__figcaption-font-size: 15px;
   --related__figcaption-font-weight: 700;
@@ -172,7 +172,9 @@ body {
 }
 
 /* TODO: blocks CSS */
-/* Grid with three columns and one row for add three small images into a card  */
+/* related:
+-Related content on a card
+-Grid with three columns and one row for add three small images into a card  */
 .related {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -204,6 +206,17 @@ body {
   object-fit: cover;
 }
 
+/* Extract cards:
+-show the extract text of card's contain*/
+.extract-container {
+  max-height: 40.5px;
+  overflow: hidden;
+}
+.extract__text {
+  font-size: var(--extract-font-size);
+  color: var(--card-text-color);
+}
+
 /* Cards footer */
 .footer-card {
   margin-top: auto;
@@ -231,23 +244,25 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 326px; /* --card-wrapper-width: 226px */
-  height: 420px; /* --card-wrapper-height: 420px */
-  padding: 20px; /* --card-wrapper-padding: 20px */
-  margin-bottom: 20px; /* --card-wrapper-bottom: 20px */
+  width: 326px;
+  height: 420px;
+  padding: 20px;
+  margin-bottom: 20px;
   background-color: var(--main-background-color);
   color: #131921;
 }
 
 .card--offer__header,
 .card-theme__header,
-.card-product__header {
+.card-product__header,
+.card-sponsored__header {
   margin-bottom: 10px;
 }
 
 .card--offer__title,
 .card-theme__title,
-.card-product__title {
+.card-product__title,
+.card-sponsored__title {
   margin: 0;
   font-size: var(--title-card-font-size);
   color: var(--card-text-color);
@@ -255,25 +270,30 @@ body {
 
 .card--offer__img-link,
 .card-theme__img-link,
-.card-product__img-link {
+.card-product__img-link,
+.card-sponsored__img-link {
   text-decoration: none;
 }
 
 .card--offer__img,
 .card-theme__img,
-.card-product__img {
+.card-product__img,
+.card-sponsored__img {
   width: 100%;
   object-fit: cover;
 }
 
 .card-theme__title-container,
-.card-product__title-container {
+.card-product__title-container,
+.card-sponsored__title-container,
+.card-sponsored__title-container {
   max-height: 49px;
   overflow: hidden;
 }
 
 .card-theme__figure,
-.card-product__figure {
+.card-product__figure,
+.card-sponsored__figure {
   margin: 0;
 }
 
@@ -315,15 +335,6 @@ body {
   color: var(--card-text-color);
 }
 
-.card--offer__offer-extract-container {
-  max-height: 40.5px;
-  overflow: hidden;
-}
-.card--offer__offer-extract {
-  font-size: var(--offer-extract-font-size);
-  color: var(--card-text-color);
-}
-
 /* TODO: Card-theme */
 .card-theme__img {
   height: 145.4px;
@@ -339,6 +350,59 @@ body {
 /* TODO: card product */
 .card-product__img {
   height: 276.5px;
+}
+
+/* TODO: card sponsored */
+.card-wrapper--sponsored {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 326px;
+  height: 420px;
+  background-color: transparent;
+  color: #131921;
+}
+
+.card-sponsored {
+  /* background-color: transparent; */
+}
+
+.card-sponsored__header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 20px;
+  padding: 20px 20px 30px 20px;
+  background-color: var(--main-background-color);
+}
+
+.card-sponsored__title-container {
+  margin-bottom: 10px;
+}
+
+.card-sponsored__button {
+  width: 100%;
+  padding: 8px 20px;
+  font-size: 13px;
+  background-color: rgb(255, 216, 20);
+  color: #0f1111;
+  border: none;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  cursor: pointer;
+}
+
+.card-sponsored__ad {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.card-sponsored__img {
+  height: 250px;
 }
 
 .footer {
