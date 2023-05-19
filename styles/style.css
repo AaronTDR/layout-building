@@ -93,10 +93,14 @@ body {
   color: var(--principal-color);
 }
 
-.logo {
+.logo__link {
   margin-right: 30px;
-  font-size: 1.9rem;
-  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo__img {
+  width: 136px;
+  height: 136px;
 }
 
 .header__searchbar-container {
