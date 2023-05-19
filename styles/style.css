@@ -203,6 +203,11 @@ body {
 .related__img {
   width: 100%;
   height: 75px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   object-fit: cover;
 }
 
@@ -250,6 +255,11 @@ body {
   margin-bottom: 20px;
   background-color: var(--main-background-color);
   color: #131921;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
 }
 
 .card--offer__header,
@@ -282,6 +292,11 @@ body {
 .card-product__img,
 .card-sponsored__img {
   width: 100%;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   object-fit: cover;
 }
 
@@ -371,6 +386,11 @@ body {
   min-height: 150px;
   margin-bottom: 20px;
   padding: 20px 20px 30px 20px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   background-color: var(--main-background-color);
 }
 
@@ -410,6 +430,11 @@ body {
   width: 326px;
   height: 420px;
   padding: 20px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   background-color: var(--main-background-color);
   color: #131921;
 }
