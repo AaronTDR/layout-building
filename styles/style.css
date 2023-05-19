@@ -261,7 +261,7 @@ body {
   -o-border-radius: 6px;
 }
 
-.card--offer__header,
+.card-offer__header,
 .card-theme__header,
 .card-product__header,
 .card-sponsored__header,
@@ -269,7 +269,7 @@ body {
   margin-bottom: 10px;
 }
 
-.card--offer__title,
+.card-offer__title,
 .card-theme__title,
 .card-product__title,
 .card-sponsored__title,
@@ -279,14 +279,14 @@ body {
   color: var(--card-text-color);
 }
 
-.card--offer__img-link,
+.card-offer__img-link,
 .card-theme__img-link,
 .card-product__img-link,
 .card-sponsored__img-link {
   text-decoration: none;
 }
 
-.card--offer__img,
+.card-offer__img,
 .card-theme__img,
 .card-product__img,
 .card-sponsored__img {
@@ -314,22 +314,22 @@ body {
 
 /* TODO: individual properties*/
 /* TODO: card-offer */
-.card--offer__offer-container {
+.card-offer__offer-container {
   cursor: pointer;
 }
 
-.card--offer__img {
+.card-offer__img {
   height: 230px;
 }
 
-.card--offer__offer-quantity-container {
+.card-offer__offer-quantity-container {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 4px;
   align-items: center;
 }
 
-.card--offer__offer-quantity {
+.card-offer__offer-quantity {
   min-width: 90px;
   max-width: 100px;
   margin-right: 6px;
@@ -344,7 +344,7 @@ body {
   -o-border-radius: 2px;
 }
 
-.card--offer__offer-day {
+.card-offer__offer-day {
   font-size: var(--offer-day-text-font-size);
   font-weight: 700;
   color: var(--card-text-color);
