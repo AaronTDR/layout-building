@@ -361,6 +361,10 @@ body {
   color: var(--principal-color);
 }
 
+.sticky__category-button {
+  text-decoration: none;
+}
+
 /* *Main */
 .cards-container {
   display: grid;
