@@ -13,36 +13,99 @@
 <body>
   <div class="container">
     <header class="header">
-      <div class="header__top">
-        header top
-      </div>
-      <div class="header__bottom">
+      <nav class="header__navbar">
+        <div class="header__section-left">
+          <a class="header__app-download header__navbar-link" href="#">
+            <i class="header__icon fa-solid fa-mobile-screen-button"></i>
+            App
+          </a>
+          <div class="header__social-media">
+            <span class="header__follow-us-text">
+              Follow us on:
+            </span>
+            <a class="header__navbar-link" href="#">
+              <span class="header__icon-container">
+                <i class="fa-brands fa-instagram"></i>
+              </span>
+            </a>
+            <a class="header__navbar-link" href="#">
+              <span class="header__icon-container">
+                <i class="fa-brands fa-twitter"></i>
+              </span>
+            </a>
+            <a class="header__navbar-link" href="#">
+              <span class="header__icon-container">
+                <i class="fa-brands fa-facebook"></i>
+              </span>
+            </a>
+            <a class="header__navbar-link" href="#">
+              <span class="header__icon-container">
+                <i class="fa-brands fa-whatsapp"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="header__section-right">
+          <button class="header__language-button">
+            <i class="header__icon fa-solid fa-globe"></i>
+            Language
+          </button>
+          <ul class="header__navbar-options">
+            <li class="header__navbar-option">
+              <i class="header__icon fa-solid fa-question"></i>
+              <a class="header__navbar-link" href="#">Help</a>
+            </li>
+            <li class="header__navbar-option">
+              <a class="header__navbar-link" href="#">Sing Up</a>
+            </li>
+            <li class="header__navbar-option">
+              <a class="header__navbar-link" href="#">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="sticky__container">
+      <div class="sticky__top-container">
         <a class="logo__link" href="#">
           <div class="logo__container">
             <img class="logo__img" src="assets/img/logo/logo-img.png" alt="Store logo image">
             <h1 class="logo__text">DealDepot</h1>
           </div>
         </a>
-        <div class="header__searchbar-container">
-          <label for="searchbar"></label>
-          <input class="header__searchbar-input" type="text" name="searchbar" id="searchbar">
-          <i class="fa-solid fa-magnifying-glass header__searchbar-icon"></i>
-        </div>
-        <div class="header__menu">
-          <ol class="header__menu-options">
-            <li class="header__menu-option">Register</li>
-            <li class="header__menu-option">Sing in</li>
-            <li class="header__menu-option">Wish List</li>
-          </ol>
-        </div>
-        <div class="header__shopping-cart-container">
-          <div class="header__shopping-cart-number-container">
-            <span class="header__shopping-cart-number">0</span>
+        <button class="sticky__button--address">
+          <i class="sticky__address-icon fa-solid fa-location-dot"></i>
+          <div class="sticky__address-text-container">
+            <span class="sticky__address-text--top single-line">Deliver to</span>
+            <span class="sticky__address-text--bottom single-line">Enter your address</span>
           </div>
-          <i class="fa-solid fa-cart-arrow-down header__shopping-cart-icon"></i>
+        </button>
+        <div class="sticky__searchbar-container">
+          <label for="sticky__searchbar"></label>
+          <input class="sticky__searchbar-input" type="text" name="searchbar" id="searchbar">
+          <i class="sticky__searchbar-icon fa-solid fa-magnifying-glass"></i>
+        </div>
+        <button class="sticky__button--wish-list">
+          <i class="sticky__wish-list-icon fa-solid fa-heart"></i>
+          Wish List
+        </button>
+        <div class="sticky__shopping-cart-container">
+          <div class="sticky__shopping-cart-number-container">
+            <span class="sticky__shopping-cart-number">0</span>
+          </div>
+          <i class="sticky__shopping-cart-icon fa-solid fa-cart-arrow-down"></i>
         </div>
       </div>
-    </header>
+      <div class="sticky__bottom-container">
+        <button class="sticky__category-button">Vehicles</button>
+        <button class="sticky__category-button">Supermarket</button>
+        <button class="sticky__category-button">Technology</button>
+        <button class="sticky__category-button">Home</button>
+        <button class="sticky__category-button">Construction</button>
+        <button class="sticky__category-button">Fashion</button>
+        <button class="sticky__category-button">Sports</button>
+      </div>
+    </div>
     <main class="cards-container">
       <article class="card-offer card-wrapper">
         <header class="card-offer__header">
@@ -84,7 +147,7 @@
           </div>
         </header>
         <a class="card-theme__img-link"
-          href="https://www.amazon.com.mx/b/?ie=UTF8&node=13848838011&ref_=topnav_storetab_mega_sv">
+          href="https://www.amazon.com.mx/b/?ie=UTF8&node=13848838011&ref_=stickynav_storetab_mega_sv">
           <figure class="card-theme__figure">
             <picture class="card-theme-img-container">
               <!-- Images from: https://www.pexels.com/search/discount/ -->
@@ -144,7 +207,7 @@
           </div>
         </header>
         <a class="card-product__img-link"
-          href="https://www.amazon.com.mx/b/?ie=UTF8&node=13848838011&ref_=topnav_storetab_mega_sv">
+          href="https://www.amazon.com.mx/b/?ie=UTF8&node=13848838011&ref_=stickynav_storetab_mega_sv">
           <figure class="card-product__figure">
             <picture class="card-product-img-container">
               <!-- Images from: https://www.pexels.com/search/discount/ -->
