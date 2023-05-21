@@ -327,7 +327,7 @@ body {
 }
 
 .sticky__shopping-cart-icon {
-  font-size: 25px;
+  font-size: 23px;
 }
 
 .sticky__shopping-cart-container {
@@ -338,14 +338,14 @@ body {
 
 .sticky__shopping-cart-number-container {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 3px;
+  right: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
+  width: 16px;
   max-width: 25px;
-  height: 20px;
+  height: 16px;
   padding: 2px;
   border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -357,7 +357,7 @@ body {
 }
 
 .sticky__shopping-cart-number {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--principal-color);
 }
 
