@@ -310,6 +310,11 @@ body {
   -o-border-radius: 7px;
 }
 
+/* the shadow is applied to the container with class “sticky__searchbar-container” when any element inside the container is in focus. */
+.sticky__searchbar-container:focus-within {
+  box-shadow: 0 0 8px #ff9900;
+}
+
 .sticky__searchbar-input {
   width: 88%;
   height: 60%;
