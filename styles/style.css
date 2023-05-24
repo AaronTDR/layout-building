@@ -930,7 +930,7 @@ body {
   list-style: none;
 }
 
-.footer__list-element {
+.footer__list-element--terms {
   margin: 0;
 }
 
@@ -947,7 +947,7 @@ body {
   text-decoration: underline;
 }
 
-.footer__terms {
+.footer__terms-text {
   width: 100%;
   font-size: 12px;
   text-align: center;
