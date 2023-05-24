@@ -774,6 +774,7 @@ body {
 .footer__services-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   gap: 10px;
   width: 100%;
   padding-top: 40px;
@@ -789,15 +790,15 @@ body {
 }
 
 .footer__service-card::after {
-  content: "";
   position: absolute;
-  top: 28%;
+  top: 38%;
   right: 0;
   display: block;
+  content: "";
   width: 1px;
   height: 70px;
   background-color: var(--secondary-color);
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .footer__icon-container {
@@ -828,13 +829,17 @@ body {
 .footer__service-description {
   max-height: 72px;
   margin-bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
   text-align: center;
+  font-family: inherit;
+  font-size: 15px;
   color: var(--secondary-color);
   overflow: hidden;
 }
 
 /* *Footer service */
-.footer__links {
+.footer__links-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
