@@ -51,6 +51,7 @@
   --related__figcaption-font-weight: 700;
 
   /* *Footer vars */
+  --footer-background: #232f3e;
 }
 
 * {
@@ -763,6 +764,79 @@ body {
   text-overflow: ellipsis;
 }
 
+/* TODO: footer */
 .footer {
-  background-color: #232f3e;
+  position: relative;
+  max-width: 100vw;
+  background-color: var(--footer-background);
+}
+
+/* *footer services */
+.footer__services-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background-color: inherit;
+}
+
+.footer__services-container::after {
+  content: "HOLA";
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.footer__service-card {
+  position: relative;
+  height: 148px;
+  background-color: inherit;
+}
+
+.footer__service-card::after {
+  content: "";
+  position: absolute;
+  top: 28%;
+  right: 0;
+  display: block;
+  width: 2px;
+  height: 70px;
+  background-color: #cccccc;
+}
+
+.footer__icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.footer__icon {
+  font-size: 20px;
+}
+
+.footer__icon--android {
+  margin-top: 3px;
+  margin-right: 15px;
+}
+
+.footer__title {
+  max-width: 280px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--principal-color);
+}
+
+.footer__service-description {
+  max-height: 72px;
+  margin-bottom: 0;
+  text-align: center;
+  color: #cccccc;
+  overflow: hidden;
 }
