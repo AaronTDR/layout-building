@@ -767,9 +767,6 @@ body {
 
 /* TODO: footer */
 .footer {
-  position: relative;
-  /* width: 100wv; */
-  padding-top: 40px;
   background-color: var(--footer-background);
 }
 
@@ -779,21 +776,10 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   width: 100%;
-  max-width: 100vw;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-color: inherit;
-}
-
-.footer__services-container::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 1px;
-  margin-top: 40px;
-  background-color: var(--secondary-color);
-  opacity: 0.2;
+  border-bottom: solid 1px rgb(204, 204, 204, 0.2);
 }
 
 .footer__service-card {
@@ -845,4 +831,17 @@ body {
   text-align: center;
   color: var(--secondary-color);
   overflow: hidden;
+}
+
+/* *Footer service */
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 60px;
+}
+
+.footer__link-column {
+  width: 50px;
+  height: 50px;
+  background-color: #cc0c39;
 }
