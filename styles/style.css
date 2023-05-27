@@ -958,3 +958,27 @@ body {
   text-align: center;
   color: var(--secondary-color);
 }
+
+@media screen and (max-width: 960px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 81.25%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 75%;
+  }
+}
