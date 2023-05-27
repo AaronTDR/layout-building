@@ -762,10 +762,11 @@ body {
 .ad__text,
 .ad__offer,
 .ad__brand {
-  max-width: 8em;
-  white-space: nowrap;
+  max-width: 100%;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 0.75rem;
 }
 
 /* TODO: footer */
