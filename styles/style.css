@@ -347,13 +347,13 @@ body {
 
 .sticky__shopping-cart-number-container {
   position: absolute;
-  top: 0.1875em;
-  right: 0.5em;
+  top: 0.0313em;
+  right: 0.1875em;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1em;
-  max-width: 1.5625em;
+  min-width: 1em;
+  max-width: 1.625em;
   height: 1em;
   padding: 0.125em;
   border-radius: 50%;
