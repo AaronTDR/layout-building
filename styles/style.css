@@ -21,8 +21,8 @@
   --border-radius-principal: 0.375em;
 
   /* *Header vars */
-  --header-principal-size: 0.8125rem;
-  --header-secondary-size: 0.75rem;
+  --header-principal-font-size: 0.8125rem;
+  --header-secondary-font-size: 0.75rem;
   /* *Main */
 
   /* TODO: Cars vars */
@@ -38,7 +38,7 @@
   --extract-font-size: 0.8125rem;
 
   /* See more links */
-  --font-size-see-more-link: 0.8125rem;
+  --see-more-link-font-size: 0.8125rem;
   --link-color: #007185;
 
   /* *Offers cards */
@@ -126,7 +126,7 @@ body {
   -moz-border-radius: var(--border-radius-principal);
   -ms-border-radius: var(--border-radius-principal);
   -o-border-radius: var(--border-radius-principal);
-  font-size: var(--header-principal-size);
+  font-size: var(--header-principal-font-size);
   font-weight: 700;
   background-color: inherit;
   color: var(--principal-color);
@@ -158,7 +158,7 @@ body {
 
 .sticky__address-icon,
 .sticky__wish-list-icon {
-  margin-right: 0.325rem;
+  margin-right: 0.325em;
   font-size: 1.25em;
 }
 
@@ -191,7 +191,7 @@ body {
 
 .header__follow-us-text {
   margin-right: 0.3125em;
-  font-size: var(--header-principal-size);
+  font-size: var(--header-principal-font-size);
   font-weight: 700;
 }
 
@@ -289,7 +289,7 @@ body {
 .sticky__address-text--top {
   padding-right: 0.625em;
   text-align: start;
-  font-size: var(--header-secondary-size);
+  font-size: var(--header-secondary-font-size);
   color: var(--secondary-color);
 }
 
@@ -441,7 +441,7 @@ body {
 .footer-card__see-more-link {
   display: inline-block;
   width: 100%;
-  font-size: var(--font-size-see-more-link);
+  font-size: var(--see-more-link-font-size);
   color: var(--link-color);
   text-decoration: none;
 }
@@ -749,11 +749,11 @@ body {
 
 .ad__contain {
   display: flex;
-  gap: 3px;
+  gap: 0.1875em;
   flex-direction: column;
   align-items: center;
-  width: 128px;
-  min-height: 55px;
+  width: 9.5em;
+  min-height: 3.4375em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -762,7 +762,7 @@ body {
 .ad__text,
 .ad__offer,
 .ad__brand {
-  max-width: 128px;
+  max-width: 8em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -778,17 +778,17 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
-  gap: 10px;
+  gap: 0.625em;
   width: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
   background-color: inherit;
-  border-bottom: solid 1px rgb(204, 204, 204, 0.2);
+  border-bottom: solid.0625em rgb(204, 204, 204, 0.2);
 }
 
 .footer__service-card {
   position: relative;
-  height: 148px;
+  height: 9.25em;
   background-color: inherit;
 }
 
@@ -798,8 +798,8 @@ body {
   right: 0;
   display: block;
   content: "";
-  width: 1px;
-  height: 70px;
+  width: 0.0625em;
+  height: 4.375em;
   background-color: var(--secondary-color);
   opacity: 0.1;
 }
@@ -807,36 +807,36 @@ body {
 .footer__icon-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 18px;
+  margin-bottom: 1.125em;
 }
 
 .footer__icon {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .footer__icon--android {
-  margin-top: 3px;
-  margin-right: 15px;
+  margin-top: 0.1875em;
+  margin-right: 0.9375em;
 }
 
 .footer__title {
-  max-width: 280px;
+  max-width: 17.5em;
   margin-right: auto;
   margin-left: auto;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   text-align: center;
   color: var(--principal-color);
 }
 
 .footer__service-description {
-  max-height: 72px;
+  max-height: 4.5em;
   margin-bottom: 0;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
   text-align: center;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--secondary-color);
   overflow: hidden;
 }
@@ -846,9 +846,9 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
-  margin-top: 40px;
-  padding-bottom: 40px;
-  border-bottom: solid 1px rgb(204, 204, 204, 0.2);
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  border-bottom: solid 0.0625em rgb(204, 204, 204, 0.2);
 }
 
 .footer__link-column {
@@ -857,15 +857,15 @@ body {
 
 .footer__title-column {
   margin: 0;
-  margin-bottom: 14px;
+  margin-bottom: 0.875em;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--principal-color);
 }
 
 .footer__list-element {
-  margin-bottom: 10px;
+  margin-bottom: 0.625em;
 }
 
 .footer__list-links {
@@ -876,7 +876,7 @@ body {
 
 .footer__link {
   font-family: inherit;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--secondary-color);
   text-decoration: none;
 }
@@ -893,16 +893,16 @@ body {
 
 .footer__social-media-container {
   display: flex;
-  padding: 10px 10px 0;
+  padding: 0.625em 0.625em 0;
 }
 
 .footer__social-media-link {
-  margin-right: 12px;
+  margin-right: 0.75em;
   color: var(--secondary-color);
 }
 
 .footer__icon {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 /* *Terms */
@@ -910,14 +910,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 10px;
-  padding-bottom: 30px;
+  padding-top: 0.625em;
+  padding-bottom: 1.875em;
 }
 
 .logo__container--footer {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125em;
 }
 
 .logo__link--footer {
@@ -929,7 +929,8 @@ body {
   justify-content: center;
   width: 100%;
   margin: 0;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125em;
+  padding: 0;
   list-style: none;
 }
 
@@ -938,10 +939,10 @@ body {
 }
 
 .footer__terms-link {
-  padding-left: 7.2px;
-  padding-right: 7.2px;
+  padding-left: 0.45em;
+  padding-right: 0.45em;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--secondary-color);
   text-decoration: none;
 }
@@ -952,7 +953,7 @@ body {
 
 .footer__terms-text {
   width: 100%;
-  font-size: 12px;
+  font-size: 0.75rem;
   text-align: center;
   color: var(--secondary-color);
 }
