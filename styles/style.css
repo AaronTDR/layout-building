@@ -79,6 +79,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.1fr 0.7fr 5fr 2fr;
+  place-items: center;
   min-height: 100vh;
   color: #ece9df;
 }
@@ -165,7 +166,7 @@ body {
 /* TODO: Individual header properties*/
 .header {
   width: 100%;
-  max-width: 100vw;
+  max-width: 83em;
   padding: 0.1875em 1.25em;
   background-color: var(--header-background-color);
   color: var(--principal-color);
@@ -216,6 +217,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 83em;
   height: 6.625em;
   z-index: 100;
   background-color: var(--header-background-color);
