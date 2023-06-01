@@ -167,7 +167,7 @@ body {
 /* TODO: Individual header properties*/
 .header {
   width: 100%;
-  max-width: 83em;
+  max-width: 93.75em;
   padding: 0.1875em 1.25em;
   background-color: var(--header-background-color);
   color: var(--principal-color);
@@ -218,7 +218,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 83em;
+  max-width: 93.75em;
   height: 6.625em;
   z-index: 100;
   background-color: var(--header-background-color);
