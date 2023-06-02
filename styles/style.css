@@ -77,8 +77,8 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.1fr 0.1fr 1.3fr 0.6fr;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: 0.1fr 0.1fr 1.3fr 0.6fr; */
   justify-items: center;
   min-height: 100vh;
   color: #ece9df;
@@ -162,6 +162,7 @@ body {
 /* TODO: Individual header properties*/
 .header__container {
   display: flex;
+  grid-column: 1 / 5;
   justify-content: center;
   background-color: var(--header-background-color);
   width: 100vw;
@@ -218,6 +219,7 @@ body {
   position: sticky;
   top: 0;
   display: flex;
+  grid-column: 1 / 5;
   flex-direction: column;
   width: 100%;
   max-width: 86.25em;
@@ -394,6 +396,7 @@ body {
 /* *Main */
 .cards-container {
   display: grid;
+  grid-column: 1 / 5;
   grid-template-columns: repeat(auto-fill, minmax(16.875em, 1fr));
   gap: 0.625em;
   justify-items: center;
@@ -796,6 +799,7 @@ body {
 
 /* TODO: footer */
 .footer {
+  grid-column: 1 / 5;
   background-color: var(--footer-background);
 }
 
