@@ -35,22 +35,22 @@
   --card-text-color: #0f1111;
 
   /* Extract text */
-  --extract-font-size: 0.8125rem;
+  --extract-font-size: 1rem;
 
   /* See more links */
-  --see-more-link-font-size: 0.8125rem;
+  --see-more-link-font-size: 1.1rem;
   --link-color: #007185;
 
   /* *Offers cards */
   /* Offer tag */
-  --offer-tag-text-font-size: 0.75rem;
+  --offer-tag-text-font-size: 0.85rem;
   --offer-tag-background-color: #cc0c39;
   /* Offer day text */
-  --offer-day-text-font-size: 0.75rem;
+  --offer-day-text-font-size: 0.85rem;
 
   /* *Card theme */
   /* image caption text */
-  --related__figcaption-font-size: 0.9375rem;
+  --related__figcaption-font-size: 1.1rem;
   --related__figcaption-font-weight: 700;
 
   /* *Footer vars */
@@ -437,8 +437,9 @@ body {
 }
 
 .related__figcaption {
-  max-width: 5.75em;
-  max-height: 2.5em;
+  text-align: start;
+  max-width: 100%;
+  max-height: 2.8em;
   font-size: 0.9375rem;
   color: var(--card-text-color);
   overflow: hidden;
@@ -520,6 +521,7 @@ body {
 .card-services__title {
   margin: 0;
   font-size: var(--title-card-font-size);
+  font-weight: 700;
   color: var(--card-text-color);
 }
 
@@ -579,6 +581,7 @@ body {
   margin-right: 0.375em;
   padding: 0.25em 0.375em;
   font-size: var(--offer-tag-text-font-size);
+  font-weight: 700;
   background-color: var(--offer-tag-background-color);
   color: var(--principal-color);
   border-radius: 0.125em;
@@ -800,6 +803,10 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 0.75rem;
+}
+
+.ad__text--principal {
+  font-weight: 700;
 }
 
 /* TODO: footer */
@@ -1063,12 +1070,26 @@ body {
   .sticky__searchbar-input {
     width: 91%;
   }
+
+  .card-offer__offer-quantity,
+  .card-offer__offer-day {
+    font-size: 0.9rem;
+  }
+
+  .extract__text {
+    font-size: 0.95rem;
+  }
+
+  .footer-card__see-more-link {
+    font-size: 0.96rem;
+    font-weight: 700;
+  }
 }
 
 @media screen and (max-width: 480px) {
   html {
     /* font-size: 93.75%; */
-    font-size: 100%;
+    /* font-size: 100%; */
   }
 
   .sticky__searchbar-container {
@@ -1101,7 +1122,7 @@ body {
   }
 
   .extract__text {
-    font-size: 0.95rem;
+    font-size: 0.89rem;
   }
 
   .footer-card__see-more-link {
