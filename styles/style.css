@@ -938,7 +938,16 @@ body {
 
 .footer__social-media-container {
   display: flex;
-  padding: 0.625em 0.625em 0;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer__social-media-content {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--max-width-content);
+  padding-left: 1em;
 }
 
 .footer__social-media-link {
