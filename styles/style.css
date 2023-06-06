@@ -57,10 +57,6 @@
   --footer-background: #232f3e;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: "Amazon Ember", Arial, sans-serif;
@@ -249,6 +245,7 @@ body {
 .logo__container {
   display: flex;
   align-items: center;
+  min-width: 10.1em;
 }
 
 .logo__img {
@@ -620,7 +617,6 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: 26.25em;
   background-color: transparent;
   color: var(--card-text-color);
 }
@@ -1001,6 +997,9 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
+  .logo__container {
+    min-width: 2em;
+  }
   .logo__img {
     width: 2em;
     height: 2em;
@@ -1050,16 +1049,17 @@ body {
   .sticky__menu {
     display: block;
     margin-right: 0.5078em;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .logo__container {
-    margin-right: 0.625em;
+    margin-top: 2px;
+    margin-right: 0;
   }
 
   .logo__img {
-    width: 1.9em;
-    height: 1.9em;
+    width: 1.6em;
+    height: 1.6em;
   }
 
   .sticky__searchbar-container {
@@ -1067,7 +1067,7 @@ body {
   }
 
   .sticky__searchbar-input {
-    width: 91%;
+    width: 88%;
   }
 
   .card-offer__offer-quantity,
@@ -1088,6 +1088,10 @@ body {
 @media screen and (max-width: 480px) {
   .sticky__searchbar-container {
     padding-right: 1.5%;
+  }
+
+  .sticky__top-container {
+    padding: 0.6em;
   }
 
   .cards__grid {
