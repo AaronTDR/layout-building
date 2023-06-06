@@ -11,6 +11,7 @@
 /* TODO: Vars: */
 :root {
   /* *Global vars */
+  --max-width-content: 86.25em;
   --highlight-color: #bd4500;
   --principal-color: #ffffff;
   --primary-color: #cc0c39;
@@ -166,7 +167,7 @@ body {
 
 .header {
   width: 100%;
-  max-width: 86.25em;
+  max-width: var(--max-width-content);
   padding: 0.1875em 1.25em;
   background-color: var(--header-background-color);
   color: var(--principal-color);
@@ -228,7 +229,7 @@ body {
   display: flex;
   align-items: flex-end;
   width: 100%;
-  max-width: 86.25em;
+  max-width: var(--max-width-content);
   padding: 0.625em 1.25em;
   background-color: var(--header-background-color);
 }
@@ -408,7 +409,7 @@ body {
   gap: 1.25em;
   width: 100%;
   padding: 2em 1.25em;
-  max-width: 86.25em;
+  max-width: var(--max-width-content);
   background-color: #007185;
 }
 
@@ -807,17 +808,22 @@ body {
 
 /* TODO: footer */
 .footer {
+  display: flex;
   grid-column: 1 / 5;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
   background-color: var(--footer-background);
 }
 
 /* *footer services */
 .footer__services-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(11em, 1fr));
   justify-items: center;
   gap: 0.625em;
   width: 100%;
+  max-width: var(--max-width-content);
   padding-top: 2.2em;
   padding-bottom: 2.2em;
   background-color: inherit;
@@ -882,8 +888,10 @@ body {
 /* *Footer service */
 .footer__links-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
   justify-items: center;
+  width: 100%;
+  max-width: var(--max-width-content);
   padding-top: 2.2em;
   padding-bottom: 2.2em;
   border-bottom: solid 0.0625em rgb(204, 204, 204, 0.2);
@@ -1127,5 +1135,23 @@ body {
   .footer-card__see-more-link {
     font-size: 1rem;
     font-weight: 700;
+  }
+
+  .footer__services-container {
+    display: none;
+  }
+
+  .footer__links-container {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 1.2em;
+    padding-left: 1em;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .footer__list-terms {
+    flex-direction: column;
+    align-items: center;
   }
 }
