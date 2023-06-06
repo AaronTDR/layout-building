@@ -398,7 +398,7 @@ body {
   grid-column: 1 / 5;
   justify-content: center;
   width: 100%;
-  background-color: #bd4500;
+  /* background-color: var(--secondary-color); */
 }
 
 .cards__grid {
@@ -409,7 +409,7 @@ body {
   width: 100%;
   padding: 2em 1.25em;
   max-width: var(--max-width-content);
-  background-color: #007185;
+  /* background-color: var(--secondary-color); */
 }
 
 /* TODO: blocks CSS */
