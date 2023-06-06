@@ -1100,6 +1100,7 @@ body {
   .cards__grid {
     gap: 0.33em;
     padding: 0.33em;
+    grid-auto-rows: minmax(29.9em, auto);
   }
 
   .card-offer__img {
