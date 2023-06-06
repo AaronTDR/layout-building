@@ -578,6 +578,7 @@ body {
 .card-offer__offer-quantity {
   min-width: 5.625em;
   max-width: 10em;
+  margin-top: 0.125em;
   margin-right: 0.375em;
   padding: 0.25em 0.375em;
   font-size: var(--offer-tag-text-font-size);
