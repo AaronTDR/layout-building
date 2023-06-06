@@ -36,10 +36,10 @@
   --card-text-color: #0f1111;
 
   /* Extract text */
-  --extract-font-size: 1rem;
+  --extract-font-size: 0.9rem;
 
   /* See more links */
-  --see-more-link-font-size: 1.1rem;
+  --see-more-link-font-size: 0.9rem;
   --link-color: #007185;
 
   /* *Offers cards */
@@ -52,7 +52,7 @@
   /* *Card theme */
   /* image caption text */
   --related__figcaption-font-size: 1.1rem;
-  --related__figcaption-font-weight: 700;
+  --related__figcaption-font-weight: 400;
 
   /* *Footer vars */
   --footer-background: #232f3e;
@@ -435,9 +435,9 @@ body {
 
 .related__figcaption {
   text-align: start;
-  max-width: 100%;
+  max-width: 5.25em;
   max-height: 2.8em;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--card-text-color);
   overflow: hidden;
 }
@@ -1037,10 +1037,6 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  html {
-    font-size: 100%;
-  }
-
   .header__container,
   .sticky__button--address,
   .sticky__button--wish-list,
@@ -1104,6 +1100,10 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+
   .sticky__searchbar-container {
     padding-right: 1.5%;
   }
@@ -1139,11 +1139,11 @@ body {
   }
 
   .extract__text {
-    font-size: 0.89rem;
+    font-size: 1rem;
   }
 
   .footer-card__see-more-link {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
   }
 
