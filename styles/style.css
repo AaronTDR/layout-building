@@ -170,7 +170,6 @@ body {
   padding: 0.1875em 1.25em;
   background-color: var(--header-background-color);
   color: var(--principal-color);
-  background-color: var(--header-background-color);
 }
 
 .header__navbar {
@@ -406,8 +405,8 @@ body {
   grid-auto-rows: minmax(27em, auto);
   gap: 1.25em;
   width: 100%;
-  padding: 2em 1.25em;
   max-width: var(--max-width-content);
+  padding: 2em 1.25em;
 }
 
 /* TODO: blocks CSS */
@@ -741,11 +740,11 @@ body {
   display: flex;
   gap: 0.3125em;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 1.25em 0.3125em;
+  padding: 1.8em 0.3125em;
   font-size: 0.8125rem;
   color: var(--principal-color);
   border-radius: inherit;
@@ -943,6 +942,7 @@ body {
   justify-content: flex-start;
   width: 100%;
   max-width: var(--max-width-content);
+  margin-top: 0.625em;
   padding-left: 1.25em;
 }
 
