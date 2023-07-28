@@ -1,70 +1,65 @@
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("assets/fonts/AmazonEmber_Rg.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Amazon Ember Bold";
+  src: url("assets/fonts/AmazonEmber_Bd.ttf") format("truetype");
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  /* *Global vars */
+  --max-width-content: 86.25em;
+  --highlight-color: #bd4500;
+  --principal-color: #ffffff;
+  --primary-color: #cc0c39;
+  --secondary-color: #cccccc;
+  --header-background-color: #131921;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Border radius */
+  --border-radius-principal: 0.375em;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+  /* *Header vars */
+  --header-principal-font-size: 0.8125rem;
+  --header-secondary-font-size: 0.75rem;
+  /* *Main */
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  /* TODO: Cars vars */
+
+  /*  *Shared variables on cards */
+  /* Title text*/
+  --title-card-font-size: 1.3125rem;
+
+  /* text */
+  --card-text-color: #0f1111;
+
+  /* Extract text */
+  --extract-font-size: 0.9rem;
+
+  /* See more links */
+  --see-more-link-font-size: 0.9rem;
+  --link-color: #007185;
+
+  /* *Offers cards */
+  /* Offer tag */
+  --offer-tag-text-font-size: 0.85rem;
+  --offer-tag-background-color: #cc0c39;
+  /* Offer day text */
+  --offer-day-text-font-size: 0.85rem;
+
+  /* *Card theme */
+  /* image caption text */
+  --related__figcaption-font-size: 1.1rem;
+  --related__figcaption-font-weight: 400;
+
+  /* *Footer vars */
+  --footer-background: #232f3e;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: blue;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  font-family: "Amazon Ember", Arial, sans-serif;
+  background-color: #e3e6e6;
 }
