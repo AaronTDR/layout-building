@@ -1,0 +1,7 @@
+.header {
+  width: 100%;
+  max-width: var(--max-width-content);
+  padding: 0.1875em 1.25em;
+  background-color: var(--header-background-color);
+  color: var(--principal-color);
+}

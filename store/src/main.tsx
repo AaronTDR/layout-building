@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
-// import App from "./App.tsx";
+
+import Home from "./routes/home/home.tsx";
 import "./index.module.css";
-import Home from "./routes/home.tsx";
 
 const router = createHashRouter([
   {
