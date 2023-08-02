@@ -12,6 +12,7 @@
   font-family: "Amazon Ember", Arial, sans-serif;
   /* *Global vars */
   --max-width-content: 86.25em;
+  --margin-right: 0.3125em;
   --highlight-color: #bd4500;
   --principal-color: #ffffff;
   --primary-color: #cc0c39;

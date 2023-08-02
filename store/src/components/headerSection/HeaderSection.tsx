@@ -1,7 +1,12 @@
+import { FC } from "react";
+/* types */
+import { HeaderSectionType } from "./headerSectionType";
+/* css */
 import styles from "./headerSection.module.css";
-import { ChildrenPropsType } from "../../types/ChildrenPropsType";
 
-const HeaderSection = ({ children }: ChildrenPropsType) => {
+const HeaderSection: FC<HeaderSectionType> = ({
+  children,
+}: HeaderSectionType) => {
   return <div className={styles.headerSection}>{children}</div>;
 };
 

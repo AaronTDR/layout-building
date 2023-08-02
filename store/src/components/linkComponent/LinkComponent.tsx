@@ -1,21 +1,18 @@
+import { FC } from "react";
 import { Link } from "react-router-dom";
-import { ChildrenPropsType } from "../../types/ChildrenPropsType";
+/* Types */
+import { linkComponentType } from "./linkComponentsType";
 
-interface LinkComponentProps {
-  text: string;
-  css: string;
-  children?: ChildrenPropsType;
-}
-
-const LinkComponent = ({ text, css, children }: LinkComponentProps) => {
-  console.log(
-    "🚀 ~ file: LinkComponent.tsx:13 ~ LinkComponent ~ children:",
-    children
-  );
+const LinkComponent: FC<linkComponentType> = ({
+  text,
+  css,
+  children,
+}: linkComponentType) => {
+  const isThereIcon = children ? children : null;
 
   return (
     <Link to="#" className={css}>
-      {children}
+      {isThereIcon}
       {text}
     </Link>
   );

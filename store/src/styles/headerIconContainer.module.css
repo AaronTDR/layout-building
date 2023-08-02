@@ -1,0 +1,13 @@
+.headerIconContainer {
+  padding: 0.5625em 0.625em;
+  border: solid 0.0625em transparent;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+}
+
+.headerIconContainer:hover {
+  border: solid 0.0625em rgba(204, 204, 204, 0.5);
+}
