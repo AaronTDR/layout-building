@@ -1,11 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Icon = ({ icon, size, color }) => {
-  const styles = {
+const Icon = ({ icon, css }) => {
+  /*   const styles = {
     color: color,
     fontSize: size,
-  };
-  return <FontAwesomeIcon style={styles} icon={icon} />;
+  }; */
+  return (
+    <i className={css}>
+      <FontAwesomeIcon icon={icon} />
+    </i>
+  );
 };
 
 export default Icon;

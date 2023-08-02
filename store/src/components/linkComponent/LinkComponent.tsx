@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
 import { ChildrenPropsType } from "../../types/ChildrenPropsType";
-// import styles from "./link-component.module.css";
 
 interface LinkComponentProps {
+  text: string;
   css: string;
   children?: ChildrenPropsType;
 }
 
-const LinkComponent = ({ css, children }: LinkComponentProps) => {
-  /*   const linkStyle = {
-    fontSize: textSize,
-    color: textColor,
-  }; */
-  /* if (text !== "") a{adir clase a un parrafo? de lo contrario null*/
+const LinkComponent = ({ text, css, children }: LinkComponentProps) => {
+  console.log(
+    "🚀 ~ file: LinkComponent.tsx:13 ~ LinkComponent ~ children:",
+    children
+  );
+
   return (
     <Link to="#" className={css}>
       {children}
+      {text}
     </Link>
   );
 };

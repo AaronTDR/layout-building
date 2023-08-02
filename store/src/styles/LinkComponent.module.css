@@ -1,6 +1,7 @@
 .link {
   display: flex;
   align-items: center;
+  width: auto;
   padding: 0.625em;
   border: solid 0.0625em transparent;
   border-radius: var(--border-radius-principal);
@@ -10,7 +11,6 @@
   -o-border-radius: var(--border-radius-principal);
   font-size: var(--header-principal-font-size);
   font-weight: 700;
-  /* background-color: inherit; */
   background-color: inherit;
   color: var(--principal-color);
   cursor: pointer;
