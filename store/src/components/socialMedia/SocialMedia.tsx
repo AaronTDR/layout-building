@@ -13,8 +13,8 @@ const SocialMedia: FC<socialMediaType> = ({ css, text, icons }) => {
   return (
     <div className={socialMediaStyles.headerSocialMedia}>
       {isThereText}
-      {icons.map((icon) => (
-        <Link to="#" className={linkStyles.headerNavbarLink}>
+      {icons.map((icon, i) => (
+        <Link to="#" className={linkStyles.headerNavbarLink} key={i}>
           <span className={socialMediaStyles.headerIconContainer}>
             {icon.iconComponent}
           </span>
