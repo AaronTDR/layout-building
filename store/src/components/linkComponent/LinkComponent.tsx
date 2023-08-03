@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { linkComponentType } from "./linkComponentsType";
 
 const LinkComponent: FC<linkComponentType> = ({
+  path,
   text,
   css,
   children,
@@ -11,7 +12,7 @@ const LinkComponent: FC<linkComponentType> = ({
   const isThereIcon = children ? children : null;
 
   return (
-    <Link to="#" className={css}>
+    <Link to={path} className={css}>
       {isThereIcon}
       {text}
     </Link>

@@ -1,4 +1,8 @@
-import { faMobileScreenButton } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMobileScreenButton,
+  faGlobe,
+  faQuestion,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faInstagram,
   faTwitter,
@@ -9,9 +13,11 @@ import {
 import Icon from "../icon/Icon";
 import LinkComponent from "../linkComponent/LinkComponent";
 import SocialMedia from "../socialMedia/SocialMedia";
+import List from "../list/List";
 import HeaderSection from "../headerSection/HeaderSection";
 import Nav from "../nav/Nav";
 /* css */
+import headerListStyles from "../../styles/headerNavbarOptions.module.css";
 import socialMediaIconStyles from "../../styles/socialMediaIcon.module.css";
 import headerIconStyles from "../../styles/headerIcon.module.css";
 import linkStyles from "../../styles/link.module.css";
@@ -33,12 +39,64 @@ const socialMediaIcons = [
   },
 ];
 
+const listRightSection = [
+  {
+    listElement: (
+      <LinkComponent
+        path="#"
+        text={"Language"}
+        css={`
+          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+        `}
+      >
+        <Icon icon={faGlobe} css={headerIconStyles.icon} />
+      </LinkComponent>
+    ),
+  },
+  {
+    listElement: (
+      <LinkComponent
+        path="#"
+        text={"Help"}
+        css={`
+          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+        `}
+      >
+        <Icon icon={faQuestion} css={headerIconStyles.icon} />
+      </LinkComponent>
+    ),
+  },
+  {
+    listElement: (
+      <LinkComponent
+        path="#"
+        text={"Sing Up"}
+        css={`
+          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+        `}
+      ></LinkComponent>
+    ),
+  },
+  {
+    listElement: (
+      <LinkComponent
+        path="#"
+        text={"Log in"}
+        css={`
+          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+        `}
+      ></LinkComponent>
+    ),
+  },
+];
+
 const Header = () => {
   return (
     <div className={HeaderStyles.header}>
       <Nav>
         <HeaderSection>
           <LinkComponent
+            path="#"
             text="App"
             css={`
               ${linkStyles.link} ${linkStyles.headerNavbarLink}
@@ -52,7 +110,12 @@ const Header = () => {
             icons={socialMediaIcons}
           />
         </HeaderSection>{" "}
-        <HeaderSection>"lol"</HeaderSection>
+        <HeaderSection>
+          <List
+            css={headerListStyles.headerNavbarOptions}
+            elements={listRightSection}
+          />
+        </HeaderSection>
       </Nav>
     </div>
   );
