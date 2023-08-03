@@ -1,7 +1,7 @@
-import styles from "./nav.module.css";
-
-const Nav = ({ children }: ChildrenProps) => {
-  return <div className={styles["header__navbar"]}>{children}</div>;
+import navStyles from "./nav.module.css";
+import { navType } from "./navType";
+const Nav = ({ children }: navType) => {
+  return <div className={navStyles.headerNavbar}>{children}</div>;
 };
 
 export default Nav;
