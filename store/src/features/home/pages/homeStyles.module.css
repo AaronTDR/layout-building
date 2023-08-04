@@ -38,6 +38,7 @@
 
 .stickyButtonAddress {
   max-width: 12.5em;
+  min-width: 12em;
   margin-right: 0.5078em;
   height: 3.125em;
   border: solid 0.0625em transparent;
@@ -74,6 +75,10 @@
   font-size: 1.1rem;
   color: #febd69;
   cursor: pointer;
+}
+
+.wishListButton {
+  min-width: 7.3em;
 }
 
 @media screen and (max-width: 768px) {

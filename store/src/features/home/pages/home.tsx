@@ -42,7 +42,7 @@ const Home = () => {
               css={homeStyles.stickySearchBarIcon}
             />
           </SearchBar>
-          <Button>
+          <Button cssArr={[homeStyles.wishListButton]}>
             <Icon icon={faHeart} css={homeStyles.stickyWishListIcon} />
             Wish List
           </Button>
