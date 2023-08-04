@@ -1,6 +1,7 @@
 import {
   faLocationDot,
   faMagnifyingGlass,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Icon from "../../../components/icon/Icon";
@@ -41,6 +42,10 @@ const Home = () => {
               css={homeStyles.stickySearchBarIcon}
             />
           </SearchBar>
+          <Button>
+            <Icon icon={faHeart} css={homeStyles.stickyWishListIcon} />
+            Wish List
+          </Button>
         </Container>
       </Container>
     </div>

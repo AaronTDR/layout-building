@@ -48,7 +48,8 @@
   -o-transition: border 0.2s;
 }
 
-.stickyAddressIcon {
+.stickyAddressIcon,
+.stickyWishListIcon {
   align-self: center;
   margin-right: 0.325em;
   font-size: 1.25em;
