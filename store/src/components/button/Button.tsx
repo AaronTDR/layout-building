@@ -1,16 +1,12 @@
-import buttonStyles from "./buttonStyles.module.css";
+import { ButtonType } from "./buttonType";
 
-type ButtonType = {
-  cssArr: string[] | null;
-  children: React.ReactNode;
-};
+import buttonStyles from "./buttonStyles.module.css";
 
 const Button = ({ cssArr, children }: ButtonType) => {
   const buttonStyle = cssArr
     ? `${buttonStyles.button} ${cssArr.join(" ")}`
     : buttonStyles.button;
 
-  console.log("🚀 ~ file: Button.tsx:10 ~ Button ~ buttonStyle:", buttonStyle);
   return <button className={buttonStyle}>{children}</button>;
 };
 
