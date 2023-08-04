@@ -69,6 +69,12 @@
   color: var(--secondary-color);
 }
 
+.stickySearchBarIcon {
+  font-size: 1.1rem;
+  color: #febd69;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .stickyButtonAddress {
     display: none;

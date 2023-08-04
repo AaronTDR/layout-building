@@ -1,8 +1,12 @@
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLocationDot,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Icon from "../../../components/icon/Icon";
 import Button from "../../../components/button/Button";
 import Logo from "../../../components/logo/Logo";
+import SearchBar from "../components/searchBar/SearchBar";
 import Header from "../../../components/header/Header";
 import Container from "../../../components/container/Container";
 
@@ -31,6 +35,12 @@ const Home = () => {
               </span>
             </span>
           </Button>
+          <SearchBar placeholder="Search anything...">
+            <Icon
+              icon={faMagnifyingGlass}
+              css={homeStyles.stickySearchBarIcon}
+            />
+          </SearchBar>
         </Container>
       </Container>
     </div>
