@@ -1,0 +1,61 @@
+.shoppingCartContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 3.4375em;
+  min-width: 3.4375em;
+  height: 3.125em;
+  padding: 0.625em;
+  border: solid 0.0625em transparent;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+  font-size: var(--header-principal-font-size);
+  font-weight: 700;
+  background-color: inherit;
+  color: var(--principal-color);
+  cursor: pointer;
+}
+
+.shoppingCartContainer:hover {
+  border: solid 0.0625em rgba(204, 204, 204, 0.5);
+}
+
+.shoppingCartNumberContainer {
+  position: absolute;
+  top: 0.0313em;
+  right: 0.1875em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1em;
+  max-width: 1.625em;
+  height: 1em;
+  padding: 0.125em;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: var(--primary-color);
+  overflow: hidden;
+}
+
+.shoppingCartNumber {
+  font-size: 0.525rem;
+  font-weight: 100;
+  color: var(--principal-color);
+}
+
+.stickyShoppingCartIcon {
+  font-size: 1.4375rem;
+}
+
+@media screen and (max-width: 768px) {
+  .stickyShoppingCartContainer {
+    display: none;
+  }
+}

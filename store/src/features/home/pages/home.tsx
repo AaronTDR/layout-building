@@ -6,6 +6,7 @@ import {
 
 import Icon from "../../../components/icon/Icon";
 import Button from "../../../components/button/Button";
+import ShoppingCart from "../../../components/shoppingCart/ShoppingCart";
 import Logo from "../../../components/logo/Logo";
 import SearchBar from "../components/searchBar/SearchBar";
 import Header from "../../../components/header/Header";
@@ -46,6 +47,7 @@ const Home = () => {
             <Icon icon={faHeart} css={homeStyles.stickyWishListIcon} />
             Wish List
           </Button>
+          <ShoppingCart />
         </Container>
       </Container>
     </div>
