@@ -1,0 +1,52 @@
+.logoLink {
+  margin-right: 0.5078em;
+  text-decoration: none;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  min-width: 10.1em;
+}
+
+.logoImg {
+  width: 2.5em;
+  height: 2.5em;
+  margin-right: 0.1875em;
+}
+
+.logoText {
+  margin-top: 0.9375em;
+  margin-bottom: 0.1875em;
+  font-size: 1.5rem;
+  color: var(--principal-color);
+}
+
+@media screen and (max-width: 1024px) {
+  .logo__container {
+    min-width: 2em;
+  }
+
+  .logoImg {
+    width: 2em;
+    height: 2em;
+    margin-bottom: 0.4375em;
+    margin-right: 0;
+  }
+
+  .logoText {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logo__container {
+    margin-top: 2px;
+    margin-right: 0;
+  }
+
+  .logoImg {
+    width: 1.6em;
+    height: 1.6em;
+  }
+}

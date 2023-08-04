@@ -1,0 +1,76 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  min-height: 100vh;
+  color: #ece9df;
+}
+
+.headerContainer {
+  display: flex;
+  grid-column: 1 / 5;
+  justify-content: center;
+  background-color: var(--header-background-color);
+  width: 100%;
+}
+
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  display: flex;
+  grid-column: 1 / 5;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 6.625em;
+  z-index: 100;
+  background-color: var(--header-background-color);
+}
+
+.stickyTopContainer {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: var(--max-width-content);
+  padding: 0.625em 1.25em;
+  background-color: var(--header-background-color);
+}
+
+.stickyButtonAddress {
+  max-width: 12.5em;
+  margin-right: 0.5078em;
+  height: 3.125em;
+  border: solid 0.0625em transparent;
+  transition: border 0.2s;
+  -webkit-transition: border 0.2s;
+  -moz-transition: border 0.2s;
+  -ms-transition: border 0.2s;
+  -o-transition: border 0.2s;
+}
+
+.stickyAddressIcon {
+  align-self: center;
+  margin-right: 0.325em;
+  font-size: 1.25em;
+}
+
+.stickyAddressTextContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-left: 0.3125em;
+  padding-right: 0.3125em;
+}
+
+.stickyAddressTextTop {
+  padding-right: 0.625em;
+  text-align: start;
+  font-size: var(--header-secondary-font-size);
+  color: var(--secondary-color);
+}
+
+@media screen and (max-width: 768px) {
+  .stickyButtonAddress {
+    display: none;
+  }
+}

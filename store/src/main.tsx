@@ -2,15 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
-import Home from "./routes/home/home.tsx";
+import routes from "./routes";
+
 import "./index.module.css";
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-]);
+const router = createHashRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
