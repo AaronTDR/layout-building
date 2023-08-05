@@ -81,8 +81,21 @@
   min-width: 7.3em;
 }
 
+.stickyBottomContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.625em;
+  width: 100%;
+  padding: 0.1875em 1.25em;
+  background-color: var(--header-background-color);
+}
+
 @media screen and (max-width: 768px) {
   .stickyButtonAddress {
+    display: none;
+  }
+
+  .stickyBottomContainer {
     display: none;
   }
 }

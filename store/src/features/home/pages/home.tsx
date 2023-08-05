@@ -4,6 +4,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 
+import LinkComponent from "../../../components/linkComponent/LinkComponent";
 import Icon from "../../../components/icon/Icon";
 import Button from "../../../components/button/Button";
 import ShoppingCart from "../../../components/shoppingCart/ShoppingCart";
@@ -12,6 +13,7 @@ import SearchBar from "../components/searchBar/SearchBar";
 import Header from "../../../components/header/Header";
 import Container from "../../../components/container/Container";
 
+import borderLinkStyles from "../../../styles/borderLink.module.css";
 import singleLineStyles from "../../../styles/singleLine.module.css";
 import homeStyles from "./homeStyles.module.css";
 
@@ -48,6 +50,43 @@ const Home = () => {
             Wish List
           </Button>
           <ShoppingCart />
+        </Container>
+        <Container css={homeStyles.stickyBottomContainer}>
+          <LinkComponent
+            path={"#"}
+            text="Vehicles"
+            css={borderLinkStyles.borderLink}
+          ></LinkComponent>
+          <LinkComponent
+            path={"#"}
+            text="Supermarket"
+            css={borderLinkStyles.borderLink}
+          ></LinkComponent>
+          <LinkComponent
+            path={"#"}
+            text="Technology"
+            css={borderLinkStyles.borderLink}
+          ></LinkComponent>
+          <LinkComponent
+            path={"#"}
+            text="Home"
+            css={borderLinkStyles.borderLink}
+          ></LinkComponent>
+          <LinkComponent
+            path={"#"}
+            text="Construction"
+            css={borderLinkStyles.borderLink}
+          ></LinkComponent>
+          <LinkComponent
+            path={"#"}
+            text="Fashion"
+            css={borderLinkStyles.borderLink}
+          ></LinkComponent>
+          <LinkComponent
+            path={"#"}
+            text="Sports"
+            css={borderLinkStyles.borderLink}
+          ></LinkComponent>
         </Container>
       </Container>
     </div>
