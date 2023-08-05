@@ -17,12 +17,6 @@
   cursor: pointer;
 }
 
-.headerNavbarLink {
-  color: var(--principal-color);
-  text-decoration: none;
-  margin-right: 0.8em;
-}
-
 .borderLink:hover {
   border: solid 0.0625em rgba(204, 204, 204, 0.5);
 }

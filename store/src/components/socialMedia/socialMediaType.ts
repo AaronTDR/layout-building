@@ -4,6 +4,7 @@ interface SocialMediaIconType {
 
 export interface socialMediaType {
   text?: string;
-  css?: string;
-  icons: SocialMediaIconType[];
+  textCss?: string;
+  iconsArr: SocialMediaIconType[];
+  socialMediaContainerCss: string;
 }

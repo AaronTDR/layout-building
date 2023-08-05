@@ -13,7 +13,7 @@ import Logo from "../../../components/logo/Logo";
 import SearchBar from "../components/searchBar/SearchBar";
 import Header from "../../../components/header/Header";
 import Container from "../../../components/container/Container";
-
+/* css */
 import borderLinkStyles from "../../../styles/borderLink.module.css";
 import singleLineStyles from "../../../styles/singleLine.module.css";
 import homeStyles from "./homeStyles.module.css";

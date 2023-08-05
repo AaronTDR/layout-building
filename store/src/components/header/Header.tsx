@@ -17,25 +17,29 @@ import List from "../list/List";
 import HeaderSection from "../headerSection/HeaderSection";
 import Nav from "../nav/Nav";
 /* css */
-import headerListStyles from "../../styles/headerNavbarOptions.module.css";
-import socialMediaIconStyles from "../../styles/socialMediaIcon.module.css";
-import headerIconStyles from "../../styles/headerIcon.module.css";
 import borderLinkStyles from "../../styles/borderLink.module.css";
-import headerFallowUsTextStyles from "../../styles/headerFallowUsText.module.css";
-import HeaderStyles from "./header.module.css";
+import headerStyles from "./headerStyles.module.css";
 
 const socialMediaIcons = [
   {
-    iconComponent: <Icon icon={faInstagram} css={socialMediaIconStyles.icon} />,
+    iconComponent: (
+      <Icon icon={faInstagram} css={headerStyles.socialMediaIconStyles} />
+    ),
   },
   {
-    iconComponent: <Icon icon={faTwitter} css={socialMediaIconStyles.icon} />,
+    iconComponent: (
+      <Icon icon={faTwitter} css={headerStyles.socialMediaIconStyles} />
+    ),
   },
   {
-    iconComponent: <Icon icon={faFacebook} css={socialMediaIconStyles.icon} />,
+    iconComponent: (
+      <Icon icon={faFacebook} css={headerStyles.socialMediaIconStyles} />
+    ),
   },
   {
-    iconComponent: <Icon icon={faWhatsapp} css={socialMediaIconStyles.icon} />,
+    iconComponent: (
+      <Icon icon={faWhatsapp} css={headerStyles.socialMediaIconStyles} />
+    ),
   },
 ];
 
@@ -46,10 +50,10 @@ const listRightSection = [
         path="#"
         text={"Language"}
         css={`
-          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${headerStyles.headerNavbarLink}
         `}
       >
-        <Icon icon={faGlobe} css={headerIconStyles.icon} />
+        <Icon icon={faGlobe} css={headerStyles.headerIcon} />
       </LinkComponent>
     ),
   },
@@ -59,10 +63,10 @@ const listRightSection = [
         path="#"
         text={"Help"}
         css={`
-          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${headerStyles.headerNavbarLink}
         `}
       >
-        <Icon icon={faQuestion} css={headerIconStyles.icon} />
+        <Icon icon={faQuestion} css={headerStyles.headerIcon} />
       </LinkComponent>
     ),
   },
@@ -72,7 +76,7 @@ const listRightSection = [
         path="#"
         text={"Sing Up"}
         css={`
-          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${headerStyles.headerNavbarLink}
         `}
       ></LinkComponent>
     ),
@@ -83,7 +87,7 @@ const listRightSection = [
         path="#"
         text={"Log in"}
         css={`
-          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${headerStyles.headerNavbarLink}
         `}
       ></LinkComponent>
     ),
@@ -92,27 +96,28 @@ const listRightSection = [
 
 const Header = () => {
   return (
-    <div className={HeaderStyles.header}>
+    <div className={headerStyles.header}>
       <Nav>
         <HeaderSection>
           <LinkComponent
             path="#"
             text="App"
             css={`
-              ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
+              ${borderLinkStyles.borderLink} ${headerStyles.headerNavbarLink}
             `}
           >
-            <Icon icon={faMobileScreenButton} css={headerIconStyles.icon} />
+            <Icon icon={faMobileScreenButton} css={headerStyles.headerIcon} />
           </LinkComponent>
           <SocialMedia
-            css={headerFallowUsTextStyles.headerFollowUsText}
             text="Fallow us on:"
-            icons={socialMediaIcons}
+            textCss={headerStyles.headerFollowUsText}
+            iconsArr={socialMediaIcons}
+            socialMediaContainerCss={headerStyles.headerSocialMediaContainer}
           />
         </HeaderSection>{" "}
         <HeaderSection>
           <List
-            css={headerListStyles.headerNavbarOptions}
+            css={headerStyles.headerNavBarOptions}
             elements={listRightSection}
           />
         </HeaderSection>
