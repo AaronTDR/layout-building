@@ -96,7 +96,7 @@ const listRightSection = [
 
 const Header = () => {
   return (
-    <div className={headerStyles.header}>
+    <header className={headerStyles.header}>
       <Nav>
         <HeaderSection>
           <LinkComponent
@@ -122,7 +122,7 @@ const Header = () => {
           />
         </HeaderSection>
       </Nav>
-    </div>
+    </header>
   );
 };
 
