@@ -20,7 +20,7 @@ import Nav from "../nav/Nav";
 import headerListStyles from "../../styles/headerNavbarOptions.module.css";
 import socialMediaIconStyles from "../../styles/socialMediaIcon.module.css";
 import headerIconStyles from "../../styles/headerIcon.module.css";
-import linkStyles from "../../styles/link.module.css";
+import borderLinkStyles from "../../styles/borderLink.module.css";
 import headerFallowUsTextStyles from "../../styles/headerFallowUsText.module.css";
 import HeaderStyles from "./header.module.css";
 
@@ -46,7 +46,7 @@ const listRightSection = [
         path="#"
         text={"Language"}
         css={`
-          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
         `}
       >
         <Icon icon={faGlobe} css={headerIconStyles.icon} />
@@ -59,7 +59,7 @@ const listRightSection = [
         path="#"
         text={"Help"}
         css={`
-          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
         `}
       >
         <Icon icon={faQuestion} css={headerIconStyles.icon} />
@@ -72,7 +72,7 @@ const listRightSection = [
         path="#"
         text={"Sing Up"}
         css={`
-          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
         `}
       ></LinkComponent>
     ),
@@ -83,7 +83,7 @@ const listRightSection = [
         path="#"
         text={"Log in"}
         css={`
-          ${linkStyles.link} ${linkStyles.headerNavbarLink}
+          ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
         `}
       ></LinkComponent>
     ),
@@ -99,7 +99,7 @@ const Header = () => {
             path="#"
             text="App"
             css={`
-              ${linkStyles.link} ${linkStyles.headerNavbarLink}
+              ${borderLinkStyles.borderLink} ${borderLinkStyles.headerNavbarLink}
             `}
           >
             <Icon icon={faMobileScreenButton} css={headerIconStyles.icon} />

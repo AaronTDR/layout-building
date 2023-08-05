@@ -9,7 +9,7 @@
   -ms-border-radius: var(--border-radius-principal);
   -o-border-radius: var(--border-radius-principal);
   font-size: var(--header-principal-font-size);
-  font-weight: 700;
+  font-weight: 400;
   background-color: inherit;
   color: var(--principal-color);
   cursor: pointer;
