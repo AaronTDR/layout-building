@@ -2,6 +2,7 @@ import {
   faLocationDot,
   faMagnifyingGlass,
   faHeart,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 import LinkComponent from "../../../components/linkComponent/LinkComponent";
@@ -25,6 +26,7 @@ const Home = () => {
       </Container>
       <Container css={homeStyles.stickyContainer}>
         <Container css={homeStyles.stickyTopContainer}>
+          <Icon icon={faBars} css={homeStyles.stickyMenu} />
           <Logo />
           <Button cssArr={[homeStyles.stickyButtonAddress]}>
             <Icon icon={faLocationDot} css={homeStyles.stickyAddressIcon} />
@@ -45,7 +47,7 @@ const Home = () => {
               css={homeStyles.stickySearchBarIcon}
             />
           </SearchBar>
-          <Button cssArr={[homeStyles.wishListButton]}>
+          <Button cssArr={[homeStyles.stickyButtonWishList]}>
             <Icon icon={faHeart} css={homeStyles.stickyWishListIcon} />
             Wish List
           </Button>

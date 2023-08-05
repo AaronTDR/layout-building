@@ -23,7 +23,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .logo__container {
+  .logoContainer {
     min-width: 2em;
   }
 
@@ -40,7 +40,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .logo__container {
+  .logoContainer {
     margin-top: 2px;
     margin-right: 0;
   }
