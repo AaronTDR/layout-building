@@ -1,0 +1,9 @@
+.cardOfferImgStyles {
+  width: 100%;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+  object-fit: cover;
+}

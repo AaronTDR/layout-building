@@ -14,10 +14,11 @@ import Icon from "../icon/Icon";
 import LinkComponent from "../linkComponent/LinkComponent";
 import SocialMedia from "../socialMedia/SocialMedia";
 import List from "../list/List";
-import HeaderSection from "../headerSection/HeaderSection";
+import Container from "../container/Container";
 import Nav from "../nav/Nav";
 /* css */
 import borderLinkStyles from "../../styles/borderLink.module.css";
+import headerSection from "../../features/home/styles/headerSection.module.css";
 import headerStyles from "./headerStyles.module.css";
 
 const socialMediaIcons = [
@@ -98,7 +99,7 @@ const Header = () => {
   return (
     <header className={headerStyles.header}>
       <Nav>
-        <HeaderSection>
+        <Container css={headerSection.headerSection}>
           <LinkComponent
             path="#"
             text="App"
@@ -114,13 +115,13 @@ const Header = () => {
             iconsArr={socialMediaIcons}
             socialMediaContainerCss={headerStyles.headerSocialMediaContainer}
           />
-        </HeaderSection>{" "}
-        <HeaderSection>
+        </Container>{" "}
+        <Container css={headerSection.headerSection}>
           <List
             css={headerStyles.headerNavBarOptions}
             elements={listRightSection}
           />
-        </HeaderSection>
+        </Container>
       </Nav>
     </header>
   );

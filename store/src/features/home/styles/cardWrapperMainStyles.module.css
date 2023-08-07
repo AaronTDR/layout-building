@@ -1,0 +1,25 @@
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 1.25em;
+  background-color: var(--principal-color);
+  color: var(--card-text-color);
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+}
+
+.cardHeader {
+  margin-bottom: 0.625em;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: var(--title-card-font-size);
+  font-weight: 700;
+  color: var(--card-text-color);
+}
