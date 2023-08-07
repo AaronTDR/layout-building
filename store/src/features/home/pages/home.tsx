@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import {
   faLocationDot,
   faMagnifyingGlass,
@@ -8,31 +10,37 @@ import {
 import LinkComponent from "../../../components/linkComponent/LinkComponent";
 import Icon from "../../../components/icon/Icon";
 import Button from "../../../components/button/Button";
+import Image from "../../../components/image/Image";
+import CardWrapperMain from "../components/cardWrapperMain/CardWrapperMain";
 import ShoppingCart from "../../../components/shoppingCart/ShoppingCart";
 import Logo from "../../../components/logo/Logo";
 import SearchBar from "../components/searchBar/SearchBar";
 import Header from "../../../components/header/Header";
 import Container from "../../../components/container/Container";
 /* css */
-import borderLinkStyles from "../../../styles/borderLink.module.css";
 import singleLineStyles from "../../../styles/singleLine.module.css";
-import homeStyles from "./homeStyles.module.css";
+import borderLinkStyles from "../../../styles/borderLink.module.css";
+/* stylesHome */
+import cards from "../stylesHome/cards.module.css";
+import sticky from "../stylesHome/sticky.module.css";
+import headerContainer from "../stylesHome/headerContainer.module.css";
+import container from "../stylesHome/container.module.css";
 
 const Home = () => {
   return (
-    <div className={homeStyles.container}>
-      <Container css={homeStyles.headerContainer}>
+    <div className={container.container}>
+      <Container css={headerContainer.headerContainer}>
         <Header />
       </Container>
-      <Container css={homeStyles.stickyContainer}>
-        <Container css={homeStyles.stickyTopContainer}>
-          <Icon icon={faBars} css={homeStyles.stickyMenu} />
+      <Container css={sticky.stickyContainer}>
+        <Container css={sticky.stickyTopContainer}>
+          <Icon icon={faBars} css={sticky.stickyMenu} />
           <Logo />
-          <Button cssArr={[homeStyles.stickyButtonAddress]}>
-            <Icon icon={faLocationDot} css={homeStyles.stickyAddressIcon} />
-            <span className={homeStyles.stickyAddressTextContainer}>
+          <Button cssArr={[sticky.stickyButtonAddress]}>
+            <Icon icon={faLocationDot} css={sticky.stickyAddressIcon} />
+            <span className={sticky.stickyAddressTextContainer}>
               <span
-                className={`${homeStyles.stickyAddressTextTop} ${singleLineStyles.singleLine}`}
+                className={`${sticky.stickyAddressTextTop} ${singleLineStyles.singleLine}`}
               >
                 Deliver to
               </span>
@@ -42,18 +50,15 @@ const Home = () => {
             </span>
           </Button>
           <SearchBar placeholder="Search anything...">
-            <Icon
-              icon={faMagnifyingGlass}
-              css={homeStyles.stickySearchBarIcon}
-            />
+            <Icon icon={faMagnifyingGlass} css={sticky.stickySearchBarIcon} />
           </SearchBar>
-          <Button cssArr={[homeStyles.stickyButtonWishList]}>
-            <Icon icon={faHeart} css={homeStyles.stickyWishListIcon} />
+          <Button cssArr={[sticky.stickyButtonWishList]}>
+            <Icon icon={faHeart} css={sticky.stickyWishListIcon} />
             Wish List
           </Button>
           <ShoppingCart />
         </Container>
-        <Container css={homeStyles.stickyBottomContainer}>
+        <Container css={sticky.stickyBottomContainer}>
           <LinkComponent
             path={"#"}
             text="Vehicles"
@@ -91,6 +96,28 @@ const Home = () => {
           ></LinkComponent>
         </Container>
       </Container>
+      <main className={cards.cardsContainer}>
+        <Container css={cards.cardsGrid}>
+          <CardWrapperMain
+            title="Test title :)"
+            wrapperCardCss={cards.cardWrapper}
+            headerCardCss={cards.cardHeader}
+          >
+            <Link to={"#"} className={""}>
+              <Image
+                src={
+                  new URL(
+                    "../../../assets/img/cards/trend/trends-large.webp",
+                    import.meta.url
+                  ).href
+                }
+                alt="test"
+                css={""}
+              />
+            </Link>
+          </CardWrapperMain>
+        </Container>
+      </main>
     </div>
   );
 };

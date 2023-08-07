@@ -18,7 +18,7 @@ import Container from "../container/Container";
 import Nav from "../nav/Nav";
 /* css */
 import borderLinkStyles from "../../styles/borderLink.module.css";
-import headerSection from "../../features/home/styles/headerSection.module.css";
+import headerSection from "../../features/home/stylesHome/headerSection.module.css";
 import headerStyles from "./headerStyles.module.css";
 
 const socialMediaIcons = [
