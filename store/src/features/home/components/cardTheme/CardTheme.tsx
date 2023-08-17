@@ -4,7 +4,7 @@ import { CardThemeType } from "./CardThemeType";
 
 import singleLine from "../../../../styles/singleLine.module.css";
 
-const CardTheme = ({ data, css }) => {
+const CardTheme = ({ data, css }: CardThemeType) => {
   return (
     <article className={css.cardWrapper}>
       <header className={css.cardThemeHeader}>
@@ -41,7 +41,7 @@ const CardTheme = ({ data, css }) => {
           <figure className={css.relatedFigure}>
             <img
               src={data.secondaryImages.img1.path}
-              alt={data.secondaryImages.img1.atl}
+              alt={data.secondaryImages.img1.alt}
               className={css.relatedImg}
             />
             <figcaption className={css.relatedFigcaption}>
@@ -53,7 +53,7 @@ const CardTheme = ({ data, css }) => {
           <figure className={css.relatedFigure}>
             <img
               src={data.secondaryImages.img2.path}
-              alt={data.secondaryImages.img2.atl}
+              alt={data.secondaryImages.img2.alt}
               className={css.relatedImg}
             />
             <figcaption className={css.relatedFigcaption}>
@@ -65,7 +65,7 @@ const CardTheme = ({ data, css }) => {
           <figure className={css.relatedFigure}>
             <img
               src={data.secondaryImages.img3.path}
-              alt={data.secondaryImages.img3.atl}
+              alt={data.secondaryImages.img3.alt}
               className={css.relatedImg}
             />
             <figcaption className={css.relatedFigcaption}>

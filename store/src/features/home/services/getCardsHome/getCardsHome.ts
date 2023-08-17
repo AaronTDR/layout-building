@@ -98,7 +98,7 @@ export const getCardsHome = () => {
         img1: {
           path: miniatureFashion1,
           figcaptionText: "Women's Clothing",
-          atl: "Shows a girl with shopping bags",
+          alt: "Shows a girl with shopping bags",
         },
         img2: {
           path: miniatureFashion2,
@@ -130,7 +130,7 @@ export const getCardsHome = () => {
         img1: {
           path: miniatureFashion1,
           figcaptionText: "Women's Clothing",
-          atl: "Shows a girl with shopping bags",
+          alt: "Shows a girl with shopping bags",
         },
         img2: {
           path: miniatureFashion2,
@@ -204,7 +204,7 @@ export const getCardsHome = () => {
         img1: {
           path: miniatureGamer1,
           figcaptionText: "Accessories",
-          atl: "Image of a pc mouse",
+          alt: "Image of a pc mouse",
         },
         img2: {
           path: miniatureGamer2,
