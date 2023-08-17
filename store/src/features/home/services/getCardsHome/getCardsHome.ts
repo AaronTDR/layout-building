@@ -54,7 +54,7 @@ import streamingLogo4 from "../../../../assets/img/cards/services/logo-4.webp";
   title: string;
   mainImageData: {
     urls: {
-      big: string;
+      large: string;
       medium: string;
       small: string;
     };
@@ -71,7 +71,7 @@ export const getCardsHome = () => {
       title: "Offers",
       mainImageData: {
         paths: {
-          big: trendsLargeImage,
+          large: trendsLargeImage,
           medium: trendsMediumImage,
           small: trendsSmallImage,
         },
@@ -82,60 +82,12 @@ export const getCardsHome = () => {
       textLink: "See more",
     },
     {
-      id: 2,
-      type: "offer",
-      title: "Offers",
-      mainImageData: {
-        paths: {
-          big: trendsLargeImage,
-          medium: trendsMediumImage,
-          small: trendsSmallImage,
-        },
-        alt: "Image of trending products",
-      },
-      discount: "Up to 40% off",
-      description: "Offers in clothing and electronics",
-      textLink: "See more",
-    },
-    {
-      id: 3,
-      type: "offer",
-      title: "Offers",
-      mainImageData: {
-        paths: {
-          big: trendsLargeImage,
-          medium: trendsMediumImage,
-          small: trendsSmallImage,
-        },
-        alt: "Image of trending products",
-      },
-      discount: "Up to 40% off",
-      description: "Offers in clothing and electronics",
-      textLink: "See more",
-    },
-    {
-      id: 4,
-      type: "offer",
-      title: "Offers",
-      mainImageData: {
-        paths: {
-          big: trendsLargeImage,
-          medium: trendsMediumImage,
-          small: trendsSmallImage,
-        },
-        alt: "Image of trending products",
-      },
-      discount: "Up to 40% off",
-      description: "Offers in clothing and electronics",
-      textLink: "See more",
-    },
-    /*     {
       id: 2,
       type: "theme",
       title: "Trends",
       mainImageData: {
         paths: {
-          big: fashionLargeImage,
+          large: fashionLargeImage,
           medium: fashionMediumImage,
           small: fashionSmallImage,
         },
@@ -158,16 +110,48 @@ export const getCardsHome = () => {
           figcaptionText: "Trendy Fashion",
           alt: "happy girl wearing colorful clothes",
         },
-        textLink: "See more",
       },
+      textLink: "See more",
     },
     {
+      id: 3,
+      type: "theme",
+      title: "Trends",
+      mainImageData: {
+        paths: {
+          large: fashionLargeImage,
+          medium: fashionMediumImage,
+          small: fashionSmallImage,
+        },
+        figcaptionText: "Style",
+        alt: "Image of woman wearing fashionable",
+      },
+      secondaryImages: {
+        img1: {
+          path: miniatureFashion1,
+          figcaptionText: "Women's Clothing",
+          atl: "Shows a girl with shopping bags",
+        },
+        img2: {
+          path: miniatureFashion2,
+          figcaptionText: "Shoes",
+          alt: "Group of young people showing their shoes",
+        },
+        img3: {
+          path: miniatureFashion3,
+          figcaptionText: "Trendy Fashion",
+          alt: "happy girl wearing colorful clothes",
+        },
+      },
+      textLink: "See more",
+    },
+    /* {
       id: 3,
       type: "product",
       title: "Discover participating bank bonuses",
       mainImageData: {
         paths: {
-          big: productLarge,
+          large: productLarge,
           medium: productMedium,
           small: productSmall,
         },
@@ -180,7 +164,7 @@ export const getCardsHome = () => {
       type: "sponsored",
       mainImageData: {
         paths: {
-          big: sponsoredLarge,
+          large: sponsoredLarge,
           medium: sponsoredMedium,
           small: sponsoredSmall,
         },
@@ -193,7 +177,7 @@ export const getCardsHome = () => {
       title: "Offers",
       mainImageData: {
         urls: {
-          big: gymLarge,
+          large: gymLarge,
           medium: gymMedium,
           small: gymSmall,
         },
@@ -209,7 +193,7 @@ export const getCardsHome = () => {
       title: "Discounts on gaming equipment",
       mainImageData: {
         paths: {
-          big: gamerLarge,
+          large: gamerLarge,
           medium: gamerMedium,
           small: gamerSmall,
         },
@@ -281,7 +265,7 @@ export const getCardsHome = () => {
       title: "Offers",
       mainImageData: {
         urls: {
-          big: petLarge,
+          large: petLarge,
           medium: petMedium,
           small: petSmall,
         },

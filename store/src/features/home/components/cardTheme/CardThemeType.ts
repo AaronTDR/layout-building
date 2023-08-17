@@ -1,6 +1,6 @@
-type MainImageDataType = {
+/* type MainImageDataType = {
   paths: {
-    large: string;
+    big: string;
     medium: string;
     small: string;
   };
@@ -17,3 +17,4 @@ export type CardOfferType = {
   };
   css: Record<string, string>;
 };
+ */
