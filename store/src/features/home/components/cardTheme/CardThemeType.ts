@@ -18,3 +18,7 @@ export type CardOfferType = {
   css: Record<string, string>;
 };
  */
+
+type MainImageDataType = {
+  paths: {};
+};

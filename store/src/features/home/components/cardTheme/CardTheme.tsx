@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { CardThemeType } from "./CardThemeType";
+
 import singleLine from "../../../../styles/singleLine.module.css";
 
 const CardTheme = ({ data, css }) => {
