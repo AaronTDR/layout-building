@@ -1,4 +1,4 @@
-.cardWrapper {
+/* .cardWrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -11,7 +11,8 @@
   -moz-border-radius: var(--border-radius-principal);
   -ms-border-radius: var(--border-radius-principal);
   -o-border-radius: var(--border-radius-principal);
-}
+} */
+@import url("./cardWrapper.module.css");
 
 .cardThemeHeader {
   margin-bottom: 0.625em;
