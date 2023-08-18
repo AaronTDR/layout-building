@@ -1,6 +1,6 @@
 import { SearchBarType } from "./searchBarType";
 
-import searchBarStyles from "./searchBarStyles.module.css";
+import searchBarStyles from "../../stylesHome/searchBarStyles.module.css";
 
 const SearchBar = ({ placeholder, children }: SearchBarType) => {
   return (

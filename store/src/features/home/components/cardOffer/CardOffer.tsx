@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { CardOfferType } from "./cardOfferType";
+import { CardOfferType } from "./CardOfferType";
 
 import singleLine from "../../../../styles/singleLine.module.css";
 

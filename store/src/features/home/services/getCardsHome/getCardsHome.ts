@@ -66,88 +66,94 @@ import streamingLogo4 from "../../../../assets/img/cards/services/logo-4.webp";
 export const getCardsHome = () => {
   const cardsHomeList = [
     {
-      id: 1,
-      type: "offer",
-      title: "Offers",
-      mainImageData: {
-        paths: {
-          large: trendsLargeImage,
-          medium: trendsMediumImage,
-          small: trendsSmallImage,
+      data: {
+        id: 1,
+        cardType: "offer",
+        title: "Offers",
+        mainImageData: {
+          paths: {
+            large: trendsLargeImage,
+            medium: trendsMediumImage,
+            small: trendsSmallImage,
+          },
+          alt: "Image of trending products",
         },
-        alt: "Image of trending products",
+        discount: "Up to 40% off",
+        description: "Offers in clothing and electronics",
+        textLink: "See more",
       },
-      discount: "Up to 40% off",
-      description: "Offers in clothing and electronics",
-      textLink: "See more",
     },
     {
-      id: 2,
-      type: "theme",
-      title: "Trends",
-      mainImageData: {
-        paths: {
-          large: fashionLargeImage,
-          medium: fashionMediumImage,
-          small: fashionSmallImage,
+      data: {
+        id: 2,
+        cardType: "theme",
+        title: "Trends",
+        mainImageData: {
+          paths: {
+            large: fashionLargeImage,
+            medium: fashionMediumImage,
+            small: fashionSmallImage,
+          },
+          figcaptionText: "Style",
+          alt: "Image of woman wearing fashionable",
         },
-        figcaptionText: "Style",
-        alt: "Image of woman wearing fashionable",
+        secondaryImages: {
+          img1: {
+            path: miniatureFashion1,
+            figcaptionText: "Women's Clothing",
+            alt: "Shows a girl with shopping bags",
+          },
+          img2: {
+            path: miniatureFashion2,
+            figcaptionText: "Shoes",
+            alt: "Group of young people showing their shoes",
+          },
+          img3: {
+            path: miniatureFashion3,
+            figcaptionText: "Trendy Fashion",
+            alt: "happy girl wearing colorful clothes",
+          },
+        },
+        textLink: "See more",
       },
-      secondaryImages: {
-        img1: {
-          path: miniatureFashion1,
-          figcaptionText: "Women's Clothing",
-          alt: "Shows a girl with shopping bags",
-        },
-        img2: {
-          path: miniatureFashion2,
-          figcaptionText: "Shoes",
-          alt: "Group of young people showing their shoes",
-        },
-        img3: {
-          path: miniatureFashion3,
-          figcaptionText: "Trendy Fashion",
-          alt: "happy girl wearing colorful clothes",
-        },
-      },
-      textLink: "See more",
     },
     {
-      id: 3,
-      type: "theme",
-      title: "Trends",
-      mainImageData: {
-        paths: {
-          large: fashionLargeImage,
-          medium: fashionMediumImage,
-          small: fashionSmallImage,
+      data: {
+        id: 3,
+        cardType: "theme",
+        title: "Trends",
+        mainImageData: {
+          paths: {
+            large: fashionLargeImage,
+            medium: fashionMediumImage,
+            small: fashionSmallImage,
+          },
+          figcaptionText: "Style",
+          alt: "Image of woman wearing fashionable",
         },
-        figcaptionText: "Style",
-        alt: "Image of woman wearing fashionable",
+        secondaryImages: {
+          img1: {
+            path: miniatureFashion1,
+            figcaptionText: "Women's Clothing",
+            alt: "Shows a girl with shopping bags",
+          },
+          img2: {
+            path: miniatureFashion2,
+            figcaptionText: "Shoes",
+            alt: "Group of young people showing their shoes",
+          },
+          img3: {
+            path: miniatureFashion3,
+            figcaptionText: "Trendy Fashion",
+            alt: "happy girl wearing colorful clothes",
+          },
+        },
+        textLink: "See more",
       },
-      secondaryImages: {
-        img1: {
-          path: miniatureFashion1,
-          figcaptionText: "Women's Clothing",
-          alt: "Shows a girl with shopping bags",
-        },
-        img2: {
-          path: miniatureFashion2,
-          figcaptionText: "Shoes",
-          alt: "Group of young people showing their shoes",
-        },
-        img3: {
-          path: miniatureFashion3,
-          figcaptionText: "Trendy Fashion",
-          alt: "happy girl wearing colorful clothes",
-        },
-      },
-      textLink: "See more",
     },
     /* {
       id: 3,
-      type: "product",
+      cardType: "product",
       title: "Discover participating bank bonuses",
       mainImageData: {
         paths: {
@@ -161,7 +167,7 @@ export const getCardsHome = () => {
     },
     {
       id: 4,
-      type: "sponsored",
+      cardType: "sponsored",
       mainImageData: {
         paths: {
           large: sponsoredLarge,
@@ -173,7 +179,7 @@ export const getCardsHome = () => {
     },
     {
       id: 5,
-      type: "offer",
+      cardType: "offer",
       title: "Offers",
       mainImageData: {
         urls: {
@@ -189,7 +195,7 @@ export const getCardsHome = () => {
     },
     {
       id: 6,
-      type: "theme",
+      cardType: "theme",
       title: "Discounts on gaming equipment",
       mainImageData: {
         paths: {
@@ -221,7 +227,7 @@ export const getCardsHome = () => {
     },
     {
       id: 7,
-      type: "services",
+      cardType: "services",
       title: "Benefits",
       sectionsData: {
         section1: {
@@ -261,7 +267,7 @@ export const getCardsHome = () => {
     },
     {
       id: 8,
-      type: "offer",
+      cardType: "offer",
       title: "Offers",
       mainImageData: {
         urls: {

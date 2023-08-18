@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
-
 import {
   faLocationDot,
   faMagnifyingGlass,
   faHeart,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-
+/* components */
 import LinkComponent from "../../../components/linkComponent/LinkComponent";
 import Icon from "../../../components/icon/Icon";
 import Button from "../../../components/button/Button";

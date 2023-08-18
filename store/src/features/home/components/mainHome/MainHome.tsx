@@ -5,28 +5,36 @@ import { getCardsHome } from "../../services/getCardsHome/getCardsHome";
 import CardOffer from "../cardOffer/CardOffer";
 import CardTheme from "../cardTheme/CardTheme";
 import Container from "../../../../components/container/Container";
+/* types */
+import { MainHomeType } from "./mainHomeType";
+import { CardOfferType } from "../cardOffer/CardOfferType";
+import { CardThemeType } from "../cardTheme/CardThemeType";
 /* styles */
 import cardOffer from "../../stylesHome/cardOffer.module.css";
 import cardTheme from "../../stylesHome/cardTheme.module.css";
 import cardsGrid from "../../stylesHome/cardsGrid.module.css";
 
-const MainHome = ({ css }) => {
-  const [cards, setCards] = useState([]);
+type CardElementsArrayType = Array<CardOfferType | CardThemeType>;
+
+type CardElementType = CardOfferType | CardThemeType;
+
+const MainHome = ({ css }: MainHomeType) => {
+  const [cardElements, setCardElements] = useState<CardElementsArrayType>([]);
 
   useEffect(() => {
-    const cardsData = getCardsHome();
-    setCards(cardsData);
+    const elements = getCardsHome() as CardElementsArrayType;
+    setCardElements(elements);
   }, []);
 
   /* Identifies the type of component to render according to the type of card and returns it by passing its props */
-  const GetCardComponent = (card) => {
-    switch (card.type) {
+  const cardRenderer = (el: CardElementType) => {
+    switch (el.data.cardType) {
       case "offer":
-        return <CardOffer key={card.id} data={card} css={cardOffer} />;
+        return <CardOffer key={el.data.id} data={el.data} css={cardOffer} />;
         break;
 
       case "theme":
-        return <CardTheme key={card.id} data={card} css={cardTheme} />;
+        return <CardTheme key={el.data.id} data={el.data} css={cardTheme} />;
         break;
 
       default:
@@ -36,7 +44,9 @@ const MainHome = ({ css }) => {
   return (
     <main className={css}>
       <Container css={cardsGrid.grid}>
-        {cards.map((card) => GetCardComponent(card))}
+        {cardElements.map((cardElement: CardElementType) =>
+          cardRenderer(cardElement)
+        )}
       </Container>
     </main>
   );
