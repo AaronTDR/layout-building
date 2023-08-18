@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-
+/* components */
+import FooterCard from "../footerCard/FooterCard";
+/* types */
 import { CardThemeType } from "./CardThemeType";
-
+/* styles */
 import singleLine from "../../../../styles/singleLine.module.css";
 
 const CardTheme = ({ data, css }: CardThemeType) => {
@@ -74,14 +76,7 @@ const CardTheme = ({ data, css }: CardThemeType) => {
           </figure>
         </Link>
       </div>
-      <div className={css.footerCard}>
-        <Link
-          to={"#"}
-          className={`${css.footerCardSeeMoreLink} ${singleLine.singleLine}`}
-        >
-          {data.textLink}
-        </Link>
-      </div>
+      <FooterCard path="#" text={data.textLink} />
     </article>
   );
 };

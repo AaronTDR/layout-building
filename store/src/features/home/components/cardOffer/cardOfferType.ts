@@ -13,6 +13,9 @@ export type CardOfferType = {
     cardType: "offer";
     title: string;
     mainImageData: MainImageDataType;
+    discount: string;
+    OfferTime: string;
+    description: string;
     textLink: string;
   };
   css: Record<string, string>;

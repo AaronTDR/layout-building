@@ -79,6 +79,7 @@ export const getCardsHome = () => {
           alt: "Image of trending products",
         },
         discount: "Up to 40% off",
+        OfferTime: "Deal of the day",
         description: "Offers in clothing and electronics",
         textLink: "See more",
       },
@@ -190,6 +191,7 @@ export const getCardsHome = () => {
         alt: "Image of a woman training in the gym",
       },
       discount: "Up to 30% off",
+      OfferTime: "Deal of the day",
       description: "Offers on gym accessories",
       textLink: "See more",
     },
@@ -278,6 +280,7 @@ export const getCardsHome = () => {
         alt: "Image of a dog",
       },
       discount: "Up to 50% off",
+      OfferTime: "Deal of the day",
       description: "Offers on everything your pet needs",
       textLink: "See more",
     }, */
