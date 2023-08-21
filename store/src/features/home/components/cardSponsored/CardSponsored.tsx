@@ -11,7 +11,9 @@ const CardSponsored = ({ data, css }: CardSponsoredType) => {
             Sign in to live your best experience
           </h2>
         </div>
-        <button className={css.cardSponsoredButton}>Sign in securely</button>
+        <Link to={"#"} className={css.cardSponsoredButton}>
+          Sign in securely
+        </Link>
       </header>
       <aside className={css.cardSponsoredAd}>
         <Link to={"#"} className={css.cardSponsoredImgLink}>
