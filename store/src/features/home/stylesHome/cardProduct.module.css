@@ -1,0 +1,42 @@
+@import url("./cardWrapper.module.css");
+
+.cardProductHeader {
+  margin-bottom: 0.625em;
+}
+
+.cardProductTitleContainer {
+  max-height: 3.0625em;
+  overflow: hidden;
+}
+
+.cardProductTitle {
+  margin: 0;
+  font-size: var(--title-card-font-size);
+  font-weight: 700;
+  color: var(--card-text-color);
+}
+
+.cardProductImgLink {
+  text-decoration: none;
+}
+
+.cardProductFigure {
+  margin: 0;
+}
+
+.cardProductImg {
+  width: 100%;
+  height: 17.2813em;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+  object-fit: cover;
+}
+
+@media screen and (max-width: 480px) {
+  .card-product__img {
+    height: 18.375em;
+  }
+}

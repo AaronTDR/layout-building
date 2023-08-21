@@ -2,21 +2,24 @@ import { useState, useEffect } from "react";
 /* services */
 import { getCardsHome } from "../../services/getCardsHome/getCardsHome";
 /* components */
-import CardOffer from "../cardOffer/CardOffer";
+import CardProduct from "../cardProduct/CardProduct";
 import CardTheme from "../cardTheme/CardTheme";
+import CardOffer from "../cardOffer/CardOffer";
 import Container from "../../../../components/container/Container";
 /* types */
 import { MainHomeType } from "./mainHomeType";
+import { CardProductType } from "../cardProduct/CardProductType";
 import { CardOfferType } from "../cardOffer/CardOfferType";
 import { CardThemeType } from "../cardTheme/CardThemeType";
 /* styles */
+import cardProduct from "../../stylesHome/cardProduct.module.css";
 import cardOffer from "../../stylesHome/cardOffer.module.css";
 import cardTheme from "../../stylesHome/cardTheme.module.css";
 import cardsGrid from "../../stylesHome/cardsGrid.module.css";
 
 type CardElementsArrayType = Array<CardOfferType | CardThemeType>;
 
-type CardElementType = CardOfferType | CardThemeType;
+type CardElementType = CardOfferType | CardThemeType | CardProductType;
 
 const MainHome = ({ css }: MainHomeType) => {
   const [cardElements, setCardElements] = useState<CardElementsArrayType>([]);
@@ -35,6 +38,12 @@ const MainHome = ({ css }: MainHomeType) => {
 
       case "theme":
         return <CardTheme key={el.data.id} data={el.data} css={cardTheme} />;
+        break;
+
+      case "product":
+        return (
+          <CardProduct key={el.data.id} data={el.data} css={cardProduct} />
+        );
         break;
 
       default:

@@ -152,20 +152,23 @@ export const getCardsHome = () => {
         textLink: "See more",
       },
     },
-    /* {
-      id: 3,
-      cardType: "product",
-      title: "Discover participating bank bonuses",
-      mainImageData: {
-        paths: {
-          large: productLarge,
-          medium: productMedium,
-          small: productSmall,
+    {
+      data: {
+        id: 4,
+        cardType: "product",
+        title: "Discover participating bank bonuses",
+        mainImageData: {
+          paths: {
+            large: productLarge,
+            medium: productMedium,
+            small: productSmall,
+          },
+          alt: "Show images of credit cards",
         },
-        alt: "Show images of credit cards",
+        textLink: "See more",
       },
-      textLink: "See more",
     },
+    /*
     {
       id: 4,
       cardType: "sponsored",
