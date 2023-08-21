@@ -121,40 +121,6 @@ export const getCardsHome = () => {
     {
       data: {
         id: 3,
-        cardType: "theme",
-        title: "Trends",
-        mainImageData: {
-          paths: {
-            large: fashionLargeImage,
-            medium: fashionMediumImage,
-            small: fashionSmallImage,
-          },
-          figcaptionText: "Style",
-          alt: "Image of woman wearing fashionable",
-        },
-        secondaryImages: {
-          img1: {
-            path: miniatureFashion1,
-            figcaptionText: "Women's Clothing",
-            alt: "Shows a girl with shopping bags",
-          },
-          img2: {
-            path: miniatureFashion2,
-            figcaptionText: "Shoes",
-            alt: "Group of young people showing their shoes",
-          },
-          img3: {
-            path: miniatureFashion3,
-            figcaptionText: "Trendy Fashion",
-            alt: "happy girl wearing colorful clothes",
-          },
-        },
-        textLink: "See more",
-      },
-    },
-    {
-      data: {
-        id: 4,
         cardType: "product",
         title: "Discover participating bank bonuses",
         mainImageData: {
@@ -168,19 +134,21 @@ export const getCardsHome = () => {
         textLink: "See more",
       },
     },
-    /*
     {
-      id: 4,
-      cardType: "sponsored",
-      mainImageData: {
-        paths: {
-          large: sponsoredLarge,
-          medium: sponsoredMedium,
-          small: sponsoredSmall,
+      data: {
+        id: 4,
+        cardType: "sponsored",
+        mainImageData: {
+          paths: {
+            large: sponsoredLarge,
+            medium: sponsoredMedium,
+            small: sponsoredSmall,
+          },
+          alt: "Show images of credit cards",
         },
-        alt: "Show images of credit cards",
       },
     },
+    /*
     {
       id: 5,
       cardType: "offer",

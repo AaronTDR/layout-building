@@ -2,24 +2,33 @@ import { useState, useEffect } from "react";
 /* services */
 import { getCardsHome } from "../../services/getCardsHome/getCardsHome";
 /* components */
+import CardSponsored from "../cardSponsored/CardSponsored";
 import CardProduct from "../cardProduct/CardProduct";
 import CardTheme from "../cardTheme/CardTheme";
 import CardOffer from "../cardOffer/CardOffer";
 import Container from "../../../../components/container/Container";
 /* types */
-import { MainHomeType } from "./mainHomeType";
+import { CardSponsoredType } from "../cardSponsored/CardSponsoredType";
 import { CardProductType } from "../cardProduct/CardProductType";
-import { CardOfferType } from "../cardOffer/CardOfferType";
 import { CardThemeType } from "../cardTheme/CardThemeType";
+import { CardOfferType } from "../cardOffer/CardOfferType";
+import { MainHomeType } from "./mainHomeType";
 /* styles */
+import cardSponsored from "../../stylesHome/cardSponsored.module.css";
 import cardProduct from "../../stylesHome/cardProduct.module.css";
 import cardOffer from "../../stylesHome/cardOffer.module.css";
 import cardTheme from "../../stylesHome/cardTheme.module.css";
 import cardsGrid from "../../stylesHome/cardsGrid.module.css";
 
-type CardElementsArrayType = Array<CardOfferType | CardThemeType>;
+type CardElementsArrayType = Array<
+  CardOfferType | CardThemeType | CardProductType | CardSponsoredType
+>;
 
-type CardElementType = CardOfferType | CardThemeType | CardProductType;
+type CardElementType =
+  | CardOfferType
+  | CardThemeType
+  | CardProductType
+  | CardSponsoredType;
 
 const MainHome = ({ css }: MainHomeType) => {
   const [cardElements, setCardElements] = useState<CardElementsArrayType>([]);
@@ -43,6 +52,12 @@ const MainHome = ({ css }: MainHomeType) => {
       case "product":
         return (
           <CardProduct key={el.data.id} data={el.data} css={cardProduct} />
+        );
+        break;
+
+      case "sponsored":
+        return (
+          <CardSponsored key={el.data.id} data={el.data} css={cardSponsored} />
         );
         break;
 
