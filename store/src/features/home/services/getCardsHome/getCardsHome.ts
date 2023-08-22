@@ -48,21 +48,6 @@ import streamingLogo2 from "../../../../assets/img/cards/services/logo-2.webp";
 import streamingLogo3 from "../../../../assets/img/cards/services/logo-3.webp";
 import streamingLogo4 from "../../../../assets/img/cards/services/logo-4.webp";
 
-/* type CardHomeType = {
-  id: number;
-  type: string;
-  title: string;
-  mainImageData: {
-    urls: {
-      large: string;
-      medium: string;
-      small: string;
-    };
-    alt: string;
-  };
-  textLink: string;
-}[];
- */
 export const getCardsHome = () => {
   const cardsHomeList = [
     {
@@ -148,113 +133,120 @@ export const getCardsHome = () => {
         },
       },
     },
-    /*
     {
-      id: 5,
-      cardType: "offer",
-      title: "Offers",
-      mainImageData: {
-        urls: {
-          large: gymLarge,
-          medium: gymMedium,
-          small: gymSmall,
+      data: {
+        id: 5,
+        cardType: "offer",
+        title: "Offers",
+        mainImageData: {
+          paths: {
+            large: gymLarge,
+            medium: gymMedium,
+            small: gymSmall,
+          },
+          alt: "Image of a woman training in the gym",
         },
-        alt: "Image of a woman training in the gym",
+        discount: "Up to 30% off",
+        OfferTime: "Deal of the day",
+        description: "Offers on gym accessories",
+        textLink: "See more",
       },
-      discount: "Up to 30% off",
-      OfferTime: "Deal of the day",
-      description: "Offers on gym accessories",
-      textLink: "See more",
     },
     {
-      id: 6,
-      cardType: "theme",
-      title: "Discounts on gaming equipment",
-      mainImageData: {
-        paths: {
-          large: gamerLarge,
-          medium: gamerMedium,
-          small: gamerSmall,
+      data: {
+        id: 6,
+        cardType: "theme",
+        title: "Discounts on gaming equipment",
+        mainImageData: {
+          paths: {
+            large: gamerLarge,
+            medium: gamerMedium,
+            small: gamerSmall,
+          },
+          figcaptionText: "Laptops",
+          alt: "Image of a gaming laptop",
         },
-        figcaptionText: "Laptops",
-        alt: "Image of a gaming laptop",
-      },
-      secondaryImages: {
-        img1: {
-          path: miniatureGamer1,
-          figcaptionText: "Accessories",
-          alt: "Image of a pc mouse",
-        },
-        img2: {
-          path: miniatureGamer2,
-          figcaptionText: "Consoles",
-          alt: "Image of a nintendo switch",
-        },
-        img3: {
-          path: miniatureGamer3,
-          figcaptionText: "Wireless headphones",
-          alt: "Image of Wireless headphones",
+        secondaryImages: {
+          img1: {
+            path: miniatureGamer1,
+            figcaptionText: "Accessories",
+            alt: "Image of a pc mouse",
+          },
+          img2: {
+            path: miniatureGamer2,
+            figcaptionText: "Consoles",
+            alt: "Image of a nintendo switch",
+          },
+          img3: {
+            path: miniatureGamer3,
+            figcaptionText: "Wireless headphones",
+            alt: "Image of Wireless headphones",
+          },
         },
         textLink: "See more",
       },
     },
     {
-      id: 7,
-      cardType: "services",
-      title: "Benefits",
-      sectionsData: {
-        section1: {
-          backgroundImg: streamingBackground1,
-          logo: streamingLogo1,
-          altLogoImg: "Star+ logo",
-          header: "",
-          description: "Watch with a free Prime trial",
-          brand: "STAR+",
-        },
-        section2: {
-          backgroundImg: streamingBackground2,
-          logo: streamingLogo2,
-          altLogoImg: "HBO MAX logo",
-          header: "7 DAYS FREE",
-          description: "Up to 50% discount",
-          brand: "HBO MAX",
-        },
-        section3: {
-          backgroundImg: streamingBackground3,
-          logo: streamingLogo3,
-          altLogoImg: "Paramount+ logo",
-          header: "7 DAYS FREE",
-          description: "Up to 50% discount",
-          brand: "Paramount+",
-        },
-        section4: {
-          backgroundImg: streamingBackground4,
-          logo: streamingLogo4,
-          altLogoImg: "Spotify logo",
-          header: "7 DAYS FREE",
-          description: "Watch with a free Prime trial",
-          brand: "Spotify",
+      data: {
+        id: 7,
+        cardType: "services",
+        title: "Benefits",
+        sectionsData: {
+          section1: {
+            backgroundImg: streamingBackground1,
+            logo: streamingLogo1,
+            altLogo: "Star+ logo",
+            header: "",
+            description: "Watch with a free Prime trial",
+            brand: "STAR+",
+          },
+          section2: {
+            backgroundImg: streamingBackground2,
+            logo: streamingLogo2,
+            altLogo: "HBO MAX logo",
+            header: "7 DAYS FREE",
+            description: "Up to 50% discount",
+            brand: "HBO MAX",
+          },
+          section3: {
+            backgroundImg: streamingBackground3,
+            logo: streamingLogo3,
+            altLogo: "Paramount+ logo",
+            header: "7 DAYS FREE",
+            description: "Up to 50% discount",
+            brand: "Paramount+",
+          },
+          section4: {
+            backgroundImg: streamingBackground4,
+            logo: streamingLogo4,
+            altLogo: "Spotify logo",
+            header: "7 DAYS FREE",
+            description: "Up to 50% discount",
+            brand: "Spotify",
+          },
         },
         textLink: "Discover more",
       },
     },
     {
-      id: 8,
-      cardType: "offer",
-      title: "Offers",
-      mainImageData: {
-        urls: {
-          large: petLarge,
-          medium: petMedium,
-          small: petSmall,
+      data: {
+        id: 8,
+        cardType: "offer",
+        title: "Offers",
+        mainImageData: {
+          paths: {
+            large: petLarge,
+            medium: petMedium,
+            small: petSmall,
+          },
+          alt: "Image of a dog",
         },
-        alt: "Image of a dog",
+        discount: "Up to 50% off",
+        OfferTime: "Deal of the day",
+        description: "Offers on everything your pet needs",
+        textLink: "See more",
       },
-      discount: "Up to 50% off",
-      OfferTime: "Deal of the day",
-      description: "Offers on everything your pet needs",
-      textLink: "See more",
-    }, */
+    },
   ];
   return cardsHomeList;
 };

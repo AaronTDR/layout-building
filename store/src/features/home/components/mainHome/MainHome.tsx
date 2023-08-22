@@ -2,18 +2,21 @@ import { useState, useEffect } from "react";
 /* services */
 import { getCardsHome } from "../../services/getCardsHome/getCardsHome";
 /* components */
+import CardServices from "../cardServices/CardServices";
 import CardSponsored from "../cardSponsored/CardSponsored";
 import CardProduct from "../cardProduct/CardProduct";
 import CardTheme from "../cardTheme/CardTheme";
 import CardOffer from "../cardOffer/CardOffer";
 import Container from "../../../../components/container/Container";
 /* types */
+import { CardServicesType } from "../cardServices/CardServicesType";
 import { CardSponsoredType } from "../cardSponsored/CardSponsoredType";
 import { CardProductType } from "../cardProduct/CardProductType";
 import { CardThemeType } from "../cardTheme/CardThemeType";
 import { CardOfferType } from "../cardOffer/CardOfferType";
 import { MainHomeType } from "./mainHomeType";
 /* styles */
+import cardServices from "../../stylesHome/cardServices.module.css";
 import cardSponsored from "../../stylesHome/cardSponsored.module.css";
 import cardProduct from "../../stylesHome/cardProduct.module.css";
 import cardOffer from "../../stylesHome/cardOffer.module.css";
@@ -21,14 +24,19 @@ import cardTheme from "../../stylesHome/cardTheme.module.css";
 import cardsGrid from "../../stylesHome/cardsGrid.module.css";
 
 type CardElementsArrayType = Array<
-  CardOfferType | CardThemeType | CardProductType | CardSponsoredType
+  | CardOfferType
+  | CardThemeType
+  | CardProductType
+  | CardSponsoredType
+  | CardServicesType
 >;
 
 type CardElementType =
   | CardOfferType
   | CardThemeType
   | CardProductType
-  | CardSponsoredType;
+  | CardSponsoredType
+  | CardServicesType;
 
 const MainHome = ({ css }: MainHomeType) => {
   const [cardElements, setCardElements] = useState<CardElementsArrayType>([]);
@@ -43,26 +51,27 @@ const MainHome = ({ css }: MainHomeType) => {
     switch (el.data.cardType) {
       case "offer":
         return <CardOffer key={el.data.id} data={el.data} css={cardOffer} />;
-        break;
 
       case "theme":
         return <CardTheme key={el.data.id} data={el.data} css={cardTheme} />;
-        break;
 
       case "product":
         return (
           <CardProduct key={el.data.id} data={el.data} css={cardProduct} />
         );
-        break;
 
       case "sponsored":
         return (
           <CardSponsored key={el.data.id} data={el.data} css={cardSponsored} />
         );
-        break;
+
+      case "services":
+        return (
+          <CardServices key={el.data.id} data={el.data} css={cardServices} />
+        );
 
       default:
-        break;
+        return null;
     }
   };
   return (
