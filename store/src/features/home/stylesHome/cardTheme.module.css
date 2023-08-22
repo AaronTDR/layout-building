@@ -81,9 +81,3 @@
   -o-border-radius: var(--border-radius-principal);
   object-fit: cover;
 }
-
-@media screen and (max-width: 480px) {
-  .cardThemeImg {
-    height: 11.6em;
-  }
-}
