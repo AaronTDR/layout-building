@@ -53,7 +53,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 1,
-        cardType: "offer",
+        cardCategory: "offer",
         title: "Offers",
         mainImageData: {
           paths: {
@@ -72,7 +72,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 2,
-        cardType: "theme",
+        cardCategory: "theme",
         title: "Trends",
         mainImageData: {
           paths: {
@@ -106,7 +106,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 3,
-        cardType: "product",
+        cardCategory: "product",
         title: "Discover participating bank bonuses",
         mainImageData: {
           paths: {
@@ -122,7 +122,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 4,
-        cardType: "sponsored",
+        cardCategory: "sponsored",
         mainImageData: {
           paths: {
             large: sponsoredLarge,
@@ -136,7 +136,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 5,
-        cardType: "offer",
+        cardCategory: "offer",
         title: "Offers",
         mainImageData: {
           paths: {
@@ -155,7 +155,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 6,
-        cardType: "theme",
+        cardCategory: "theme",
         title: "Discounts on gaming equipment",
         mainImageData: {
           paths: {
@@ -189,7 +189,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 7,
-        cardType: "services",
+        cardCategory: "services",
         title: "Benefits",
         sectionsData: {
           section1: {
@@ -231,7 +231,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 8,
-        cardType: "offer",
+        cardCategory: "offer",
         title: "Offers",
         mainImageData: {
           paths: {

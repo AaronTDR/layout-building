@@ -10,7 +10,7 @@ type MainImageDataType = {
 export type CardSponsoredType = {
   data: {
     id: number;
-    cardType: "sponsored";
+    cardCategory: "sponsored";
     mainImageData: MainImageDataType;
   };
   css: Record<string, string>;

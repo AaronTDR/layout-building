@@ -29,7 +29,7 @@ const CardProduct = ({ data, css }: CardProductType) => {
             />
             <img
               src={data.mainImageData.paths.small}
-              alt={data.alt}
+              alt={data.mainImageData.alt}
               className={css.cardProductImg}
             />
           </picture>

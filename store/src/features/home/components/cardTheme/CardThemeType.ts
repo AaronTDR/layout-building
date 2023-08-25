@@ -23,7 +23,7 @@ type SecondaryImagesType = {
 export type CardThemeType = {
   data: {
     id: number;
-    cardType: "theme";
+    cardCategory: "theme";
     title: string;
     mainImageData: MainImageDataType;
     secondaryImages: SecondaryImagesType;

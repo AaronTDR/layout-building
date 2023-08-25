@@ -10,7 +10,7 @@ type MainImageDataType = {
 export type CardOfferType = {
   data: {
     id: number;
-    cardType: "offer";
+    cardCategory: "offer";
     title: string;
     mainImageData: MainImageDataType;
     discount: string;

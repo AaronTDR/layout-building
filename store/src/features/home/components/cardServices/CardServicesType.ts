@@ -17,7 +17,7 @@ type SectionsDataType = {
 export type CardServicesType = {
   data: {
     id: number;
-    cardType: "services";
+    cardCategory: "services";
     title: string;
     sectionsData: SectionsDataType;
     textLink: string;

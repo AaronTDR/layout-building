@@ -10,7 +10,7 @@ type MainImageDataType = {
 export type CardProductType = {
   data: {
     id: number;
-    cardType: "product";
+    cardCategory: "product";
     title: string;
     mainImageData: MainImageDataType;
     textLink: string;

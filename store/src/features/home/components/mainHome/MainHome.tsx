@@ -48,7 +48,7 @@ const MainHome = ({ css }: MainHomeType) => {
 
   /* Identifies the type of component to render according to the type of card and returns it by passing its props */
   const cardRenderer = (el: CardElementType) => {
-    switch (el.data.cardType) {
+    switch (el.data.cardCategory) {
       case "offer":
         return <CardOffer key={el.data.id} data={el.data} css={cardOffer} />;
 
