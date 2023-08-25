@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom";
-
+/* components */
+import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 import FooterCard from "../footerCard/FooterCard";
 
+/* types */
 import { CardOfferType } from "./CardOfferType";
-
+/* styles */
 import singleLine from "../../../../styles/singleLine.module.css";
 
 const CardOffer = ({ data, css }: CardOfferType) => {
   return (
     <article className={css.cardWrapper}>
       <header className={css.cardHeader}>
-        <h2 className={`${css.cardTitle} ${singleLine.singleLine}`}>
+        {/*         <h2 className={`${css.cardTitle} ${singleLine.singleLine}`}>
           {data.title}
-        </h2>
+        </h2> */}
+        <TextTruncate
+          title="Lorem ipsum dolor siss sd."
+          rows={2}
+          tagType="h2"
+          css={css.cardTitle}
+        />
         <Link to={"#"} className={css.cardOfferImgLink}>
           <picture>
             <source
