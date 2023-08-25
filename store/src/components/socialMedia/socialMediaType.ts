@@ -1,10 +1,6 @@
-interface SocialMediaIconType {
-  iconComponent: JSX.Element;
-}
-
-export interface socialMediaType {
+export type socialMediaType = {
   text?: string;
   textCss?: string;
-  iconsArr: SocialMediaIconType[];
-  socialMediaContainerCss: string;
-}
+  containerCss: string;
+  iconCss: string;
+};

@@ -21,29 +21,6 @@ import borderLinkStyles from "../../styles/borderLink.module.css";
 import headerSection from "../../features/home/stylesHome/headerSection.module.css";
 import headerStyles from "./headerStyles.module.css";
 
-const socialMediaIcons = [
-  {
-    iconComponent: (
-      <Icon icon={faInstagram} css={headerStyles.socialMediaIconStyles} />
-    ),
-  },
-  {
-    iconComponent: (
-      <Icon icon={faTwitter} css={headerStyles.socialMediaIconStyles} />
-    ),
-  },
-  {
-    iconComponent: (
-      <Icon icon={faFacebook} css={headerStyles.socialMediaIconStyles} />
-    ),
-  },
-  {
-    iconComponent: (
-      <Icon icon={faWhatsapp} css={headerStyles.socialMediaIconStyles} />
-    ),
-  },
-];
-
 const listRightSection = [
   {
     listElement: (
@@ -112,8 +89,8 @@ const Header = () => {
           <SocialMedia
             text="Fallow us on:"
             textCss={headerStyles.headerFollowUsText}
-            iconsArr={socialMediaIcons}
-            socialMediaContainerCss={headerStyles.headerSocialMediaContainer}
+            containerCss={headerStyles.headerSocialMediaContainer}
+            iconCss={headerStyles.socialMediaIconStyles}
           />
         </Container>{" "}
         <Container css={headerSection.headerSection}>
