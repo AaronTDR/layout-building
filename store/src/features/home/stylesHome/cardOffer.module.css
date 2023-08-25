@@ -1,7 +1,7 @@
 @import url("./cardWrapper.module.css");
 
 .cardHeader {
-  margin-bottom: 0.625em;
+  margin-bottom: var(--bottom-margin-header);
 }
 
 .cardTitle {

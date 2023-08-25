@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+/* components */
+import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 /* types */
 import { CardSponsoredType } from "./CardSponsoredType";
 
@@ -7,9 +9,12 @@ const CardSponsored = ({ data, css }: CardSponsoredType) => {
     <article className={css.cardWrapperSponsored}>
       <header className={css.cardSponsoredHeader}>
         <div className={css.cardSponsoredTitleContainer}>
-          <h2 className={css.cardSponsoredTitle}>
-            Sign in to live your best experience
-          </h2>
+          <TextTruncate
+            title="Sign in to live your best experience"
+            rows={2}
+            tagType="h2"
+            css={css.cardSponsoredTitle}
+          />
         </div>
         <Link to={"#"} className={css.cardSponsoredButton}>
           Sign in securely

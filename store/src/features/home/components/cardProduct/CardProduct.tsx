@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 /* components */
+import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 import FooterCard from "../footerCard/FooterCard";
 /* types */
 import { CardProductType } from "./CardProductType";
@@ -8,11 +9,12 @@ const CardProduct = ({ data, css }: CardProductType) => {
   return (
     <article className={css.cardWrapper}>
       <header className={css.cardProductHeader}>
-        <div className={css.cardProductTitleContainer}>
-          <h2 className={css.cardProductTitle}>
-            Discover participating bank bonuses
-          </h2>
-        </div>
+        <TextTruncate
+          title={data.title}
+          rows={2}
+          tagType="h2"
+          css={css.cardProductTitle}
+        />
       </header>
       <Link to={"#"} className={css.cardProductImgLink}>
         <figure className={css.cardProductFigure}>

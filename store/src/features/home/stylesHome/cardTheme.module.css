@@ -4,11 +4,6 @@
   margin-bottom: 0.625em;
 }
 
-.cardThemeTitleContainer {
-  max-height: 3.0625em;
-  overflow: hidden;
-}
-
 .cardThemeTitle {
   margin: 0;
   font-size: var(--title-card-font-size);

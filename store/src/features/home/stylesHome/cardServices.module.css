@@ -14,12 +14,7 @@
 }
 
 .cardServicesHeader {
-  margin-bottom: 0.625em;
-}
-
-.cardServicesTitleContainer {
-  max-height: 3.0625em;
-  overflow: hidden;
+  margin-bottom: var(--bottom-margin-header);
 }
 
 .cardServicesTitle {

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 /* components */
+import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 import FooterCard from "../footerCard/FooterCard";
 /* types */
 import { CardServicesType } from "./CardServicesType";
@@ -31,9 +32,12 @@ const CardServices = ({ data, css }: CardServicesType) => {
   return (
     <article className={css.cardWrapperServices}>
       <header className={css.cardServicesHeader}>
-        <div className={css.cardServicesTitleContainer}>
-          <h2 className={css.cardServicesTitle}>{data.title}</h2>
-        </div>
+        <TextTruncate
+          title={data.title}
+          rows={2}
+          tagType="h2"
+          css={css.cardServicesTitle}
+        />
       </header>
       <div className={css.cardServicesGrid}>
         <Link to={"#"} className={css.adLink}>

@@ -1,12 +1,7 @@
 @import url("./cardWrapper.module.css");
 
 .cardProductHeader {
-  margin-bottom: 0.625em;
-}
-
-.cardProductTitleContainer {
-  max-height: 3.0625em;
-  overflow: hidden;
+  margin-bottom: var(--bottom-margin-header);
 }
 
 .cardProductTitle {

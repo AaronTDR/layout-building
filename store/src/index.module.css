@@ -30,6 +30,8 @@
   /* TODO: Cars vars */
 
   /*  *Shared variables on cards */
+  /* Bottom margin header */
+  --bottom-margin-header: 0.625em;
   /* Title text*/
   --title-card-font-size: 1.3125rem;
 
