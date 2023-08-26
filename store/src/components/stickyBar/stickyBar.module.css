@@ -78,6 +78,10 @@
   background-color: var(--header-background-color);
 }
 
+.stickyList {
+  display: flex;
+}
+
 @media screen and (max-width: 768px) {
   .stickyButtonAddress,
   .stickyButtonWishList,
