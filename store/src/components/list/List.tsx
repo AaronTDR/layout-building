@@ -1,13 +1,28 @@
-import { FC } from "react";
+import { Link } from "react-router-dom";
 
-import { listType } from "./listType";
+/* components */
+import Icon from "../../components/icon/Icon";
 
-const List: FC<listType> = ({ css, elements }) => {
+import { ListType } from "./ListType";
+
+const List = ({ ulTagCss, liTagCss, elements }: ListType) => {
+  const cssUl = ulTagCss ? ulTagCss : "";
+  const cssLi = liTagCss ? liTagCss : "";
   return (
-    <ul className={css}>
-      {elements.map((e, i) => (
-        <li key={i}>{e.listElement}</li>
-      ))}
+    <ul className={cssUl}>
+      {elements.map((e, i) => {
+        const isThereIcon = e.icon && (
+          <Icon icon={e.icon.name} css={e.icon.css} />
+        );
+        return (
+          <li className={cssLi}>
+            <Link key={i} to={e.path} className={e.cssLink}>
+              {isThereIcon}
+              {e.text}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   );
 };
