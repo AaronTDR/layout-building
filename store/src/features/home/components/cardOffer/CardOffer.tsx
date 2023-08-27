@@ -13,7 +13,7 @@ const CardOffer = ({ data, css }: CardOfferType) => {
     <article className={css.cardWrapper}>
       <header className={css.cardHeader}>
         <TextTruncate
-          title={data.title}
+          text={data.title}
           rows={2}
           tagType="h2"
           css={css.cardTitle}

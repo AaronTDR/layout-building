@@ -12,7 +12,7 @@ const CardTheme = ({ data, css }: CardThemeType) => {
     <article className={css.cardWrapper}>
       <header className={css.cardThemeHeader}>
         <TextTruncate
-          title={data.title}
+          text={data.title}
           rows={2}
           tagType="h2"
           css={css.cardThemeTitle}

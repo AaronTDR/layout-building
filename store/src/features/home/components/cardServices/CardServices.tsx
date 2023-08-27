@@ -33,7 +33,7 @@ const CardServices = ({ data, css }: CardServicesType) => {
     <article className={css.cardWrapperServices}>
       <header className={css.cardServicesHeader}>
         <TextTruncate
-          title={data.title}
+          text={data.title}
           rows={2}
           tagType="h2"
           css={css.cardServicesTitle}

@@ -10,7 +10,7 @@ const CardSponsored = ({ data, css }: CardSponsoredType) => {
       <header className={css.cardSponsoredHeader}>
         <div className={css.cardSponsoredTitleContainer}>
           <TextTruncate
-            title="Sign in to live your best experience"
+            text="Sign in to live your best experience"
             rows={2}
             tagType="h2"
             css={css.cardSponsoredTitle}

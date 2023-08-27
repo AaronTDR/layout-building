@@ -4,13 +4,8 @@ import { TextTruncateType } from "./TextTruncateType";
 /* styles */
 import textTruncate from "./textTruncate.module.css";
 
-/* Receives the title and accommodates it in a maximum number of rows provided, if the text overflows on the last line, the overflow is avoided and three points are added */
-const TextTruncate = ({
-  title,
-  rows,
-  tagType = "p",
-  css,
-}: TextTruncateType) => {
+/* Receives the text and accommodates it in a maximum number of rows provided, if the text overflows on the last line, the overflow is avoided and three points are added */
+const TextTruncate = ({ text, rows, tagType = "p", css }: TextTruncateType) => {
   const [isOverflowing, setIsOverflowing] = useState(false);
   const headerRef = useRef<HTMLHeadingElement | HTMLParagraphElement | null>(
     null
@@ -33,7 +28,7 @@ const TextTruncate = ({
       style={{ WebkitLineClamp: `${rows}` }}
       ref={headerRef}
     >
-      {title}
+      {text}
     </Tag>
   );
 };
