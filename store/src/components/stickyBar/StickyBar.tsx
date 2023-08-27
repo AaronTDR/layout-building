@@ -7,7 +7,7 @@ import {
 /* components */
 import Icon from "../icon/Icon";
 import Logo from "../logo/Logo";
-import Button from "../button/Button";
+import HeaderButton from "../headerButton/HeaderButton";
 import List from "../list/List";
 import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
 import SearchBar from "../../features/home/components/searchBar/SearchBar";
@@ -60,7 +60,7 @@ const StickyBar = () => {
       <div className={stickyBar.stickyTopContainer}>
         <Icon icon={faBars} css={stickyBar.stickyMenu} />
         <Logo />
-        <Button cssArr={[stickyBar.stickyButtonAddress]}>
+        <HeaderButton cssArr={[stickyBar.stickyButtonAddress]}>
           <Icon icon={faLocationDot} css={stickyBar.stickyAddressIcon} />
           <span className={stickyBar.stickyAddressTextContainer}>
             <span
@@ -72,14 +72,14 @@ const StickyBar = () => {
               Enter your address
             </span>
           </span>
-        </Button>
+        </HeaderButton>
         <SearchBar placeholder="Search anything...">
           <Icon icon={faMagnifyingGlass} css={stickyBar.stickySearchBarIcon} />
         </SearchBar>
-        <Button cssArr={[stickyBar.stickyButtonWishList]}>
+        <HeaderButton cssArr={[stickyBar.stickyButtonWishList]}>
           <Icon icon={faHeart} css={stickyBar.stickyWishListIcon} />
           Wish List
-        </Button>
+        </HeaderButton>
         <ShoppingCart />
       </div>
       <div className={stickyBar.stickyBottomContainer}>

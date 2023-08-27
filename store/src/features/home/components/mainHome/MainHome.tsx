@@ -76,11 +76,11 @@ const MainHome = ({ css }: MainHomeType) => {
   };
   return (
     <main className={css}>
-      <Container css={cardsGrid.grid}>
+      <div className={cardsGrid.grid}>
         {cardElements.map((cardElement: CardElementType) =>
           cardRenderer(cardElement)
         )}
-      </Container>
+      </div>
     </main>
   );
 };
