@@ -1,3 +1,7 @@
+# Project: Development of an Online Store 🛒🐦
+
+This project consists of the development of an online store as a practice exercise. In this project, some of the basic functionality found in a typical online store is implemented.
+
 ## Installation Instructions
 
 To set up and run the project in your local environment, follow these steps:
