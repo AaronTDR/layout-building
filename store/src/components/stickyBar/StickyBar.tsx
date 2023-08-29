@@ -72,7 +72,9 @@ const StickyBar = () => {
             >
               Deliver to
             </span>
-            <span className="sticky__address-text--bottom single-line">
+            <span
+              className={`${stickyBar.stickyAddressTextBottom} ${singleLineStyles.singleLine}`}
+            >
               Enter your address
             </span>
           </span>
