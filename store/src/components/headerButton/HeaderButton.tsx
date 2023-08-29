@@ -7,7 +7,11 @@ const Button = ({ cssArr, children }: ButtonType) => {
     ? `${buttonStyles.button} ${cssArr.join(" ")}`
     : buttonStyles.button;
 
-  return <button className={buttonStyle}>{children}</button>;
+  return (
+    <button type="button" className={buttonStyle}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

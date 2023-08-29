@@ -58,6 +58,7 @@
 
 .stickyAddressIcon,
 .stickyWishListIcon {
+  min-width: 1.1em;
   align-self: center;
   margin-right: 0.325em;
   font-size: 1.25em;
