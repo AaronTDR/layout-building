@@ -33,7 +33,11 @@ const Terms = () => {
         />
       </div>
       <div className={termsStyles.footerTermsContainer}>
-        <Logo />
+        <Logo
+          logoContainerCss={termsStyles.termsLogoContainer}
+          logoImgCss={termsStyles.termsLogoImg}
+          logoTextCss={termsStyles.termsLogoText}
+        />
         <List
           ulTagCss={termsStyles.footerListTerms}
           liTagCss={termsStyles.footerListElementTerms}

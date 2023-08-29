@@ -31,6 +31,25 @@
   padding: 0.625em 1.25em 1.875em;
 }
 
+.termsLogoContainer {
+  display: flex;
+  align-items: center;
+  min-width: 10.1em;
+}
+
+.termsLogoImg {
+  width: 2.5em;
+  height: 2.5em;
+  margin-right: 0.1875em;
+}
+
+.termsLogoText {
+  margin-top: 0.9375em;
+  margin-bottom: 0.1875em;
+  font-size: 1.5rem;
+  color: var(--principal-color);
+}
+
 .footerListTerms {
   display: flex;
   justify-content: center;
@@ -63,6 +82,23 @@
   font-size: 0.75rem;
   text-align: center;
   color: var(--secondary-color);
+}
+
+@media screen and (max-width: 1024px) {
+  .termsLogoContainer {
+    min-width: 2em;
+  }
+
+  .termsLogoImg {
+    width: 2em;
+    height: 2em;
+    margin-bottom: 0.4375em;
+    margin-right: 0;
+  }
+
+  .termsLogoText {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 385px) {

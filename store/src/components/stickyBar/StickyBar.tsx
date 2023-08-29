@@ -59,7 +59,11 @@ const StickyBar = () => {
     <div className={stickyBar.stickyContainer}>
       <div className={stickyBar.stickyTopContainer}>
         <Icon icon={faBars} css={stickyBar.stickyMenu} />
-        <Logo />
+        <Logo
+          logoContainerCss={stickyBar.stickyLogoContainer}
+          logoImgCss={stickyBar.stickyLogoImg}
+          logoTextCss={stickyBar.stickyLogoText}
+        />
         <HeaderButton cssArr={[stickyBar.stickyButtonAddress]}>
           <Icon icon={faLocationDot} css={stickyBar.stickyAddressIcon} />
           <span className={stickyBar.stickyAddressTextContainer}>

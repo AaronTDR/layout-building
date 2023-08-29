@@ -3,4 +3,4 @@ export type LogoType = {
   logoContainerCss?: string;
   logoImgCss?: string;
   logoTextCss?: string;
-};
+};?
