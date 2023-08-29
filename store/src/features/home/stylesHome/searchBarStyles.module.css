@@ -33,10 +33,18 @@
   .stickySearchBarContainer {
     margin-right: 0;
   }
+
+  .stickySearchBarInput {
+    width: 88%;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .stickySearchBarContainer {
     padding-right: 1.5%;
+  }
+
+  .stickySearchBarInput {
+    width: 80%;
   }
 }

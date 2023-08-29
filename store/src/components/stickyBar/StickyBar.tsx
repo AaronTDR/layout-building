@@ -73,7 +73,7 @@ const StickyBar = () => {
             </span>
           </span>
         </HeaderButton>
-        <SearchBar placeholder="Search anything...">
+        <SearchBar placeholder="Search">
           <Icon icon={faMagnifyingGlass} css={stickyBar.stickySearchBarIcon} />
         </SearchBar>
         <HeaderButton cssArr={[stickyBar.stickyButtonWishList]}>
