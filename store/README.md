@@ -1,27 +1,55 @@
-# React + TypeScript + Vite
+## Installation Instructions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To set up and run the project in your local environment, follow these steps:
+
+1. Clone the repository:
+
+```http
+  git clone https://github.com/AaronTDR/layout-building.git
+```
+
+2. Navigate to the project directory:
+
+```http
+  cd layout-building
+```
+
+3. Install the dependencies:
+
+```http
+  npm install
+
+```
+
+4. Start the development server:
+
+```http
+  npm run dev
+
+```
+
+## Technologies Used
+
+This project makes use of the following core technologies:
+
+- Vite
+- React
+- TypeScript
+- MongoDB
+- CSS
+- HTML
+
+## Application Features
+
+Some of the functionalities implemented in this application include:
+
+- Clear visualization of the main types of products that an online store can offer.
+
+## Vite and React Configuration
+
+This project utilizes the Vite template with React and TypeScript. The configuration provides Hot Module Replacement (HMR) and some ESLint rules.
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- @vitejs/plugin-react uses Babel for Fast Refresh
+- @vitejs/plugin-react-swc uses SWC for Fast Refresh
