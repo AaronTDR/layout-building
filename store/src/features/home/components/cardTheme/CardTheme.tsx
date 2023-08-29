@@ -50,9 +50,12 @@ const CardTheme = ({ data, css }: CardThemeType) => {
               alt={data.secondaryImages.img1.alt}
               className={css.relatedImg}
             />
-            <figcaption className={css.relatedFigcaption}>
-              {data.secondaryImages.img1.figcaptionText}
-            </figcaption>
+            <TextTruncate
+              text={data.secondaryImages.img1.figcaptionText}
+              rows={2}
+              tagType="figcaption"
+              css={css.relatedFigcaption}
+            />
           </figure>
         </Link>
         <Link to={"#"} className={css.relatedLink}>
@@ -62,9 +65,12 @@ const CardTheme = ({ data, css }: CardThemeType) => {
               alt={data.secondaryImages.img2.alt}
               className={css.relatedImg}
             />
-            <figcaption className={css.relatedFigcaption}>
-              {data.secondaryImages.img2.figcaptionText}
-            </figcaption>
+            <TextTruncate
+              text={data.secondaryImages.img2.figcaptionText}
+              rows={2}
+              tagType="figcaption"
+              css={css.relatedFigcaption}
+            />
           </figure>
         </Link>
         <Link to={"#"} className={css.relatedLink}>
@@ -74,9 +80,12 @@ const CardTheme = ({ data, css }: CardThemeType) => {
               alt={data.secondaryImages.img3.alt}
               className={css.relatedImg}
             />
-            <figcaption className={css.relatedFigcaption}>
-              {data.secondaryImages.img3.figcaptionText}
-            </figcaption>
+            <TextTruncate
+              text={data.secondaryImages.img3.figcaptionText}
+              rows={2}
+              tagType="figcaption"
+              css={css.relatedFigcaption}
+            />
           </figure>
         </Link>
       </div>
