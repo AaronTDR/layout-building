@@ -4,8 +4,6 @@ import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 import FooterCard from "../footerCard/FooterCard";
 /* types */
 import { CardThemeType } from "./CardThemeType";
-/* styles */
-import singleLine from "../../../../styles/singleLine.module.css";
 
 const CardTheme = ({ data, css }: CardThemeType) => {
   return (
@@ -35,11 +33,12 @@ const CardTheme = ({ data, css }: CardThemeType) => {
               className={css.cardThemeImg}
             />
           </picture>
-          <figcaption
-            className={`${css.cardThemeImgFigcaption} ${singleLine.singleLine}`}
-          >
-            {data.mainImageData.figcaptionText}
-          </figcaption>
+          <TextTruncate
+            text={data.mainImageData.figcaptionText}
+            rows={1}
+            tagType="figcaption"
+            css={css.cardThemeImgFigcaption}
+          />
         </figure>
       </Link>
       <div className={css.related}>

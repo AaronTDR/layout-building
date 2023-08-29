@@ -78,6 +78,11 @@
   color: var(--secondary-color);
 }
 
+.stickyAddressTextBottom {
+  padding-right: 0.625em;
+  text-align: start;
+}
+
 .stickySearchBarIcon {
   font-size: 1.1rem;
   color: #febd69;

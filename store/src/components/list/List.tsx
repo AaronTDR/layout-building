@@ -15,8 +15,8 @@ const List = ({ ulTagCss, liTagCss, elements }: ListType) => {
           <Icon icon={e.icon.name} css={e.icon.css} />
         );
         return (
-          <li className={cssLi}>
-            <Link key={i} to={e.path} className={e.cssLink}>
+          <li key={i} className={cssLi}>
+            <Link to={e.path} className={e.cssLink}>
               {isThereIcon}
               {e.text}
             </Link>
