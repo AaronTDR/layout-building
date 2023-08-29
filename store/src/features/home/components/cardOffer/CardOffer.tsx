@@ -48,7 +48,12 @@ const CardOffer = ({ data, css }: CardOfferType) => {
           </span>
         </div>
         <div className={css.extractContainer}>
-          <span className={css.extractText}>{data.description}</span>
+          <TextTruncate
+            text={data.description}
+            rows={2}
+            tagType="p"
+            css={css.extractText}
+          />
         </div>
       </Link>
       <FooterCard path="#" text={data.textLink} />
