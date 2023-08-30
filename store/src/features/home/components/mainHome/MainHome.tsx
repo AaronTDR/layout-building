@@ -7,7 +7,6 @@ import CardSponsored from "../cardSponsored/CardSponsored";
 import CardProduct from "../cardProduct/CardProduct";
 import CardTheme from "../cardTheme/CardTheme";
 import CardOffer from "../cardOffer/CardOffer";
-import Container from "../../../../components/container/Container";
 /* types */
 import { CardServicesType } from "../cardServices/CardServicesType";
 import { CardSponsoredType } from "../cardSponsored/CardSponsoredType";
