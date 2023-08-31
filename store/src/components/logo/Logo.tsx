@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 /* types */
 import { LogoType } from "./logoType.ts";
+
 import logoImg from "../../assets/img/logo/logo-img.png";
 
 const Logo = ({
