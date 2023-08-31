@@ -9,7 +9,6 @@ import Icon from "../../components/icon/Icon";
 import List from "../list/List";
 import SocialMedia from "../socialMedia/SocialMedia";
 
-// import { navType } from "./navType";
 /* styles */
 import navStyles from "./nav.module.css";
 import borderLinkStyles from "../../styles/borderLink.module.css";
