@@ -10,15 +10,15 @@ const List = ({ ulTagCss, liTagCss, elements }: ListType) => {
   const cssLi = liTagCss ? liTagCss : "";
   return (
     <ul className={cssUl}>
-      {elements.map((e, i) => {
-        const isThereIcon = e.icon && (
-          <Icon icon={e.icon.name} css={e.icon.css} />
-        );
+      {elements.map((el, i) => {
+        const isThereIcon = el.icon ? (
+          <Icon icon={el.icon.name} css={el.icon.css} />
+        ) : null;
         return (
           <li key={i} className={cssLi}>
-            <Link to={e.path} className={e.cssLink}>
+            <Link to={el.path} className={el.cssLink}>
               {isThereIcon}
-              {e.text}
+              {el.text}
             </Link>
           </li>
         );
