@@ -28,9 +28,9 @@ const SocialMedia = ({
   return (
     <div className={containerCss}>
       {isThereText}
-      {icons.map((e, i) => (
-        <Link to={e.path} key={i}>
-          <Icon icon={e.iconName} css={iconCss} />
+      {icons.map((el, i) => (
+        <Link to={el.path} key={i}>
+          <Icon icon={el.iconName} css={iconCss} />
         </Link>
       ))}
     </div>
