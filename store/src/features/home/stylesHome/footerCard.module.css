@@ -1,0 +1,33 @@
+.footerCard {
+  margin-top: auto;
+}
+
+.footerCardSeeMoreLink {
+  display: inline-block;
+  width: 100%;
+  font-size: var(--see-more-link-font-size);
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.footerCardSeeMoreLink:hover {
+  color: var(--highlight-color);
+  text-decoration-line: underline;
+  text-decoration-color: currentcolor;
+  -moz-text-decoration-color: currentcolor;
+  -moz-text-decoration-line: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .footerCardSeeMoreLink {
+    font-size: 0.96rem;
+    font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footerCardSeeMoreLink {
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,125 @@
+.cardWrapperServices {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 1.25em;
+  border-radius: 0.375em;
+  -webkit-border-radius: 0.375em;
+  -moz-border-radius: 0.375em;
+  -ms-border-radius: 0.375em;
+  -o-border-radius: 0.375em;
+  background-color: var(--principal-color);
+  color: var(--card-text-color);
+}
+
+.cardServicesHeader {
+  margin-bottom: var(--bottom-margin-header);
+}
+
+.cardServicesTitle {
+  margin: 0;
+  font-size: var(--title-card-font-size);
+  font-weight: 700;
+  color: var(--card-text-color);
+}
+
+.cardServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.625em;
+  align-self: center;
+  width: 100%;
+  height: 17.25em;
+}
+
+.adLink {
+  min-width: 0.9375em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.adOverlay {
+  display: flex;
+  gap: 0.3125em;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1.8em 0.3125em;
+  font-size: 0.8125rem;
+  color: var(--principal-color);
+  border-radius: inherit;
+  -webkit-border-radius: inherit;
+  -moz-border-radius: inherit;
+  -ms-border-radius: inherit;
+  -o-border-radius: inherit;
+}
+
+/* *Add the colors to each overlay layer */
+.overlayColorAd1 {
+  background-image: linear-gradient(to bottom, transparent, rgb(0, 0, 32) 47%);
+}
+.overlayColorAd2 {
+  background-image: linear-gradient(to bottom, transparent, rgb(54, 0, 75) 47%);
+}
+.overlayColorAd3 {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(26, 26, 167) 47%
+  );
+}
+
+.overlayColorAd4 {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(46, 12, 100) 47%
+  );
+}
+
+.adBrandLogoContainer {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.adBrandLogo {
+  width: 100%;
+  height: 100%;
+  background-color: var(--principal-color);
+  object-fit: fill;
+  border-radius: 0.25em;
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  -ms-border-radius: 0.25em;
+  -o-border-radius: 0.25em;
+}
+
+.adContain {
+  display: flex;
+  gap: 0.1875em;
+  flex-direction: column;
+  align-items: center;
+  width: 97%;
+  min-height: 3.4375em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adText,
+.adOffer,
+.adBrand {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.75rem;
+}
+
+.adTextPrincipal {
+  font-weight: 400;
+}

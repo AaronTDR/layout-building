@@ -1,0 +1,12 @@
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.title.overflow::after {
+  content: "..."; /* Add ellipses */
+  display: inline;
+  padding-left: 0.25em; /* Spacing between text and ellipses */
+}

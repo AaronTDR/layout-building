@@ -1,0 +1,13 @@
+.headerContainer {
+  display: flex;
+  grid-column: 1 / 5;
+  justify-content: center;
+  background-color: var(--header-background-color);
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .headerContainer {
+    display: none;
+  }
+}

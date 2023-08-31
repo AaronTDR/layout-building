@@ -1,0 +1,87 @@
+.cardWrapperSponsored {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: transparent;
+  color: var(--card-text-color);
+}
+
+.cardSponsoredHeader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 9.375em;
+  margin-bottom: 1.25em;
+  padding: 1.25em 1.25em 1.875em 1.25em;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+  background-color: var(--principal-color);
+}
+
+.cardSponsoredTitleContainer {
+  margin-bottom: var(--bottom-margin-header);
+}
+
+.cardSponsoredTitle {
+  margin: 0;
+  font-size: var(--title-card-font-size);
+  font-weight: 700;
+  color: var(--card-text-color);
+}
+
+.cardSponsoredButton {
+  width: 100%;
+  padding: 0.4em 1.25em;
+  text-align: center;
+  font-size: 0.8125rem;
+  background-color: rgb(255, 216, 20);
+  color: #0f1111;
+  border: none;
+  border-radius: 0.25em;
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  -ms-border-radius: 0.25em;
+  -o-border-radius: 0.25em;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.cardSponsoredButton:hover {
+  background: rgb(247, 202, 0);
+  border-color: rgb(242, 194, 0);
+  transition-duration: 0.2s;
+}
+
+.cardSponsoredAd {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.cardSponsoredImgLink {
+  text-decoration: none;
+}
+
+.cardSponsoredFigure {
+  margin: 0;
+}
+
+.cardSponsoredImg {
+  width: 100%;
+  height: 15.625em;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+  object-fit: cover;
+}
+
+@media screen and (max-width: 480px) {
+  .cardSponsoredImg {
+    height: 17.4em;
+  }
+}

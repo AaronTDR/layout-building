@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("assets/fonts/AmazonEmber_Rg.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Amazon Ember Bold";
+  src: url("assets/fonts/AmazonEmber_Bd.ttf") format("truetype");
+}
+
+:root {
+  font-family: "Amazon Ember", Arial, sans-serif;
+  /* *Global vars */
+  --max-width-content: 86.25em;
+  --margin-right: 0.3125em;
+  --highlight-color: #bd4500;
+  --principal-color: #ffffff;
+  --primary-color: #cc0c39;
+  --secondary-color: #cccccc;
+  --header-background-color: #131921;
+
+  /* Border radius */
+  --border-radius-principal: 0.375em;
+
+  /* *Header vars */
+  --header-principal-font-size: 0.8125rem;
+  --header-secondary-font-size: 0.75rem;
+  /* *Main */
+
+  /* TODO: Cars vars */
+
+  /*  *Shared variables on cards */
+  /* Bottom margin header */
+  --bottom-margin-header: 0.625em;
+  /* Title text*/
+  --title-card-font-size: 1.3125rem;
+
+  /* text */
+  --card-text-color: #0f1111;
+
+  /* Extract text */
+  --extract-font-size: 0.9rem;
+
+  /* See more links */
+  --see-more-link-font-size: 0.9rem;
+  --link-color: #007185;
+
+  /* *Offers cards */
+  /* Offer tag */
+  --offer-tag-text-font-size: 0.85rem;
+  --offer-tag-background-color: #cc0c39;
+  /* Offer day text */
+  --offer-day-text-font-size: 0.85rem;
+
+  /* *Card theme */
+  /* image caption text */
+  --related__figcaption-font-size: 1.1rem;
+  --related__figcaption-font-weight: 400;
+
+  /* *Footer vars */
+  --footer-background: #232f3e;
+}
+
+body {
+  margin: 0;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  background-color: #e3e6e6;
+}
+
+@media screen and (max-width: 960px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+}

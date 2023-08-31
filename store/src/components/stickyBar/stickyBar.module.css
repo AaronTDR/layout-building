@@ -1,0 +1,161 @@
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  display: flex;
+  grid-column: 1 / 5;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 6.625em;
+  z-index: 100;
+  background-color: var(--header-background-color);
+}
+
+.stickyTopContainer {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: var(--max-width-content);
+  padding: 0.625em 1.25em;
+  background-color: var(--header-background-color);
+}
+
+.stickyMenu {
+  display: none;
+}
+
+.stickyLogoContainer {
+  display: flex;
+  align-items: center;
+  min-width: 10.1em;
+}
+
+.stickyLogoImg {
+  width: 2.5em;
+  height: 2.5em;
+  margin-right: 0.1875em;
+}
+
+.stickyLogoText {
+  margin-top: 0.9375em;
+  margin-bottom: 0.1875em;
+  font-size: 1.5rem;
+  color: var(--principal-color);
+}
+
+.stickyButtonAddress {
+  max-width: 12.5em;
+  min-width: 12em;
+  margin-right: 0.5078em;
+  height: 3.125em;
+  border: solid 0.0625em transparent;
+  transition: border 0.2s;
+  -webkit-transition: border 0.2s;
+  -moz-transition: border 0.2s;
+  -ms-transition: border 0.2s;
+  -o-transition: border 0.2s;
+}
+
+.stickyAddressIcon,
+.stickyWishListIcon {
+  min-width: 1.1em;
+  align-self: center;
+  margin-right: 0.325em;
+  font-size: 1.25em;
+}
+
+.stickyAddressTextContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-left: 0.3125em;
+  padding-right: 0.3125em;
+}
+
+.stickyAddressTextTop {
+  padding-right: 0.625em;
+  text-align: start;
+  font-size: var(--header-secondary-font-size);
+  color: var(--secondary-color);
+}
+
+.stickyAddressTextBottom {
+  padding-right: 0.625em;
+  text-align: start;
+}
+
+.stickySearchBarIcon {
+  font-size: 1.1rem;
+  color: #febd69;
+  cursor: pointer;
+}
+
+.stickyButtonWishList {
+  min-width: 7.3em;
+}
+
+.stickyBottomContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.625em;
+  width: 100%;
+  padding: 0.1875em 1.25em;
+  background-color: var(--header-background-color);
+}
+
+.stickyList {
+  display: flex;
+}
+
+@media screen and (max-width: 1024px) {
+  .stickyLogoContainer {
+    min-width: 2em;
+  }
+
+  .stickyLogoImg {
+    width: 2em;
+    height: 2em;
+    margin-bottom: 0.4375em;
+    margin-right: 0;
+  }
+
+  .stickyLogoText {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .stickyButtonAddress,
+  .stickyButtonWishList,
+  .stickyShoppingCartContainer,
+  .stickyBottomContainer {
+    display: none;
+  }
+
+  .stickyContainer {
+    align-items: center;
+    max-height: 5em;
+  }
+
+  .stickyTopContainer {
+    align-items: center;
+    height: 100%;
+  }
+
+  .stickyMenu {
+    display: block;
+    margin-right: 0.5078em;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .stickyLogoContainer {
+    margin-top: 2px;
+    margin-right: 0;
+  }
+
+  .stickyLogoImg {
+    width: 1.6em;
+    height: 1.6em;
+  }
+}

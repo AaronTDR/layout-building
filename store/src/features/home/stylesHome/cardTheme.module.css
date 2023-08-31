@@ -1,0 +1,78 @@
+@import url("./cardWrapper.module.css");
+
+.cardThemeHeader {
+  margin-bottom: 0.625em;
+}
+
+.cardThemeTitle {
+  margin: 0;
+  font-size: var(--title-card-font-size);
+  font-weight: 700;
+  color: var(--card-text-color);
+}
+
+.cardThemeImgLink {
+  text-decoration: none;
+}
+
+.cardThemeFigure {
+  margin: 0;
+}
+
+.cardThemeImg {
+  width: 100%;
+  height: 9.0875em;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+  object-fit: cover;
+}
+
+.cardThemeImgFigcaption {
+  margin-bottom: 0.9375em;
+  font-size: var(--related__figcaption-font-size);
+  font-weight: var(--related__figcaption-font-weight);
+  color: var(--card-text-color);
+}
+
+/* related:
+-Related content on a card
+-Grid with three columns and one row for add three small images into a card  */
+.related {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 5em;
+  gap: 0.3125em;
+  width: 100%;
+  height: 5em;
+}
+
+.relatedLink {
+  text-decoration: none;
+}
+
+.relatedFigure {
+  margin: 0;
+}
+
+.relatedFigcaption {
+  text-align: start;
+  max-width: 5.25em;
+  max-height: 3em;
+  font-size: 1rem;
+  color: var(--card-text-color);
+  overflow: hidden;
+}
+
+.relatedImg {
+  width: 100%;
+  height: 4.6875em;
+  border-radius: var(--border-radius-principal);
+  -webkit-border-radius: var(--border-radius-principal);
+  -moz-border-radius: var(--border-radius-principal);
+  -ms-border-radius: var(--border-radius-principal);
+  -o-border-radius: var(--border-radius-principal);
+  object-fit: cover;
+}
