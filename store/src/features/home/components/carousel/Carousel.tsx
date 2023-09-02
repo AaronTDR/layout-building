@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
 
 import { getCarouselImages } from "../../services/getCarouselImages/getCarouselImages";
 
@@ -6,7 +7,6 @@ import carouselStyles from "./carousel.module.css";
 
 const Carousel = () => {
   const [images, setImages] = useState([]);
-  console.log("🚀 ~ file: Carousel.tsx:9 ~ Carousel ~ images:", images);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -30,9 +30,14 @@ const Carousel = () => {
     );
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNextClick,
+    onSwipedRight: handlePrevClick,
+  });
+
   return (
     <div className={carouselStyles.carousel}>
-      <div className={carouselStyles.container}>
+      <div {...handlers} className={carouselStyles.container}>
         <img
           className={carouselStyles.img}
           src={images[currentImageIndex]?.large}
