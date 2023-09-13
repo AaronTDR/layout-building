@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
 import {
@@ -17,20 +17,64 @@ import carouselStyles from "./carousel.module.css";
 const Carousel = () => {
   const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  /* In a breakpoint greater than 768px shows the banners section */
   const [width, setWidth] = useState(window.innerWidth);
+  // const [carouselWidth, setCarouselWidth] = useState(null);
+  // const [containWidth, setContainWidth] = useState(null);
 
+  // const [imgWidth, setImgWidth] = useState(null);
+
+  // const carouselRef = useRef(null);
+  /* Manage the screen size to display the banners section */
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  /* Gets the carousel images */
   useEffect(() => {
     const response = getCarouselImages();
     setImages(response);
   }, [currentImageIndex]);
 
+  const carouselContain = images.map((img, i) => (
+    <img
+      key={i}
+      src={img?.large}
+      alt={`Slide ${i + 1}`}
+      className={carouselStyles.img}
+    />
+  ));
+
+  /* returns the percentage to be calculated of (percentage of quantity) = multiplier * (percentage/100) * quantity = R
+   */
+  /*   const calcWidth = (percentage, quantity, multiplier) => {
+    return (percentage / 100) * quantity * multiplier;
+  }; */
+
+  /* Handles the current carousel width */
+  /*   useEffect(() => {
+    function handleResize() {
+      const carouselWidth = carouselRef?.current?.offsetWidth;
+      console.log(
+        "🚀 ~ file: Carousel.tsx:55 ~ handleResize ~ carouselWidth:",
+        carouselWidth
+      );
+
+      setContainWidth(calcWidth(65, carouselWidth, images.length));
+      const widthImg =
+        calcWidth(65, carouselWidth, images.length) / images.length;
+      setImgWidth(widthImg);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); */
+
+  // Handles carousel point pagination
   const handlePaginationClick = (index) => {
     setCurrentImageIndex(index);
   };
@@ -52,14 +96,16 @@ const Carousel = () => {
     onSwipedRight: handlePrevClick,
   });
 
+  const translateX = {
+    transform: `translateX(${currentImageIndex * -14.285714}%)`,
+  };
+
   return (
-    <div className={carouselStyles.carousel}>
-      <div {...handlers} className={carouselStyles.container}>
-        <img
-          className={carouselStyles.img}
-          src={images[currentImageIndex]?.large}
-          alt={`Slide ${currentImageIndex}`}
-        />
+    <div className={carouselStyles.container}>
+      <div {...handlers} className={carouselStyles.carousel}>
+        <div style={translateX} className={carouselStyles.contain}>
+          {carouselContain}
+        </div>
         {images.length > 1 && (
           <div className={carouselStyles.pagination}>
             {images.map((_, index) => (

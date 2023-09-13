@@ -1,20 +1,36 @@
-.carousel {
+.container {
   grid-column: var(--grid-column);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 0.4525em;
+  max-width: var(--max-width-content);
   padding: 1.25em;
+  background-color: blue;
 }
 
-.container {
+.carousel {
   position: relative;
-  width: 100%;
+  width: 65%;
+  overflow: hidden;
+  background-color: green;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.contain {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 700%;
+  transition: all 0.4s ease;
+  transform: translateX(0%);
+  background-color: red;
 }
 
 .img {
-  width: 100%;
+  width: calc(100% / 7);
   max-height: 12.875em;
   border-radius: 0.1875em;
   -webkit-border-radius: 0.1875em;
@@ -22,6 +38,8 @@
   -ms-border-radius: 0.1875em;
   -o-border-radius: 0.1875em;
   object-fit: cover;
+  transition: all 0.4s ease;
+  background-color: #ff9900;
 }
 
 .pagination {
@@ -44,6 +62,7 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   background-color: rgba(134, 134, 134, 0.7);
+  transition: all 0.4s ease;
 }
 
 .active {
@@ -85,7 +104,8 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 1.25em;
-  width: 21em;
+  width: 35%;
+  max-width: 27.1026em;
   height: 12.875em;
   margin-left: 1.25em;
 }
@@ -106,6 +126,12 @@
 }
 
 @media screen and (max-width: 768px) {
+  .carousel {
+    /* position: relative; */
+    width: 100%;
+    max-width: var(--max-width-content);
+  }
+
   .buttons {
     visibility: hidden;
   }
