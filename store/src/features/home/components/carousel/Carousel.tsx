@@ -7,13 +7,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 /* components */
 import Icon from "../../../../components/icon/Icon";
+/* services */
 import { getCarouselImages } from "../../services/getCarouselImages/getCarouselImages";
-import banner1 from "../../../../assets/carousel/carouselBanners/banner-1.webp";
-import banner2 from "../../../../assets/carousel/carouselBanners/banner-2.webp";
 /* types */
 import { CarouselImageType } from "./CarouselType";
 /* styles */
 import carouselStyles from "./carousel.module.css";
+/* carousel banner images */
+import banner1 from "../../../../assets/carousel/carouselBanners/banner-1.webp";
+import banner2 from "../../../../assets/carousel/carouselBanners/banner-2.webp";
 
 const Carousel = () => {
   const [images, setImages] = useState<CarouselImageType[]>([]);
