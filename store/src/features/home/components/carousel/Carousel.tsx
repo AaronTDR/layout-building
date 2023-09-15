@@ -22,8 +22,9 @@ const Carousel = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   /* In a breakpoint greater than 768px shows the banners section */
   const [width, setWidth] = useState(window.innerWidth);
-  const autoChangeInterval = 4000; // Automatic change time
   const timerRef = useRef(null);
+
+  const autoChangeInterval = 4000; // Automatic change time
 
   /* Manage the screen size to display the banners section */
   useEffect(() => {
