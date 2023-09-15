@@ -6,6 +6,7 @@ import Header from "../../../components/header/Header";
 import Footer from "../../../components/footer/Footer";
 import main from "../stylesHome/mainCardsContainer.module.css";
 import headerContainer from "../stylesHome/headerContainer.module.css";
+import Carousel from "../../home/components/carousel/Carousel";
 import container from "../stylesHome/container.module.css";
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
         <Header />
       </div>
       <StickyBar />
+      <Carousel />
       <MainHome css={main.cardsContainer} />
       <Footer />
     </div>

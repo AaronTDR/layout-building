@@ -1,6 +1,7 @@
 .cardsContainer {
   display: flex;
-  grid-column: 1 / 5;
+  /* grid-column: 1 / 5; */
+  grid-column: var(--grid-column);
   justify-content: center;
   width: 100%;
 }
