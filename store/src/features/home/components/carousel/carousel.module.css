@@ -6,16 +6,13 @@
   width: 100%;
   max-width: var(--max-width-content);
   padding: 1.25em;
-  background-color: blue;
 }
 
 .carousel {
   position: relative;
   width: 65%;
   overflow: hidden;
-  background-color: green;
   transition: all 0.4s ease;
-  overflow: hidden;
 }
 
 .contain {
@@ -26,7 +23,6 @@
   width: 700%;
   transition: all 0.4s ease;
   transform: translateX(0%);
-  background-color: red;
 }
 
 .img {
@@ -39,7 +35,6 @@
   -o-border-radius: 0.1875em;
   object-fit: cover;
   transition: all 0.4s ease;
-  background-color: #ff9900;
 }
 
 .pagination {
@@ -73,8 +68,8 @@
   position: absolute;
   top: 40%;
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
 }
 
 .prevButton,
@@ -127,7 +122,6 @@
 
 @media screen and (max-width: 768px) {
   .carousel {
-    /* position: relative; */
     width: 100%;
     max-width: var(--max-width-content);
   }

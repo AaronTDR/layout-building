@@ -5,23 +5,18 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-
+/* components */
 import Icon from "../../../../components/icon/Icon";
-
 import { getCarouselImages } from "../../services/getCarouselImages/getCarouselImages";
 import banner1 from "../../../../assets/carousel/carouselBanners/banner-1.webp";
 import banner2 from "../../../../assets/carousel/carouselBanners/banner-2.webp";
-
+/* types */
+import { CarouselImageType } from "./CarouselType";
+/* styles */
 import carouselStyles from "./carousel.module.css";
 
-type CarouselImage = {
-  large: string;
-  medium: string;
-  small: string;
-};
-
 const Carousel = () => {
-  const [images, setImages] = useState<CarouselImage[]>([]);
+  const [images, setImages] = useState<CarouselImageType[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   /* In a breakpoint greater than 768px shows the banners section */
   const [width, setWidth] = useState(window.innerWidth);
@@ -40,18 +35,6 @@ const Carousel = () => {
     const response = getCarouselImages();
     setImages(response);
   }, []);
-  /*
-  const startAutoChange = () => {
-
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-
-    timerRef.current = setInterval(() => {
-      handleNextClick();
-    }, autoChangeInterval);
-  };
- */
   /* It will run every time the current image changes
   reset timer for automatic switching */
   useEffect(() => {
@@ -79,7 +62,7 @@ const Carousel = () => {
 
   const carouselContain = images.map((img, i) => {
     /* Determines the size of the carousel image */
-    let sizeImage: keyof CarouselImage;
+    let sizeImage: keyof CarouselImageType;
     if (width <= 480) {
       sizeImage = "small";
     } else if (width <= 768) {
