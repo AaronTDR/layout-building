@@ -14,81 +14,118 @@ import banner2 from "../../../../assets/carousel/carouselBanners/banner-2.webp";
 
 import carouselStyles from "./carousel.module.css";
 
+type CarouselImage = {
+  large: string;
+  medium: string;
+  small: string;
+};
+
 const Carousel = () => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<CarouselImage[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   /* In a breakpoint greater than 768px shows the banners section */
   const [width, setWidth] = useState(window.innerWidth);
-  // const [carouselWidth, setCarouselWidth] = useState(null);
-  // const [containWidth, setContainWidth] = useState(null);
+  const autoChangeInterval = 4000; // Automatic change time
+  const timerRef = useRef(null);
 
-  // const [imgWidth, setImgWidth] = useState(null);
-
-  // const carouselRef = useRef(null);
   /* Manage the screen size to display the banners section */
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   /* Gets the carousel images */
   useEffect(() => {
     const response = getCarouselImages();
     setImages(response);
-  }, [currentImageIndex]);
+  }, []);
+  /*
+  const startAutoChange = () => {
 
-  const carouselContain = images.map((img, i) => (
-    <img
-      key={i}
-      src={img?.large}
-      alt={`Slide ${i + 1}`}
-      className={carouselStyles.img}
-    />
-  ));
-
-  /* returns the percentage to be calculated of (percentage of quantity) = multiplier * (percentage/100) * quantity = R
-   */
-  /*   const calcWidth = (percentage, quantity, multiplier) => {
-    return (percentage / 100) * quantity * multiplier;
-  }; */
-
-  /* Handles the current carousel width */
-  /*   useEffect(() => {
-    function handleResize() {
-      const carouselWidth = carouselRef?.current?.offsetWidth;
-      console.log(
-        "🚀 ~ file: Carousel.tsx:55 ~ handleResize ~ carouselWidth:",
-        carouselWidth
-      );
-
-      setContainWidth(calcWidth(65, carouselWidth, images.length));
-      const widthImg =
-        calcWidth(65, carouselWidth, images.length) / images.length;
-      setImgWidth(widthImg);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
     }
 
-    window.addEventListener("resize", handleResize);
+    timerRef.current = setInterval(() => {
+      handleNextClick();
+    }, autoChangeInterval);
+  };
+ */
+  /* It will run every time the current image changes
+  reset timer for automatic switching */
+  useEffect(() => {
+    if (images.length > 0) {
+      // Start the autoChange logic only when images are available
+      const startAutoChange = () => {
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+        }
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []); */
+        timerRef.current = setInterval(() => {
+          handleNextClick();
+        }, autoChangeInterval);
+      };
+
+      startAutoChange();
+
+      return () => {
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+        }
+      };
+    }
+  }, [images]);
+
+  const carouselContain = images.map((img, i) => {
+    /* Determines the size of the carousel image */
+    let sizeImage: keyof CarouselImage;
+    if (width <= 480) {
+      sizeImage = "small";
+    } else if (width <= 768) {
+      sizeImage = "medium";
+    } else {
+      sizeImage = "large";
+    }
+    return (
+      <img
+        key={i}
+        src={img[sizeImage]}
+        alt={`Slide ${i + 1}`}
+        className={carouselStyles.img}
+      />
+    );
+  });
 
   // Handles carousel point pagination
-  const handlePaginationClick = (index) => {
+  const handlePaginationClick = (index: number) => {
+    // Stop timer when user interacts manually
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
     setCurrentImageIndex(index);
   };
 
   const handlePrevClick = () => {
+    // Stop timer when user interacts manually
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
-  const handleNextClick = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+  const handleNextClick = (e) => {
+    // Stop timer when user interacts manually
+    if (e && timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    setCurrentImageIndex((prevIndex) => {
+      return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+    });
   };
 
   const handlers = useSwipeable({
@@ -122,12 +159,14 @@ const Carousel = () => {
         {images.length > 1 && (
           <div className={carouselStyles.buttons}>
             <button
+              type="button"
               className={carouselStyles.prevButton}
               onClick={handlePrevClick}
             >
               <Icon icon={faChevronLeft} css={carouselStyles.buttonIcon} />
             </button>
             <button
+              type="button"
               className={carouselStyles.nextButton}
               onClick={handleNextClick}
             >
