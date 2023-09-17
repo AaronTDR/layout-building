@@ -4,7 +4,10 @@
   justify-items: center;
   width: 100%;
   max-width: var(--max-width-content);
-  padding: 2.2em 1.25em;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  padding-left: var(--horizontal-padding-lg);
+  padding-right: var(--horizontal-padding-lg);
   border-bottom: solid 0.0625em rgb(204, 204, 204, 0.2);
 }
 
@@ -45,6 +48,8 @@
   .footerLinksContainer {
     justify-items: start;
     gap: 1.2em;
+    padding-left: var(--horizontal-padding-sm);
+    padding-right: var(--horizontal-padding-sm);
   }
 }
 

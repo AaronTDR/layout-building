@@ -5,7 +5,9 @@
   align-items: center;
   width: 100%;
   max-width: var(--max-width-content);
-  padding: 1.25em;
+  margin-bottom: var(--margin-bottom);
+  padding-left: var(--horizontal-padding-lg);
+  padding-right: var(--horizontal-padding-lg);
 }
 
 .carousel {
@@ -124,6 +126,11 @@
   .carousel {
     width: 100%;
     max-width: var(--max-width-content);
+  }
+
+  .container {
+    padding-left: var(--horizontal-padding-sm);
+    padding-right: var(--horizontal-padding-sm);
   }
 
   .buttons {

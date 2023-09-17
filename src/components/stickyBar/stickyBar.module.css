@@ -6,9 +6,9 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 6.625em;
-  z-index: 100;
+  margin-bottom: var(--margin-bottom);
   background-color: var(--header-background-color);
+  z-index: 100;
 }
 
 .stickyTopContainer {
@@ -16,7 +16,10 @@
   align-items: flex-end;
   width: 100%;
   max-width: var(--max-width-content);
-  padding: 0.625em 1.25em;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+  padding-left: var(--horizontal-padding-lg);
+  padding-right: var(--horizontal-padding-lg);
   background-color: var(--header-background-color);
 }
 
@@ -99,7 +102,10 @@
   justify-content: center;
   gap: 0.625em;
   width: 100%;
-  padding: 0.1875em 1.25em;
+  padding-top: 0.1875em;
+  padding-bottom: 0.1875em;
+  padding-left: var(--horizontal-padding-lg);
+  padding-right: var(--horizontal-padding-lg);
   background-color: var(--header-background-color);
 }
 
@@ -140,6 +146,8 @@
   .stickyTopContainer {
     align-items: center;
     height: 100%;
+    padding-left: var(--horizontal-padding-sm);
+    padding-right: var(--horizontal-padding-sm);
   }
 
   .stickyMenu {

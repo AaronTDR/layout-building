@@ -5,5 +5,14 @@
   gap: 1.25em;
   width: 100%;
   max-width: var(--max-width-content);
-  padding: 0 2em 1.25em;
+  margin-bottom: var(--margin-bottom);
+  padding-left: var(--horizontal-padding-lg);
+  padding-right: var(--horizontal-padding-lg);
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    padding-left: var(--horizontal-padding-sm);
+    padding-right: var(--horizontal-padding-sm);
+  }
 }
