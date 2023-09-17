@@ -15,8 +15,8 @@
   --max-width-content: 86.25em;
   --margin-right: 0.3125em;
   --margin-bottom: 1.25em; /* Bottom margin for main containers */
-  --horizontal-padding-lg: 1.25em; /* Horizontal padding for main containers breakpoint greater than 768px */
-  --horizontal-padding-sm: 0.5em; /* Horizontal padding for main containers breakpoint greater than 768px */
+  --horizontal-padding-sm: 0.5em; /* Horizontal padding for main containers on breakpoints smaller than 768px */
+  --horizontal-padding-lg: 1.25em; /* Horizontal padding for main containers on breakpoints larger than or equal to 768px. */
   --highlight-color: #bd4500;
   --principal-color: #ffffff;
   --primary-color: #cc0c39;
