@@ -5,7 +5,10 @@
   gap: 0.625em;
   width: 100%;
   max-width: var(--max-width-content);
-  padding: 2.2em 1.25em;
+  padding-top: 2.2em;
+  padding-bottom: 2.2em;
+  padding-left: var(--horizontal-padding-lg);
+  padding-right: var(--horizontal-padding-lg);
   background-color: inherit;
   border-bottom: solid.0625em rgb(204, 204, 204, 0.2);
 }

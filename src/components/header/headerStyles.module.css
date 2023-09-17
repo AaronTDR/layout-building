@@ -1,7 +1,9 @@
 .header {
   width: 100%;
   max-width: var(--max-width-content);
-  padding: 0.1875em 1.25em;
+  padding-top: 0.1875em;
+  padding-left: var(--horizontal-padding-lg);
+  padding-right: var(--horizontal-padding-lg);
   background-color: var(--header-background-color);
   color: var(--principal-color);
 }

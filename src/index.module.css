@@ -14,6 +14,8 @@
   --grid-column: 1 / -1;
   --max-width-content: 86.25em;
   --margin-right: 0.3125em;
+  --horizontal-padding-lg: 1.25em; /* Horizontal padding for main containers breakpoint greater than 768px */
+  --horizontal-padding-sm: 0.5em; /* Horizontal padding for main containers breakpoint greater than 768px */
   --highlight-color: #bd4500;
   --principal-color: #ffffff;
   --primary-color: #cc0c39;
