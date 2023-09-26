@@ -23,10 +23,6 @@
   background-color: var(--header-background-color);
 }
 
-.stickyMenu {
-  display: none;
-}
-
 .stickyLogoContainer {
   display: flex;
   align-items: center;
@@ -148,13 +144,6 @@
     height: 100%;
     padding-left: var(--horizontal-padding-sm);
     padding-right: var(--horizontal-padding-sm);
-  }
-
-  .stickyMenu {
-    display: block;
-    margin-right: 0.5078em;
-    font-size: 2rem;
-    cursor: pointer;
   }
 
   .stickyLogoContainer {

@@ -2,10 +2,10 @@ import {
   faLocationDot,
   faMagnifyingGlass,
   faHeart,
-  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 /* components */
 import Icon from "../icon/Icon";
+import DropdownMenu from "../../components/dropdownMenu/DropdownMenu";
 import Logo from "../logo/Logo";
 import HeaderButton from "../headerButton/HeaderButton";
 import List from "../list/List";
@@ -58,7 +58,7 @@ const StickyBar = () => {
   return (
     <div className={stickyBar.stickyContainer}>
       <div className={stickyBar.stickyTopContainer}>
-        <Icon icon={faBars} css={stickyBar.stickyMenu} />
+        <DropdownMenu />
         <Logo
           logoContainerCss={stickyBar.stickyLogoContainer}
           logoImgCss={stickyBar.stickyLogoImg}
