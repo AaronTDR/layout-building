@@ -2,6 +2,12 @@ import {
   faLocationDot,
   faMagnifyingGlass,
   faHeart,
+  faBars,
+  faHome,
+  faTag,
+  faTshirt,
+  faGlobe,
+  faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 /* components */
 import Icon from "../icon/Icon";
@@ -15,6 +21,48 @@ import SearchBar from "../../features/home/components/searchBar/SearchBar";
 import borderLinkStyles from "../../styles/borderLink.module.css";
 import singleLineStyles from "../../styles/singleLine.module.css";
 import stickyBar from "./stickyBar.module.css";
+
+const dropdownMenuPrincipalList = [
+  {
+    path: "#",
+    text: "Home",
+    cssLink: stickyBar.menuLink,
+    icon: { name: faHome, css: stickyBar.menuOptionIcon },
+  },
+  {
+    path: "#",
+    text: "Wish List",
+    cssLink: stickyBar.menuLink,
+    icon: { name: faHeart, css: stickyBar.menuOptionIcon },
+  },
+  {
+    path: "#",
+    text: "Offers",
+    cssLink: stickyBar.menuLink,
+    icon: { name: faTag, css: stickyBar.menuOptionIcon },
+  },
+  {
+    path: "#",
+    text: "Trends",
+    cssLink: stickyBar.menuLink,
+    icon: { name: faTshirt, css: stickyBar.menuOptionIcon },
+  },
+];
+
+const dropdownMenuSettingsList = [
+  {
+    path: "#",
+    text: "Language",
+    cssLink: stickyBar.menuLink,
+    icon: { name: faGlobe, css: stickyBar.menuOptionIcon },
+  },
+  {
+    path: "#",
+    text: "Help",
+    cssLink: stickyBar.menuLink,
+    icon: { name: faQuestion, css: stickyBar.menuOptionIcon },
+  },
+];
 
 const categoriesElements = [
   {
@@ -58,7 +106,25 @@ const StickyBar = () => {
   return (
     <div className={stickyBar.stickyContainer}>
       <div className={stickyBar.stickyTopContainer}>
-        <DropdownMenu />
+        <div className={stickyBar.iconMenuContainer}>
+          <DropdownMenu
+            icon={faBars}
+            iconCss={stickyBar.iconMenu}
+            dropdownPosition={"left"}
+            menuWidthPercentage={80}
+          >
+            <List
+              ulTagCss={stickyBar.menuUl}
+              liTagCss={stickyBar.menuLi}
+              elements={dropdownMenuPrincipalList}
+            />
+            <List
+              ulTagCss={stickyBar.menuUl}
+              liTagCss={stickyBar.menuLi}
+              elements={dropdownMenuSettingsList}
+            />
+          </DropdownMenu>
+        </div>
         <Logo
           logoContainerCss={stickyBar.stickyLogoContainer}
           logoImgCss={stickyBar.stickyLogoImg}
