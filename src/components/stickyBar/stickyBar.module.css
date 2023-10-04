@@ -40,15 +40,6 @@
   margin-bottom: 0.8em;
 }
 
-.menuLi {
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  -webkit-transition: background-color 0.3s ease;
-  -moz-transition: background-color 0.3s ease;
-  -ms-transition: background-color 0.3s ease;
-  -o-transition: background-color 0.3s ease;
-}
-
 .menuUl::after {
   position: absolute;
   content: "";
@@ -64,6 +55,15 @@
   display: none; /* Hide the line after the last list section */
 }
 
+.menuLi {
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}
+
 .menuLink {
   display: flex;
   justify-content: flex-start;
@@ -72,12 +72,18 @@
   padding: 1em 1.3em;
   font-size: 1.125rem;
   color: var(--card-text-color);
+  text-decoration: none;
   cursor: pointer;
 }
 
 .menuLink:hover {
   display: flex;
   background-color: var(--secondary-color);
+}
+
+.menuLink:active {
+  color: var(--principal-color);
+  background-color: var(--highlight-color);
 }
 
 .menuOptionIcon {

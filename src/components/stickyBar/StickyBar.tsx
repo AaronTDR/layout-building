@@ -23,48 +23,6 @@ import borderLinkStyles from "../../styles/borderLink.module.css";
 import singleLineStyles from "../../styles/singleLine.module.css";
 import stickyBar from "./stickyBar.module.css";
 
-const dropdownMenuPrincipalList = [
-  {
-    path: "#",
-    text: "Home",
-    cssLink: stickyBar.menuLink,
-    icon: { name: faHome, css: stickyBar.menuOptionIcon },
-  },
-  {
-    path: "#",
-    text: "Wish List",
-    cssLink: stickyBar.menuLink,
-    icon: { name: faHeart, css: stickyBar.menuOptionIcon },
-  },
-  {
-    path: "#",
-    text: "Offers",
-    cssLink: stickyBar.menuLink,
-    icon: { name: faTag, css: stickyBar.menuOptionIcon },
-  },
-  {
-    path: "#",
-    text: "Trends",
-    cssLink: stickyBar.menuLink,
-    icon: { name: faTshirt, css: stickyBar.menuOptionIcon },
-  },
-];
-
-const dropdownMenuSettingsList = [
-  {
-    path: "#",
-    text: "Language",
-    cssLink: stickyBar.menuLink,
-    icon: { name: faGlobe, css: stickyBar.menuOptionIcon },
-  },
-  {
-    path: "#",
-    text: "Help",
-    cssLink: stickyBar.menuLink,
-    icon: { name: faQuestion, css: stickyBar.menuOptionIcon },
-  },
-];
-
 const categoriesElements = [
   {
     path: "#",
@@ -106,6 +64,52 @@ const categoriesElements = [
 const StickyBar = () => {
   /* Save the dropdownMenu status if it is open or closed */
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownMenuPrincipalList = [
+    {
+      path: "#",
+      text: "Home",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faHome, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Wish List",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faHeart, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Offers",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faTag, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Trends",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faTshirt, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+  ];
+  const dropdownMenuSettingsList = [
+    {
+      path: "#",
+      text: "Language",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faGlobe, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Help",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faQuestion, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+  ];
   return (
     <div className={stickyBar.stickyContainer}>
       <div className={stickyBar.stickyTopContainer}>

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { MouseEventHandler } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type IconType = {
@@ -11,14 +11,11 @@ type Element = {
   text: string;
   cssLink: string;
   icon?: IconType;
-  onClick?: () => void;
-  state?: boolean;
-  setState?: Dispatch<SetStateAction<boolean>>;
+  onClick?: () => void | MouseEventHandler<HTMLLIElement> | undefined;
 };
 
 export type ListType = {
   ulTagCss?: string;
   liTagCss?: string;
   elements: Element[];
-  setState?: Dispatch<SetStateAction<boolean>>;
 };
