@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, CSSProperties } from "react";
+import { useEffect, useRef, CSSProperties } from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 /* types */
@@ -22,8 +22,9 @@ const DropdownMenu = ({
   menuWidthPercentage,
   dropdownPosition,
   children,
+  state,
+  setState,
 }: DropdownMenuType) => {
-  const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   const navStyles: CSSProperties = {
@@ -31,15 +32,14 @@ const DropdownMenu = ({
     top: 0,
     width: `${menuWidthPercentage}%`,
     height: "100%",
-    backgroundColor: "blue",
     overflowY: "scroll",
     transition: "all 0.3s ease",
     WebkitTransition: "all 0.3s ease",
     MozTransition: "all 0.3s ease",
     msTransition: "all 0.3s ease",
     OTransition: "all 0.3s ease",
-    zIndex: 910,
     background: "#FFFFFF",
+    zIndex: 910,
   };
 
   /* Calculates the position of the drop-down menu based on the dropdownPosition property.
@@ -89,12 +89,11 @@ If dropdownPosition is "right", active styles place the menu on the right, other
         // Check if event.target is a Node or HTMLElement
         const targetNode = event.target as Node;
         if (!menuRef.current.contains(targetNode)) {
-          setIsOpen(false);
+          setState(false);
         }
       }
     };
-
-    if (isOpen) {
+    if (state) {
       document.body.style.overflow = "hidden";
       document.addEventListener("click", handleOutsideClick);
     } else {
@@ -105,36 +104,45 @@ If dropdownPosition is "right", active styles place the menu on the right, other
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, [isOpen]);
+  }, [state, setState]);
 
   const handleToggle = () => {
-    setIsOpen(!isOpen);
+    setState(true);
   };
 
   return (
-    <div className={dropdownMenu.container} ref={menuRef}>
-      <button type="button" className={dropdownMenu.btn} onClick={handleToggle}>
-        <i className={iconCss}>
-          <FontAwesomeIcon icon={icon} />
-        </i>
-      </button>
-      {isOpen && (
-        <div onClick={handleToggle} className={dropdownMenu.overlay}>
+    <>
+      {/* 'menuRef' is attached to this container element to capture click events
+    within the entire dropdown menu, including the menu-open button,
+    and to differentiate between events inside the dropdown menu and the overlay element. */}
+      <div className={dropdownMenu.container} ref={menuRef}>
+        <button
+          type="button"
+          className={dropdownMenu.btn}
+          onClick={handleToggle}
+        >
+          <i className={iconCss}>
+            <FontAwesomeIcon icon={icon} />
+          </i>
+        </button>
+        <nav
+          style={
+            state
+              ? { ...navStyles, ...navActiveStyles }
+              : { ...navStyles, ...leftOrRightPosition }
+          }
+        >
+          {children}
+        </nav>
+      </div>
+      {state && (
+        <div className={dropdownMenu.overlay}>
           <i style={iconXMarkCombinedStyles}>
             <FontAwesomeIcon icon={faXmark} />
           </i>
         </div>
       )}
-      <nav
-        style={
-          isOpen
-            ? { ...navStyles, ...navActiveStyles }
-            : { ...navStyles, ...leftOrRightPosition }
-        }
-      >
-        {children}
-      </nav>
-    </div>
+    </>
   );
 };
 

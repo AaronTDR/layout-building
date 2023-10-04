@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   faLocationDot,
   faMagnifyingGlass,
@@ -103,6 +104,8 @@ const categoriesElements = [
 ];
 
 const StickyBar = () => {
+  /* Save the dropdownMenu status if it is open or closed */
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className={stickyBar.stickyContainer}>
       <div className={stickyBar.stickyTopContainer}>
@@ -112,6 +115,8 @@ const StickyBar = () => {
             iconCss={stickyBar.iconMenu}
             dropdownPosition={"left"}
             menuWidthPercentage={80}
+            state={isOpen}
+            setState={setIsOpen}
           >
             <List
               ulTagCss={stickyBar.menuUl}
