@@ -14,6 +14,7 @@
 .stickyTopContainer {
   display: flex;
   align-items: flex-end;
+  gap: 0.3em;
   width: 100%;
   max-width: var(--max-width-content);
   padding-top: 0.625em;
@@ -24,19 +25,18 @@
 }
 
 .iconMenuContainer {
-  margin-right: 0.3em;
+  display: none;
 }
 
 .iconMenu {
-  margin-right: 1em;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
 }
 
 .menuUl {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 1.25em;
   margin-bottom: 0.8em;
 }
 
@@ -101,6 +101,7 @@
   width: 2.5em;
   height: 2.5em;
   margin-right: 0.1875em;
+  margin-bottom: 0.3em;
 }
 
 .stickyLogoText {
@@ -185,7 +186,6 @@
   .stickyLogoImg {
     width: 2em;
     height: 2em;
-    margin-bottom: 0.4375em;
     margin-right: 0;
   }
 
@@ -198,7 +198,8 @@
   .stickyButtonAddress,
   .stickyButtonWishList,
   .stickyShoppingCartContainer,
-  .stickyBottomContainer {
+  .stickyBottomContainer,
+  .stickyLogoContainer {
     display: none;
   }
 
@@ -214,13 +215,10 @@
     padding-right: var(--horizontal-padding-sm);
   }
 
-  .stickyLogoContainer {
-    margin-top: 2px;
-    margin-right: 0;
-  }
-
-  .stickyLogoImg {
-    width: 1.6em;
-    height: 1.6em;
+  .iconMenuContainer {
+    display: block;
+    margin-top: 0.0625em;
+    padding-left: 0.4761em;
+    padding-right: 0.4761em;
   }
 }
