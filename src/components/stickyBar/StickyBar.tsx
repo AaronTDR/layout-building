@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 /* components */
 import Icon from "../icon/Icon";
+import AccordionItem from "../accordion/AccordionItem";
+import Accordion from "../accordion/Accordion";
 import DropdownMenu from "../../components/dropdownMenu/DropdownMenu";
 import Logo from "../logo/Logo";
 import HeaderButton from "../headerButton/HeaderButton";
@@ -62,8 +64,9 @@ const categoriesElements = [
 ];
 
 const StickyBar = () => {
-  /* Save the dropdownMenu status if it is open or closed */
+  /* DropdownMenu state */
   const [isOpen, setIsOpen] = useState(false);
+
   const dropdownMenuPrincipalList = [
     {
       path: "#",
@@ -132,6 +135,30 @@ const StickyBar = () => {
               liTagCss={stickyBar.menuLi}
               elements={dropdownMenuSettingsList}
             />
+            <Accordion cssAccordionContainer={stickyBar.accordionContainer}>
+              <AccordionItem
+                title={"Item - 1"}
+                cssTitle={stickyBar.accordionItemTitle}
+                cssContent={stickyBar.accordionItemContent}
+              >
+                <List
+                  ulTagCss={stickyBar.menuUl}
+                  liTagCss={stickyBar.menuLi}
+                  elements={dropdownMenuSettingsList}
+                />
+              </AccordionItem>
+              <AccordionItem
+                title={"Item - 2"}
+                cssTitle={stickyBar.accordionItemTitle}
+                cssContent={stickyBar.accordionItemContent}
+              >
+                <List
+                  ulTagCss={stickyBar.menuUl}
+                  liTagCss={stickyBar.menuLi}
+                  elements={dropdownMenuPrincipalList}
+                />
+              </AccordionItem>
+            </Accordion>
           </DropdownMenu>
         </div>
         <Logo

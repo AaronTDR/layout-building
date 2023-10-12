@@ -91,6 +91,18 @@
   font-size: 1.6rem;
 }
 
+.accordionContainer {
+  background-color: blue;
+}
+
+.accordionItemTitle {
+  color: black;
+}
+
+.accordionItemContent {
+  background-color: aqua;
+}
+
 .stickyLogoContainer {
   display: flex;
   align-items: center;
