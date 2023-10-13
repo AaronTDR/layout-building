@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+/* types */
+import { AccordionType } from "./AccordionType";
 
-const Accordion = ({ cssAccordionContainer, children }) => {
+const Accordion = ({ cssAccordionContainer, children }: AccordionType) => {
   const [openIndex, setOpenIndex] = useState(-1);
 
-  const handleItemClick = (index) => {
+  const handleItemClick = (index: number) => {
     if (index === openIndex) {
       setOpenIndex(-1);
     } else {

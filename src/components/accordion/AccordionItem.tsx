@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, CSSProperties } from "react";
+/* types */
+import { AccordionItemType } from "./AccordionType";
 
 const AccordionItem = ({
   title,
@@ -7,10 +9,10 @@ const AccordionItem = ({
   cssTitle,
   cssContent,
   children,
-}) => {
-  const contentRef = useRef(null);
+}: AccordionItemType) => {
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
-  const accordionStyles = {
+  const accordionStyles: CSSProperties = {
     overflow: "hidden",
     transition: "max-height 0.3s ease",
     background: "#FFFFFF",
