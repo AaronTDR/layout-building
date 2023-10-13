@@ -1,7 +1,10 @@
-import React, { useRef, CSSProperties } from "react";
+import { useRef, CSSProperties } from "react";
 /* types */
 import { AccordionItemType } from "./AccordionType";
 
+// Component of an individual accordion element
+/* El componente AccordionItem representa un elemento individual dentro del Acordeón.
+No es necesario proporcionar manualmente las propiedades isOpen y onClick, ya que se inyectan automáticamente con la función cloneElement de React dentro del componente Accordion. */
 const AccordionItem = ({
   title,
   isOpen,
@@ -12,6 +15,7 @@ const AccordionItem = ({
 }: AccordionItemType) => {
   const contentRef = useRef<HTMLDivElement | null>(null);
 
+  // We set the style of the accordion element to control its height
   const accordionStyles: CSSProperties = {
     overflow: "hidden",
     transition: "max-height 0.3s ease",
@@ -19,9 +23,9 @@ const AccordionItem = ({
     zIndex: 910,
     maxHeight: isOpen
       ? contentRef.current
-        ? contentRef.current.scrollHeight + "px"
+        ? contentRef.current.scrollHeight + "px" //Open: full height of content
         : "auto"
-      : 0,
+      : 0, // Closed: zero height
   };
   return (
     <>
