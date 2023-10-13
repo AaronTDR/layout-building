@@ -1,7 +1,9 @@
 import { ReactElement, ReactNode } from "react";
+
 /* AccordionItem types */
 export type AccordionItemType = {
   title: string;
+  expandDirection: "up" | "down";
   cssTitle: string;
   cssContent: string;
   children: ReactNode;

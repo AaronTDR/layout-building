@@ -7,6 +7,7 @@ import { AccordionItemType } from "./AccordionType";
 No es necesario proporcionar manualmente las propiedades isOpen y onClick, ya que se inyectan automáticamente con la función cloneElement de React dentro del componente Accordion. */
 const AccordionItem = ({
   title,
+  expandDirection,
   isOpen,
   onClick,
   cssTitle,
@@ -27,7 +28,8 @@ const AccordionItem = ({
         : "auto"
       : 0, // Closed: zero height
   };
-  return (
+  /* If you choose "expandDirection" "down", the content is displayed below the title, while "expandDirection" "up" will display the title positioned below the content. */
+  return expandDirection === "down" ? (
     <>
       <h3 onClick={onClick} className={cssTitle}>
         {title}
@@ -37,6 +39,17 @@ const AccordionItem = ({
           {children}
         </div>
       </div>
+    </>
+  ) : (
+    <>
+      <div style={accordionStyles}>
+        <div ref={contentRef} className={cssContent}>
+          {children}
+        </div>
+      </div>
+      <h3 onClick={onClick} className={cssTitle}>
+        {title}
+      </h3>
     </>
   );
 };

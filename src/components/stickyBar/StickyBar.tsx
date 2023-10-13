@@ -137,7 +137,8 @@ const StickyBar = () => {
             />
             <Accordion cssAccordionContainer={stickyBar.accordionContainer}>
               <AccordionItem
-                title={"Item - 1"}
+                title={"Categories"}
+                expandDirection={"up"}
                 cssTitle={stickyBar.accordionItemTitle}
                 cssContent={stickyBar.accordionItemContent}
               >
@@ -148,7 +149,8 @@ const StickyBar = () => {
                 />
               </AccordionItem>
               <AccordionItem
-                title={"Item - 2"}
+                title={"Services"}
+                expandDirection={"up"}
                 cssTitle={stickyBar.accordionItemTitle}
                 cssContent={stickyBar.accordionItemContent}
               >
