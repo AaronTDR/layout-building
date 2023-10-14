@@ -138,9 +138,11 @@ const StickyBar = () => {
             <Accordion cssAccordionContainer={stickyBar.accordionContainer}>
               <AccordionItem
                 title={"Categories"}
-                expandDirection={"up"}
                 cssTitle={stickyBar.accordionItemTitle}
+                icon={faLocationDot}
+                cssIcon={stickyBar.stickyWishListIcon}
                 cssContent={stickyBar.accordionItemContent}
+                expandDirection={"up"}
               >
                 <List
                   ulTagCss={stickyBar.menuUl}
@@ -150,9 +152,9 @@ const StickyBar = () => {
               </AccordionItem>
               <AccordionItem
                 title={"Services"}
-                expandDirection={"up"}
                 cssTitle={stickyBar.accordionItemTitle}
                 cssContent={stickyBar.accordionItemContent}
+                expandDirection={"up"}
               >
                 <List
                   ulTagCss={stickyBar.menuUl}
