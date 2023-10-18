@@ -88,6 +88,7 @@ If dropdownPosition is "right", active styles place the menu on the right, other
       if (menuRef.current) {
         // Check if event.target is a Node or HTMLElement
         const targetNode = event.target as Node;
+        // If the onClick event is raised outside the menuRef element
         if (!menuRef.current.contains(targetNode)) {
           setState(false);
         }

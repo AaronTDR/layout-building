@@ -92,15 +92,24 @@
 }
 
 .accordionContainer {
-  background-color: blue;
+  background-color: inherit;
 }
 
 .accordionItemTitle {
-  color: black;
+  padding: 1em 0 1em 1em;
+  font-size: 1.125rem;
+  color: var(--card-text-color);
+}
+
+.accordionItemIcon {
+  margin-left: 0.6em;
+  font-size: 1rem;
+  color: var(--card-text-color);
 }
 
 .accordionItemContent {
-  background-color: aqua;
+  background-color: inherit;
+  padding-left: 0.75rem; /* Adds an indentation to the unfolded content of the accordion */
 }
 
 .stickyLogoContainer {

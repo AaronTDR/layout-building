@@ -9,6 +9,7 @@ import {
   faTshirt,
   faGlobe,
   faQuestion,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 /* components */
 import Icon from "../icon/Icon";
@@ -113,6 +114,50 @@ const StickyBar = () => {
       onClick: () => setIsOpen(!isOpen),
     },
   ];
+  const categoriesElementsDropDownMenu = [
+    {
+      path: "#",
+      text: "Vehicles",
+      cssLink: stickyBar.menuLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Supermarket",
+      cssLink: stickyBar.menuLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Technology",
+      cssLink: stickyBar.menuLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Home",
+      cssLink: stickyBar.menuLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Construction",
+      cssLink: stickyBar.menuLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Fashion",
+      cssLink: stickyBar.menuLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Sports",
+      cssLink: stickyBar.menuLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+  ];
   return (
     <div className={stickyBar.stickyContainer}>
       <div className={stickyBar.stickyTopContainer}>
@@ -139,28 +184,30 @@ const StickyBar = () => {
               <AccordionItem
                 title={"Categories"}
                 cssTitle={stickyBar.accordionItemTitle}
-                icon={faLocationDot}
-                cssIcon={stickyBar.stickyWishListIcon}
+                icon={faChevronDown}
+                cssIcon={stickyBar.accordionItemIcon}
+                rotateIcon={true}
+                IsThereOpacityIcon={true}
                 cssContent={stickyBar.accordionItemContent}
                 expandDirection={"up"}
               >
                 <List
                   ulTagCss={stickyBar.menuUl}
                   liTagCss={stickyBar.menuLi}
-                  elements={dropdownMenuSettingsList}
+                  elements={categoriesElementsDropDownMenu}
                 />
               </AccordionItem>
               <AccordionItem
                 title={"Services"}
                 cssTitle={stickyBar.accordionItemTitle}
+                icon={faChevronDown}
+                cssIcon={stickyBar.accordionItemIcon}
+                rotateIcon={true}
+                IsThereOpacityIcon={true}
                 cssContent={stickyBar.accordionItemContent}
                 expandDirection={"up"}
               >
-                <List
-                  ulTagCss={stickyBar.menuUl}
-                  liTagCss={stickyBar.menuLi}
-                  elements={dropdownMenuPrincipalList}
-                />
+                {/* API content will be added...*/}
               </AccordionItem>
             </Accordion>
           </DropdownMenu>
