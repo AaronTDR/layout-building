@@ -64,7 +64,6 @@ If dropdownPosition is "right", active styles place the menu on the right, other
     fontSize: "2.5rem",
     color: "#ccccc",
     cursor: "pointer",
-    transition: "color 0.5s ease",
   };
 
   /* Position styles for the close menu icon based on the dropdownPosition property. */

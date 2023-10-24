@@ -18,7 +18,7 @@ type userType = {
   path: string;
 };
 
-const user: userType | null = {
+const user: userType | null = /* null; */ {
   name: "Aarón Treviño Del Río",
   picture: profilePicture,
   path: "#",
