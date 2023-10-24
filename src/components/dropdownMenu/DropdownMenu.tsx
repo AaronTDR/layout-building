@@ -7,14 +7,13 @@ import { DropdownMenuType } from "./DropdownMenuType";
 import dropdownMenu from "./dropdownMenu.module.css";
 
 /*
--If you need to separate the button from the menu, you can wrap the component in a container and add the styles to the container.
-   props:
-- **icon**: The name of the icon import from the @fortawesome library.
-- **iconCss**: Styles for the menu icon.
-- **dropdownPosition**: The position from which the menu opens and closes.
-- **menuWidthPercentage**: The width of the menu in percentage in relation to the width of the screen.
-- **dropdownPosition**: The side from which the menu is displayed, either left or right.
-- **children**: Lists of options displayed when opening the menu.
+If you need to separate the button from the menu, you can wrap the component in a container and add the styles to the container.
+props:
+* icon: The name of the icon import from the @fortawesome library.
+* iconCss: Styles for the menu icon.
+* menuWidthPercentage: The width of the menu in percentage in relation to the width of the screen.
+* dropdownPosition: The side from which the menu is displayed, either left or right.
+* children: Lists of options displayed when opening the menu.
 */
 const DropdownMenu = ({
   icon,
