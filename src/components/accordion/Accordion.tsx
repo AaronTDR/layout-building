@@ -2,7 +2,6 @@ import { useState, Children, cloneElement } from "react";
 /* types */
 import { AccordionType } from "./AccordionType";
 
-// Accordion component that controls state and interaction
 /* The Accordion component is the main container of the Accordion, it automatically handles the opening and closing state of the Accordion elements. You must provide one or more AccordionItem elements as children of this component. */
 const Accordion = ({ cssAccordionContainer, children }: AccordionType) => {
   const [openIndex, setOpenIndex] = useState(-1);
