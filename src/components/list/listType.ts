@@ -10,6 +10,7 @@ type Element = {
   path: string;
   text: string;
   cssLink: string;
+  titleLink?: string;
   icon?: IconType;
   onClick?: () => void | MouseEventHandler<HTMLLIElement> | undefined;
 };

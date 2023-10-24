@@ -12,7 +12,11 @@ const List = ({ ulTagCss, liTagCss, elements }: ListType) => {
     <ul className={cssUl}>
       {elements.map((el, i) => (
         <li key={i} onClick={el.onClick} className={cssLi}>
-          <Link to={el.path} className={el.cssLink}>
+          <Link
+            to={el.path}
+            title={(el.titleLink && el.titleLink) || ""}
+            className={el.cssLink}
+          >
             {el.icon && <Icon icon={el.icon.name} css={el.icon.css} />}
             {el.text}
           </Link>

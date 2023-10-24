@@ -15,6 +15,7 @@ import {
 import Icon from "../icon/Icon";
 import AccordionItem from "../accordion/AccordionItem";
 import Accordion from "../accordion/Accordion";
+import UserProfileDropdown from "../userProfileDropdown/UserProfileDropdown";
 import DropdownMenu from "../../components/dropdownMenu/DropdownMenu";
 import Logo from "../logo/Logo";
 import HeaderButton from "../headerButton/HeaderButton";
@@ -118,43 +119,43 @@ const StickyBar = () => {
     {
       path: "#",
       text: "Vehicles",
-      cssLink: stickyBar.menuLink,
+      cssLink: stickyBar.accordionItemListLink,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Supermarket",
-      cssLink: stickyBar.menuLink,
+      cssLink: stickyBar.accordionItemListLink,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Technology",
-      cssLink: stickyBar.menuLink,
+      cssLink: stickyBar.accordionItemListLink,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Home",
-      cssLink: stickyBar.menuLink,
+      cssLink: stickyBar.accordionItemListLink,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Construction",
-      cssLink: stickyBar.menuLink,
+      cssLink: stickyBar.accordionItemListLink,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Fashion",
-      cssLink: stickyBar.menuLink,
+      cssLink: stickyBar.accordionItemListLink,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Sports",
-      cssLink: stickyBar.menuLink,
+      cssLink: stickyBar.accordionItemListLink,
       onClick: () => setIsOpen(!isOpen),
     },
   ];
@@ -170,6 +171,12 @@ const StickyBar = () => {
             state={isOpen}
             setState={setIsOpen}
           >
+            <header>
+              <UserProfileDropdown
+                onCLick={() => setIsOpen(!isOpen)}
+                isThereBanner={true}
+              />
+            </header>
             <List
               ulTagCss={stickyBar.menuUl}
               liTagCss={stickyBar.menuLi}
@@ -188,12 +195,12 @@ const StickyBar = () => {
                 cssIcon={stickyBar.accordionItemIcon}
                 rotateIcon={true}
                 IsThereOpacityIcon={true}
-                cssContent={stickyBar.accordionItemContent}
+                cssContentContainer={stickyBar.accordionItemContentContainer}
                 expandDirection={"up"}
               >
                 <List
                   ulTagCss={stickyBar.menuUl}
-                  liTagCss={stickyBar.menuLi}
+                  liTagCss={stickyBar.accordionItemList}
                   elements={categoriesElementsDropDownMenu}
                 />
               </AccordionItem>
@@ -204,7 +211,7 @@ const StickyBar = () => {
                 cssIcon={stickyBar.accordionItemIcon}
                 rotateIcon={true}
                 IsThereOpacityIcon={true}
-                cssContent={stickyBar.accordionItemContent}
+                cssContentContainer={stickyBar.accordionItemContentContainer}
                 expandDirection={"up"}
               >
                 {/* API content will be added...*/}

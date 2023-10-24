@@ -22,6 +22,7 @@ const AccordionItem = ({
   cssIcon,
   rotateIcon, //If true, a 180-degree rotation is added to the icon when the accordion contents are opened.
   IsThereOpacityIcon, // If true, Add an opacity effect when you press the icon.
+  cssContentContainer,
   cssContent,
   expandDirection,
   isOpen,
@@ -34,18 +35,17 @@ const AccordionItem = ({
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   // We set the style of the accordion element to control its height
-  const dropDownStyles: CSSProperties = {
-    overflow: "hidden",
-    transition: "max-height 0.3s ease",
-    background: "#FFFFFF",
-    zIndex: 910,
+  const dropDownStylesCalculateHeight: CSSProperties = {
     maxHeight: isOpen
       ? contentRef.current
         ? contentRef.current.scrollHeight + "px" //Open: full height of content
         : "auto"
       : 0, // Closed: zero height
+    overflow: "hidden",
+    transition: "max-height 0.3s ease",
+    zIndex: 910,
   };
-  /* If icon exists, check if rotateIcon is true to add the rotation transformation or not */
+  /* If icon exists, check if rotateIcon is true to add the rotation transformation or not. Allows the animation when opening the accordion to be fluid and not sudden */
   const rotateStyles = {
     transition: icon ? (rotateIcon ? "transform 0.2s ease" : "") : "",
     transform: icon
@@ -74,11 +74,12 @@ const AccordionItem = ({
   /* If you choose "expandDirection" "down", the content is displayed below the title, while "expandDirection" "up" will display the title positioned below the content. */
   return expandDirection === "up" ? (
     /* Section shows the accordion upwards */
-    <>
-      <div style={dropDownStyles}>
-        <div ref={contentRef} className={cssContent}>
-          {children}
-        </div>
+    <div className={cssContentContainer ? cssContentContainer : ""}>
+      <div
+        style={dropDownStylesCalculateHeight}
+        className={cssContent ? cssContent : ""}
+      >
+        <div ref={contentRef}>{children}</div>
       </div>
       <div
         onClick={onClick}
@@ -95,10 +96,10 @@ const AccordionItem = ({
           </i>
         )}
       </div>
-    </>
+    </div>
   ) : (
     /* Section Shows the Accordion Down */
-    <>
+    <div className={cssContentContainer ? cssContentContainer : ""}>
       <div
         onClick={onClick}
         onTouchStart={isThereIconAndOpacity ? handleActiveOpacity : undefined}
@@ -114,12 +115,12 @@ const AccordionItem = ({
           </i>
         )}
       </div>
-      <div style={dropDownStyles}>
-        <div ref={contentRef} className={cssContent}>
+      <div style={dropDownStylesCalculateHeight}>
+        <div ref={contentRef} className={cssContent ? cssContent : ""}>
           {children}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

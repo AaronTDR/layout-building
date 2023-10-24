@@ -5,12 +5,16 @@ import SocialMedia from "../socialMedia/SocialMedia";
 /* styles */
 import termsStyles from "./terms.module.css";
 
-const termListElements = [
+const attributions = [
   {
-    path: "#",
-    text: "Conditions of Use",
+    path: "https://www.flaticon.es/iconos-gratis/usuario",
+    text: "Freepik - Flaticon",
     cssLink: termsStyles.footerTermsLink,
+    titleLink: "User created icons Freepik - Flaticon",
   },
+];
+
+const termListElements = [
   {
     path: "#",
     text: "Privacy Notice",
@@ -18,7 +22,7 @@ const termListElements = [
   },
   {
     path: "#",
-    text: "Your Ads Privacy Choices",
+    text: "Privacy Choices",
     cssLink: termsStyles.footerTermsLink,
   },
 ];
@@ -37,6 +41,11 @@ const Terms = () => {
           logoContainerCss={termsStyles.termsLogoContainer}
           logoImgCss={termsStyles.termsLogoImg}
           logoTextCss={termsStyles.termsLogoText}
+        />
+        <List
+          ulTagCss={termsStyles.footerListTerms}
+          liTagCss={termsStyles.footerListElementTerms}
+          elements={attributions}
         />
         <List
           ulTagCss={termsStyles.footerListTerms}

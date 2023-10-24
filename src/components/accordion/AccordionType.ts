@@ -9,7 +9,8 @@ type AccordionItemWithIcon = {
   cssIcon: string; // Required if icon is present
   rotateIcon: boolean; // Optional only if icon is added
   IsThereOpacityIcon: boolean; // Optional only if icon is added
-  cssContent: string;
+  cssContentContainer?: string;
+  cssContent?: string;
   expandDirection?: "up" | "down";
   children: ReactNode;
   isOpen?: boolean;
@@ -23,7 +24,8 @@ type AccordionItemWithoutIcon = {
   cssIcon?: never; // Ensures that cssIcon is not present if icon was not added
   rotateIcon?: never; // Ensures that rotateIcon is not present if icon was not added
   IsThereOpacityIcon?: never; // Ensures that IsThereOpacityIcon is not present if icon was not added
-  cssContent: string;
+  cssContentContainer?: string;
+  cssContent?: string;
   expandDirection?: "up" | "down";
   children: ReactNode;
   isOpen?: boolean;
