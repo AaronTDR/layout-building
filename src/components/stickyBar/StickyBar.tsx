@@ -1,11 +1,22 @@
+import { useState } from "react";
 import {
   faLocationDot,
   faMagnifyingGlass,
   faHeart,
   faBars,
+  faHome,
+  faTag,
+  faTshirt,
+  faGlobe,
+  faQuestion,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 /* components */
 import Icon from "../icon/Icon";
+import AccordionItem from "../accordion/AccordionItem";
+import Accordion from "../accordion/Accordion";
+import UserProfileDropdown from "../userProfileDropdown/UserProfileDropdown";
+import DropdownMenu from "../../components/dropdownMenu/DropdownMenu";
 import Logo from "../logo/Logo";
 import HeaderButton from "../headerButton/HeaderButton";
 import List from "../list/List";
@@ -55,10 +66,159 @@ const categoriesElements = [
 ];
 
 const StickyBar = () => {
+  /* DropdownMenu state */
+  const [isOpen, setIsOpen] = useState(false);
+
+  const dropdownMenuPrincipalList = [
+    {
+      path: "#",
+      text: "Home",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faHome, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Wish List",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faHeart, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Offers",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faTag, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Trends",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faTshirt, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+  ];
+  const dropdownMenuSettingsList = [
+    {
+      path: "#",
+      text: "Language",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faGlobe, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Help",
+      cssLink: stickyBar.menuLink,
+      icon: { name: faQuestion, css: stickyBar.menuOptionIcon },
+      onClick: () => setIsOpen(!isOpen),
+    },
+  ];
+  const categoriesElementsDropDownMenu = [
+    {
+      path: "#",
+      text: "Vehicles",
+      cssLink: stickyBar.accordionItemListLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Supermarket",
+      cssLink: stickyBar.accordionItemListLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Technology",
+      cssLink: stickyBar.accordionItemListLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Home",
+      cssLink: stickyBar.accordionItemListLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Construction",
+      cssLink: stickyBar.accordionItemListLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Fashion",
+      cssLink: stickyBar.accordionItemListLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Sports",
+      cssLink: stickyBar.accordionItemListLink,
+      onClick: () => setIsOpen(!isOpen),
+    },
+  ];
   return (
     <div className={stickyBar.stickyContainer}>
       <div className={stickyBar.stickyTopContainer}>
-        <Icon icon={faBars} css={stickyBar.stickyMenu} />
+        <div className={stickyBar.iconMenuContainer}>
+          <DropdownMenu
+            icon={faBars}
+            iconCss={stickyBar.iconMenu}
+            dropdownPosition={"left"}
+            menuWidthPercentage={80}
+            state={isOpen}
+            setState={setIsOpen}
+          >
+            <header>
+              <UserProfileDropdown
+                onCLick={() => setIsOpen(!isOpen)}
+                isThereBanner={true}
+              />
+            </header>
+            <List
+              ulTagCss={stickyBar.menuUl}
+              liTagCss={stickyBar.menuLi}
+              elements={dropdownMenuPrincipalList}
+            />
+            <List
+              ulTagCss={stickyBar.menuUl}
+              liTagCss={stickyBar.menuLi}
+              elements={dropdownMenuSettingsList}
+            />
+            <Accordion cssAccordionContainer={stickyBar.accordionContainer}>
+              <AccordionItem
+                title={"Categories"}
+                cssTitle={stickyBar.accordionItemTitle}
+                icon={faChevronDown}
+                cssIcon={stickyBar.accordionItemIcon}
+                rotateIcon={true}
+                IsThereOpacityIcon={true}
+                cssContentContainer={stickyBar.accordionItemContentContainer}
+                expandDirection={"up"}
+              >
+                <List
+                  ulTagCss={stickyBar.menuUl}
+                  liTagCss={stickyBar.accordionItemList}
+                  elements={categoriesElementsDropDownMenu}
+                />
+              </AccordionItem>
+              <AccordionItem
+                title={"Services"}
+                cssTitle={stickyBar.accordionItemTitle}
+                icon={faChevronDown}
+                cssIcon={stickyBar.accordionItemIcon}
+                rotateIcon={true}
+                IsThereOpacityIcon={true}
+                cssContentContainer={stickyBar.accordionItemContentContainer}
+                expandDirection={"up"}
+              >
+                {/* API content will be added...*/}
+              </AccordionItem>
+            </Accordion>
+          </DropdownMenu>
+        </div>
         <Logo
           logoContainerCss={stickyBar.stickyLogoContainer}
           logoImgCss={stickyBar.stickyLogoImg}

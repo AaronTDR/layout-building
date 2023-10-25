@@ -6,23 +6,22 @@ import Icon from "../../components/icon/Icon";
 import { ListType } from "./ListType";
 
 const List = ({ ulTagCss, liTagCss, elements }: ListType) => {
-  const cssUl = ulTagCss ? ulTagCss : "";
-  const cssLi = liTagCss ? liTagCss : "";
+  const cssUl = ulTagCss || "";
+  const cssLi = liTagCss || "";
   return (
     <ul className={cssUl}>
-      {elements.map((el, i) => {
-        const isThereIcon = el.icon ? (
-          <Icon icon={el.icon.name} css={el.icon.css} />
-        ) : null;
-        return (
-          <li key={i} className={cssLi}>
-            <Link to={el.path} className={el.cssLink}>
-              {isThereIcon}
-              {el.text}
-            </Link>
-          </li>
-        );
-      })}
+      {elements.map((el, i) => (
+        <li key={i} onClick={el.onClick} className={cssLi}>
+          <Link
+            to={el.path}
+            title={(el.titleLink && el.titleLink) || ""}
+            className={el.cssLink}
+          >
+            {el.icon && <Icon icon={el.icon.name} css={el.icon.css} />}
+            {el.text}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };

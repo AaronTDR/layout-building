@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type IconType = {
@@ -9,7 +10,9 @@ type Element = {
   path: string;
   text: string;
   cssLink: string;
+  titleLink?: string;
   icon?: IconType;
+  onClick?: () => void | MouseEventHandler<HTMLLIElement> | undefined;
 };
 
 export type ListType = {

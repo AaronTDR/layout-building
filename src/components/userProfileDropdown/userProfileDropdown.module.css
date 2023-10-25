@@ -1,0 +1,148 @@
+.localContainer {
+  width: 100%;
+  max-height: 8.875em;
+  padding-top: 1em;
+  padding-right: var(--horizontal-padding-sm);
+  padding-bottom: 1em;
+  padding-left: var(--horizontal-padding-sm);
+  background-color: var(--footer-background);
+  overflow: hidden;
+}
+
+.profileLink {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  cursor: pointer;
+}
+
+.localImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3em;
+  height: 3em;
+  min-width: 3em;
+  margin-right: 0.7em;
+  border-radius: 50%;
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+.localImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.localDefaultAvatarImage {
+  width: 65%;
+  height: auto;
+}
+
+.localTextContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.localTextName {
+  font-size: 1.125rem;
+  color: var(--principal-color);
+}
+/* Applied to "Hello, sign in" text when the user is not logged in, or added to "My profile" text when the user is logged in */
+.localTextProfile {
+  margin-right: 0.3em;
+  font-size: 1rem;
+  color: var(--principal-color);
+}
+
+/* When "profileLink" is in the "hover" state and the user exists, the color of the "localTextProfile" changes */
+.profileLink:hover
+  > .localTextContainer
+  > .myProfileTextContainer
+  > .localTextProfile {
+  color: var(--highlight-color);
+}
+
+/* When "profileLink" is in the "hover" state and the user exists, the color of the "localTextIcon" changes */
+.profileLink:hover
+  > .localTextContainer
+  > .myProfileTextContainer
+  > .localTextIcon {
+  color: var(--highlight-color);
+}
+
+/* When "profileLink" is in the "hover" state and the user does not exist, the color of the "localTextProfile" changes */
+.profileLink:hover > .localTextContainer > .localTextProfile {
+  color: var(--highlight-color);
+}
+
+/* When "profileLink" is in the "hover" state and the user does not exist, the color of the "localTextIcon" changes */
+.profileLink:hover > .localTextContainer > .localTextIcon {
+  color: var(--highlight-color);
+}
+
+.width100percent {
+  width: 100%;
+}
+
+.myProfileTextContainer {
+  display: flex;
+  width: 100%;
+}
+
+.localTextIcon {
+  margin-top: 0.17em;
+  font-size: 0.7rem;
+  color: var(--principal-color);
+}
+
+.bannerLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 2em;
+  margin-top: 1em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  border-radius: 0.3em;
+  background-color: #58769b;
+  color: var(--principal-color);
+  cursor: pointer;
+}
+
+.imageAndTextBannerContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.imageBannerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  min-width: 1.4em;
+  margin-right: 1.2em;
+  overflow: hidden;
+}
+
+.bannerImage {
+  width: 100%;
+  height: auto;
+}
+
+/* When "bannerLink" is in hover state, "bannerText" changes its color */
+.bannerLink:hover > .imageAndTextBannerContainer > .bannerText {
+  color: rgb(255, 216, 20);
+}
+
+/* When "bannerLink" is in hover state, "localTextIcon" changes its color */
+.bannerLink:hover > .localTextIcon {
+  color: rgb(255, 216, 20);
+}

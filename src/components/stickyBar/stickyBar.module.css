@@ -14,6 +14,7 @@
 .stickyTopContainer {
   display: flex;
   align-items: flex-end;
+  gap: 0.3em;
   width: 100%;
   max-width: var(--max-width-content);
   padding-top: 0.625em;
@@ -22,9 +23,119 @@
   padding-right: var(--horizontal-padding-lg);
   background-color: var(--header-background-color);
 }
-
-.stickyMenu {
+/* Icon container for the button that opens the dropdown menu */
+.iconMenuContainer {
   display: none;
+}
+/* The button icon that opens the dropdown menu */
+.iconMenu {
+  font-size: 1.8rem;
+}
+
+.menuUl {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuUl::after {
+  position: absolute;
+  content: "";
+  display: block; /* Hide the separator line if it is not the last element */
+  bottom: 0;
+  width: 100%;
+  height: 0.0625em;
+  background-color: var(--secondary-color);
+  opacity: 0.6;
+}
+
+.menuUl:last-child::after {
+  display: none; /* Hide the line after the last list section */
+}
+
+.menuLi {
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}
+
+.menuLink {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 1.1em 1.3em;
+  font-size: 1rem;
+  color: var(--card-text-color);
+  line-height: 1.5rem; /* Equal to the height of the icons */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menuLink:hover {
+  background-color: var(--secondary-color);
+}
+
+.menuLink:active {
+  color: var(--principal-color);
+  background-color: var(--highlight-color);
+}
+
+.menuOptionIcon {
+  margin-right: 1em;
+  font-size: 1.25rem;
+  width: 1.5rem; /* Fixed width for icons */
+  height: 1.5rem; /* Fixed height for icons */
+  vertical-align: middle; /* Vertically align icons */
+}
+
+.accordionContainer {
+  background-color: inherit;
+}
+
+.accordionItemTitle {
+  padding: 1.1em 0 1.1em 1.3em;
+  font-size: 1rem;
+  color: var(--card-text-color);
+}
+
+.accordionItemIcon {
+  margin-left: 0.6em;
+  font-size: 1rem;
+  color: var(--card-text-color);
+}
+
+.accordionItemContentContainer {
+  background-color: var(--principal-color);
+  cursor: pointer;
+}
+
+.accordionItemContentContainer:hover {
+  background-color: var(--secondary-color);
+}
+
+.accordionItemListLink {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 1.1em 1.3em 1.1em 2.3em; /* Adds an indentation to the unfolded content of the accordion */
+  font-size: 1rem;
+  background-color: var(--principal-color);
+  color: var(--card-text-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accordionItemListLink:hover {
+  background-color: var(--secondary-color);
+}
+
+.accordionItemList {
+  background-color: inherit;
 }
 
 .stickyLogoContainer {
@@ -37,6 +148,7 @@
   width: 2.5em;
   height: 2.5em;
   margin-right: 0.1875em;
+  margin-bottom: 0.3em;
 }
 
 .stickyLogoText {
@@ -121,7 +233,6 @@
   .stickyLogoImg {
     width: 2em;
     height: 2em;
-    margin-bottom: 0.4375em;
     margin-right: 0;
   }
 
@@ -134,7 +245,8 @@
   .stickyButtonAddress,
   .stickyButtonWishList,
   .stickyShoppingCartContainer,
-  .stickyBottomContainer {
+  .stickyBottomContainer,
+  .stickyLogoContainer {
     display: none;
   }
 
@@ -150,20 +262,10 @@
     padding-right: var(--horizontal-padding-sm);
   }
 
-  .stickyMenu {
+  .iconMenuContainer {
     display: block;
-    margin-right: 0.5078em;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-
-  .stickyLogoContainer {
-    margin-top: 2px;
-    margin-right: 0;
-  }
-
-  .stickyLogoImg {
-    width: 1.6em;
-    height: 1.6em;
+    margin-top: 0.0625em;
+    padding-left: 0.4761em;
+    padding-right: 0.4761em;
   }
 }
