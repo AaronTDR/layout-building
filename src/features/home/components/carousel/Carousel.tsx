@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
 import {
@@ -16,6 +16,15 @@ import carouselStyles from "./carousel.module.css";
 /* carousel banner images */
 import banner1 from "../../../../assets/carousel/carouselBanners/banner-1.webp";
 import banner2 from "../../../../assets/carousel/carouselBanners/banner-2.webp";
+
+/* Check your device type to decide to add the prev and next buttons to the carousel */
+const userAgent = navigator.userAgent;
+const isAndroid = userAgent.match(/Android/i); // Check if the user is on an Android device
+const isiPhone = userAgent.match(/iPhone/i); // Check if the user is on an iPhone device
+const onMobileDevice = isAndroid || isiPhone;
+const isButtonVisible: CSSProperties = {
+  visibility: onMobileDevice ? "hidden" : "visible",
+};
 
 const Carousel = () => {
   const [images, setImages] = useState<CarouselImageType[]>([]);
@@ -75,11 +84,11 @@ const Carousel = () => {
     }
     return (
       <Link
+        key={i}
         to={(img.path && img.path) || "#"}
         className={carouselStyles.imgLink}
       >
         <img
-          key={i}
           src={img[sizeImage]}
           alt={`Slide ${i + 1}`}
           className={carouselStyles.img}
@@ -149,15 +158,19 @@ const Carousel = () => {
         )}
         {images.length > 1 && (
           <>
+            {/* These buttons will be visible on PC but hidden on Android and iPhone. */}
             <button
               type="button"
+              style={isButtonVisible}
               className={carouselStyles.prevButton}
               onClick={handlePrevClick}
             >
               <Icon icon={faChevronLeft} css={carouselStyles.buttonIcon} />
             </button>
+
             <button
               type="button"
+              style={isButtonVisible}
               className={carouselStyles.nextButton}
               onClick={handleNextClick}
             >

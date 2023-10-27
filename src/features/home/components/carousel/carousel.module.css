@@ -46,14 +46,17 @@
   position: absolute;
   top: 80%;
   left: 50%;
-  transform: translate(-50%, 0); /* Centrar horizontalmente y verticalmente */
+  transform: translate(
+    -50%,
+    0
+  ); /* Center horizontally and vertically relative to its own size*/
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.375em;
-  /* min-width: 24%; */
-  min-width: 200px;
+  min-width: 11em; /* Prevent dots from reducing their width when the carousel screen width is reduced*/
   height: 1.6em;
+  padding: 18px 0;
 }
 
 .paginationDot {
@@ -137,9 +140,5 @@
   .container {
     padding-left: var(--horizontal-padding-sm);
     padding-right: var(--horizontal-padding-sm);
-  }
-
-  .buttons {
-    visibility: hidden;
   }
 }
