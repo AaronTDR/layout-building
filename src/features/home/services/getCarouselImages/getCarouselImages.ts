@@ -33,36 +33,43 @@ export const getCarouselImages = () => {
       large: discountLarge,
       medium: discountMedium,
       small: discountSmall,
+      path: "#",
     },
     {
       large: laptopLarge,
       medium: laptopMedium,
       small: laptopSmall,
+      path: "#",
     },
     {
       large: shoesLarge,
       medium: shoesMedium,
       small: shoesSmall,
+      path: "#",
     },
     {
       large: petsLarge,
       medium: petsMedium,
       small: petsSmall,
+      path: "#",
     },
     {
       large: gymLarge,
       medium: gymMedium,
       small: gymSmall,
+      path: "#",
     },
     {
       large: furnitureLarge,
       medium: furnitureMedium,
       small: furnitureSmall,
+      path: "#",
     },
     {
       large: toysLarge,
       medium: toysMedium,
       small: toysSmall,
+      path: "#",
     },
   ];
 

@@ -63,7 +63,7 @@ const Carousel = () => {
     }
   }, [images]);
 
-  const carouselContain = images.map((img, i) => {
+  const carouselContent = images.map((img, i) => {
     /* Determines the size of the carousel image */
     let sizeImage: keyof CarouselImageType;
     if (width <= 480) {
@@ -74,12 +74,17 @@ const Carousel = () => {
       sizeImage = "large";
     }
     return (
-      <img
-        key={i}
-        src={img[sizeImage]}
-        alt={`Slide ${i + 1}`}
-        className={carouselStyles.img}
-      />
+      <Link
+        to={(img.path && img.path) || "#"}
+        className={carouselStyles.imgLink}
+      >
+        <img
+          key={i}
+          src={img[sizeImage]}
+          alt={`Slide ${i + 1}`}
+          className={carouselStyles.img}
+        />
+      </Link>
     );
   });
 
@@ -126,8 +131,8 @@ const Carousel = () => {
   return (
     <div className={carouselStyles.container}>
       <div {...handlers} className={carouselStyles.carousel}>
-        <div style={translateX} className={carouselStyles.contain}>
-          {carouselContain}
+        <div style={translateX} className={carouselStyles.content}>
+          {carouselContent}
         </div>
         {images.length > 1 && (
           <div className={carouselStyles.pagination}>
@@ -143,7 +148,7 @@ const Carousel = () => {
           </div>
         )}
         {images.length > 1 && (
-          <div className={carouselStyles.buttons}>
+          <>
             <button
               type="button"
               className={carouselStyles.prevButton}
@@ -158,7 +163,7 @@ const Carousel = () => {
             >
               <Icon icon={faChevronRight} css={carouselStyles.buttonIcon} />
             </button>
-          </div>
+          </>
         )}
       </div>
       {width > 768 && (
