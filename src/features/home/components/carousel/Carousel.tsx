@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, CSSProperties } from "react";
+import { useState, useEffect, useRef, MouseEvent, CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { useSwipeable } from "react-swipeable";
+import { SwipeEventData, useSwipeable } from "react-swipeable";
 import {
   faChevronLeft,
   faChevronRight,
@@ -26,14 +26,60 @@ const isButtonVisible: CSSProperties = {
   visibility: onMobileDevice ? "hidden" : "visible",
 };
 
+/*
+* The Carousel component displays a series of images and allows users to navigate through them automatically or manually.
+
+* The Carousel component consists of the following features:
+
+* Obtaining Images: When the component loads, the images to be displayed are obtained through the getCarouselImages function. Once the images have been successfully loaded, they are stored in the internal state of the component.
+
+* Automatic Navigation: The carousel automatically switches from one image to another after a predefined time interval (by default, every 4 seconds). This is made possible by a timer configured with setInterval.
+
+* Manual Navigation: Users can manually navigate through images using the “Previous” and “Next” navigation buttons or by clicking the pagination dots below the carousel.
+
+* Responsiveness: The carousel adapts to different screen sizes. Images automatically adjust based on the width of the browser window.
+
+*/
 const Carousel = () => {
   const [images, setImages] = useState<CarouselImageType[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   /* In a breakpoint greater than 768px shows the banners section */
   const [width, setWidth] = useState(window.innerWidth);
-  const timerRef = useRef(null);
+
+  const timerRef = useRef<null | number>(null);
 
   const autoChangeInterval = 4000; // Automatic change time
+
+  // Handles carousel point pagination
+  const handlePaginationClick = (index: number) => {
+    // Stop timer when user interacts manually
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    setCurrentImageIndex(index);
+  };
+
+  const handlePrevClick = () => {
+    // Stop timer when user interacts manually
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextClick = (e?: MouseEvent | SwipeEventData) => {
+    // Stop timer when user interacts manually
+    if (e && timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    setCurrentImageIndex((prevIndex) => {
+      return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+    });
+  };
 
   /* Manage the screen size to display the banners section */
   useEffect(() => {
@@ -47,6 +93,7 @@ const Carousel = () => {
     const response = getCarouselImages();
     setImages(response);
   }, []);
+
   /* It will run every time the current image changes
   reset timer for automatic switching */
   useEffect(() => {
@@ -70,7 +117,7 @@ const Carousel = () => {
         }
       };
     }
-  }, [images]);
+  }, [images.length]); // This line is maintained so that the carousel stops its automatic movement in case the user interacts with it. eslint-disable-next-line react-hooks/exhaustive-deps
 
   const carouselContent = images.map((img, i) => {
     /* Determines the size of the carousel image */
@@ -96,37 +143,6 @@ const Carousel = () => {
       </Link>
     );
   });
-
-  // Handles carousel point pagination
-  const handlePaginationClick = (index: number) => {
-    // Stop timer when user interacts manually
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-
-    setCurrentImageIndex(index);
-  };
-
-  const handlePrevClick = () => {
-    // Stop timer when user interacts manually
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNextClick = (e) => {
-    // Stop timer when user interacts manually
-    if (e && timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-
-    setCurrentImageIndex((prevIndex) => {
-      return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
-    });
-  };
 
   const handlers = useSwipeable({
     onSwipedLeft: handleNextClick,
