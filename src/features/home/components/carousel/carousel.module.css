@@ -14,21 +14,25 @@
   position: relative;
   width: 65%;
   overflow: hidden;
-  transition: all 0.4s ease;
 }
 
-.contain {
+.content {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   width: 700%;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   transform: translateX(0%);
 }
 
-.img {
+.imgLink {
   width: calc(100% / 7);
+  cursor: pointer;
+}
+
+.img {
+  width: 100%;
   max-height: 12.875em;
   border-radius: 0.1875em;
   -webkit-border-radius: 0.1875em;
@@ -36,18 +40,23 @@
   -ms-border-radius: 0.1875em;
   -o-border-radius: 0.1875em;
   object-fit: cover;
-  transition: all 0.4s ease;
 }
 
 .pagination {
   position: absolute;
   top: 80%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    0
+  ); /* Center horizontally and vertically relative to its own size*/
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.375em;
-  width: 100%;
+  min-width: 11em; /* Prevent dots from reducing their width when the carousel screen width is reduced*/
   height: 1.6em;
+  padding: 18px 0;
 }
 
 .paginationDot {
@@ -59,41 +68,41 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   background-color: rgba(134, 134, 134, 0.7);
-  transition: all 0.4s ease;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
 }
 
 .active {
   background-color: #ff9900;
 }
 
-.buttons {
-  position: absolute;
-  top: 40%;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .prevButton,
 .nextButton {
+  position: absolute;
+  top: 40%;
   padding: 1em 0.7em;
-  background-color: rgba(0, 0, 0, 0.65);
-  transition: background-color 0.2s ease;
-  -webkit-transition: background-color 0.2s ease;
-  -moz-transition: background-color 0.2s ease;
-  -ms-transition: background-color 0.2s ease;
-  -o-transition: background-color 0.2s ease;
+  background-color: var(--card-text-color);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.prevButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
 }
 
 .prevButton:hover,
 .nextButton:hover {
-  cursor: pointer;
   border: none;
-  background-color: rgb(0, 0, 0);
+  opacity: 1;
 }
 
 .buttonIcon {
-  color: #fff;
+  color: var(--principal-color);
 }
 
 .bannerSection {
@@ -131,9 +140,5 @@
   .container {
     padding-left: var(--horizontal-padding-sm);
     padding-right: var(--horizontal-padding-sm);
-  }
-
-  .buttons {
-    visibility: hidden;
   }
 }
