@@ -2,7 +2,7 @@
   display: flex;
   grid-column: var(--grid-column);
   justify-content: center;
-  background-color: var(--header-background-color);
+  background-color: var(--background-color-header);
   width: 100%;
 }
 

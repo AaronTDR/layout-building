@@ -7,8 +7,8 @@
   max-width: var(--max-width-content);
   padding-top: 2.2em;
   padding-bottom: 2.2em;
-  padding-left: var(--horizontal-padding-lg);
-  padding-right: var(--horizontal-padding-lg);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
   background-color: inherit;
   border-bottom: solid.0625em rgb(204, 204, 204, 0.2);
 }
@@ -27,7 +27,7 @@
   content: "";
   width: 0.0625em;
   height: 4.375em;
-  background-color: var(--secondary-color);
+  background-color: var(--text-color-secondary-light);
   opacity: 0.1;
 }
 
@@ -57,7 +57,7 @@
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
-  color: var(--principal-color);
+  color: var(--text-color-primary-light);
 }
 
 .footerServiceDescription {
@@ -68,7 +68,7 @@
   text-align: center;
   font-family: inherit;
   font-size: 0.9375rem;
-  color: var(--secondary-color);
+  color: var(--text-color-secondary-light);
   overflow: hidden;
 }
 

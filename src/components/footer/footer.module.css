@@ -4,5 +4,5 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  background-color: var(--footer-background);
+  background-color: var(--background-color-secondary-dark);
 }

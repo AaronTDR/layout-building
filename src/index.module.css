@@ -10,66 +10,92 @@
 
 :root {
   font-family: "Amazon Ember", Arial, sans-serif;
-  /* *Global vars */
+}
+
+/* * Layout */
+:root {
   --grid-column: 1 / -1;
-  --max-width-content: 86.25em;
-  --margin-right: 0.3125em;
-  --margin-bottom: 1.25em; /* Bottom margin for main containers */
-  --horizontal-padding-sm: 0.5em; /* Horizontal padding for main containers on breakpoints smaller than 768px */
-  --horizontal-padding-lg: 1.25em; /* Horizontal padding for main containers on breakpoints larger than or equal to 768px. */
-  --background-color: #e3e6e6;
-  --highlight-color: #bd4500;
-  --principal-color: #ffffff;
-  --primary-color: #cc0c39;
-  --secondary-color: #cccccc;
-  --header-background-color: #131921;
+}
 
-  /* Border radius */
-  --border-radius-principal: 0.375em;
+/* * Dimensions  */
+:root {
+  /* Max page width */
+  --max-width-content: 1328px;
+}
 
-  /* *Header vars */
-  --header-principal-font-size: 0.8125rem;
-  --header-secondary-font-size: 0.75rem;
-  /* *Main */
+/* * Spacing */
+:root {
+  /* Main spacing for multiple items and containers */
+  --spacing-xs: 0.25em;
+  --spacing-sm: 0.5em;
+  --spacing-md: 0.625em;
+  --spacing-lg: 1.25em;
+  /* --spacing-xl */
+}
 
-  /* TODO: Cars vars */
+/* * Border radius */
+:root {
+  --principal-border-radius: 0.375em;
+}
 
-  /*  *Shared variables on cards */
-  /* Bottom margin header */
-  --bottom-margin-header: 0.625em;
-  /* Title text*/
-  --title-card-font-size: 1.3125rem;
+/* * Typography */
+:root {
+  --title-lg: 1.5rem;
+  --title-md: 1.3125rem;
+  --title-sm: 1rem;
 
-  /* text */
-  --card-text-color: #0f1111;
+  --text-lg: 0.9375rem;
+  --text-md: 0.875rem;
+  --text-sm: 0.75rem;
+}
 
-  /* Extract text */
-  --extract-font-size: 0.9rem;
+/* * Colors */
+:root {
+  /* Color on light backgrounds */
+  --text-color-primary-dark: #0f1111;
+  --text-color-secondary-dark: #565959;
 
-  /* See more links */
-  --see-more-link-font-size: 0.9rem;
-  --link-color: #007185;
+  /* Color on dark backgrounds */
+  --text-color-primary-light: #ffffff;
+  --text-color-secondary-light: #cccccc;
 
-  /* *Offers cards */
-  /* Offer tag */
-  --offer-tag-text-font-size: 0.85rem;
-  --offer-tag-background-color: #cc0c39;
-  /* Offer day text */
-  --offer-day-text-font-size: 0.85rem;
+  /* Color on light backgrounds */
+  --link-color-dark: #007185;
+  --link-hover-color-dark: #c7511f;
 
-  /* *Card theme */
-  /* image caption text */
-  --related__figcaption-font-size: 1.1rem;
-  --related__figcaption-font-weight: 400;
+  /* Color on dark backgrounds */
+  --link-color-light: #039cb7; /* Color on dark backgrounds */
+  /* --link-hover-color-light: ; */
 
-  /* *Footer vars */
-  --footer-background: #232f3e;
+  /* Header */
+  --background-color-header: #131921;
+
+  /* On light mode */
+  --background-color-primary-light: #e3e6e6;
+  --background-color-secondary-light: #ffffff;
+
+  /* Base to apply dark mode */
+  --background-color-primary-dark: #0d1218;
+  --background-color-secondary-dark: #232f3e;
+
+  --button-background-color: #ffd814;
+  --button-hover-background-color: #f7ca00;
+
+  --button-hover-border-color: #f2c200;
+  --button-border-color: #fcd200;
+
+  --primary-color: #cc0c39; /* Main accent color */
+  --secondary-color: #b12704; /* Secondary accent color */
+  --accent-color: #e67a00; /* Accent color to highlight specific elements */
+}
+
+/* * Animation */
+:root {
 }
 
 body {
-  margin: 0;
   font-family: "Amazon Ember", Arial, sans-serif;
-  background-color: var(--background-color);
+  background-color: var(--background-color-primary-light);
 }
 
 @media screen and (max-width: 960px) {

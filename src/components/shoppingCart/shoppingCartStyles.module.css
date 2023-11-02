@@ -8,15 +8,15 @@
   height: 3.125em;
   padding: 0.625em;
   border: solid 0.0625em transparent;
-  border-radius: var(--border-radius-principal);
-  -webkit-border-radius: var(--border-radius-principal);
-  -moz-border-radius: var(--border-radius-principal);
-  -ms-border-radius: var(--border-radius-principal);
-  -o-border-radius: var(--border-radius-principal);
-  font-size: var(--header-principal-font-size);
+  border-radius: var(--principal-border-radius);
+  -webkit-border-radius: var(--principal-border-radius);
+  -moz-border-radius: var(--principal-border-radius);
+  -ms-border-radius: var(--principal-border-radius);
+  -o-border-radius: var(--principal-border-radius);
+  font-size: var(--text-md);
   font-weight: 700;
   background-color: inherit;
-  color: var(--principal-color);
+  color: var(--text-color-primary-light);
   cursor: pointer;
 }
 
@@ -47,7 +47,7 @@
 .shoppingCartNumber {
   font-size: 0.525rem;
   font-weight: 100;
-  color: var(--principal-color);
+  color: var(--text-color-primary-light);
 }
 
 .stickyShoppingCartIcon {

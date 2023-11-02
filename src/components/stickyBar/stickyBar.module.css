@@ -6,22 +6,22 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: var(--margin-bottom);
-  background-color: var(--header-background-color);
+  margin-bottom: var(--spacing-lg);
+  background-color: var(--background-color-header);
   z-index: 100;
 }
 
 .stickyTopContainer {
   display: flex;
   align-items: flex-end;
-  gap: 0.3em;
+  gap: var(--spacing-xs);
   width: 100%;
   max-width: var(--max-width-content);
   padding-top: 0.625em;
   padding-bottom: 0.625em;
-  padding-left: var(--horizontal-padding-lg);
-  padding-right: var(--horizontal-padding-lg);
-  background-color: var(--header-background-color);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+  background-color: var(--background-color-header);
 }
 /* Icon container for the button that opens the dropdown menu */
 .iconMenuContainer {
@@ -45,7 +45,7 @@
   bottom: 0;
   width: 100%;
   height: 0.0625em;
-  background-color: var(--secondary-color);
+  background-color: var(--text-color-secondary-light);
   opacity: 0.6;
 }
 
@@ -69,19 +69,18 @@
   width: 100%;
   padding: 1.1em 1.3em;
   font-size: 1rem;
-  color: var(--card-text-color);
+  color: var(--text-color-primary-dark);
   line-height: 1.5rem; /* Equal to the height of the icons */
   text-decoration: none;
   cursor: pointer;
 }
 
 .menuLink:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--text-color-secondary-light);
 }
 
 .menuLink:active {
-  color: var(--principal-color);
-  background-color: var(--highlight-color);
+  color: var(--text-color-primary-light);
 }
 
 .menuOptionIcon {
@@ -99,22 +98,22 @@
 .accordionItemTitle {
   padding: 1.1em 0 1.1em 1.3em;
   font-size: 1rem;
-  color: var(--card-text-color);
+  color: var(--text-color-primary-dark);
 }
 
 .accordionItemIcon {
   margin-left: 0.6em;
   font-size: 1rem;
-  color: var(--card-text-color);
+  color: var(--text-color-primary-dark);
 }
 
 .accordionItemContentContainer {
-  background-color: var(--principal-color);
+  background-color: var(--text-color-primary-light);
   cursor: pointer;
 }
 
 .accordionItemContentContainer:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--text-color-secondary-light);
 }
 
 .accordionItemListLink {
@@ -124,14 +123,14 @@
   width: 100%;
   padding: 1.1em 1.3em 1.1em 2.3em; /* Adds an indentation to the unfolded content of the accordion */
   font-size: 1rem;
-  background-color: var(--principal-color);
-  color: var(--card-text-color);
+  background-color: var(--text-color-primary-light);
+  color: var(--text-color-primary-dark);
   text-decoration: none;
   cursor: pointer;
 }
 
 .accordionItemListLink:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--text-color-secondary-light);
 }
 
 .accordionItemList {
@@ -155,7 +154,7 @@
   margin-top: 0.9375em;
   margin-bottom: 0.1875em;
   font-size: 1.5rem;
-  color: var(--principal-color);
+  color: var(--text-color-primary-light);
 }
 
 .stickyButtonAddress {
@@ -175,7 +174,7 @@
 .stickyWishListIcon {
   min-width: 1.1em;
   align-self: center;
-  margin-right: 0.325em;
+  margin-right: var(--spacing-xs);
   font-size: 1.25em;
 }
 
@@ -190,8 +189,8 @@
 .stickyAddressTextTop {
   padding-right: 0.625em;
   text-align: start;
-  font-size: var(--header-secondary-font-size);
-  color: var(--secondary-color);
+  font-size: var(--text-sm);
+  color: var(--text-color-secondary-light);
 }
 
 .stickyAddressTextBottom {
@@ -216,13 +215,14 @@
   width: 100%;
   padding-top: 0.1875em;
   padding-bottom: 0.1875em;
-  padding-left: var(--horizontal-padding-lg);
-  padding-right: var(--horizontal-padding-lg);
-  background-color: var(--header-background-color);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+  background-color: var(--background-color-header);
 }
 
 .stickyList {
   display: flex;
+  gap: var(--spacing-lg);
 }
 
 @media screen and (max-width: 1024px) {
@@ -258,8 +258,8 @@
   .stickyTopContainer {
     align-items: center;
     height: 100%;
-    padding-left: var(--horizontal-padding-sm);
-    padding-right: var(--horizontal-padding-sm);
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
   }
 
   .iconMenuContainer {
