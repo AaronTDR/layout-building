@@ -22,7 +22,8 @@
   justify-content: space-between;
   align-items: center;
   width: 700%;
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration-long)
+    var(--transition-timing-function);
   transform: translateX(0%);
 }
 
@@ -68,7 +69,8 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   background-color: rgba(134, 134, 134, 0.7);
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-duration-medium)
+    var(--transition-timing-function);
   cursor: pointer;
 }
 
@@ -84,7 +86,8 @@
   background-color: var(--text-color-primary-dark);
   opacity: 0.6;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-duration-medium)
+    var(--transition-timing-function);
 }
 
 .prevButton {

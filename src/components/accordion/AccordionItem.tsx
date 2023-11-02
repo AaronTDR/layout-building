@@ -42,12 +42,17 @@ const AccordionItem = ({
         : "auto"
       : 0, // Closed: zero height
     overflow: "hidden",
-    transition: "max-height 0.3s ease",
+    transition:
+      "max-height var(--transition-duration-medium) var(--transition-timing-function)",
     zIndex: 910,
   };
   /* If icon exists, check if rotateIcon is true to add the rotation transformation or not. Allows the animation when opening the accordion to be fluid and not sudden */
   const rotateStyles = {
-    transition: icon ? (rotateIcon ? "transform 0.2s ease" : "") : "",
+    transition: icon
+      ? rotateIcon
+        ? "transform var(--transition-duration-medium) var(--transition-timing-function)"
+        : ""
+      : "",
     transform: icon
       ? rotateIcon
         ? isOpen

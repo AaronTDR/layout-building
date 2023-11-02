@@ -38,22 +38,28 @@
   padding: 0.4em 1.25em;
   text-align: center;
   font-size: var(--text-md);
-  background-color: var(--button-background-color);
-  color: #0f1111;
   border: solid 0.0625rem var(--button-border-color);
   border-radius: 0.25em;
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
   -ms-border-radius: 0.25em;
   -o-border-radius: 0.25em;
+  background-color: var(--button-background-color);
+  color: #0f1111;
   cursor: pointer;
-  transition-duration: 0.2s;
+  transition: background-color var(--transition-duration-short)
+      var(--transition-timing-function),
+    border-color var(--transition-duration-short)
+      var(--transition-timing-function);
 }
 
 .cardSponsoredButton:hover {
-  background: var(--button-hover-background-color);
   border-color: var(--button-hover-border-color);
-  transition-duration: 0.2s;
+  background-color: var(--button-hover-background-color);
+  transition: background-color var(--transition-duration-short)
+      var(--transition-timing-function),
+    border-color var(--transition-duration-short)
+      var(--transition-timing-function);
 }
 
 .cardSponsoredAd {
