@@ -16,7 +16,7 @@
   align-items: flex-end;
   gap: var(--spacing-xs);
   width: 100%;
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-page);
   padding-top: 0.625em;
   padding-bottom: 0.625em;
   padding-left: var(--spacing-lg);

@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: var();
+  max-width: var(--max-width-page);
   margin-bottom: var(--spacing-lg);
   padding-left: var(--spacing-lg);
   padding-right: var(--spacing-lg);
@@ -134,7 +134,7 @@
 @media screen and (max-width: 768px) {
   .carousel {
     width: 100%;
-    max-width: var();
+    max-width: var(--max-width-page);
   }
 
   .container {

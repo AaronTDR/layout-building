@@ -14,13 +14,12 @@
 
 /* * Layout */
 :root {
-  --grid-column: 1 / -1;
+  --grid-column: 1 / -1; /* Set a full-width grid */
 }
 
 /* * Dimensions  */
 :root {
-  /* Max page width */
-  --max-width-content: 1328px;
+  --max-width-page: 1328px; /* Set the maximum page width */
 }
 
 /* * Spacing */
@@ -30,12 +29,6 @@
   --spacing-sm: 0.5em;
   --spacing-md: 0.625em;
   --spacing-lg: 1.25em;
-  /* --spacing-xl */
-}
-
-/* * Border radius */
-:root {
-  --principal-border-radius: 0.375em;
 }
 
 /* * Typography */
@@ -47,6 +40,11 @@
   --text-lg: 0.9375rem;
   --text-md: 0.875rem;
   --text-sm: 0.75rem;
+}
+
+/* * Border */
+:root {
+  --principal-border-radius: 0.375em;
 }
 
 /* * Colors */
@@ -65,10 +63,8 @@
 
   /* Color on dark backgrounds */
   --link-color-light: #039cb7; /* Color on dark backgrounds */
-  /* --link-hover-color-light: ; */
 
-  /* Header */
-  --background-color-header: #131921;
+  --background-color-header: #131921; /* Header */
 
   /* On light mode */
   --background-color-primary-light: #e3e6e6;
@@ -87,10 +83,6 @@
   --primary-color: #cc0c39; /* Main accent color */
   --secondary-color: #b12704; /* Secondary accent color */
   --accent-color: #e67a00; /* Accent color to highlight specific elements */
-}
-
-/* * Animation */
-:root {
 }
 
 body {

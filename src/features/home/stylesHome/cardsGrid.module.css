@@ -4,7 +4,7 @@
   grid-auto-rows: minmax(27em, auto);
   gap: 1.25em;
   width: 100%;
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-page);
   margin-bottom: var(--spacing-lg);
   padding-left: var(--spacing-lg);
   padding-right: var(--spacing-lg);

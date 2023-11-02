@@ -3,7 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
   justify-items: center;
   width: 100%;
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-page);
   padding-top: 2.2em;
   padding-bottom: 2.2em;
   padding-left: var(--spacing-lg);

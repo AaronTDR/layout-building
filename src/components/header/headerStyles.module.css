@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-page);
   padding-top: 0.1875em;
   padding-bottom: 0.1875em;
   padding-left: var(--spacing-lg);
