@@ -2,48 +2,46 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-left: 0.1875em;
-  padding-right: 0.125em;
   background-color: inherit;
 }
 
 .headerSection {
   display: flex;
+  gap: var(--spacing-xs);
   align-items: center;
   background-color: inherit;
 }
 
 .headerNavbarLink {
-  color: var(--principal-color);
+  color: var(--text-color-primary-light);
   text-decoration: none;
-  margin-right: 0.8em;
 }
 
 .headerIcon {
-  margin-right: var(--margin-right);
-  font-size: var(--header-principal-font-size);
+  margin-right: var(--spacing-xs);
+  font-size: var(--text-md);
   font-weight: 700;
 }
 
 .headerFollowUsText {
-  font-size: var(--header-principal-font-size);
+  font-size: var(--text-md);
   font-weight: 400;
 }
 
 .headerSocialMediaContainer {
   display: flex;
-  gap: 0.9em;
+  gap: var(--spacing-lg);
   background-color: inherit;
 }
 
 .socialMediaIconStyles {
   padding: 0.5625em 0.4em;
   border: solid 0.0625em transparent;
-  border-radius: var(--border-radius-principal);
-  -webkit-border-radius: var(--border-radius-principal);
-  -moz-border-radius: var(--border-radius-principal);
-  -ms-border-radius: var(--border-radius-principal);
-  -o-border-radius: var(--border-radius-principal);
+  border-radius: var(--principal-border-radius);
+  -webkit-border-radius: var(--principal-border-radius);
+  -moz-border-radius: var(--principal-border-radius);
+  -ms-border-radius: var(--principal-border-radius);
+  -o-border-radius: var(--principal-border-radius);
 }
 
 .socialMediaIconStyles:hover {
@@ -53,8 +51,7 @@
 .headerNavBarOptions {
   display: flex;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
+  gap: var(--spacing-xs);
   background-color: inherit;
   list-style: none;
 }

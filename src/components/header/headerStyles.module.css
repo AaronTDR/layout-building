@@ -1,10 +1,10 @@
 .header {
   width: 100%;
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-page);
   padding-top: 0.1875em;
   padding-bottom: 0.1875em;
-  padding-left: var(--horizontal-padding-lg);
-  padding-right: var(--horizontal-padding-lg);
-  background-color: var(--header-background-color);
-  color: var(--principal-color);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+  background-color: var(--background-color-header);
+  color: var(--text-color-primary-light);
 }

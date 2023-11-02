@@ -4,10 +4,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: var(--max-width-content);
-  margin-bottom: var(--margin-bottom);
-  padding-left: var(--horizontal-padding-lg);
-  padding-right: var(--horizontal-padding-lg);
+  max-width: var(--max-width-page);
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
 }
 
 .carousel {
@@ -22,7 +22,8 @@
   justify-content: space-between;
   align-items: center;
   width: 700%;
-  transition: all 0.3s ease;
+  transition: all var(--transition-duration-long)
+    var(--transition-timing-function);
   transform: translateX(0%);
 }
 
@@ -68,7 +69,8 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   background-color: rgba(134, 134, 134, 0.7);
-  transition: background-color 0.2s ease;
+  transition: background-color var(--transition-duration-medium)
+    var(--transition-timing-function);
   cursor: pointer;
 }
 
@@ -81,10 +83,11 @@
   position: absolute;
   top: 40%;
   padding: 1em 0.7em;
-  background-color: var(--card-text-color);
+  background-color: var(--text-color-primary-dark);
   opacity: 0.6;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-duration-medium)
+    var(--transition-timing-function);
 }
 
 .prevButton {
@@ -102,7 +105,7 @@
 }
 
 .buttonIcon {
-  color: var(--principal-color);
+  color: var(--text-color-primary-light);
 }
 
 .bannerSection {
@@ -134,11 +137,11 @@
 @media screen and (max-width: 768px) {
   .carousel {
     width: 100%;
-    max-width: var(--max-width-content);
+    max-width: var(--max-width-page);
   }
 
   .container {
-    padding-left: var(--horizontal-padding-sm);
-    padding-right: var(--horizontal-padding-sm);
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
   }
 }

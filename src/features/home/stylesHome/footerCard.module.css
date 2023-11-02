@@ -5,13 +5,13 @@
 .footerCardSeeMoreLink {
   display: inline-block;
   width: 100%;
-  font-size: var(--see-more-link-font-size);
-  color: var(--link-color);
+  font-size: var(--text-md);
+  color: var(--link-color-dark);
   text-decoration: none;
 }
 
 .footerCardSeeMoreLink:hover {
-  color: var(--highlight-color);
+  color: var(--link-hover-color-dark);
   text-decoration-line: underline;
   text-decoration-color: currentcolor;
   -moz-text-decoration-color: currentcolor;

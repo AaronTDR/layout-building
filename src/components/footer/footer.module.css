@@ -1,8 +1,8 @@
 .footer {
   display: flex;
   grid-column: var(--grid-column);
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  background-color: var(--footer-background);
+  background-color: var(--background-color-secondary-dark);
 }

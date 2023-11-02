@@ -4,15 +4,15 @@
   grid-auto-rows: minmax(27em, auto);
   gap: 1.25em;
   width: 100%;
-  max-width: var(--max-width-content);
-  margin-bottom: var(--margin-bottom);
-  padding-left: var(--horizontal-padding-lg);
-  padding-right: var(--horizontal-padding-lg);
+  max-width: var(--max-width-page);
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
 }
 
 @media screen and (max-width: 768px) {
   .grid {
-    padding-left: var(--horizontal-padding-sm);
-    padding-right: var(--horizontal-padding-sm);
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
   }
 }

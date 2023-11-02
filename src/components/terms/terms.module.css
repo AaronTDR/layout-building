@@ -13,14 +13,14 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-page);
   margin-top: 0.625em;
-  padding-left: var(--horizontal-padding-lg);
+  padding-left: var(--spacing-lg);
 }
 
 .footerSocialMediaIcon {
   margin-right: 0.75em;
-  color: var(--secondary-color);
+  color: var(--text-color-secondary-light);
   font-size: 1.25rem;
 }
 
@@ -30,8 +30,8 @@
   justify-content: center;
   padding-top: 0.625em;
   padding-bottom: 1.875em;
-  padding-left: var(--horizontal-padding-lg);
-  padding-right: var(--horizontal-padding-lg);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
 }
 
 .termsLogoContainer {
@@ -50,7 +50,7 @@
   margin-top: 0.9375em;
   margin-bottom: 0.1875em;
   font-size: 1.5rem;
-  color: var(--principal-color);
+  color: var(--text-color-primary-light);
 }
 
 .footerListTerms {
@@ -72,7 +72,7 @@
   padding-right: 0.45em;
   font-family: inherit;
   font-size: 0.75rem;
-  color: var(--secondary-color);
+  color: var(--text-color-secondary-light);
   text-decoration: none;
 }
 
@@ -84,7 +84,7 @@
   width: 100%;
   font-size: 0.75rem;
   text-align: center;
-  color: var(--secondary-color);
+  color: var(--text-color-secondary-light);
 }
 
 @media screen and (max-width: 1024px) {
@@ -104,9 +104,9 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
   .footerSocialMediaContent {
-    padding-left: 0;
+    padding-left: var(--spacing-sm);
   }
 }
 

@@ -1,14 +1,14 @@
 @import url("./cardWrapper.module.css");
 
 .cardProductHeader {
-  margin-bottom: var(--bottom-margin-header);
+  margin-bottom: var(--spacing-md);
 }
 
 .cardProductTitle {
   margin: 0;
-  font-size: var(--title-card-font-size);
+  font-size: var(--title-md);
   font-weight: 700;
-  color: var(--card-text-color);
+  color: var(--text-color-primary-dark);
 }
 
 .cardProductImgLink {
@@ -22,11 +22,11 @@
 .cardProductImg {
   width: 100%;
   height: 17.2813em;
-  border-radius: var(--border-radius-principal);
-  -webkit-border-radius: var(--border-radius-principal);
-  -moz-border-radius: var(--border-radius-principal);
-  -ms-border-radius: var(--border-radius-principal);
-  -o-border-radius: var(--border-radius-principal);
+  border-radius: var(--principal-border-radius);
+  -webkit-border-radius: var(--principal-border-radius);
+  -moz-border-radius: var(--principal-border-radius);
+  -ms-border-radius: var(--principal-border-radius);
+  -o-border-radius: var(--principal-border-radius);
   object-fit: cover;
 }
 

@@ -32,11 +32,16 @@ const DropdownMenu = ({
     width: `${menuWidthPercentage}%`,
     height: "100%",
     overflowY: "scroll",
-    transition: "all 0.3s ease",
-    WebkitTransition: "all 0.3s ease",
-    MozTransition: "all 0.3s ease",
-    msTransition: "all 0.3s ease",
-    OTransition: "all 0.3s ease",
+    transition:
+      "all var(--transition-duration-long) var(--transition-timing-function)",
+    WebkitTransition:
+      "all var(--transition-duration-long) var(--transition-timing-function)",
+    MozTransition:
+      "all var(--transition-duration-long) var(--transition-timing-function)",
+    msTransition:
+      "all var(--transition-duration-long) var(--transition-timing-function)",
+    OTransition:
+      "all var(--transition-duration-long) var(--transition-timing-function)",
     background: "#FFFFFF",
     zIndex: 910,
   };
