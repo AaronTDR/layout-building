@@ -1,16 +1,4 @@
-@font-face {
-  font-family: "Amazon Ember";
-  src: url("assets/fonts/AmazonEmber_Rg.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Amazon Ember Bold";
-  src: url("assets/fonts/AmazonEmber_Bd.ttf") format("truetype");
-}
-
-:root {
-  font-family: "Amazon Ember", Arial, sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 /* * Layout */
 :root {
@@ -33,6 +21,8 @@
 
 /* * Typography */
 :root {
+  --font-family: "Roboto", Arial, sans-serif;
+
   --title-lg: 1.5rem;
   --title-md: 1.3125rem;
   --title-sm: 1rem;
@@ -95,7 +85,7 @@
 }
 
 body {
-  font-family: "Amazon Ember", Arial, sans-serif;
+  font-family: var(--font-family);
   background-color: var(--background-color-primary-light);
 }
 
