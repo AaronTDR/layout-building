@@ -1,4 +1,4 @@
-import Home from "./features/home/pages/Home";
+import Home from "./features/home/pages/home";
 
 const routes = [
   {

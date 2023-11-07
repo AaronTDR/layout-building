@@ -52,7 +52,8 @@
   --link-hover-color-dark: #c7511f;
 
   /* Color on dark backgrounds */
-  --link-color-light: #039cb7; /* Color on dark backgrounds */
+  --link-color-light: #039cb7;
+  --link-hover-color-light: #c7511f;
 
   --background-color-header: #131921; /* Header */
 
@@ -60,7 +61,7 @@
   --background-color-primary-light: #e3e6e6;
   --background-color-secondary-light: #ffffff;
 
-  /* Base to apply dark mode */
+  /* On dark mode */
   --background-color-primary-dark: #0d1218;
   --background-color-secondary-dark: #232f3e;
 
@@ -84,9 +85,39 @@
   --transition-timing-function: ease;
 }
 
+/* test */
+:root {
+  --header-light: blue;
+  --header-dark: red;
+  /* --background-color-primary-light: #cccccc; */
+}
+/* Define the light and dark classes */
+/* .light {
+  --text-color-primary: var(--text-color-primary-dark);
+  --text-color-secondary: var(--text-color-secondary-dark);
+
+  --link-color: var(--link-color-dark);
+  --link-hover: var(--link-hover-color-dark);
+
+  --background-color-primary: var(--background-color-primary-light);
+  --background-color-secondary: var(--background-color-secondary-light);
+}
+
+.dark {
+  --text-color-primary: var(--text-color-primary-light);
+  --text-color-secondary: var(--text-color-secondary-light);
+
+  --link-color: var(--link-color-light);
+  --link-hover: var(--link-hover-color-light);
+
+  --background-color-primary: var(--background-color-primary-dark);
+  --background-color-secondary: var(--background-color-secondary-dark);
+}
+ */
 body {
   font-family: var(--font-family);
-  background-color: var(--background-color-primary-light);
+  background-color: var(--body-background);
+  /* background-color: var(--background-color-primary-light); */
 }
 
 @media screen and (max-width: 960px) {

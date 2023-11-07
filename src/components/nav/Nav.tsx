@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   faMobileScreenButton,
@@ -12,6 +13,7 @@ import SocialMedia from "../socialMedia/SocialMedia";
 /* styles */
 import navStyles from "./nav.module.css";
 import borderLinkStyles from "../../styles/borderLink.module.css";
+import { ThemeContext } from "../themeProvider/ThemeProvider";
 
 const Nav = () => {
   /* Contains the elements to render in the right section of the navigation */
@@ -46,6 +48,9 @@ const Nav = () => {
       cssLink: cssRightSectionElements,
     },
   ];
+
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
   return (
     <div className={navStyles.headerNavbar}>
       <div className={navStyles.headerSection}>
@@ -66,6 +71,15 @@ const Nav = () => {
         />
       </div>{" "}
       <div className={navStyles.headerSection}>
+        <div style={{ backgroundColor: "red" }}>
+          <input
+            type="checkbox"
+            id="themeSwitch"
+            checked={isDarkMode}
+            onChange={toggleTheme}
+          />
+          <label htmlFor="themeSwitch">Change theme</label>
+        </div>
         <List
           ulTagCss={navStyles.headerNavBarOptions}
           liTagCss={navStyles.headerSection}
