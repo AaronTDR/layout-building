@@ -10,7 +10,7 @@ import { ThemeContext } from "../../contexts/ThemeProvider";
 
 /* styles */
 import footerStyles from "./footer.module.css";
-import footerTheme from "./footerTheme.module.css";
+import footerTheme from "./theme/footerTheme.module.css";
 
 /* utils */
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";

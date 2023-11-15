@@ -10,7 +10,7 @@ import { ThemeContext } from "../../contexts/ThemeProvider";
 
 /* styles */
 import termsStyles from "./terms.module.css";
-import termsTheme from "./termsTheme.module.css";
+import termsTheme from "./theme/termsTheme.module.css";
 
 /* utils */
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
