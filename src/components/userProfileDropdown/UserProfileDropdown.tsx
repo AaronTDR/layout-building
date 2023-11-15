@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 /* components*/
 import Icon from "../icon/Icon";
 import TextTruncate from "../textTruncate/TextTruncate";
+
 /* types */
 import { UserProfileDropdownType } from "./UserProfileDropdownType";
+
+/* styles */
+import styles from "./userProfileDropdown.module.css";
+
 /* assets */
 import profilePicture from "../../assets/img/user/cheems-with-hat.jpg";
 import DefaultAvatarImage from "../../assets/img/user/avatar-default.png";
 import logo from "../../assets/img/logo/image-banner-logo.png";
-/* styles */
-import styles from "./userProfileDropdown.module.css";
 
 type userType = {
   name: string;
@@ -55,7 +59,8 @@ const UserProfileDropdown = ({
       : false
     : false;
   return (
-    <div className={`${styles.localContainer} ${containerCssProp}`}>
+    /* Add theme with prop containerCssProp */
+    <div className={`${containerCssProp} ${styles.localContainer}`}>
       <Link
         onClick={onCLick}
         to={isThereUser ? isThereUser.path : "#"}

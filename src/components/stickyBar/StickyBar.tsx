@@ -33,6 +33,7 @@ import singleLineStyles from "../../styles/singleLine.module.css";
 import stickyBar from "./stickyBar.module.css";
 
 /* theme styles */
+import userProfileContainerTheme from "./theme/userProfileContainerTheme.module.css";
 import accordionItemContentContainerTheme from "./theme/accordionItemContentContainerTheme.module.css";
 import accordionItemLinkTheme from "./theme/accordionItemLinkTheme.module.css";
 import accordionItemIconTheme from "./theme/accordionItemIconTheme.module.css";
@@ -90,6 +91,9 @@ const StickyBar = () => {
   const { isDarkMode } = themeContext || { isDarkMode: false };
 
   // Get class based on current theme
+  const profileContainerTheme = {
+    theme: getThemeClasses(isDarkMode, userProfileContainerTheme),
+  };
   const accordionContainerTheme = {
     theme: getThemeClasses(isDarkMode, accordionItemContentContainerTheme),
   };
@@ -219,6 +223,7 @@ const StickyBar = () => {
           >
             <header>
               <UserProfileDropdown
+                containerCssProp={profileContainerTheme.theme}
                 onCLick={() => setIsOpen(!isOpen)}
                 isThereBanner={true}
               />
