@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
-import { ThemeProvider } from "../src/components/themeProvider/ThemeProvider";
+import { ThemeProvider } from "./contexts/ThemeProvider";
 import routes from "./routes";
 
 import "./index.module.css";

@@ -83,7 +83,7 @@
   position: absolute;
   top: 40%;
   padding: 1em 0.7em;
-  background-color: var(--text-color-primary-dark);
+  background-color: var(--text-primary-dark);
   opacity: 0.6;
   cursor: pointer;
   transition: opacity var(--transition-duration-medium)
@@ -105,7 +105,7 @@
 }
 
 .buttonIcon {
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }
 
 .bannerSection {

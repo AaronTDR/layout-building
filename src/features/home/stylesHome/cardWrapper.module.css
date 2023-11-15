@@ -4,8 +4,6 @@
   justify-content: flex-start;
   width: 100%;
   padding: 1.25em;
-  background-color: var(--text-color-primary-light);
-  color: var(--text-color-primary-dark);
   border-radius: var(--principal-border-radius);
   -webkit-border-radius: var(--principal-border-radius);
   -moz-border-radius: var(--principal-border-radius);

@@ -1,9 +1,19 @@
+import { useContext } from "react";
+
 /* components */
 import List from "../list/List";
 import Logo from "../logo/Logo";
 import SocialMedia from "../socialMedia/SocialMedia";
+
+/* theme context */
+import { ThemeContext } from "../../contexts/ThemeProvider";
+
 /* styles */
 import termsStyles from "./terms.module.css";
+import termsTheme from "./termsTheme.module.css";
+
+/* utils */
+import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
 const attributions = [
   {
@@ -28,8 +38,15 @@ const termListElements = [
 ];
 
 const Terms = () => {
+  const { isDarkMode } = useContext(ThemeContext);
+
+  const termsStylesWithTheme = {
+    theme: getThemeClasses(isDarkMode, termsTheme),
+  };
   return (
-    <div className={termsStyles.footerBottom}>
+    <div
+      className={`${termsStylesWithTheme.theme} ${termsStyles.footerBottom}`}
+    >
       <div className={termsStyles.footerSocialMediaContainer}>
         <SocialMedia
           containerCss={termsStyles.footerSocialMediaContent}

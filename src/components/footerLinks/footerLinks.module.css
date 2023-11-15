@@ -21,7 +21,7 @@
   font-family: inherit;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }
 
 .footerListLinks {
@@ -37,7 +37,7 @@
 .footerLink {
   font-family: inherit;
   font-size: 0.875rem;
-  color: var(--text-color-secondary-light);
+  color: var(--text-secondary-light);
 }
 
 .footerLink:hover {

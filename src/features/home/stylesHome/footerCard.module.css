@@ -6,12 +6,29 @@
   display: inline-block;
   width: 100%;
   font-size: var(--text-md);
-  color: var(--link-color-dark);
   text-decoration: none;
 }
 
-.footerCardSeeMoreLink:hover {
-  color: var(--link-hover-color-dark);
+/* On light mode */
+.footerCardSeeMoreLinkLight {
+  color: var(--link-light-mode);
+}
+
+.footerCardSeeMoreLinkLight:hover {
+  color: var(--link-hover-light-mode);
+  text-decoration-line: underline;
+  text-decoration-color: currentcolor;
+  -moz-text-decoration-color: currentcolor;
+  -moz-text-decoration-line: underline;
+}
+
+/* On dark mode */
+.footerCardSeeMoreLinkDark {
+  color: var(--link-dark-mode);
+}
+
+.footerCardSeeMoreLinkDark:hover {
+  color: var(--link-hover-dark-mode);
   text-decoration-line: underline;
   text-decoration-color: currentcolor;
   -moz-text-decoration-color: currentcolor;

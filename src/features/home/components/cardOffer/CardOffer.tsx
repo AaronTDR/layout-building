@@ -1,25 +1,22 @@
 import { Link } from "react-router-dom";
+
 /* components */
 import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 import FooterCard from "../footerCard/FooterCard";
 
 /* types */
 import { CardOfferType } from "./CardOfferType";
+
 /* styles */
 import singleLine from "../../../../styles/singleLine.module.css";
 
 const CardOffer = ({ data, css }: CardOfferType) => {
   return (
-    <article className={css.cardWrapper}>
-      <header className={css.cardHeader}>
-        <TextTruncate
-          text={data.title}
-          rows={2}
-          tagType="h2"
-          css={css.cardTitle}
-        />
+    <article className={`${css.theme} ${css.cardWrapper}`}>
+      <header className={css.header}>
+        <TextTruncate text={data.title} rows={2} tagType="h2" css={css.title} />
       </header>
-      <Link to={"#"} className={css.cardOfferImgLink}>
+      <Link to={"#"} className={css.imgLink}>
         <picture>
           <source
             media="(min-width: 992px)"
@@ -32,18 +29,16 @@ const CardOffer = ({ data, css }: CardOfferType) => {
           <img
             src={data.mainImageData.paths.small}
             alt={data.mainImageData.alt}
-            className={css.cardOfferImg}
+            className={css.img}
           />
         </picture>
       </Link>
       <Link to={"#"}>
-        <div className={css.cardOfferOfferQuantityContainer}>
-          <span
-            className={`${css.cardOfferOfferQuantity} ${singleLine.singleLine}`}
-          >
+        <div className={css.quantityContainer}>
+          <span className={`${css.quantity} ${singleLine.singleLine}`}>
             {data.discount}
           </span>
-          <span className={`${css.cardOfferOfferDay} ${singleLine.singleLine}`}>
+          <span className={`${css.offerDay} ${singleLine.singleLine}`}>
             {data.OfferTime}
           </span>
         </div>

@@ -1,0 +1,13 @@
+/* * Add the theme to the sticky bar. */
+
+/* On light mode */
+.light {
+  background-color: var(--background-secondary-light-mode);
+  color: var(--text-primary-light);
+}
+
+/* On dark mode */
+.dark {
+  background-color: var(--background-secondary-dark-mode);
+  color: var(--text-primary-light);
+}

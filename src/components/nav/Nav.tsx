@@ -5,15 +5,16 @@ import {
   faGlobe,
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
-/* components */
-import Icon from "../../components/icon/Icon";
-import List from "../list/List";
-import SocialMedia from "../socialMedia/SocialMedia";
 
 /* styles */
 import navStyles from "./nav.module.css";
 import borderLinkStyles from "../../styles/borderLink.module.css";
-import { ThemeContext } from "../themeProvider/ThemeProvider";
+import { ThemeContext } from "../../contexts/ThemeProvider";
+
+/* components */
+import Icon from "../../components/icon/Icon";
+import List from "../list/List";
+import SocialMedia from "../socialMedia/SocialMedia";
 
 const Nav = () => {
   /* Contains the elements to render in the right section of the navigation */

@@ -11,7 +11,7 @@ import petLarge from "../../../../assets/img/cards/pets/pet-medium.webp";
 import petMedium from "../../../../assets/img/cards/pets/pet-small.webp";
 import petSmall from "../../../../assets/img/cards/pets/pet-large.webp";
 
-/* Theme */
+/* Category */
 /* Fashion */
 import fashionLargeImage from "../../../../assets/img/cards/fashion/fashion-1-large.webp";
 import fashionMediumImage from "../../../../assets/img/cards/fashion/fashion-1-medium.webp";
@@ -72,7 +72,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 2,
-        cardCategory: "theme",
+        cardCategory: "category",
         title: "Trends",
         mainImageData: {
           paths: {
@@ -155,7 +155,7 @@ export const getCardsHome = () => {
     {
       data: {
         id: 6,
-        cardCategory: "theme",
+        cardCategory: "category",
         title: "Discounts on gaming equipment",
         mainImageData: {
           paths: {

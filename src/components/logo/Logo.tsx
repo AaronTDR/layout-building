@@ -1,8 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-/* types */
+
+/* Types */
 import { LogoType } from "./logoType.ts";
 
-import logoImg from "../../assets/img/logo/logo-img.png";
+/* Theme context */
+import { ThemeContext } from "../../contexts/ThemeProvider.tsx";
+
+/* Assets */
+import lightLogo from "../../assets/img/logo/light-modo-logo.png";
+import darkLogo from "../../assets/img/logo/dark-mode-logo.png";
 
 const Logo = ({
   logoLinkCss,
@@ -10,6 +17,8 @@ const Logo = ({
   logoImgCss,
   logoTextCss,
 }: LogoType) => {
+  const { isDarkMode } = useContext(ThemeContext);
+  const logoImg = (isDarkMode && darkLogo) || lightLogo;
   return (
     <Link to="/" className={logoLinkCss}>
       <div className={logoContainerCss}>

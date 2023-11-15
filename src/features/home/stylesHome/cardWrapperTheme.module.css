@@ -1,0 +1,13 @@
+/* * This style sheet is used to add the theme to the main container of each card. The background and text colors of the other elements within the card that depend on the theme are inherited from this parent container. */
+
+/* On light mode */
+.light {
+  background-color: var(--background-tertiary-light-mode);
+  color: var(--text-primary-dark);
+}
+
+/* On dark mode */
+.dark {
+  background-color: var(--background-tertiary-dark-mode);
+  color: var(--text-primary-light);
+}

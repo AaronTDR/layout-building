@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 /* components */
 import Icon from "../../components/icon/Icon";
 
+/* type */
 import { ListType } from "./ListType";
 
 const List = ({ ulTagCss, liTagCss, elements }: ListType) => {

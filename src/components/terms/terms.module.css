@@ -1,6 +1,5 @@
 .footerBottom {
   width: 100%;
-  background-color: #131a22;
 }
 
 .footerSocialMediaContainer {
@@ -20,7 +19,7 @@
 
 .footerSocialMediaIcon {
   margin-right: 0.75em;
-  color: var(--text-color-secondary-light);
+  color: var(--text-secondary-light);
   font-size: 1.25rem;
 }
 
@@ -50,7 +49,7 @@
   margin-top: 0.9375em;
   margin-bottom: 0.1875em;
   font-size: 1.5rem;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }
 
 .footerListTerms {
@@ -72,7 +71,7 @@
   padding-right: 0.45em;
   font-family: inherit;
   font-size: 0.75rem;
-  color: var(--text-color-secondary-light);
+  color: var(--text-secondary-light);
   text-decoration: none;
 }
 
@@ -84,7 +83,7 @@
   width: 100%;
   font-size: 0.75rem;
   text-align: center;
-  color: var(--text-color-secondary-light);
+  color: var(--text-secondary-light);
 }
 
 @media screen and (max-width: 1024px) {

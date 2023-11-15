@@ -13,7 +13,7 @@
 }
 
 .headerNavbarLink {
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
   text-decoration: none;
 }
 

@@ -5,6 +5,5 @@
   padding-bottom: 0.1875em;
   padding-left: var(--spacing-lg);
   padding-right: var(--spacing-lg);
-  background-color: var(--background-color-header);
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }

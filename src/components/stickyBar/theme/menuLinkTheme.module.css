@@ -1,0 +1,19 @@
+/* * Add the theme to the menu link on sticky bar. */
+
+/* On light mode */
+.light {
+  color: var(--text-primary-dark);
+}
+
+.light:hover {
+  background-color: var(--text-secondary-light);
+}
+
+/* On dark mode */
+.dark {
+  color: var(--text-primary-light);
+}
+
+.dark:hover {
+  background-color: var(--text-secondary-dark);
+}

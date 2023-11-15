@@ -50,13 +50,13 @@
 
 .localTextName {
   font-size: 1.125rem;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }
 /* Applied to "Hello, sign in" text when the user is not logged in, or added to "My profile" text when the user is logged in */
 .localTextProfile {
   margin-right: 0.3em;
   font-size: 1rem;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }
 
 /* When "profileLink" is in the "hover" state and the user exists, the color of the "localTextProfile" changes */
@@ -97,7 +97,7 @@
 .localTextIcon {
   margin-top: 0.17em;
   font-size: 0.7rem;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }
 
 .bannerLink {
@@ -111,7 +111,7 @@
   padding-right: 0.8em;
   border-radius: 0.3em;
   background-color: #58769b;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
   cursor: pointer;
 }
 

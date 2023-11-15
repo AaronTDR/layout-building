@@ -1,5 +1,7 @@
+/* Types */
 import { SearchBarType } from "./searchBarType";
 
+/* styles */
 import searchBarStyles from "../../stylesHome/searchBarStyles.module.css";
 
 const SearchBar = ({ placeholder, children }: SearchBarType) => {

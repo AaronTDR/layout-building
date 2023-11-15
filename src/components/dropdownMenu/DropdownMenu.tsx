@@ -1,10 +1,12 @@
 import { useEffect, useRef, CSSProperties } from "react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-/* types */
-import { DropdownMenuType } from "./DropdownMenuType";
+
 /* styles */
 import dropdownMenu from "./dropdownMenu.module.css";
+
+/* types */
+import { DropdownMenuType } from "./DropdownMenuType";
 
 /*
 If you need to separate the button from the menu, you can wrap the component in a container and add the styles to the container.
@@ -18,6 +20,7 @@ props:
 const DropdownMenu = ({
   icon,
   iconCss,
+  menuContainerCss,
   menuWidthPercentage,
   dropdownPosition,
   children,
@@ -25,26 +28,6 @@ const DropdownMenu = ({
   setState,
 }: DropdownMenuType) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
-
-  const navStyles: CSSProperties = {
-    position: "fixed",
-    top: 0,
-    width: `${menuWidthPercentage}%`,
-    height: "100%",
-    overflowY: "scroll",
-    transition:
-      "all var(--transition-duration-long) var(--transition-timing-function)",
-    WebkitTransition:
-      "all var(--transition-duration-long) var(--transition-timing-function)",
-    MozTransition:
-      "all var(--transition-duration-long) var(--transition-timing-function)",
-    msTransition:
-      "all var(--transition-duration-long) var(--transition-timing-function)",
-    OTransition:
-      "all var(--transition-duration-long) var(--transition-timing-function)",
-    background: "#FFFFFF",
-    zIndex: 910,
-  };
 
   /* Calculates the position of the drop-down menu based on the dropdownPosition property.
 If dropdownPosition is "right", the menu is positioned to the right, otherwise it is positioned to the left. */
@@ -119,7 +102,7 @@ If dropdownPosition is "right", active styles place the menu on the right, other
       {/* 'menuRef' is attached to this container element to capture click events
     within the entire dropdown menu, including the menu-open button,
     and to differentiate between events inside the dropdown menu and the overlay element. */}
-      <div className={dropdownMenu.container} ref={menuRef}>
+      <div className={dropdownMenu.btnContainer} ref={menuRef}>
         <button
           type="button"
           className={dropdownMenu.btn}
@@ -130,10 +113,17 @@ If dropdownPosition is "right", active styles place the menu on the right, other
           </i>
         </button>
         <nav
+          className={menuContainerCss}
           style={
             state
-              ? { ...navStyles, ...navActiveStyles }
-              : { ...navStyles, ...leftOrRightPosition }
+              ? {
+                  width: `${menuWidthPercentage}%`,
+                  ...navActiveStyles,
+                }
+              : {
+                  width: `${menuWidthPercentage}%`,
+                  ...leftOrRightPosition,
+                }
           }
         >
           {children}

@@ -1,9 +1,11 @@
 import { useState, useRef, CSSProperties } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-/* types */
-import { AccordionItemType } from "./AccordionType";
+
 /* styles */
 import accordionStyles from "./accordionStyles.module.css";
+
+/* types */
+import { AccordionItemType } from "./AccordionType";
 
 // * Component of an individual accordion element:
 /*
@@ -96,7 +98,7 @@ const AccordionItem = ({
       >
         <h3 className={cssTitle}>{title}</h3>
         {icon && (
-          <i className={cssIcon} style={localStyles}>
+          <i style={localStyles} className={cssIcon}>
             <FontAwesomeIcon icon={icon} />
           </i>
         )}

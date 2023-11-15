@@ -1,0 +1,11 @@
+/* On light theme */
+.light {
+  background-color: var(--background-quaternary-light-mode);
+  color: var(--text-primary-light);
+}
+
+/* On dark theme */
+.dark {
+  background-color: var(--background-quaternary-dark-mode);
+  color: var(--text-primary-light);
+}

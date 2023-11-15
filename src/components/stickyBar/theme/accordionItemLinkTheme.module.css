@@ -1,0 +1,19 @@
+/* * Add the theme to the accordion link. */
+
+/* On light mode */
+.light {
+  background-color: var(--background-tertiary-light-mode);
+}
+
+.light:hover {
+  background-color: var(--text-secondary-light);
+}
+
+/* On dark mode */
+.dark {
+  background-color: var(--background-tertiary-dark-mode);
+}
+
+.dark:hover {
+  background-color: var(--text-secondary-dark);
+}

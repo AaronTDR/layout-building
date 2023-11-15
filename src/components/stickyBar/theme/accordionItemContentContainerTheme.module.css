@@ -1,0 +1,19 @@
+/* * Add the theme to the accordion item container */
+
+/* On light mode */
+.light {
+  background-color: inherit;
+}
+
+.light:hover {
+  background-color: var(--text-secondary-light);
+}
+
+/* On dark mode */
+.dark {
+  background-color: inherit;
+}
+
+.dark:hover {
+  background-color: var(--text-secondary-dark);
+}

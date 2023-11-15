@@ -1,13 +1,17 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, ReactNode, useEffect } from "react";
 
-const ThemeContext = createContext();
+type ThemeContextType = {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+};
 
-const ThemeProvider = ({ children }) => {
+const ThemeContext = createContext<ThemeContextType>({
+  isDarkMode: false,
+  toggleTheme: () => {},
+});
+
+const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  console.log(
-    "🚀 ~ file: ThemeProvider.tsx:7 ~ ThemeProvider ~ isDarkMode:",
-    isDarkMode
-  );
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -17,8 +21,8 @@ const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const body = document.body;
     body.style.backgroundColor = isDarkMode
-      ? "var(--background-color-primary-dark)"
-      : "var(--background-color-primary-light)";
+      ? "var(--background-primary-dark-mode)"
+      : "var(--background-primary-light-mode)";
   }, [isDarkMode]);
 
   return (

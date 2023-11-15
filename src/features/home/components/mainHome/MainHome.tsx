@@ -1,30 +1,41 @@
-import { useState, useEffect } from "react";
-/* services */
-import { getCardsHome } from "../../services/getCardsHome/getCardsHome";
+import { useState, useEffect, useContext } from "react";
+
 /* components */
 import CardServices from "../cardServices/CardServices";
 import CardSponsored from "../cardSponsored/CardSponsored";
 import CardProduct from "../cardProduct/CardProduct";
-import CardTheme from "../cardTheme/CardTheme";
+import CardCategory from "../cardCategory/CardCategory";
 import CardOffer from "../cardOffer/CardOffer";
+
 /* types */
 import { CardServicesType } from "../cardServices/CardServicesType";
 import { CardSponsoredType } from "../cardSponsored/CardSponsoredType";
 import { CardProductType } from "../cardProduct/CardProductType";
-import { CardThemeType } from "../cardTheme/CardThemeType";
+import { CardCategoryType } from "../cardCategory/CardCategoryType";
 import { CardOfferType } from "../cardOffer/CardOfferType";
 import { MainHomeType } from "./mainHomeType";
+
+/* theme context */
+import { ThemeContext } from "../../../../contexts/ThemeProvider";
+
 /* styles */
 import cardServices from "../../stylesHome/cardServices.module.css";
 import cardSponsored from "../../stylesHome/cardSponsored.module.css";
 import cardProduct from "../../stylesHome/cardProduct.module.css";
 import cardOffer from "../../stylesHome/cardOffer.module.css";
-import cardTheme from "../../stylesHome/cardTheme.module.css";
+import cardCategory from "../../stylesHome/cardCategory.module.css";
 import cardsGrid from "../../stylesHome/cardsGrid.module.css";
+import cardWrapperTheme from "../../stylesHome/cardWrapperTheme.module.css";
+
+/* services */
+import { getCardsHome } from "../../services/getCardsHome/getCardsHome";
+
+/* utils */
+import { getThemeClasses } from "../../../../utils/getThemeClasses/getThemeClasses";
 
 type CardElementsArrayType = Array<
   | CardOfferType
-  | CardThemeType
+  | CardCategoryType
   | CardProductType
   | CardSponsoredType
   | CardServicesType
@@ -32,13 +43,43 @@ type CardElementsArrayType = Array<
 
 type CardElementType =
   | CardOfferType
-  | CardThemeType
+  | CardCategoryType
   | CardProductType
   | CardSponsoredType
   | CardServicesType;
 
 const MainHome = ({ css }: MainHomeType) => {
   const [cardElements, setCardElements] = useState<CardElementsArrayType>([]);
+
+  // Get the theme context
+  const themeContext = useContext(ThemeContext);
+  const { isDarkMode } = themeContext || { isDarkMode: false };
+
+  /* Gets a CSS properties object with the addition of the 'theme' class that contains the theme colors for the card wrapper */
+  const cardOfferWithTheme = {
+    ...cardOffer,
+    theme: getThemeClasses(isDarkMode, cardWrapperTheme),
+  };
+
+  const cardCategoryWithTheme = {
+    ...cardCategory,
+    theme: getThemeClasses(isDarkMode, cardWrapperTheme),
+  };
+
+  const cardProductWithTheme = {
+    ...cardProduct,
+    theme: getThemeClasses(isDarkMode, cardWrapperTheme),
+  };
+
+  const cardSponsoredWithTheme = {
+    ...cardSponsored,
+    theme: getThemeClasses(isDarkMode, cardWrapperTheme),
+  };
+
+  const cardServicesWithTheme = {
+    ...cardServices,
+    theme: getThemeClasses(isDarkMode, cardWrapperTheme),
+  };
 
   useEffect(() => {
     const elements = getCardsHome() as CardElementsArrayType;
@@ -49,24 +90,44 @@ const MainHome = ({ css }: MainHomeType) => {
   const cardRenderer = (el: CardElementType) => {
     switch (el.data.cardCategory) {
       case "offer":
-        return <CardOffer key={el.data.id} data={el.data} css={cardOffer} />;
+        return (
+          <CardOffer key={el.data.id} data={el.data} css={cardOfferWithTheme} />
+        );
 
-      case "theme":
-        return <CardTheme key={el.data.id} data={el.data} css={cardTheme} />;
+      case "category":
+        return (
+          <CardCategory
+            key={el.data.id}
+            data={el.data}
+            css={cardCategoryWithTheme}
+          />
+        );
 
       case "product":
         return (
-          <CardProduct key={el.data.id} data={el.data} css={cardProduct} />
+          <CardProduct
+            key={el.data.id}
+            data={el.data}
+            css={cardProductWithTheme}
+          />
         );
 
       case "sponsored":
         return (
-          <CardSponsored key={el.data.id} data={el.data} css={cardSponsored} />
+          <CardSponsored
+            key={el.data.id}
+            data={el.data}
+            css={cardSponsoredWithTheme}
+          />
         );
 
       case "services":
         return (
-          <CardServices key={el.data.id} data={el.data} css={cardServices} />
+          <CardServices
+            key={el.data.id}
+            data={el.data}
+            css={cardServicesWithTheme}
+          />
         );
 
       default:
