@@ -90,7 +90,6 @@
 
 body {
   font-family: var(--font-family);
-  /* background-color: var(--background-primary-light-mode); */
 }
 
 @media screen and (max-width: 960px) {
