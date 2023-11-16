@@ -42,13 +42,12 @@
   z-index: 910;
 }
 
-.menuUl {
+/* Adds a horizontal separation line */
+.separationLine {
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
-.menuUl::after {
+.separationLine::after {
   position: absolute;
   content: "";
   display: block; /* Hide the separator line if it is not the last element */
@@ -59,8 +58,14 @@
   opacity: 0.6;
 }
 
-.menuUl:last-child::after {
-  display: none; /* Hide the line after the last list section */
+.separationLine:last-child::after {
+  display: none;
+}
+
+.menuUl {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .menuLi {
@@ -126,6 +131,25 @@
 
 .accordionItemList {
   background-color: inherit;
+}
+
+.themeButton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 1.1em 1.3em;
+  font-size: 1rem;
+  border: none;
+  line-height: 1.5rem; /* Equal to the height of the icons */
+  text-decoration: none;
+  background-color: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.themeButton:hover {
+  border: none;
 }
 
 .stickyLogoContainer {

@@ -48,6 +48,19 @@
   border: solid 0.0625em rgba(204, 204, 204, 0.5);
 }
 
+.themeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 3em;
+}
+
+.themeIcon {
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
 .headerNavBarOptions {
   display: flex;
   justify-content: space-between;

@@ -14,6 +14,7 @@ import {
 
 /* components */
 import Icon from "../icon/Icon";
+import ThemeButton from "../../components/themeButton/ThemeButton";
 import AccordionItem from "../accordion/AccordionItem";
 import Accordion from "../accordion/Accordion";
 import UserProfileDropdown from "../userProfileDropdown/UserProfileDropdown";
@@ -33,6 +34,7 @@ import singleLineStyles from "../../styles/singleLine.module.css";
 import stickyBar from "./stickyBar.module.css";
 
 /* theme styles */
+import ThemeButtonTheme from "./theme/themeButtonTheme.module.css";
 import userProfileContainerTheme from "./theme/userProfileContainerTheme.module.css";
 import accordionItemContentContainerTheme from "./theme/accordionItemContentContainerTheme.module.css";
 import accordionItemLinkTheme from "./theme/accordionItemLinkTheme.module.css";
@@ -88,12 +90,19 @@ const StickyBar = () => {
 
   // Get the theme context
   const themeContext = useContext(ThemeContext);
-  const { isDarkMode } = themeContext || { isDarkMode: false };
+  const { isDarkMode } = themeContext || {
+    isDarkMode: false,
+  };
 
   // Get class based on current theme
   const profileContainerTheme = {
     theme: getThemeClasses(isDarkMode, userProfileContainerTheme),
   };
+
+  const themeButton = {
+    theme: getThemeClasses(isDarkMode, ThemeButtonTheme),
+  };
+
   const accordionContainerTheme = {
     theme: getThemeClasses(isDarkMode, accordionItemContentContainerTheme),
   };
@@ -212,6 +221,7 @@ const StickyBar = () => {
     <div className={`${containerTheme.theme} ${stickyBar.stickyContainer}`}>
       <div className={stickyBar.stickyTopContainer}>
         <div className={stickyBar.iconMenuContainer}>
+          {/* The 'stickyBar.separationLine' class adds a horizontal  line to Separate blocks in Dropdown Menu*/}
           <DropdownMenu
             icon={faBars}
             iconCss={stickyBar.iconMenu}
@@ -229,16 +239,18 @@ const StickyBar = () => {
               />
             </header>
             <List
-              ulTagCss={stickyBar.menuUl}
+              ulTagCss={`${stickyBar.menuUl} ${stickyBar.separationLine}`}
               liTagCss={stickyBar.menuLi}
               elements={dropdownMenuPrincipalList}
             />
             <List
-              ulTagCss={stickyBar.menuUl}
+              ulTagCss={`${stickyBar.menuUl} ${stickyBar.separationLine}`}
               liTagCss={stickyBar.menuLi}
               elements={dropdownMenuSettingsList}
             />
-            <Accordion cssAccordionContainer={stickyBar.accordionContainer}>
+            <Accordion
+              cssAccordionContainer={`${stickyBar.separationLine} ${stickyBar.accordionContainer}`}
+            >
               <AccordionItem
                 title={"Categories"}
                 cssTitle={stickyBar.accordionItemTitle}
@@ -268,6 +280,11 @@ const StickyBar = () => {
                 {/* API content will be added...*/}
               </AccordionItem>
             </Accordion>
+            <ThemeButton
+              cssButton={`${themeButton.theme} ${stickyBar.themeButton}`}
+              cssIcon={stickyBar.menuOptionIcon}
+              text={isDarkMode ? "Light mode" : "Dark mode"}
+            />
           </DropdownMenu>
         </div>
         <Logo
