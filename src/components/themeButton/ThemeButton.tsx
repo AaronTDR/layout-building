@@ -19,7 +19,7 @@ const ThemeButton = ({
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   return (
     <button onClick={toggleTheme} className={cssButton}>
-      <Icon icon={(isDarkMode && faMoon) || faSun} css={cssIcon} />
+      <Icon icon={(isDarkMode && faSun) || faMoon} css={cssIcon} />
       {text && <span className={cssText ? cssText : ""}>{text}</span>}
     </button>
   );
