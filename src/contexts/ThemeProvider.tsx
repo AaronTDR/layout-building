@@ -11,10 +11,15 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("theme") === "dark" ? true : false
+  );
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    // setIsDarkMode(!isDarkMode);
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem("theme", newMode ? "dark" : "light");
   };
 
   // Set the body background color based on the selected theme
