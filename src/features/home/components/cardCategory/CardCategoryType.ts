@@ -20,10 +20,10 @@ type SecondaryImagesType = {
   img3: SecondaryImageData;
 };
 
-export type CardThemeType = {
+export type CardCategoryType = {
   data: {
     id: number;
-    cardCategory: "theme";
+    cardCategory: "category";
     title: string;
     mainImageData: MainImageDataType;
     secondaryImages: SecondaryImagesType;

@@ -23,7 +23,7 @@
   height: 60%;
   font-size: 1.1rem;
   background-color: transparent;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
   border: none;
   outline: none;
 }

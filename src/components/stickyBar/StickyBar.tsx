@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   faLocationDot,
   faMagnifyingGlass,
@@ -11,8 +11,10 @@ import {
   faQuestion,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
+
 /* components */
 import Icon from "../icon/Icon";
+import ThemeButton from "../../components/themeButton/ThemeButton";
 import AccordionItem from "../accordion/AccordionItem";
 import Accordion from "../accordion/Accordion";
 import UserProfileDropdown from "../userProfileDropdown/UserProfileDropdown";
@@ -22,10 +24,27 @@ import HeaderButton from "../headerButton/HeaderButton";
 import List from "../list/List";
 import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
 import SearchBar from "../../features/home/components/searchBar/SearchBar";
+
+/* theme context */
+import { ThemeContext } from "../../contexts/ThemeProvider";
+
 /* styles */
 import borderLinkStyles from "../../styles/borderLink.module.css";
 import singleLineStyles from "../../styles/singleLine.module.css";
 import stickyBar from "./stickyBar.module.css";
+
+/* theme styles */
+import ThemeButtonTheme from "./theme/themeButtonTheme.module.css";
+import userProfileContainerTheme from "./theme/userProfileContainerTheme.module.css";
+import accordionItemContentContainerTheme from "./theme/accordionItemContentContainerTheme.module.css";
+import accordionItemLinkTheme from "./theme/accordionItemLinkTheme.module.css";
+import accordionItemIconTheme from "./theme/accordionItemIconTheme.module.css";
+import dropdownMenuContainerTheme from "./theme/dropdownMenuContainerTheme.module.css";
+import menuLinkTheme from "./theme/menuLinkTheme.module.css";
+import StickyBarContainerTheme from "./theme/StickyBarContainerTheme.module.css";
+
+/* utils */
+import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
 const categoriesElements = [
   {
@@ -69,32 +88,71 @@ const StickyBar = () => {
   /* DropdownMenu state */
   const [isOpen, setIsOpen] = useState(false);
 
+  // Get the theme context
+  const themeContext = useContext(ThemeContext);
+  const { isDarkMode } = themeContext || {
+    isDarkMode: false,
+  };
+
+  // Get class based on current theme
+  const profileContainerTheme = {
+    theme: getThemeClasses(isDarkMode, userProfileContainerTheme),
+  };
+
+  const themeButton = {
+    theme: getThemeClasses(isDarkMode, ThemeButtonTheme),
+  };
+
+  const accordionContainerTheme = {
+    theme: getThemeClasses(isDarkMode, accordionItemContentContainerTheme),
+  };
+
+  const accordionLinkTheme = {
+    theme: getThemeClasses(isDarkMode, accordionItemLinkTheme),
+  };
+
+  const accordionIconTheme = {
+    theme: getThemeClasses(isDarkMode, accordionItemIconTheme),
+  };
+
+  const dropdownMenuTheme = {
+    theme: getThemeClasses(isDarkMode, dropdownMenuContainerTheme),
+  };
+
+  const selectedMenuLinkTheme = {
+    theme: getThemeClasses(isDarkMode, menuLinkTheme),
+  };
+
+  const containerTheme = {
+    theme: getThemeClasses(isDarkMode, StickyBarContainerTheme),
+  };
+
   const dropdownMenuPrincipalList = [
     {
       path: "#",
       text: "Home",
-      cssLink: stickyBar.menuLink,
+      cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
       icon: { name: faHome, css: stickyBar.menuOptionIcon },
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Wish List",
-      cssLink: stickyBar.menuLink,
+      cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
       icon: { name: faHeart, css: stickyBar.menuOptionIcon },
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Offers",
-      cssLink: stickyBar.menuLink,
+      cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
       icon: { name: faTag, css: stickyBar.menuOptionIcon },
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Trends",
-      cssLink: stickyBar.menuLink,
+      cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
       icon: { name: faTshirt, css: stickyBar.menuOptionIcon },
       onClick: () => setIsOpen(!isOpen),
     },
@@ -103,14 +161,14 @@ const StickyBar = () => {
     {
       path: "#",
       text: "Language",
-      cssLink: stickyBar.menuLink,
+      cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
       icon: { name: faGlobe, css: stickyBar.menuOptionIcon },
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Help",
-      cssLink: stickyBar.menuLink,
+      cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
       icon: { name: faQuestion, css: stickyBar.menuOptionIcon },
       onClick: () => setIsOpen(!isOpen),
     },
@@ -119,53 +177,55 @@ const StickyBar = () => {
     {
       path: "#",
       text: "Vehicles",
-      cssLink: stickyBar.accordionItemListLink,
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Supermarket",
-      cssLink: stickyBar.accordionItemListLink,
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Technology",
-      cssLink: stickyBar.accordionItemListLink,
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Home",
-      cssLink: stickyBar.accordionItemListLink,
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Construction",
-      cssLink: stickyBar.accordionItemListLink,
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Fashion",
-      cssLink: stickyBar.accordionItemListLink,
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Sports",
-      cssLink: stickyBar.accordionItemListLink,
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
   ];
   return (
-    <div className={stickyBar.stickyContainer}>
+    <div className={`${containerTheme.theme} ${stickyBar.stickyContainer}`}>
       <div className={stickyBar.stickyTopContainer}>
         <div className={stickyBar.iconMenuContainer}>
+          {/* The 'stickyBar.separationLine' class adds a horizontal  line to Separate blocks in Dropdown Menu*/}
           <DropdownMenu
             icon={faBars}
             iconCss={stickyBar.iconMenu}
+            menuContainerCss={`${dropdownMenuTheme.theme} ${stickyBar.menuContainer}`}
             dropdownPosition={"left"}
             menuWidthPercentage={80}
             state={isOpen}
@@ -173,29 +233,32 @@ const StickyBar = () => {
           >
             <header>
               <UserProfileDropdown
+                containerCssProp={profileContainerTheme.theme}
                 onCLick={() => setIsOpen(!isOpen)}
                 isThereBanner={true}
               />
             </header>
             <List
-              ulTagCss={stickyBar.menuUl}
+              ulTagCss={`${stickyBar.menuUl} ${stickyBar.separationLine}`}
               liTagCss={stickyBar.menuLi}
               elements={dropdownMenuPrincipalList}
             />
             <List
-              ulTagCss={stickyBar.menuUl}
+              ulTagCss={`${stickyBar.menuUl} ${stickyBar.separationLine}`}
               liTagCss={stickyBar.menuLi}
               elements={dropdownMenuSettingsList}
             />
-            <Accordion cssAccordionContainer={stickyBar.accordionContainer}>
+            <Accordion
+              cssAccordionContainer={`${stickyBar.separationLine} ${stickyBar.accordionContainer}`}
+            >
               <AccordionItem
                 title={"Categories"}
                 cssTitle={stickyBar.accordionItemTitle}
                 icon={faChevronDown}
-                cssIcon={stickyBar.accordionItemIcon}
+                cssIcon={`${accordionIconTheme.theme} ${stickyBar.accordionItemIcon}`}
                 rotateIcon={true}
                 IsThereOpacityIcon={true}
-                cssContentContainer={stickyBar.accordionItemContentContainer}
+                cssContentContainer={`${accordionContainerTheme.theme} ${stickyBar.accordionItemContentContainer}`}
                 expandDirection={"up"}
               >
                 <List
@@ -208,15 +271,20 @@ const StickyBar = () => {
                 title={"Services"}
                 cssTitle={stickyBar.accordionItemTitle}
                 icon={faChevronDown}
-                cssIcon={stickyBar.accordionItemIcon}
+                cssIcon={`${accordionIconTheme.theme} ${stickyBar.accordionItemIcon}`}
                 rotateIcon={true}
                 IsThereOpacityIcon={true}
-                cssContentContainer={stickyBar.accordionItemContentContainer}
+                cssContentContainer={`${accordionContainerTheme.theme} ${stickyBar.accordionItemContentContainer}`}
                 expandDirection={"up"}
               >
                 {/* API content will be added...*/}
               </AccordionItem>
             </Accordion>
+            <ThemeButton
+              cssButton={`${themeButton.theme} ${stickyBar.themeButton}`}
+              cssIcon={stickyBar.menuOptionIcon}
+              text={isDarkMode ? "Light mode" : "Dark mode"}
+            />
           </DropdownMenu>
         </div>
         <Logo

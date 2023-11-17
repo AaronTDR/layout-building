@@ -4,11 +4,13 @@ import {
   faShield,
 } from "@fortawesome/free-solid-svg-icons";
 import { faAndroid, faApple } from "@fortawesome/free-brands-svg-icons";
+
+/* styles */
+import footerServicesStyles from "./footerServices.module.css";
+
 /* components */
 import Icon from "../icon/Icon";
 import TextTruncate from "../textTruncate/TextTruncate";
-/* styles */
-import footerServicesStyles from "./footerServices.module.css";
 
 const FooterServices = () => {
   return (

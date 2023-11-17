@@ -16,7 +16,7 @@
   font-size: var(--text-md);
   font-weight: 700;
   background-color: inherit;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
   cursor: pointer;
 }
 
@@ -47,7 +47,7 @@
 .shoppingCartNumber {
   font-size: 0.525rem;
   font-weight: 100;
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
 }
 
 .stickyShoppingCartIcon {

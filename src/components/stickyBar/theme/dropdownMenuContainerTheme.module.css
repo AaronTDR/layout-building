@@ -1,0 +1,13 @@
+/* * Add the theme to the dropdown menu container. */
+
+/* On light mode */
+.light {
+  background-color: var(--background-tertiary-light-mode);
+  color: var(--text-primary-dark);
+}
+
+/* On dark mode */
+.dark {
+  background-color: var(--background-tertiary-dark-mode);
+  color: var(--text-primary-light);
+}

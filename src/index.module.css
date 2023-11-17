@@ -39,40 +39,44 @@
 
 /* * Colors */
 :root {
+  --primary-color: #cc0c39; /* Main accent color */
+  --secondary-color: #b12704; /* Secondary accent color */
+  --accent-color: #e67a00; /* Accent color to highlight specific elements */
+
+  /* * Text Color */
   /* Color on light backgrounds */
-  --text-color-primary-dark: #0f1111;
-  --text-color-secondary-dark: #565959;
-
+  --text-primary-dark: #0f1111;
+  --text-secondary-dark: #2f3232;
   /* Color on dark backgrounds */
-  --text-color-primary-light: #ffffff;
-  --text-color-secondary-light: #cccccc;
+  --text-primary-light: #ffffff;
+  --text-secondary-light: #cccccc;
 
-  /* Color on light backgrounds */
-  --link-color-dark: #007185;
-  --link-hover-color-dark: #c7511f;
-
-  /* Color on dark backgrounds */
-  --link-color-light: #039cb7; /* Color on dark backgrounds */
-
-  --background-color-header: #131921; /* Header */
-
-  /* On light mode */
-  --background-color-primary-light: #e3e6e6;
-  --background-color-secondary-light: #ffffff;
-
-  /* Base to apply dark mode */
-  --background-color-primary-dark: #0d1218;
-  --background-color-secondary-dark: #232f3e;
-
+  /* Button colors */
   --button-background-color: #ffd814;
   --button-hover-background-color: #f7ca00;
 
   --button-hover-border-color: #f2c200;
   --button-border-color: #fcd200;
 
-  --primary-color: #cc0c39; /* Main accent color */
-  --secondary-color: #b12704; /* Secondary accent color */
-  --accent-color: #e67a00; /* Accent color to highlight specific elements */
+  /* * Light Mode Exclusive Variables */
+  --link-light-mode: #007185;
+  --link-hover-light-mode: #c7511f;
+
+  --background-primary-light-mode: #e3e6e6; /* Mainly used in the body */
+  --background-secondary-light-mode: #131921; /* Mainly used in the header */
+  --background-tertiary-light-mode: #ffffff; /* Mainly used for background of main elements */
+  --background-quaternary-light-mode: #232f3e; /* Mainly used in the footer */
+  --background-quinary-light-mode: #131a22; /* Mainly used in terms */
+
+  /* * Dark Mode Exclusive Variables */
+  --link-dark-mode: #4ec6c4;
+  --link-hover-dark-mode: #c7511f;
+
+  --background-primary-dark-mode: #2b2b2b; /* Mainly used in the body */
+  --background-secondary-dark-mode: #1d1d1d; /* Mainly used in the header */
+  --background-tertiary-dark-mode: #3d3d3d; /* Mainly used for background of main elements */
+  --background-quaternary-dark-mode: #1d1d1d; /* Mainly used in the footer */
+  --background-quinary-dark-mode: #1d1d1d; /* Mainly used in terms */
 }
 
 /* * Transition */
@@ -86,7 +90,6 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--background-color-primary-light);
 }
 
 @media screen and (max-width: 960px) {

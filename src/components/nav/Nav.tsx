@@ -4,14 +4,16 @@ import {
   faGlobe,
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
-/* components */
-import Icon from "../../components/icon/Icon";
-import List from "../list/List";
-import SocialMedia from "../socialMedia/SocialMedia";
 
 /* styles */
 import navStyles from "./nav.module.css";
 import borderLinkStyles from "../../styles/borderLink.module.css";
+
+/* components */
+import Icon from "../../components/icon/Icon";
+import ThemeButton from "../../components/themeButton/ThemeButton";
+import List from "../list/List";
+import SocialMedia from "../socialMedia/SocialMedia";
 
 const Nav = () => {
   /* Contains the elements to render in the right section of the navigation */
@@ -66,6 +68,10 @@ const Nav = () => {
         />
       </div>{" "}
       <div className={navStyles.headerSection}>
+        <ThemeButton
+          cssButton={`${borderLinkStyles.borderLink} ${navStyles.themeButton}`}
+          cssIcon={navStyles.themeIcon}
+        />
         <List
           ulTagCss={navStyles.headerNavBarOptions}
           liTagCss={navStyles.headerSection}
@@ -75,5 +81,4 @@ const Nav = () => {
     </div>
   );
 };
-
 export default Nav;

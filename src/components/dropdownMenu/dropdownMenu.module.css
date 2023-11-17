@@ -1,4 +1,5 @@
-.container {
+/* Dropdown menu button container */
+.btnContainer {
   position: relative;
 }
 
@@ -20,4 +21,15 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 900;
+}
+
+/* Dropdown menu content */
+.content {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  overflow-y: scroll;
+  transition: all var(--transition-duration-long)
+    var(--transition-timing-function);
+  z-index: 910;
 }

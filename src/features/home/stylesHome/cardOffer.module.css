@@ -1,27 +1,21 @@
 @import url("./cardWrapper.module.css");
 
-.cardHeader {
+.header {
   margin-bottom: var(--spacing-md);
 }
 
-.cardTitle {
+.title {
   margin: 0;
   font-size: var(--title-md);
   font-weight: 700;
-  color: var(--text-color-primary-dark);
+  color: inherit;
 }
 
-.cardOfferImgStyles {
-  width: 100%;
-  border-radius: var(--principal-border-radius);
-  -webkit-border-radius: var(--principal-border-radius);
-  -moz-border-radius: var(--principal-border-radius);
-  -ms-border-radius: var(--principal-border-radius);
-  -o-border-radius: var(--principal-border-radius);
-  object-fit: cover;
+.imgLink {
+  text-decoration: none;
 }
 
-.cardOfferImg {
+.img {
   width: 100%;
   height: 15.375em;
   border-radius: var(--principal-border-radius);
@@ -32,18 +26,14 @@
   object-fit: cover;
 }
 
-.cardOfferImgLink {
-  text-decoration: none;
-}
-
-.cardOfferOfferQuantityContainer {
+.quantityContainer {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 0.25em;
   align-items: center;
 }
 
-.cardOfferOfferQuantity {
+.quantity {
   min-width: 5.625em;
   max-width: 10em;
   margin-top: 0.125em;
@@ -52,7 +42,7 @@
   font-size: var(--text-md);
   font-weight: 700;
   background-color: var(--primary-color);
-  color: var(--text-color-primary-light);
+  color: var(--text-primary-light);
   border-radius: 0.125em;
   -webkit-border-radius: 0.125em;
   -moz-border-radius: 0.125em;
@@ -60,10 +50,10 @@
   -o-border-radius: 0.125em;
 }
 
-.cardOfferOfferDay {
+.offerDay {
   font-size: var(--text-md);
   font-weight: 700;
-  color: var(--text-color-primary-dark);
+  color: inherit;
 }
 
 .extractContainer {
@@ -73,7 +63,7 @@
 
 .extractText {
   font-size: var(--text-md);
-  color: var(--text-color-primary-dark);
+  color: inherit;
 }
 
 @media screen and (max-width: 1024px) {
@@ -84,21 +74,16 @@
 }
 
 @media screen and (max-width: 768px) {
-  .cardOfferOfferQuantity {
+  .quantity {
     font-size: 0.9rem;
   }
-  .cardOfferOfferDay {
+  .offerDay {
     font-size: 0.9rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .cardsGrid {
-    gap: 0.33em;
-    padding: 0.33em;
-    grid-auto-rows: minmax(29.9em, auto);
-  }
-  .cardOfferImg {
+  .img {
     height: 18.375em;
   }
 }

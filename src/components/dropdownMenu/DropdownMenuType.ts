@@ -6,6 +6,7 @@ type DropdownMenuItem = ReactElement<any, any>;
 export type DropdownMenuType = {
   icon: IconDefinition;
   iconCss: string;
+  menuContainerCss: string;
   menuWidthPercentage: number;
   dropdownPosition: string;
   children: DropdownMenuItem[];

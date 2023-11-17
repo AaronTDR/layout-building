@@ -1,23 +1,20 @@
 import { Link } from "react-router-dom";
+
 /* components */
 import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 import FooterCard from "../footerCard/FooterCard";
-/* types */
-import { CardThemeType } from "./CardThemeType";
 
-const CardTheme = ({ data, css }: CardThemeType) => {
+/* types */
+import { CardCategoryType } from "./CardCategoryType";
+
+const CardCategory = ({ data, css }: CardCategoryType) => {
   return (
-    <article className={css.cardWrapper}>
-      <header className={css.cardThemeHeader}>
-        <TextTruncate
-          text={data.title}
-          rows={2}
-          tagType="h2"
-          css={css.cardThemeTitle}
-        />
+    <article className={`${css.cardWrapper} ${css.theme}`}>
+      <header className={css.header}>
+        <TextTruncate text={data.title} rows={2} tagType="h2" css={css.title} />
       </header>
-      <Link to={"#"} className={css.cardThemeImgLink}>
-        <figure className={css.cardThemeFigure}>
+      <Link to={"#"} className={css.imgLink}>
+        <figure className={css.figure}>
           <picture>
             <source
               media="(min-width: 992px)"
@@ -30,14 +27,14 @@ const CardTheme = ({ data, css }: CardThemeType) => {
             <img
               src={data.mainImageData.paths.small}
               alt={data.mainImageData.alt}
-              className={css.cardThemeImg}
+              className={css.img}
             />
           </picture>
           <TextTruncate
             text={data.mainImageData.figcaptionText}
             rows={1}
             tagType="figcaption"
-            css={css.cardThemeImgFigcaption}
+            css={css.imgFigcaption}
           />
         </figure>
       </Link>
@@ -93,4 +90,4 @@ const CardTheme = ({ data, css }: CardThemeType) => {
   );
 };
 
-export default CardTheme;
+export default CardCategory;
