@@ -16,7 +16,6 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const toggleTheme = () => {
-    // setIsDarkMode(!isDarkMode);
     const newMode = !isDarkMode;
     setIsDarkMode(newMode);
     localStorage.setItem("theme", newMode ? "dark" : "light");
