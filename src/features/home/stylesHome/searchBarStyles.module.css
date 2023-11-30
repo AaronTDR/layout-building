@@ -4,13 +4,14 @@
   align-items: center;
   width: 100%;
   height: 3.125em;
-  background-color: transparent;
   border: solid 0.125em #ff9900;
   border-radius: 0.4375em;
   -webkit-border-radius: 0.4375em;
   -moz-border-radius: 0.4375em;
   -ms-border-radius: 0.4375em;
   -o-border-radius: 0.4375em;
+  background-color: transparent;
+  padding: 0 0.75em;
 }
 
 /* the shadow is applied to the container with class “sticky__searchbar-container” when any element inside the container is in focus. */
@@ -29,14 +30,23 @@
 }
 
 @media screen and (max-width: 768px) {
+  .stickySearchBarContainer {
+    padding: 0;
+  }
   .stickySearchBarInput {
     width: 88%;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .stickySearchBarInput {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 320px) {
   .stickySearchBarContainer {
-    padding-right: 1.5%;
+    padding: 0 5px;
   }
 
   .stickySearchBarInput {
