@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   faLocationDot,
   faMagnifyingGlass,
@@ -85,6 +86,13 @@ const categoriesElements = [
 ];
 
 const StickyBar = () => {
+  const navigate = useNavigate();
+
+  const handleSearch = (query: string) => {
+    // Redirige a la ruta de búsqueda con el término de búsqueda como parámetro.
+    navigate(`/search?query=${encodeURIComponent(query)}`);
+  };
+
   /* DropdownMenu state */
   const [isOpen, setIsOpen] = useState(false);
 
@@ -307,9 +315,11 @@ const StickyBar = () => {
             </span>
           </span>
         </HeaderButton>
-        <SearchBar placeholder="Search">
-          <Icon icon={faMagnifyingGlass} css={stickyBar.stickySearchBarIcon} />
-        </SearchBar>
+        <SearchBar
+          placeholder="Search"
+          icon={faMagnifyingGlass}
+          iconCss={stickyBar.stickySearchBarIcon}
+        />
         <HeaderButton cssArr={[stickyBar.stickyButtonWishList]}>
           <Icon icon={faHeart} css={stickyBar.stickyWishListIcon} />
           Wish List
