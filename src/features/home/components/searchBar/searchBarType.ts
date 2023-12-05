@@ -1,17 +1,8 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-type SearchBarTypeWithoutIcon = {
-  placeholder: string;
-  icon?: never;
-  iconCss?: never;
-  onInputChange?: (inputValue: string) => void;
-};
-
-type SearchBarTypeWithIcon = {
+export type SearchBarType = {
   placeholder: string;
   icon: IconDefinition;
-  iconCss: string;
-  onInputChange?: (inputValue: string) => void;
+  cssIcon: string;
+  cssButton: string;
 };
-
-export type SearchBarType = SearchBarTypeWithIcon | SearchBarTypeWithoutIcon;
