@@ -18,7 +18,6 @@ export const validateSearch = (query: string): ValidatedType => {
 
   if (trimmedQuery.length > 120) {
     trimmedQuery = trimmedQuery.slice(0, 119);
-    // errors.longQuery = "Query cannot exceed 120 characters";
   }
 
   return {

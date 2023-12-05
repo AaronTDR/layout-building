@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type ButtonWithText = {
-  onClick: () => void;
+  onClick: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   cssButton: string;
   text: string;
   cssText: string;
@@ -10,7 +10,7 @@ type ButtonWithText = {
 };
 
 type ButtonWithoutText = {
-  onClick: () => void;
+  onClick: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   cssButton: string;
   text?: string;
   cssText?: string;

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const SearchResults = () => {
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(true); // Agrega un estado de carga
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get("q");
@@ -19,10 +19,6 @@ const SearchResults = () => {
             )}&status=active&app_version=v2&condition=new`
           );
           const data = await response.json();
-          console.log(
-            "🚀 ~ file: SearchResults.tsx:22 ~ fetchSearchResults ~ data:",
-            data
-          );
           setResults(data.results);
         }
       } catch (error) {
@@ -36,13 +32,13 @@ const SearchResults = () => {
   }, [query]);
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <h2>Resultados de búsqueda para "{query}"</h2>
-      {/* Renderizar los resultados */}
+      <h2>Results from "{query}"</h2>
+      {/* Rendering results...*/}
     </div>
   );
 };

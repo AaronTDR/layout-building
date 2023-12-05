@@ -1,8 +1,13 @@
 import { useState, ChangeEvent, FormEvent, FC } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../../../components/button/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+/* Types */
 import { SearchBarType } from "./searchBarType";
+
+/* Styles */
 import searchBarStyles from "../../stylesHome/searchBarStyles.module.css";
+
+/* Utils */
 import {
   validateSearch,
   ValidatedType,
@@ -52,12 +57,11 @@ const SearchBar: FC<SearchBarType> = ({
         placeholder={placeholder}
         maxLength={120}
       />
-      <Button
-        onClick={handleSubmit}
-        cssButton={cssButton}
-        icon={icon}
-        cssIcon={cssIcon}
-      />
+      <button type="submit" className={cssButton}>
+        <i className={cssIcon}>
+          <FontAwesomeIcon icon={icon} />
+        </i>
+      </button>
     </form>
   );
 };

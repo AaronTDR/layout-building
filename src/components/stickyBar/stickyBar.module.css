@@ -216,8 +216,11 @@
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  background-color: inherit;
   cursor: pointer;
+}
+
+.stickySearchBarButton:hover {
+  border-color: transparent;
 }
 
 .stickySearchBarButton:active {

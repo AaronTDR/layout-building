@@ -1,8 +1,8 @@
-/* Components */
-import Icon from "../icon/Icon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /* Types */
 import { ButtonType } from "./ButtonType";
+
 const Button = ({
   onClick,
   cssButton,
@@ -12,10 +12,15 @@ const Button = ({
   cssIcon,
 }: ButtonType) => {
   return (
-    <div onClick={onClick} className={cssButton}>
-      {icon && <Icon icon={icon} css={cssIcon} />}
+    <button onClick={onClick} className={cssButton}>
+      {icon && (
+        <i className={cssIcon}>
+          <FontAwesomeIcon icon={icon} />
+        </i>
+      )}
+
       {text && <div className={cssText}>{text}</div>}
-    </div>
+    </button>
   );
 };
 
