@@ -10,6 +10,7 @@ const routes = [
   {
     path: "/search",
     element: <SearchResults />,
+    exact: true,
   },
 ];
 
