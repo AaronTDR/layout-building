@@ -129,7 +129,7 @@ const StickyBar = () => {
 
   const dropdownMenuPrincipalList = [
     {
-      path: "#",
+      path: "/",
       text: "Home",
       cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
       icon: { name: faHome, css: stickyBar.menuOptionIcon },
@@ -307,9 +307,12 @@ const StickyBar = () => {
             </span>
           </span>
         </HeaderButton>
-        <SearchBar placeholder="Search">
-          <Icon icon={faMagnifyingGlass} css={stickyBar.stickySearchBarIcon} />
-        </SearchBar>
+        <SearchBar
+          placeholder="Search"
+          cssButton={stickyBar.stickySearchBarButton}
+          icon={faMagnifyingGlass}
+          cssIcon={stickyBar.stickySearchBarIcon}
+        />
         <HeaderButton cssArr={[stickyBar.stickyButtonWishList]}>
           <Icon icon={faHeart} css={stickyBar.stickyWishListIcon} />
           Wish List

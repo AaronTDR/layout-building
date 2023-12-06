@@ -208,10 +208,29 @@
   text-align: start;
 }
 
+/* Button containing the search bar icon */
+.stickySearchBarButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  min-width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.stickySearchBarButton:hover {
+  border-color: transparent;
+}
+
+.stickySearchBarButton:active {
+  background-color: rgba(254, 189, 105, 0.2);
+}
+
 .stickySearchBarIcon {
   font-size: 1.1rem;
   color: #febd69;
-  cursor: pointer;
 }
 
 .stickyButtonWishList {

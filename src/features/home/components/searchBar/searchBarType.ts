@@ -1,4 +1,8 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
 export type SearchBarType = {
   placeholder: string;
-  children?: React.ReactNode;
+  icon: IconDefinition;
+  cssIcon: string;
+  cssButton: string;
 };
