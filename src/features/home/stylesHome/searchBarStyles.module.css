@@ -29,3 +29,8 @@
   background-color: transparent;
   color: var(--text-primary-light);
 }
+
+.stickySearchBarInput::selection {
+  background-color: blue;
+  color: white;
+}
