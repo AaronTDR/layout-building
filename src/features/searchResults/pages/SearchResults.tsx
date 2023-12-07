@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+/* Components */
+import MainResults from "../components/mainResults/MainResults";
+import Layout from "../../../components/layout/Layout";
+
+/* Styles */
+import styles from "./searchResults.module.css";
+
 const SearchResults = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,10 +43,10 @@ const SearchResults = () => {
   }
 
   return (
-    <div>
+    <Layout css={styles.container}>
       <h2>Results from "{query}"</h2>
-      {/* Rendering results...*/}
-    </div>
+      <MainResults results={results} />
+    </Layout>
   );
 };
 

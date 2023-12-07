@@ -13,7 +13,6 @@ import { CardSponsoredType } from "../cardSponsored/CardSponsoredType";
 import { CardProductType } from "../cardProduct/CardProductType";
 import { CardCategoryType } from "../cardCategory/CardCategoryType";
 import { CardOfferType } from "../cardOffer/CardOfferType";
-import { MainHomeType } from "./mainHomeType";
 
 /* theme context */
 import { ThemeContext } from "../../../../contexts/ThemeProvider";
@@ -26,6 +25,7 @@ import cardOffer from "../../stylesHome/cardOffer.module.css";
 import cardCategory from "../../stylesHome/cardCategory.module.css";
 import cardsGrid from "../../stylesHome/cardsGrid.module.css";
 import cardWrapperTheme from "../../stylesHome/cardWrapperTheme.module.css";
+import styles from "./mainCardsContainer.module.css";
 
 /* services */
 import { getCardsHome } from "../../services/getCardsHome/getCardsHome";
@@ -48,7 +48,7 @@ type CardElementType =
   | CardSponsoredType
   | CardServicesType;
 
-const MainHome = ({ css }: MainHomeType) => {
+const MainHome = () => {
   const [cardElements, setCardElements] = useState<CardElementsArrayType>([]);
 
   // Get the theme context
@@ -135,7 +135,7 @@ const MainHome = ({ css }: MainHomeType) => {
     }
   };
   return (
-    <main className={css}>
+    <main className={styles.container}>
       <div className={cardsGrid.grid}>
         {cardElements.map((cardElement: CardElementType) =>
           cardRenderer(cardElement)
