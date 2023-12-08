@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding: var(--spacing-lg);
+}
+
+.messageContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: var(--spacing-md) 3.75rem;
+}
+
+.titleContainer {
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+  text-align: start;
+}
+
+.messageContainer {
+  width: 100%;
+  text-align: start;
+}
+
+@media screen and (max-width: 768px) {
+  .messageContent {
+    padding: var(--spacing-md) 1.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .messageContent {
+    padding: var(--spacing-md) 1.25rem;
+  }
+}
