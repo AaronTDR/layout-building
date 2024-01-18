@@ -59,6 +59,11 @@ The component uses CSS classes defined in external style files (styles.container
 */
 
 const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
+  /*   Check if the length of 'images' is greater than 10.
+  If true, assign a new version of the array to 'limitedImages'
+  containing only the first 10 elements; otherwise, assign 'images' unchanged. */
+  const limitedImages = images.length > 10 ? images.slice(0, 10) : images;
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   /* Item by ID path */
@@ -71,23 +76,23 @@ const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
 
   const handlePrevClick = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? limitedImages.length - 1 : prevIndex - 1
     );
   };
 
   const handleNextClick = (e?: MouseEvent | SwipeEventData) => {
     setCurrentImageIndex((prevIndex) => {
-      return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+      return prevIndex === limitedImages.length - 1 ? 0 : prevIndex + 1;
     });
   };
 
-  const carouselContent = images.map((img, i) => {
+  const carouselContent = limitedImages.map((img, i) => {
     return (
       <Link
         key={i}
         to={itemByIdPath}
         className={styles.imgLink}
-        style={{ width: `${100 / images.length}%` }}
+        style={{ width: `${100 / limitedImages.length}%` }}
       >
         <img src={img.url} alt={`Slide ${i + 1}`} className={styles.img} />
       </Link>
@@ -100,8 +105,10 @@ const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
   });
 
   const changingContentStyles = {
-    width: `${images.length}00%`,
-    transform: `translateX(${currentImageIndex * -(100 / images.length)}%)`,
+    width: `${limitedImages.length}00%`,
+    transform: `translateX(${
+      currentImageIndex * -(100 / limitedImages.length)
+    }%)`,
   };
   return (
     <div className={styles.container}>
@@ -109,9 +116,9 @@ const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
         <div style={changingContentStyles} className={styles.content}>
           {carouselContent}
         </div>
-        {images.length > 1 && (
+        {limitedImages.length > 1 && (
           <div className={styles.pagination}>
-            {images.map((_, index) => (
+            {limitedImages.map((_, index) => (
               <div
                 key={index}
                 className={`${styles.paginationDot} ${
@@ -122,7 +129,7 @@ const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
             ))}
           </div>
         )}
-        {images.length > 1 && (
+        {limitedImages.length > 1 && (
           <>
             {/* These buttons will be visible on PC but hidden on Android and iPhone. */}
             <button
