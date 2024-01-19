@@ -29,30 +29,27 @@
 .priceSection {
   display: flex;
   flex-direction: column;
-  background-color: violet;
 }
 
 .priceWrapper {
   display: flex;
   width: 100%;
   margin-right: 0.25rem;
-  background-color: #cccccc;
 }
 
 .principalPrice {
-  margin-right: 4px;
-  background-color: blue;
+  margin-right: var(--spacing-xs);
 }
 
 .integer {
-  margin-right: 0.1875em;
+  margin-right: 2px;
   font-size: var(--title-lg);
   font-weight: 700;
 }
 
 .decimals {
-  font-size: 12px;
-  vertical-align: 7px;
+  font-size: var(--text-sm);
+  vertical-align: 0.495rem;
 }
 
 .discount {
@@ -65,19 +62,18 @@
   color: var(--text-primary-light);
 }
 
-.originalPriceWrapper {
-  background-color: aqua;
-}
-
 .originalPriceInteger {
   margin-right: 1px;
   font-size: var(--text-sm);
   text-decoration: line-through;
+  color: #bbbbbb;
 }
 
 .originalPriceDecimals {
   font-size: var(--spacing-md);
   text-decoration: line-through;
+  vertical-align: top;
+  color: #bbbbbb;
 }
 
 .information {

@@ -93,9 +93,9 @@ const ResultCard = ({ item }) => {
             </div>
           )}
           {originalPrice && (
-            <div className={styles.originalPriceWrapper}>
+            <div>
               <span className={styles.originalPriceInteger}>
-                {originalPriceInteger}
+                {`$ ${originalPriceInteger}`}
               </span>
               <span className={styles.originalPriceDecimals}>
                 {originalPriceDecimals && originalPriceDecimals}
