@@ -87,7 +87,7 @@ const ResultCard = ({ item }) => {
                 <span className={styles.discount}>
                   {/* `${Math.round(getDiscount(item.original_price, item.price))}% OFF` */}
                   {/* 10% */}
-                  {`${getDiscount(originalPrice, price)}%`}
+                  {`- ${getDiscount(originalPrice, price)}%`}
                 </span>
               )}
             </div>
