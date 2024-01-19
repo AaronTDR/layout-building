@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 /* Components */
-import Carousel from "../../../../components/carousel/Carousel";
+import GenericCarousel from "../../../../components/carousel/GenericCarousel";
 import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 
 /* context theme */
@@ -17,7 +17,6 @@ import { getThemeClasses } from "../../../../utils/getThemeClasses/getThemeClass
 
 /* Not found img */
 import notFound from "./assets/img/not-found.webp";
-import imgOk from "./assets/img/img-ok.jpg";
 
 const ResultCard = ({ item }) => {
   const originalPrice = item.original_price || null;
@@ -38,20 +37,25 @@ const ResultCard = ({ item }) => {
     if (!amount) return [null, null];
     const str = amount.toString();
     const parts = str.split(".");
+
+    if (parts.length < 1) return [parts[0]];
     const decimals = Number("0." + parts[1]);
 
     return [parts[0], decimals.toFixed(2).split(".")[1]];
   };
 
+  // Gets the price with integer and decimals with or without discount
+  const [priceInteger, priceDecimals] = separateDecimals(price);
+
+  // Original price if there is a discount
   const [originalPriceInteger, originalPriceDecimals] =
     separateDecimals(originalPrice);
-  const [priceInteger, priceDecimals] = separateDecimals(price);
 
   return (
     <div className={`${styles.container}`}>
       <div className={styles.imgContainer}>
         {item?.picturesArr?.length ? (
-          <Carousel id={item.id} images={item.picturesArr} />
+          <GenericCarousel id={item.id} images={item.picturesArr} />
         ) : (
           <Link to={`https://api.mercadolibre.com/items/${item.id}/`}>
             <img className={styles.img} src={notFound} alt="Image not found" />
@@ -60,44 +64,43 @@ const ResultCard = ({ item }) => {
       </div>
       <div className={`${stylesWithTheme.theme} ${styles.content}`}>
         <div className={styles.priceSection}>
-          {!originalPriceInteger ? (
+          {!originalPrice ? (
             <div className={styles.priceWrapper}>
               <div className={styles.principalPrice}>
-                <span className={styles.integer}>
-                  {/* `$ ${priceInteger}` */}10
-                </span>
+                <span className={styles.integer}>{`$ ${priceInteger}`}</span>
                 <span className={styles.decimals}>
-                  {/* `${priceDecimals}` */}90
+                  {priceDecimals && priceDecimals}
                 </span>
               </div>
             </div>
           ) : (
             <div className={styles.priceWrapper}>
               <div className={styles.principalPrice}>
-                <span className={styles.integer}>
-                  {/* `${priceInteger}` */}20
-                </span>
+                <span className={styles.integer}>{`$ ${priceInteger}`}</span>
                 <span className={styles.decimals}>
-                  99
-                  {/* ${priceDecimals} */}
+                  {priceDecimals && priceDecimals}
                 </span>
               </div>
-              {/* If original price exists as 'originalInteger', then the discount percentage is obtained and displayed on an offer label */}
-              <span className={styles.discount}>
-                {/* `${Math.round(getDiscount(item.original_price, item.price))}% OFF` */}
-                10%
+              {/* If original price exists, then the discount percentage is obtained and displayed on an offer label */}
+              {getDiscount(originalPrice, price) > 0 && (
+                <span className={styles.discount}>
+                  {/* `${Math.round(getDiscount(item.original_price, item.price))}% OFF` */}
+                  {/* 10% */}
+                  {`${getDiscount(originalPrice, price)}%`}
+                </span>
+              )}
+            </div>
+          )}
+          {originalPrice && (
+            <div className={styles.originalPriceWrapper}>
+              <span className={styles.originalPriceInteger}>
+                {originalPriceInteger}
+              </span>
+              <span className={styles.originalPriceDecimals}>
+                {originalPriceDecimals && originalPriceDecimals}
               </span>
             </div>
           )}
-
-          <div className={styles.originalPriceWrapper}>
-            <span className={styles.originalPriceInteger}>
-              100{/* item.original_price */}
-            </span>
-            <span className={styles.originalPriceDecimals}>
-              99{/* item.original_price */}
-            </span>
-          </div>
         </div>
         <div className={styles.information}>
           {/* <span>{item.sold}</span> */}
@@ -112,5 +115,3 @@ const ResultCard = ({ item }) => {
 };
 
 export default ResultCard;
-
-/*  <Carousel images={item.picturesArr} /> */
