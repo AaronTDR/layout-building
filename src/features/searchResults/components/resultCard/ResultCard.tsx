@@ -19,6 +19,7 @@ import { getThemeClasses } from "../../../../utils/getThemeClasses/getThemeClass
 import notFound from "./assets/img/not-found.webp";
 
 const ResultCard = ({ item }) => {
+  console.log("🚀 ~ ResultCard ~ item:", item);
   const originalPrice = item.original_price || null;
   const price = item.price;
 
@@ -103,9 +104,13 @@ const ResultCard = ({ item }) => {
           )}
         </div>
         <div className={styles.information}>
-          {/* <span>{item.sold}</span> */}
           <TextTruncate text={item.title} rows={3} tagType="h2" css={""} />
         </div>
+        {item.official_store_name && (
+          <div className={styles.seller}>
+            {`${item.official_store_name} Store`}
+          </div>
+        )}
         {item?.shipping?.free_shipping && (
           <span className={styles.shipping}>Free Shipping</span>
         )}

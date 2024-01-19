@@ -42,6 +42,7 @@
   --primary-color: #cc0c39; /* Main accent color */
   --secondary-color: #b12704; /* Secondary accent color */
   --accent-color: #e67a00; /* Accent color to highlight specific elements */
+  --success-color: #7fda69; /* Color for success or positive elements */
 
   /* * Text Color */
   /* Color on light backgrounds */
