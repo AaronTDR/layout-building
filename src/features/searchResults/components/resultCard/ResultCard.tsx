@@ -86,8 +86,6 @@ const ResultCard = ({ item }) => {
                 {/* If original price exists, then the discount percentage is obtained and displayed on an offer label */}
                 {getDiscount(originalPrice, price) > 0 && (
                   <span className={styles.discount}>
-                    {/* `${Math.round(getDiscount(item.original_price, item.price))}% OFF` */}
-                    {/* 10% */}
                     {`- ${getDiscount(originalPrice, price)}%`}
                   </span>
                 )}
