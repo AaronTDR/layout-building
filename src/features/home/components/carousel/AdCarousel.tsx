@@ -13,7 +13,7 @@ import Icon from "../../../../components/icon/Icon";
 import { AdCarouselImageType } from "./AdCarouselImageType";
 
 /* styles */
-import styles from "./styles.module.css";
+import styles from "./AdCarouselStyles.module.css";
 
 /* services */
 import { getCarouselImages } from "../../services/getCarouselImages/getCarouselImages";
