@@ -19,7 +19,7 @@ import { getThemeClasses } from "../../../../utils/getThemeClasses/getThemeClass
 import notFound from "./assets/img/not-found.webp";
 
 const ResultCard = ({ item }) => {
-  console.log("🚀 ~ ResultCard ~ item:", item);
+  const itemDetailsLink = `https://api.mercadolibre.com/items/${item.id}/`;
   const originalPrice = item.original_price || null;
   const price = item.price;
 
@@ -58,62 +58,64 @@ const ResultCard = ({ item }) => {
         {item?.picturesArr?.length ? (
           <GenericCarousel id={item.id} images={item.picturesArr} />
         ) : (
-          <Link to={`https://api.mercadolibre.com/items/${item.id}/`}>
+          <Link to={itemDetailsLink}>
             <img className={styles.img} src={notFound} alt="Image not found" />
           </Link>
         )}
       </div>
       <div className={`${stylesWithTheme.theme} ${styles.content}`}>
-        <div className={styles.priceSection}>
-          {!originalPrice ? (
-            <div className={styles.priceWrapper}>
-              <div className={styles.principalPrice}>
-                <span className={styles.integer}>{`$ ${priceInteger}`}</span>
-                <span className={styles.decimals}>
-                  {priceDecimals && priceDecimals}
+        <Link to={itemDetailsLink}>
+          <div className={styles.priceSection}>
+            {!originalPrice ? (
+              <div className={styles.priceWrapper}>
+                <div className={styles.principalPrice}>
+                  <span className={styles.integer}>{`$ ${priceInteger}`}</span>
+                  <span className={styles.decimals}>
+                    {priceDecimals && priceDecimals}
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.priceWrapper}>
+                <div className={styles.principalPrice}>
+                  <span className={styles.integer}>{`$ ${priceInteger}`}</span>
+                  <span className={styles.decimals}>
+                    {priceDecimals && priceDecimals}
+                  </span>
+                </div>
+                {/* If original price exists, then the discount percentage is obtained and displayed on an offer label */}
+                {getDiscount(originalPrice, price) > 0 && (
+                  <span className={styles.discount}>
+                    {/* `${Math.round(getDiscount(item.original_price, item.price))}% OFF` */}
+                    {/* 10% */}
+                    {`- ${getDiscount(originalPrice, price)}%`}
+                  </span>
+                )}
+              </div>
+            )}
+            {originalPrice && (
+              <div>
+                <span className={styles.originalPriceInteger}>
+                  {`$ ${originalPriceInteger}`}
+                </span>
+                <span className={styles.originalPriceDecimals}>
+                  {originalPriceDecimals && originalPriceDecimals}
                 </span>
               </div>
-            </div>
-          ) : (
-            <div className={styles.priceWrapper}>
-              <div className={styles.principalPrice}>
-                <span className={styles.integer}>{`$ ${priceInteger}`}</span>
-                <span className={styles.decimals}>
-                  {priceDecimals && priceDecimals}
-                </span>
-              </div>
-              {/* If original price exists, then the discount percentage is obtained and displayed on an offer label */}
-              {getDiscount(originalPrice, price) > 0 && (
-                <span className={styles.discount}>
-                  {/* `${Math.round(getDiscount(item.original_price, item.price))}% OFF` */}
-                  {/* 10% */}
-                  {`- ${getDiscount(originalPrice, price)}%`}
-                </span>
-              )}
-            </div>
-          )}
-          {originalPrice && (
-            <div>
-              <span className={styles.originalPriceInteger}>
-                {`$ ${originalPriceInteger}`}
-              </span>
-              <span className={styles.originalPriceDecimals}>
-                {originalPriceDecimals && originalPriceDecimals}
-              </span>
-            </div>
-          )}
-        </div>
-        <div className={styles.information}>
-          <TextTruncate text={item.title} rows={3} tagType="h2" css={""} />
-        </div>
-        {item.official_store_name && (
-          <div className={styles.seller}>
-            {`${item.official_store_name} Store`}
+            )}
           </div>
-        )}
-        {item?.shipping?.free_shipping && (
-          <span className={styles.shipping}>Free Shipping</span>
-        )}
+          <div className={styles.information}>
+            <TextTruncate text={item.title} rows={3} tagType="h2" css={""} />
+          </div>
+          {item.official_store_name && (
+            <div className={styles.seller}>
+              {`${item.official_store_name} Store`}
+            </div>
+          )}
+          {item?.shipping?.free_shipping && (
+            <span className={styles.shipping}>Free Shipping</span>
+          )}
+        </Link>
       </div>
     </div>
   );

@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  border-radius: var(--principal-border-radius);
+  /* To prevent the default white background from becoming visible when applying a border-radius of 0.375rem (--principal-border-radius)to the '.content' class, a border radius of 0.625rem is now applied specifically to the bottom corners. */
+  border-bottom-left-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
   background-color: #ffffff;
   color: inherit;
 }
@@ -24,6 +28,9 @@
   width: 100%;
   height: 187.92px;
   padding: 0.25em 0.25em 0.5em;
+
+  border-bottom-left-radius: var(--principal-border-radius);
+  border-bottom-right-radius: var(--principal-border-radius);
 }
 
 .priceSection {
