@@ -10,7 +10,7 @@ import {
 import Icon from "../icon/Icon";
 
 /* styles */
-import styles from "./styles.module.css";
+import styles from "./genericCarouselStyles.module.css";
 
 /* Check your device type to decide to add the prev and next buttons to the carousel */
 const userAgent = navigator.userAgent;
