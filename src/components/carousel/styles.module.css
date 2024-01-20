@@ -83,6 +83,7 @@
   position: absolute;
   top: 40%;
   padding: 1em 0.7em;
+  border-radius: var(--principal-border-radius);
   background-color: var(--text-primary-dark);
   opacity: 0.6;
   cursor: pointer;
