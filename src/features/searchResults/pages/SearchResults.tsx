@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 /* Components */
+import Loading from "../../../components/loading/Loading";
 import Message from "../../../components/message/Message";
 import MainResults from "../components/mainResults/MainResults";
 import Layout from "../../../components/layout/Layout";
@@ -77,7 +78,7 @@ const SearchResults = () => {
                   };
                 }
 
-                // Me parece que no hace falta manejar el error ya que cada mini card muestra una imagen de no found si no obtiene una de la API
+                // Me parece que no hace falta manejar el error ya que cada ResultCard card muestra una imagen de no found si no obtiene una de la API
                 return result;
               })
             );
@@ -86,7 +87,7 @@ const SearchResults = () => {
       } catch (error) {
         console.error("Error fetching search results:", error);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
@@ -117,7 +118,11 @@ const SearchResults = () => {
 
   return (
     <Layout css={styles.container}>
-      {loading && !fetchError && <div>Loading...</div>}
+      {loading && !fetchError && (
+        <div className={styles.loadingContainer}>
+          <Loading />
+        </div>
+      )}
       {content}
     </Layout>
   );
