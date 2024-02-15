@@ -63,58 +63,59 @@ const ResultCard = ({ item }) => {
           </Link>
         )}
       </div>
-      <div className={`${stylesWithTheme.theme} ${styles.content}`}>
-        <Link to={itemDetailsLink}>
-          <div className={styles.priceSection}>
-            {!originalPrice ? (
-              <div className={styles.priceWrapper}>
-                <div className={styles.principalPrice}>
-                  <span className={styles.integer}>{`$ ${priceInteger}`}</span>
-                  <span className={styles.decimals}>
-                    {priceDecimals && priceDecimals}
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div className={styles.priceWrapper}>
-                <div className={styles.principalPrice}>
-                  <span className={styles.integer}>{`$ ${priceInteger}`}</span>
-                  <span className={styles.decimals}>
-                    {priceDecimals && priceDecimals}
-                  </span>
-                </div>
-                {/* If original price exists, then the discount percentage is obtained and displayed on an offer label */}
-                {getDiscount(originalPrice, price) > 0 && (
-                  <span className={styles.discount}>
-                    {`- ${getDiscount(originalPrice, price)}%`}
-                  </span>
-                )}
-              </div>
-            )}
-            {originalPrice && (
-              <div>
-                <span className={styles.originalPriceInteger}>
-                  {`$ ${originalPriceInteger}`}
-                </span>
-                <span className={styles.originalPriceDecimals}>
-                  {originalPriceDecimals && originalPriceDecimals}
+      <Link
+        to={itemDetailsLink}
+        className={`${stylesWithTheme.theme} ${styles.content}`}
+      >
+        <div className={styles.priceSection}>
+          {!originalPrice ? (
+            <div className={styles.priceWrapper}>
+              <div className={styles.principalPrice}>
+                <span className={styles.integer}>{`$ ${priceInteger}`}</span>
+                <span className={styles.decimals}>
+                  {priceDecimals && priceDecimals}
                 </span>
               </div>
-            )}
-          </div>
-          <div className={styles.information}>
-            <TextTruncate text={item.title} rows={3} tagType="h2" css={""} />
-          </div>
-          {item.official_store_name && (
-            <div className={styles.seller}>
-              {`${item.official_store_name} Store`}
+            </div>
+          ) : (
+            <div className={styles.priceWrapper}>
+              <div className={styles.principalPrice}>
+                <span className={styles.integer}>{`$ ${priceInteger}`}</span>
+                <span className={styles.decimals}>
+                  {priceDecimals && priceDecimals}
+                </span>
+              </div>
+              {/* If original price exists, then the discount percentage is obtained and displayed on an offer label */}
+              {getDiscount(originalPrice, price) > 0 && (
+                <span className={styles.discount}>
+                  {`- ${getDiscount(originalPrice, price)}%`}
+                </span>
+              )}
             </div>
           )}
-          {item?.shipping?.free_shipping && (
-            <span className={styles.shipping}>Free Shipping</span>
+          {originalPrice && (
+            <div>
+              <span className={styles.originalPriceInteger}>
+                {`$ ${originalPriceInteger}`}
+              </span>
+              <span className={styles.originalPriceDecimals}>
+                {originalPriceDecimals && originalPriceDecimals}
+              </span>
+            </div>
           )}
-        </Link>
-      </div>
+        </div>
+        <div className={styles.information}>
+          <TextTruncate text={item.title} rows={3} tagType="h2" css={""} />
+        </div>
+        {item.official_store_name && (
+          <div className={styles.seller}>
+            {`${item.official_store_name} Store`}
+          </div>
+        )}
+        {item?.shipping?.free_shipping && (
+          <span className={styles.shipping}>Free Shipping</span>
+        )}
+      </Link>
     </div>
   );
 };
