@@ -20,15 +20,17 @@ const Message = ({ icon, title, message }) => {
 
   return (
     <div className={`${styleWithTheme.theme} ${styles.wrapper}`}>
-      <i className={styles.icon}>
-        <FontAwesomeIcon icon={icon} />
-      </i>
-      <div className={styles.messageContent}>
-        <div className={styles.titleContainer}>
-          <h2>{title}</h2>
-        </div>
-        <div className={styles.messageContainer}>
-          <p className={styles.cssMessage}>{message}</p>
+      <div className={styles.messageContainer}>
+        <i className={styles.icon}>
+          <FontAwesomeIcon icon={icon} />
+        </i>
+        <div className={styles.messageContent}>
+          <div className={styles.titleContainer}>
+            <h2>{title}</h2>
+          </div>
+          <div className={styles.TextContainer}>
+            <p>{message}</p>
+          </div>
         </div>
       </div>
     </div>

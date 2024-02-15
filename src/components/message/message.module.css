@@ -1,40 +1,57 @@
 .wrapper {
+  grid-column: var(--grid-column);
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  margin-bottom: var(--spacing-lg);
+  padding: 7em var(--spacing-lg) var(--spacing-lg);
+}
+
+.messageContainer {
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
-  padding: var(--spacing-lg);
+  flex-wrap: wrap;
+  padding: var(--spacing-md) 3.75rem;
+  gap: 0.9375rem;
+}
+
+.icon {
+  font-size: 50px;
 }
 
 .messageContent {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 70%;
-  padding: var(--spacing-md) 3.75rem;
 }
 
 .titleContainer {
-  width: 100%;
   margin-bottom: var(--spacing-md);
-  text-align: start;
+  font-size: var(--title-lg);
 }
 
-.messageContainer {
-  width: 100%;
-  text-align: start;
+.TextContainer {
+  font-size: var(--text-lg);
 }
 
 @media screen and (max-width: 768px) {
-  .messageContent {
+  .messageContainer {
     padding: var(--spacing-md) 1.75rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .messageContent {
+  .wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .messageContainer {
     padding: var(--spacing-md) 1.25rem;
   }
 }
