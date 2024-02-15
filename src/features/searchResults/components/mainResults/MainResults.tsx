@@ -5,8 +5,6 @@ import ResultCard from "../resultCard/ResultCard";
 import styles from "./mainResults.module.css";
 
 const MainResults = ({ results }) => {
-  console.log("🚀 ~ file: MainResults.tsx:5 ~ MainResults ~ results:", results);
-
   return (
     <main className={styles.container}>
       <div className={styles.grid}>
