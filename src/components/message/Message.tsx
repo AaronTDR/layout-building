@@ -11,7 +11,7 @@ import messageTheme from "./theme/messageTheme.module.css";
 /* Utils */
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
-const Message = ({ icon, cssIcon, title, cssTitle, message, cssMessage }) => {
+const Message = ({ icon, title, message }) => {
   const { isDarkMode } = useContext(ThemeContext);
 
   const styleWithTheme = {
@@ -20,15 +20,15 @@ const Message = ({ icon, cssIcon, title, cssTitle, message, cssMessage }) => {
 
   return (
     <div className={`${styleWithTheme.theme} ${styles.wrapper}`}>
-      <i className={cssIcon}>
+      <i className={styles.icon}>
         <FontAwesomeIcon icon={icon} />
       </i>
       <div className={styles.messageContent}>
         <div className={styles.titleContainer}>
-          <h2 className={cssTitle}>{title}</h2>
+          <h2>{title}</h2>
         </div>
         <div className={styles.messageContainer}>
-          <p className={cssMessage}>{message}</p>
+          <p className={styles.cssMessage}>{message}</p>
         </div>
       </div>
     </div>
