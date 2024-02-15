@@ -3,6 +3,7 @@
   grid-column: var(--grid-column);
   justify-content: center;
   width: 100%;
+  margin-bottom: var(--spacing-lg);
 }
 
 .grid {
@@ -15,9 +16,6 @@
   margin-bottom: var(--spacing-lg);
   padding-left: var(--spacing-lg);
   padding-right: var(--spacing-lg);
-}
-
-.resultItem {
 }
 
 @media screen and (max-width: 768px) {
