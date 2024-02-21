@@ -14,28 +14,9 @@ import Layout from "../../../components/layout/Layout";
 /* Styles */
 import styles from "./searchResults.module.css";
 
-type Picture = { id: string; url: string };
-
-type PicturesArr = Picture[];
-
-type Item = {
-  id: string;
-  title: string;
-  original_price: number | null;
-  price: number;
-  official_store_name: string;
-  shipping: { free_shipping: string | null };
-  picturesArr?: PicturesArr;
-};
-
-type SecondDataItem = {
-  code: number;
-  body: {
-    id: string;
-    pictures?: Picture[]; // Un array opcional de URLs de imágenes
-    // Otros campos si los hay
-  };
-};
+/* Types */
+import { SecondDataItemType } from "./SearchResultsType";
+import { Item } from "../../../types/ResultAPIType";
 
 const SearchResults = () => {
   const [results, setResults] = useState<Item[]>([]);
@@ -99,7 +80,7 @@ const SearchResults = () => {
               console.log("🚀 ~ setResults ~ prevResults:", prevResults);
               return prevResults.map((result) => {
                 const matchingItem = secondData.find(
-                  (item: SecondDataItem) =>
+                  (item: SecondDataItemType) =>
                     item.code === 200 && item.body.id === result.id
                 );
 
