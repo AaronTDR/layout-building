@@ -54,18 +54,16 @@ const SearchResults = () => {
           if (itemIds.length > 0) {
             // Make the second request with the IDs to get the ID and images of each item
             const idsString = itemIds.join(",");
-            console.log("🚀 ~ fetchSearchResults ~ idsString:", idsString);
 
             // The ML API receives a series of IDs, followed by the attributes that will be requested
             const secondResponse: Response = await fetch(
               `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`
             );
-            console.log("🚀 ~ secondResponse:", secondResponse);
 
             if (!secondResponse.ok) {
               setFetchError(true);
               if (secondResponse.status === 429) {
-                console.log("ERROR");
+                console.error("ERROR");
                 return results;
               }
               throw new Error(
@@ -74,10 +72,8 @@ const SearchResults = () => {
             }
 
             const secondData = await secondResponse.json();
-            console.log("🚀 ~ fetchSearchResults ~ secondData:", secondData);
             // Update the results that were in the state by adding the 'pictureArr' property to each item which will contain the images obtained in secondResponse.
             setResults((prevResults) => {
-              console.log("🚀 ~ setResults ~ prevResults:", prevResults);
               return prevResults.map((result) => {
                 const matchingItem = secondData.find(
                   (item: SecondDataItemType) =>
@@ -91,7 +87,6 @@ const SearchResults = () => {
                   };
                 }
 
-                // No es necesario manejar el error aquí, ya que cada ResultCard muestra una imagen "no encontrada" si no se obtiene una de la API
                 return result;
               });
             });

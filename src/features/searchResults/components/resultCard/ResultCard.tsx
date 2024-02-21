@@ -22,7 +22,6 @@ import { getThemeClasses } from "../../../../utils/getThemeClasses/getThemeClass
 import notFound from "./assets/img/not-found.webp";
 
 const ResultCard: React.FC<ResultCardType> = ({ item }) => {
-  console.log("🚀 ~ ResultCard ~ item:", item);
   const itemDetailsLink = `https://api.mercadolibre.com/items/${item.id}/`;
   const originalPrice = item.original_price || null;
   const price = item.price;
