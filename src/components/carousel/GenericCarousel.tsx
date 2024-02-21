@@ -57,8 +57,13 @@ Navigation Buttons: Buttons to navigate to the previous and next images are incl
 The component uses CSS classes defined in external style files (styles.container, styles.carousel, styles.content, etc.) to apply specific styles. Make sure these classes are defined in your application or provide custom styles as needed.
 
 */
+type Picture = { id: string; url: string };
 
-const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
+type PicturesArr = Picture[];
+
+type GenericCarouselProps = { id: string; images: PicturesArr };
+
+const GenericCarousel: React.FC<GenericCarouselProps> = ({ id, images }) => {
   /*   Check if the length of 'images' is greater than 10.
   If true, assign a new version of the array to 'limitedImages'
   containing only the first 10 elements; otherwise, assign 'images' unchanged. */
@@ -80,7 +85,7 @@ const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
     );
   };
 
-  const handleNextClick = (e?: MouseEvent | SwipeEventData) => {
+  const handleNextClick = (/* e?: MouseEvent | SwipeEventData */) => {
     setCurrentImageIndex((prevIndex) => {
       return prevIndex === limitedImages.length - 1 ? 0 : prevIndex + 1;
     });

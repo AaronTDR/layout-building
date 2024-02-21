@@ -18,7 +18,27 @@ import { getThemeClasses } from "../../../../utils/getThemeClasses/getThemeClass
 /* Not found img */
 import notFound from "./assets/img/not-found.webp";
 
-const ResultCard = ({ item }) => {
+type Picture = { id: string; url: string };
+
+type PicturesArr = Picture[];
+
+type Item = {
+  id: string;
+  title: string;
+  original_price: number | null;
+  price: number;
+  official_store_name: string;
+  shipping: { free_shipping: string | null };
+  picturesArr?: PicturesArr;
+};
+
+// Defines the interface for the ResultCard component props
+type ResultCardProps = {
+  item: Item; // specifies that the 'item' prop must be of type 'Item'
+};
+
+const ResultCard: React.FC<ResultCardProps> = ({ item }) => {
+  console.log("🚀 ~ ResultCard ~ item:", item);
   const itemDetailsLink = `https://api.mercadolibre.com/items/${item.id}/`;
   const originalPrice = item.original_price || null;
   const price = item.price;
@@ -34,7 +54,7 @@ const ResultCard = ({ item }) => {
     return Math.round(discount);
   };
 
-  const separateDecimals = (amount: string | null) => {
+  const separateDecimals = (amount: number | null) => {
     if (!amount) return [null, null];
     const str = amount.toString();
     const parts = str.split(".");
