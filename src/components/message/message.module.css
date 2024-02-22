@@ -19,7 +19,7 @@
 }
 
 .icon {
-  font-size: 50px;
+  font-size: 3.125rem;
 }
 
 .messageContent {
@@ -48,7 +48,7 @@
 @media screen and (max-width: 480px) {
   .wrapper {
     flex-direction: column;
-    gap: 30px;
+    gap: 1.875rem;
   }
 
   .messageContainer {

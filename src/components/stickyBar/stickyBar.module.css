@@ -213,9 +213,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33px;
-  min-width: 33px;
-  height: 33px;
+  width: 2.0625rem;
+  min-width: 2.0625rem;
+  height: 2.0625rem;
   border-radius: 50%;
   cursor: pointer;
 }
