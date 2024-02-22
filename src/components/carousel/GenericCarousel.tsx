@@ -55,10 +55,6 @@ Dynamic Content: The internal structure of the carousel dynamically adapts based
 Pagination: If there is more than one image, pagination dots are included to show the current position in the carousel.
 
 Navigation Buttons: Buttons to navigate to the previous and next images are included. These buttons are visible only on desktop devices.
-
-* Styles
-The component uses CSS classes defined in external style files (styles.container, styles.carousel, styles.content, etc.) to apply specific styles. Make sure these classes are defined in your application or provide custom styles as needed.
-
 */
 
 const GenericCarousel: React.FC<GenericCarouselType> = ({ id, images }) => {
