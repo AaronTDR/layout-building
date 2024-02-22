@@ -63,7 +63,7 @@ const SearchResults = () => {
             if (!secondResponse.ok) {
               setFetchError(true);
               if (secondResponse.status === 429) {
-                console.error("ERROR");
+                console.log("Too many requests: ", secondResponse.status);
                 return results;
               }
               throw new Error(
@@ -104,7 +104,7 @@ const SearchResults = () => {
 
   let content;
 
-  if (fetchError) {
+  if (fetchError && !results) {
     content = (
       <Message
         icon={faFaceSadTear}
