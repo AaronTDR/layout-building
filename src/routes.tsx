@@ -1,5 +1,6 @@
-import Home from "./features/home/pages/home";
+import Error from "./features/error/pages/Error";
 import SearchResults from "./features/searchResults/pages/SearchResults";
+import Home from "./features/home/pages/home";
 
 const routes = [
   {
@@ -11,6 +12,10 @@ const routes = [
     path: "/search",
     element: <SearchResults />,
     exact: true,
+  },
+  {
+    path: "*",
+    element: <Error />,
   },
 ];
 

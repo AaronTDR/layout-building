@@ -1,4 +1,4 @@
-.cardsContainer {
+.container {
   display: flex;
   grid-column: var(--grid-column);
   justify-content: center;

@@ -1,46 +1,45 @@
 .container {
-  grid-column: var(--grid-column);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: var(--max-width-page);
-  margin-bottom: var(--spacing-lg);
-  padding-left: var(--spacing-lg);
-  padding-right: var(--spacing-lg);
 }
 
 .carousel {
   position: relative;
-  width: 65%;
+  width: 100%;
   overflow: hidden;
 }
 
 .content {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
   align-items: center;
-  width: 700%;
   transition: all var(--transition-duration-long)
     var(--transition-timing-function);
   transform: translateX(0%);
 }
 
+/* For the mechanics of the carousel to work correctly, it is necessary that the elements have the same measurements. To achieve this, the wrapper centers the image and maintains a uniform measurement of the elements. */
 .imgLink {
-  width: calc(100% / 7);
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 187.91px;
+  transition: all var(--transition-duration-long)
+    var(--transition-timing-function);
+  transform: translateX(0%);
 }
 
 .img {
   width: 100%;
-  max-height: 12.875em;
+  max-height: 195px;
   border-radius: 0.1875em;
   -webkit-border-radius: 0.1875em;
   -moz-border-radius: 0.1875em;
   -ms-border-radius: 0.1875em;
   -o-border-radius: 0.1875em;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .pagination {
@@ -61,8 +60,8 @@
 }
 
 .paginationDot {
-  width: 1.1em;
-  height: 1.1em;
+  width: 0.7em;
+  height: 0.7em;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -83,6 +82,7 @@
   position: absolute;
   top: 40%;
   padding: 1em 0.7em;
+  border-radius: var(--principal-border-radius);
   background-color: var(--text-primary-dark);
   opacity: 0.6;
   cursor: pointer;
@@ -106,32 +106,6 @@
 
 .buttonIcon {
   color: var(--text-primary-light);
-}
-
-.bannerSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.25em;
-  width: 35%;
-  max-width: 27.1026em;
-  height: 12.875em;
-  margin-left: 1.25em;
-}
-
-.bannerContainer {
-  width: 100%;
-}
-
-.bannerImg {
-  width: 100%;
-  max-height: 5.8125em;
-  border-radius: 0.1875em;
-  -webkit-border-radius: 0.1875em;
-  -moz-border-radius: 0.1875em;
-  -ms-border-radius: 0.1875em;
-  -o-border-radius: 0.1875em;
-  object-fit: cover;
 }
 
 @media screen and (max-width: 768px) {

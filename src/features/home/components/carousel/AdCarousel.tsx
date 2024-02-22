@@ -10,10 +10,10 @@ import {
 import Icon from "../../../../components/icon/Icon";
 
 /* types */
-import { CarouselImageType } from "./CarouselType";
+import { AdCarouselImageType } from "./AdCarouselImageType";
 
 /* styles */
-import carouselStyles from "./carousel.module.css";
+import styles from "./AdCarouselStyles.module.css";
 
 /* services */
 import { getCarouselImages } from "../../services/getCarouselImages/getCarouselImages";
@@ -45,8 +45,8 @@ const isButtonVisible: CSSProperties = {
 * Responsiveness: The carousel adapts to different screen sizes. Images automatically adjust based on the width of the browser window.
 
 */
-const Carousel = () => {
-  const [images, setImages] = useState<CarouselImageType[]>([]);
+const AdCarousel = () => {
+  const [images, setImages] = useState<AdCarouselImageType[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   /* In a breakpoint greater than 768px shows the banners section */
   const [width, setWidth] = useState(window.innerWidth);
@@ -95,8 +95,8 @@ const Carousel = () => {
 
   /* Gets the carousel images */
   useEffect(() => {
-    const response = getCarouselImages();
-    setImages(response);
+    const images = getCarouselImages();
+    setImages(images);
   }, []);
 
   /* It will run every time the current image changes
@@ -126,7 +126,7 @@ const Carousel = () => {
 
   const carouselContent = images.map((img, i) => {
     /* Determines the size of the carousel image */
-    let sizeImage: keyof CarouselImageType;
+    let sizeImage: keyof AdCarouselImageType;
     if (width <= 480) {
       sizeImage = "small";
     } else if (width <= 768) {
@@ -138,12 +138,12 @@ const Carousel = () => {
       <Link
         key={i}
         to={(img.path && img.path) || "#"}
-        className={carouselStyles.imgLink}
+        className={styles.imgLink}
       >
         <img
           src={img[sizeImage]}
           alt={`Slide ${i + 1}`}
-          className={carouselStyles.img}
+          className={styles.img}
         />
       </Link>
     );
@@ -159,18 +159,18 @@ const Carousel = () => {
   };
 
   return (
-    <div className={carouselStyles.container}>
-      <div {...handlers} className={carouselStyles.carousel}>
-        <div style={translateX} className={carouselStyles.content}>
+    <div className={styles.container}>
+      <div {...handlers} className={styles.carousel}>
+        <div style={translateX} className={styles.content}>
           {carouselContent}
         </div>
         {images.length > 1 && (
-          <div className={carouselStyles.pagination}>
+          <div className={styles.pagination}>
             {images.map((_, index) => (
               <div
                 key={index}
-                className={`${carouselStyles.paginationDot} ${
-                  index === currentImageIndex ? carouselStyles.active : ""
+                className={`${styles.paginationDot} ${
+                  index === currentImageIndex ? styles.active : ""
                 }`}
                 onClick={() => handlePaginationClick(index)}
               ></div>
@@ -183,41 +183,33 @@ const Carousel = () => {
             <button
               type="button"
               style={isButtonVisible}
-              className={carouselStyles.prevButton}
+              className={styles.prevButton}
               onClick={handlePrevClick}
             >
-              <Icon icon={faChevronLeft} css={carouselStyles.buttonIcon} />
+              <Icon icon={faChevronLeft} css={styles.buttonIcon} />
             </button>
 
             <button
               type="button"
               style={isButtonVisible}
-              className={carouselStyles.nextButton}
+              className={styles.nextButton}
               onClick={handleNextClick}
             >
-              <Icon icon={faChevronRight} css={carouselStyles.buttonIcon} />
+              <Icon icon={faChevronRight} css={styles.buttonIcon} />
             </button>
           </>
         )}
       </div>
       {width > 768 && (
-        <div className={carouselStyles.bannerSection}>
-          <div className={carouselStyles.bannerContainer}>
+        <div className={styles.bannerSection}>
+          <div className={styles.bannerContainer}>
             <Link to={"#"}>
-              <img
-                src={banner1}
-                alt="Banner"
-                className={carouselStyles.bannerImg}
-              />
+              <img src={banner1} alt="Banner" className={styles.bannerImg} />
             </Link>
           </div>
-          <div className={carouselStyles.bannerContainer}>
+          <div className={styles.bannerContainer}>
             <Link to={"#"}>
-              <img
-                src={banner2}
-                alt="Banner"
-                className={carouselStyles.bannerImg}
-              />
+              <img src={banner2} alt="Banner" className={styles.bannerImg} />
             </Link>
           </div>
         </div>
@@ -226,4 +218,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default AdCarousel;

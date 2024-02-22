@@ -1,0 +1,11 @@
+/* On light theme */
+.light {
+  background-color: var(--background-primary-light-mode);
+  color: var(--text-primary-dark);
+}
+
+/* On dark theme */
+.dark {
+  background-color: var(--background-primary-drk-mode);
+  color: var(--text-primary-light);
+}

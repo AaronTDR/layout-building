@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  grid-column: var(--grid-column);
+  justify-content: center;
+  width: 100%;
+  margin-bottom: var(--spacing-lg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 234px), 1fr));
+  grid-auto-rows: minmax(341px, auto);
+  gap: 1.25rem;
+  width: 100%;
+  max-width: var(--max-width-page);
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+}

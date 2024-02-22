@@ -17,6 +17,7 @@
   --spacing-sm: 0.5em;
   --spacing-md: 0.625em;
   --spacing-lg: 1.25em;
+  --spacing-xl: 7em;
 }
 
 /* * Typography */
@@ -34,7 +35,7 @@
 
 /* * Border */
 :root {
-  --principal-border-radius: 0.375em;
+  --principal-border-radius: 0.375rem;
 }
 
 /* * Colors */
@@ -42,6 +43,7 @@
   --primary-color: #cc0c39; /* Main accent color */
   --secondary-color: #b12704; /* Secondary accent color */
   --accent-color: #e67a00; /* Accent color to highlight specific elements */
+  --success-color: #7fda69; /* Color for success or positive elements */
 
   /* * Text Color */
   /* Color on light backgrounds */

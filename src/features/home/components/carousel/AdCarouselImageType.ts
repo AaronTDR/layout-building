@@ -1,4 +1,4 @@
-export type CarouselImageType = {
+export type AdCarouselImageType = {
   large: string;
   medium: string;
   small: string;
