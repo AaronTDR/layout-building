@@ -14,8 +14,12 @@ import Layout from "../../../components/layout/Layout";
 /* Styles */
 import styles from "./searchResults.module.css";
 
+/* Types */
+import { SecondDataItemType } from "./SearchResultsType";
+import { Item } from "../../../types/ResultAPIType";
+
 const SearchResults = () => {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Item[]>([]);
   const [fetchError, setFetchError] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -28,7 +32,7 @@ const SearchResults = () => {
       try {
         setLoading(true);
         if (query) {
-          const response = await fetch(
+          const response: Response = await fetch(
             `https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(
               query
             )}&status=active&app_version=v2&condition=new&offset=0&limit=20`
@@ -45,30 +49,35 @@ const SearchResults = () => {
           setResults(data.results);
 
           // Get IDs from results
-          const itemIds = data.results.map((result) => result.id);
+          const itemIds = data.results.map((result: Item) => result.id);
 
           if (itemIds.length > 0) {
             // Make the second request with the IDs to get the ID and images of each item
             const idsString = itemIds.join(",");
 
             // The ML API receives a series of IDs, followed by the attributes that will be requested
-            const secondResponse = await fetch(
+            const secondResponse: Response = await fetch(
               `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`
             );
 
             if (!secondResponse.ok) {
               setFetchError(true);
-              console.error(
+              if (secondResponse.status === 429) {
+                console.log("Too many requests: ", secondResponse.status);
+                return results;
+              }
+              throw new Error(
                 `Failed to fetch item details. Status: ${secondResponse.status}`
               );
             }
 
             const secondData = await secondResponse.json();
             // Update the results that were in the state by adding the 'pictureArr' property to each item which will contain the images obtained in secondResponse.
-            setResults((prevResults) =>
-              prevResults.map((result) => {
+            setResults((prevResults) => {
+              return prevResults.map((result) => {
                 const matchingItem = secondData.find(
-                  (item) => item.code === 200 && item.body.id === result.id
+                  (item: SecondDataItemType) =>
+                    item.code === 200 && item.body.id === result.id
                 );
 
                 if (matchingItem && matchingItem.body.pictures) {
@@ -78,16 +87,15 @@ const SearchResults = () => {
                   };
                 }
 
-                // Me parece que no hace falta manejar el error ya que cada ResultCard card muestra una imagen de no found si no obtiene una de la API
                 return result;
-              })
-            );
+              });
+            });
           }
         }
       } catch (error) {
         console.error("Error fetching search results:", error);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
 
@@ -96,7 +104,7 @@ const SearchResults = () => {
 
   let content;
 
-  if (fetchError) {
+  if (fetchError && !results) {
     content = (
       <Message
         icon={faFaceSadTear}

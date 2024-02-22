@@ -4,12 +4,15 @@ import ResultCard from "../resultCard/ResultCard";
 /* Styles */
 import styles from "./mainResults.module.css";
 
-const MainResults = ({ results }) => {
+/* Types */
+import { MainResultsType } from "./MainResultsType";
+
+const MainResults: React.FC<MainResultsType> = ({ results }) => {
   return (
     <main className={styles.container}>
       <div className={styles.grid}>
-        {results.map((result) => (
-          <ResultCard key={result.id} item={result} />
+        {results.map((item) => (
+          <ResultCard key={item.id} item={item} />
         ))}
       </div>
     </main>

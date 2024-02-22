@@ -1,6 +1,6 @@
-import { useState, MouseEvent, CSSProperties } from "react";
+import { useState, CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { SwipeEventData, useSwipeable } from "react-swipeable";
+import { useSwipeable } from "react-swipeable";
 import {
   faChevronLeft,
   faChevronRight,
@@ -11,6 +11,9 @@ import Icon from "../icon/Icon";
 
 /* styles */
 import styles from "./genericCarouselStyles.module.css";
+
+/* Types */
+import { GenericCarouselType } from "./GenericCarouselType";
 
 /* Check your device type to decide to add the prev and next buttons to the carousel */
 const userAgent = navigator.userAgent;
@@ -38,7 +41,7 @@ handlePaginationClick(index: number): Changes the current image by clicking on a
 
 handlePrevClick(): Changes to the previous image in the carousel.
 
-handleNextClick(e?: MouseEvent | SwipeEventData): Changes to the next image in the carousel. This method can also receive an optional event, which is useful when handling swipe events on touch devices.
+handleNextClick(): Changes to the next image in the carousel. This method can also receive an optional event, which is useful when handling swipe events on touch devices.
 
 Component Structure
 The component is structured as follows:
@@ -58,7 +61,7 @@ The component uses CSS classes defined in external style files (styles.container
 
 */
 
-const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
+const GenericCarousel: React.FC<GenericCarouselType> = ({ id, images }) => {
   /*   Check if the length of 'images' is greater than 10.
   If true, assign a new version of the array to 'limitedImages'
   containing only the first 10 elements; otherwise, assign 'images' unchanged. */
@@ -80,7 +83,7 @@ const GenericCarousel = ({ id, images }: { id: string; images: string[] }) => {
     );
   };
 
-  const handleNextClick = (e?: MouseEvent | SwipeEventData) => {
+  const handleNextClick = () => {
     setCurrentImageIndex((prevIndex) => {
       return prevIndex === limitedImages.length - 1 ? 0 : prevIndex + 1;
     });
