@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { faNotdef } from "@fortawesome/free-solid-svg-icons";
 
 /* Components */
+import Icon from "../../../../components/icon/Icon";
 import GenericCarousel from "../../../../components/carousel/GenericCarousel";
 import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 
@@ -17,9 +19,6 @@ import { ResultCardType } from "./ResultCardType";
 
 /* Utils */
 import { getThemeClasses } from "../../../../utils/getThemeClasses/getThemeClasses";
-
-/* Not found img */
-import notFound from "./assets/img/not-found.webp";
 
 const ResultCard: React.FC<ResultCardType> = ({ item }) => {
   const itemDetailsLink = `https://api.mercadolibre.com/items/${item.id}/`;
@@ -61,8 +60,8 @@ const ResultCard: React.FC<ResultCardType> = ({ item }) => {
         {item?.picturesArr?.length ? (
           <GenericCarousel id={item.id} images={item.picturesArr} />
         ) : (
-          <Link to={itemDetailsLink}>
-            <img className={styles.img} src={notFound} alt="Image not found" />
+          <Link to={itemDetailsLink} className={styles.imgLink}>
+            <Icon icon={faNotdef} css={styles.notDefIcon} />
           </Link>
         )}
       </div>
