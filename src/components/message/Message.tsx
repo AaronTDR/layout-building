@@ -8,10 +8,13 @@ import { ThemeContext } from "../../contexts/ThemeProvider";
 import styles from "./message.module.css";
 import messageTheme from "./theme/messageTheme.module.css";
 
+/* Types */
+import { MessageType } from "./MessageType";
+
 /* Utils */
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
-const Message = ({ icon, title, message }) => {
+const Message = ({ icon, title, message }: MessageType) => {
   const { isDarkMode } = useContext(ThemeContext);
 
   const styleWithTheme = {
