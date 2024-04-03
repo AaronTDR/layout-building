@@ -1,4 +1,4 @@
-import { Picture } from "../../../types/ResultAPIType";
+import { Item, Picture } from "../../../types/ResultAPIType";
 
 export type SecondDataItemType = {
   code: number;
@@ -7,3 +7,9 @@ export type SecondDataItemType = {
     pictures?: Picture[];
   };
 };
+
+export type ResultsType = Item[];
+
+export type PagesType = ResultsType[];
+
+export type QueryType = string | null;

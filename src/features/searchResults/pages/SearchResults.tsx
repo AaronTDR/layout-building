@@ -15,18 +15,21 @@ import Layout from "../../../components/layout/Layout";
 import styles from "./searchResults.module.css";
 
 /* Types */
-import { SecondDataItemType } from "./SearchResultsType";
 import { Item } from "../../../types/ResultAPIType";
-
-type storedDataElement = Item[] | undefined;
+import {
+  SecondDataItemType,
+  ResultsType,
+  PagesType,
+  QueryType,
+} from "./SearchResultsType";
 
 const SearchResults = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [offset, setOffset] = useState(0);
-  const [results, setResults] = useState<Item[]>([]);
-  const [pages, setPages] = useState([]);
+  const [results, setResults] = useState<ResultsType>([]);
+  const [pages, setPages] = useState<PagesType>([]);
   const [fetchError, setFetchError] = useState(false);
 
   const location = useLocation();
@@ -36,8 +39,30 @@ const SearchResults = () => {
   const [queryState, setQueryState] = useState(query);
 
   const itemsPerPage = 20;
+  const accessToken =
+    "APP_USR-6094347472813542-040223-31d606220c69045a9a9a328f1421aed7-1525368630";
 
-  const fetchSearchResults = async (query, offset) => {
+  useEffect(() => {
+    if (query !== queryState) {
+      setPages([]);
+      setOffset(0);
+      setCurrentPage(1);
+      setQueryState(query);
+    }
+    if (!pages[currentPage - 1]) {
+      fetchSearchResults(query, offset);
+    }
+  }, [query, currentPage]);
+
+  useEffect(() => {
+    setPages((prevPages) => {
+      const updatedPages = [...prevPages];
+      updatedPages[currentPage - 1] = results;
+      return updatedPages;
+    });
+  }, [results]);
+
+  const fetchSearchResults = async (query: QueryType, offset: number) => {
     try {
       setLoading(true);
       if (query) {
@@ -59,7 +84,7 @@ const SearchResults = () => {
         setResults(data.results);
 
         // Get IDs from results
-        const itemIds = data.results.map((result) => result.id);
+        const itemIds = data.results.map((result: Item) => result.id);
 
         if (itemIds.length > 0) {
           // Make the second request with the IDs to get the ID and images of each item
@@ -67,7 +92,12 @@ const SearchResults = () => {
 
           // The ML API receives a series of IDs, followed by the attributes that will be requested
           const secondResponse = await fetch(
-            `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`
+            `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`,
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
           );
 
           if (!secondResponse.ok) {
@@ -89,7 +119,8 @@ const SearchResults = () => {
           setResults((prevResults) => {
             return prevResults.map((result) => {
               const matchingItem = secondData.find(
-                (item) => item.code === 200 && item.body.id === result.id
+                (item: SecondDataItemType) =>
+                  item.code === 200 && item.body.id === result.id
               );
 
               if (matchingItem && matchingItem.body.pictures) {
@@ -110,26 +141,6 @@ const SearchResults = () => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (query !== queryState) {
-      setPages([]);
-      setOffset(0);
-      setCurrentPage(1);
-      setQueryState(query);
-    }
-    if (!pages[currentPage - 1]) {
-      fetchSearchResults(query, offset);
-    }
-  }, [query, currentPage]);
-
-  useEffect(() => {
-    setPages((prevPages) => {
-      const updatedPages = [...prevPages];
-      updatedPages[currentPage - 1] = results;
-      return updatedPages;
-    });
-  }, [results]);
 
   let content;
 
