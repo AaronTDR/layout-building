@@ -129,7 +129,6 @@ const SearchResults = () => {
       updatedPages[currentPage - 1] = results;
       return updatedPages;
     });
-    console.log("🚀 ~ SearchResults ~ pages:", pages);
   }, [results]);
 
   let content;
