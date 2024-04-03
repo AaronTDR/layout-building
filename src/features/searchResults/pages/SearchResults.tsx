@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   faFaceSadTear,
@@ -32,97 +32,10 @@ const SearchResults = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get("q");
+  // Auxiliary state to manage changes in 'query'
+  const [queryState, setQueryState] = useState(query);
 
   const itemsPerPage = 20;
-  // const limit = offset + itemsPerPage;
-  // console.log("🚀 ~ SearchResults ~ limit:", limit);
-  /*   const fetchSearchResults = async () => {
-    try {
-      setLoading(true);
-      if (query) {
-        const response: Response = await fetch(
-          `https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(
-            query
-          )}&status=active&app_version=v2&condition=new&offset=${offset}&limit=${itemsPerPage}`
-        );
-        if (!response.ok) {
-          setFetchError(true);
-          console.error(
-            `Failed to fetch search results. Status: ${response.status}`
-          );
-        } else {
-          const data = await response.json();
-          setTotalItems(data.paging.total);
-          setResults(data.results);
-          const itemIds = data.results.map((result: Item) => result.id);
-          if (itemIds.length > 0) {
-            const idsString = itemIds.join(",");
-            const secondResponse: Response = await fetch(
-              `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`
-            );
-            if (!secondResponse.ok) {
-              setFetchError(true);
-              if (secondResponse.status === 429) {
-                console.warn(
-                  "WARNING: Too many requests, status: ",
-                  secondResponse.status
-                );
-                return results;
-              }
-              throw new Error(
-                `Failed to fetch item pictures. Status: ${secondResponse.status}`
-              );
-            } else {
-              const secondData = await secondResponse.json();
-              setResults((prevResults) => {
-                return prevResults.map((result) => {
-                  const matchingItem = secondData.find(
-                    (item: SecondDataItemType) =>
-                      item.code === 200 && item.body.id === result.id
-                  );
-                  if (matchingItem && matchingItem.body.pictures) {
-                    return {
-                      ...result,
-                      picturesArr: matchingItem.body.pictures,
-                    };
-                  }
-                  return result;
-                });
-              });
-            }
-          }
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    setPages([]);
-    setOffset(0);
-    setCurrentPage(1);
-    fetchSearchResults();
-  }, [query]);
-
-  useEffect(() => {
-    const updatePages = async () => {
-      if (!pages[currentPage - 1] || !pages[currentPage - 1].length) {
-        await fetchSearchResults();
-        setPages((prevPages) => {
-          const updatedPages = [...prevPages];
-          updatedPages[currentPage - 1] = results;
-          return updatedPages;
-        });
-      } else {
-        console.log("do nothing...");
-      }
-    };
-
-    updatePages();
-  }, [currentPage, offset, results, pages]); */
 
   const fetchSearchResults = async (query, offset) => {
     try {
@@ -199,17 +112,16 @@ const SearchResults = () => {
   };
 
   useEffect(() => {
-    setPages([]);
-    setOffset(0);
-    setCurrentPage(1);
-    fetchSearchResults(query, 0);
-  }, [query]);
-
-  useEffect(() => {
+    if (query !== queryState) {
+      setPages([]);
+      setOffset(0);
+      setCurrentPage(1);
+      setQueryState(query);
+    }
     if (!pages[currentPage - 1]) {
       fetchSearchResults(query, offset);
     }
-  }, [currentPage]);
+  }, [query, currentPage]);
 
   useEffect(() => {
     setPages((prevPages) => {
