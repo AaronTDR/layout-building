@@ -5,6 +5,7 @@ import { ButtonType } from "./ButtonType";
 
 const Button = ({
   onClick,
+  disabled,
   cssButton,
   text,
   cssText,
@@ -12,7 +13,7 @@ const Button = ({
   cssIcon,
 }: ButtonType) => {
   return (
-    <button onClick={onClick} className={cssButton}>
+    <button disabled={disabled} onClick={onClick} className={cssButton}>
       {icon && (
         <i className={cssIcon}>
           <FontAwesomeIcon icon={icon} />
