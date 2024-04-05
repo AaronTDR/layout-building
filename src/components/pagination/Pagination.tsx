@@ -2,15 +2,13 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 /* Components */
 import Button from "../../components/button/Button";
+import RenderPageNumbers from "./renderPageNumbers/RenderPageNumbers";
 
 /* Theme context */
 import { ThemeContext } from "../../contexts/ThemeProvider";
 
 /* Styles */
 import styles from "./pagination.module.css";
-
-/* Utils */
-import renderPageNumbers from "./utils/renderPageNumbers/renderPageNumbers";
 
 const Pagination = ({
   totalItems,
@@ -26,13 +24,6 @@ const Pagination = ({
     onPageChange(newPage);
   };
 
-  const pageNumbers = renderPageNumbers(
-    totalPages,
-    currentPage,
-    handlePageChange,
-    maxPagesToShow
-  );
-
   return (
     <div className={styles.pagination}>
       <ul className={styles.ul}>
@@ -45,7 +36,12 @@ const Pagination = ({
             cssIcon={""}
           />
         </li>
-        {pageNumbers}
+        <RenderPageNumbers
+          totalPages={totalPages}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+          maxPagesToShow={maxPagesToShow}
+        />
         <li key="next">
           <Button
             onClick={() => handlePageChange(currentPage + 1)}

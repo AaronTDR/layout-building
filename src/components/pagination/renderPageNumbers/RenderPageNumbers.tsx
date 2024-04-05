@@ -1,9 +1,12 @@
-const renderPageNumbers = (
-  totalPages: number,
-  currentPage: number,
-  handlePageChange: (page: number) => void,
-  maxPagesToShow: number
-): JSX.Element[] => {
+/* Types */
+import { RenderPageNumberType } from "./RenderPageNumberType";
+
+const RenderPageNumbers = ({
+  totalPages,
+  currentPage,
+  handlePageChange,
+  maxPagesToShow,
+}: RenderPageNumberType) => {
   // Array to store page numbers
   const pageNumbers = [];
 
@@ -58,7 +61,7 @@ const renderPageNumbers = (
   );
 
   // Return page numbers
-  return pageNumbers;
+  return <>{pageNumbers}</>;
 };
 
-export default renderPageNumbers;
+export default RenderPageNumbers;
