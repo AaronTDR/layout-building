@@ -10,13 +10,16 @@ import { ThemeContext } from "../../contexts/ThemeProvider";
 /* Styles */
 import styles from "./pagination.module.css";
 
+/* Types */
+import { PaginationType } from "./PaginationType";
+
 const Pagination = ({
   totalItems,
   itemsPerPage,
   currentPage,
   onPageChange,
   maxPagesToShow,
-}) => {
+}: PaginationType) => {
   console.log("🚀 ~ currentPage:", currentPage);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
