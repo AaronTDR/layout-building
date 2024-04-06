@@ -1,0 +1,15 @@
+.pageNumber {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  text-align: center;
+  font-size: var(--text-md);
+  border-radius: var(--principal-border-radius);
+  background-color: inherit;
+}
+
+.pageNumber.active {
+}
+
+.active {
+  background-color: orange;
+}

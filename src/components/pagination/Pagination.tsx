@@ -21,6 +21,7 @@ const Pagination = ({
   maxPagesToShow,
 }: PaginationType) => {
   console.log("🚀 ~ currentPage:", currentPage);
+
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handlePageChange = (newPage: number) => {

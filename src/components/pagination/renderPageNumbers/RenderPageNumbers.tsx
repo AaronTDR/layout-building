@@ -1,3 +1,6 @@
+/* Styles */
+import styles from "./renderPageNumbers.module.css";
+
 /* Types */
 import { RenderPageNumberType } from "./RenderPageNumberType";
 
@@ -22,8 +25,21 @@ const RenderPageNumbers = ({
 
   // Always show page 1
   pageNumbers.push(
-    <li key="1" className={1 === currentPage ? "active" : ""}>
-      <button onClick={() => handlePageChange(1)} disabled={currentPage === 1}>
+    <li
+      key="1"
+      /* className={1 === currentPage ? "active" : ""} */ className={
+        currentPage === 1
+          ? `${styles.pageNumber} ${styles.active}`
+          : styles.pageNumber
+      }
+    >
+      {" "}
+      {/*className={1 === currentPage ? `${styles.pageNumber} ${styles.active}` : styles.pageNumber }*/}
+      <button
+        onClick={() => handlePageChange(1)}
+        disabled={currentPage === 1}
+        className={styles.pageNumber}
+      >
         1
       </button>
     </li>
@@ -31,29 +47,57 @@ const RenderPageNumbers = ({
 
   // Add ellipsis if startPage is greater than 2
   if (startPage > 2) {
-    pageNumbers.push(<li key="ellipsis1">...</li>);
+    pageNumbers.push(
+      <li key="ellipsis1" className={styles.pageNumber}>
+        ...
+      </li>
+    );
   }
 
   // Add the page numbers in the range startPage to endPage
   for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(
-      <li key={i} className={i === currentPage ? "active" : ""}>
-        <button onClick={() => handlePageChange(i)}>{i}</button>
+      <li
+        key={i}
+        className={
+          currentPage === i
+            ? `${styles.pageNumber} ${styles.active}`
+            : styles.pageNumber
+        }
+      >
+        <button
+          onClick={() => handlePageChange(i)}
+          className={styles.pageNumber}
+        >
+          {i}
+        </button>
       </li>
     );
   }
 
   // Add ellipsis if endPage is less than totalPages - 1
   if (endPage < totalPages - 1) {
-    pageNumbers.push(<li key="ellipsis2">...</li>);
+    pageNumbers.push(
+      <li key="ellipsis2" className={styles.pageNumber}>
+        ...
+      </li>
+    );
   }
 
   // Always show the last page
   pageNumbers.push(
-    <li key={totalPages} className={totalPages === currentPage ? "active" : ""}>
+    <li
+      key={totalPages}
+      className={
+        currentPage === totalPages
+          ? `${styles.pageNumber} ${styles.active}`
+          : styles.pageNumber
+      }
+    >
       <button
         onClick={() => handlePageChange(totalPages)}
         disabled={currentPage === totalPages}
+        className={styles.pageNumber}
       >
         {totalPages}
       </button>

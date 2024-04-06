@@ -16,6 +16,7 @@ import styles from "./searchResults.module.css";
 
 /* Types */
 import { Item } from "../../../types/ResultAPIType";
+
 import {
   SecondDataItemType,
   ResultsType,
@@ -35,6 +36,7 @@ const SearchResults = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get("q");
+
   // Auxiliary state to manage changes in 'query'
   const [queryState, setQueryState] = useState(query);
 
@@ -52,6 +54,7 @@ const SearchResults = () => {
     if (!pages[currentPage - 1]) {
       fetchSearchResults(query, offset);
     }
+    // Añade una nueva entrada al historial de navegación
   }, [query, currentPage]);
 
   useEffect(() => {
