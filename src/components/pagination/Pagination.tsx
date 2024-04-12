@@ -22,10 +22,12 @@ const Pagination = ({
 }: PaginationType) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const query = searchParams.get("q");
+  const query = searchParams.get("q") || "";
   const { page } = useParams();
   const currentPage: number = Number(page);
+
   const totalPages = Math.ceil(totalItems / itemsPerPage);
+
   return (
     <div className={styles.pagination}>
       <ul className={styles.ul}>
