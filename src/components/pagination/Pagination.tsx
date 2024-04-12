@@ -1,7 +1,9 @@
+import { Link, useLocation, useParams } from "react-router-dom";
+
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 /* Components */
-import Button from "../../components/button/Button";
+import Icon from "../../components/icon/Icon";
 import RenderPageNumbers from "./renderPageNumbers/RenderPageNumbers";
 
 /* Theme context */
@@ -16,45 +18,33 @@ import { PaginationType } from "./PaginationType";
 const Pagination = ({
   totalItems,
   itemsPerPage,
-  currentPage,
-  onPageChange,
   maxPagesToShow,
 }: PaginationType) => {
-  console.log("🚀 ~ currentPage:", currentPage);
-
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get("q");
+  const { page } = useParams();
+  const currentPage: number = Number(page);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  const handlePageChange = (newPage: number) => {
-    onPageChange(newPage);
-  };
-
   return (
     <div className={styles.pagination}>
       <ul className={styles.ul}>
-        <li key="previous">
-          <Button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            cssButton={""}
-            icon={faArrowLeft}
-            cssIcon={""}
-          />
-        </li>
+        <Link
+          to={`/search/${currentPage - 1}?q=${encodeURIComponent(query)}`}
+          key="previous"
+        >
+          <Icon icon={faArrowLeft} css="" />
+        </Link>
         <RenderPageNumbers
           totalPages={totalPages}
-          currentPage={currentPage}
-          handlePageChange={handlePageChange}
           maxPagesToShow={maxPagesToShow}
         />
-        <li key="next">
-          <Button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            cssButton={""}
-            icon={faArrowRight}
-            cssIcon={""}
-          />
-        </li>
+        <Link
+          to={`/search/${currentPage + 1}?q=${encodeURIComponent(query)}`}
+          key="next"
+        >
+          <Icon icon={faArrowRight} css="" />
+        </Link>
       </ul>
     </div>
   );

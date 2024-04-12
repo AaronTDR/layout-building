@@ -34,7 +34,7 @@ const SearchBar: FC<SearchBarType> = ({
     const { query, errors }: ValidatedType = validateSearch(searchBarValue);
 
     if (Object.keys(errors).length === 0) {
-      navigate(`/search?q=${encodeURIComponent(query)}`);
+      navigate(`/search/1?q=${encodeURIComponent(query)}`);
     } else {
       // Handle errors if necessary
       return;

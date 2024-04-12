@@ -9,7 +9,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/search",
+    path: "/search/:page",
     element: <SearchResults />,
     exact: true,
   },

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import {
   faFaceSadTear,
   faMagnifyingGlassMinus,
@@ -28,11 +28,11 @@ const SearchResults = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
-  const [offset, setOffset] = useState(0);
   const [results, setResults] = useState<ResultsType>([]);
   const [pages, setPages] = useState<PagesType>([]);
   const [fetchError, setFetchError] = useState(false);
 
+  const { page } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get("q");
@@ -41,21 +41,25 @@ const SearchResults = () => {
   const [queryState, setQueryState] = useState(query);
 
   const itemsPerPage = 20;
-  const accessToken =
-    "APP_USR-6094347472813542-040223-31d606220c69045a9a9a328f1421aed7-1525368630";
+  const accessToken = "";
 
   useEffect(() => {
     if (query !== queryState) {
       setPages([]);
-      setOffset(0);
-      setCurrentPage(1);
       setQueryState(query);
     }
+  }, [query]);
+
+  useEffect(() => {
+    const currentPage = Number(page);
+    // currentPage is updated every time the page changes to show the updated page at all times
+    setCurrentPage(currentPage);
+
     if (!pages[currentPage - 1]) {
+      const offset = currentPage * itemsPerPage - itemsPerPage;
       fetchSearchResults(query, offset);
     }
-    // Añade una nueva entrada al historial de navegación
-  }, [query, currentPage]);
+  }, [query, location, pages]);
 
   useEffect(() => {
     setPages((prevPages) => {
@@ -95,12 +99,12 @@ const SearchResults = () => {
 
           // The ML API receives a series of IDs, followed by the attributes that will be requested
           const secondResponse = await fetch(
-            `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`,
+            `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures` /* ,
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
               },
-            }
+            } */
           );
 
           if (!secondResponse.ok) {
@@ -169,9 +173,6 @@ const SearchResults = () => {
         results={pages[currentPage - 1]}
         totalItems={totalItems}
         itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        setOffset={setOffset}
       />
     );
   }
@@ -184,14 +185,6 @@ const SearchResults = () => {
         </div>
       )}
       {content}
-      {/*       <MainResults
-        results={pages[currentPage - 1]}
-        totalItems={totalItems}
-        itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        setOffset={setOffset}
-      /> */}
     </Layout>
   );
 };

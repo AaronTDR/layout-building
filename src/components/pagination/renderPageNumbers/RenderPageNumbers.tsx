@@ -1,3 +1,5 @@
+import { Link, useLocation, useParams } from "react-router-dom";
+
 /* Styles */
 import styles from "./renderPageNumbers.module.css";
 
@@ -6,10 +8,13 @@ import { RenderPageNumberType } from "./RenderPageNumberType";
 
 const RenderPageNumbers = ({
   totalPages,
-  currentPage,
-  handlePageChange,
   maxPagesToShow,
 }: RenderPageNumberType) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get("q");
+  const { page } = useParams();
+  const currentPage: number = Number(page);
   // Array to store page numbers
   const pageNumbers = [];
 
@@ -25,24 +30,17 @@ const RenderPageNumbers = ({
 
   // Always show page 1
   pageNumbers.push(
-    <li
+    <Link
       key="1"
-      /* className={1 === currentPage ? "active" : ""} */ className={
+      to={`/search/1?q=${encodeURIComponent(query)}`}
+      className={
         currentPage === 1
           ? `${styles.pageNumber} ${styles.active}`
           : styles.pageNumber
       }
     >
-      {" "}
-      {/*className={1 === currentPage ? `${styles.pageNumber} ${styles.active}` : styles.pageNumber }*/}
-      <button
-        onClick={() => handlePageChange(1)}
-        disabled={currentPage === 1}
-        className={styles.pageNumber}
-      >
-        1
-      </button>
-    </li>
+      1
+    </Link>
   );
 
   // Add ellipsis if startPage is greater than 2
@@ -57,21 +55,17 @@ const RenderPageNumbers = ({
   // Add the page numbers in the range startPage to endPage
   for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(
-      <li
+      <Link
         key={i}
+        to={`/search/${i}?q=${encodeURIComponent(query)}`}
         className={
           currentPage === i
             ? `${styles.pageNumber} ${styles.active}`
             : styles.pageNumber
         }
       >
-        <button
-          onClick={() => handlePageChange(i)}
-          className={styles.pageNumber}
-        >
-          {i}
-        </button>
-      </li>
+        {i}
+      </Link>
     );
   }
 
@@ -86,22 +80,17 @@ const RenderPageNumbers = ({
 
   // Always show the last page
   pageNumbers.push(
-    <li
+    <Link
       key={totalPages}
+      to={`/search/${totalPages}?q=${encodeURIComponent(query)}`}
       className={
         currentPage === totalPages
           ? `${styles.pageNumber} ${styles.active}`
           : styles.pageNumber
       }
     >
-      <button
-        onClick={() => handlePageChange(totalPages)}
-        disabled={currentPage === totalPages}
-        className={styles.pageNumber}
-      >
-        {totalPages}
-      </button>
-    </li>
+      {totalPages}
+    </Link>
   );
 
   // Return page numbers

@@ -12,17 +12,7 @@ const MainResults: React.FC<MainResultsType> = ({
   results,
   totalItems,
   itemsPerPage,
-  currentPage,
-  setCurrentPage,
-  setOffset,
 }) => {
-  const handlePageChange = (newPage) => {
-    // Get current page elements
-    const startIndex = (newPage - 1) * itemsPerPage; // offset
-    //const endIndex = startIndex + itemsPerPage; // limit
-    setCurrentPage(newPage);
-    setOffset(startIndex);
-  };
   return (
     <main className={styles.container}>
       <div className={styles.grid}>
@@ -30,12 +20,9 @@ const MainResults: React.FC<MainResultsType> = ({
           <ResultCard key={item.id} item={item} />
         ))}
       </div>
-
       <Pagination
         totalItems={totalItems}
-        itemsPerPage={20}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
         maxPagesToShow={5}
       />
     </main>
