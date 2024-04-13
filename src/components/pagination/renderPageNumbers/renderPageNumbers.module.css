@@ -6,7 +6,6 @@
   min-height: 2.5rem;
   font-size: var(--text-lg);
   border: 1px solid white;
-
   border-radius: var(--principal-border-radius);
   background-color: inherit;
 }
