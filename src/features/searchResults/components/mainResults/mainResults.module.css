@@ -4,6 +4,8 @@
   justify-content: center;
   width: 100%;
   margin-bottom: var(--spacing-lg);
+
+  flex-wrap: wrap;
 }
 
 .grid {
