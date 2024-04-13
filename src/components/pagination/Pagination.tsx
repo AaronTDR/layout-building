@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -26,6 +27,12 @@ const Pagination = ({
   const { page } = useParams();
   const currentPage: number = Number(page);
 
+  const { isDarkMode } = useContext(ThemeContext);
+
+  const buttonTheme = isDarkMode
+    ? styles.buttonsDarkMode
+    : styles.buttonsLightMode;
+
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
@@ -34,6 +41,7 @@ const Pagination = ({
         <Link
           to={`/search/${currentPage - 1}?q=${encodeURIComponent(query)}`}
           key="previous"
+          className={`${styles.buttons} ${buttonTheme}`}
         >
           <Icon icon={faArrowLeft} css="" />
         </Link>
@@ -44,6 +52,7 @@ const Pagination = ({
         <Link
           to={`/search/${currentPage + 1}?q=${encodeURIComponent(query)}`}
           key="next"
+          className={`${styles.buttons} ${buttonTheme}`}
         >
           <Icon icon={faArrowRight} css="" />
         </Link>

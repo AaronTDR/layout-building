@@ -1,4 +1,8 @@
+import { useContext } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+
+/* Theme context */
+import { ThemeContext } from "../../../contexts/ThemeProvider";
 
 /* Styles */
 import styles from "./renderPageNumbers.module.css";
@@ -12,9 +16,18 @@ const RenderPageNumbers = ({
 }: RenderPageNumberType) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const query = searchParams.get("q");
+  const query = searchParams.get("q") || "";
   const { page } = useParams();
   const currentPage: number = Number(page);
+
+  const { isDarkMode } = useContext(ThemeContext);
+
+  const pageNumberTheme = isDarkMode
+    ? styles.pageNumberDarkMode
+    : styles.pageNumberLightMode;
+
+  const ellipsisTheme = isDarkMode ? styles.ellipsisDark : styles.ellipsisLight;
+
   // Array to store page numbers
   const pageNumbers = [];
 
@@ -35,8 +48,8 @@ const RenderPageNumbers = ({
       to={`/search/1?q=${encodeURIComponent(query)}`}
       className={
         currentPage === 1
-          ? `${styles.pageNumber} ${styles.active}`
-          : styles.pageNumber
+          ? `${styles.pageNumber} ${pageNumberTheme} ${styles.active} `
+          : `${styles.pageNumber} ${pageNumberTheme}`
       }
     >
       1
@@ -46,7 +59,7 @@ const RenderPageNumbers = ({
   // Add ellipsis if startPage is greater than 2
   if (startPage > 2) {
     pageNumbers.push(
-      <li key="ellipsis1" className={styles.pageNumber}>
+      <li key="ellipsis1" className={`${styles.pageNumber} ${ellipsisTheme}`}>
         ...
       </li>
     );
@@ -60,8 +73,8 @@ const RenderPageNumbers = ({
         to={`/search/${i}?q=${encodeURIComponent(query)}`}
         className={
           currentPage === i
-            ? `${styles.pageNumber} ${styles.active}`
-            : styles.pageNumber
+            ? `${styles.pageNumber} ${pageNumberTheme} ${styles.active}`
+            : `${styles.pageNumber} ${pageNumberTheme}`
         }
       >
         {i}
@@ -72,7 +85,7 @@ const RenderPageNumbers = ({
   // Add ellipsis if endPage is less than totalPages - 1
   if (endPage < totalPages - 1) {
     pageNumbers.push(
-      <li key="ellipsis2" className={styles.pageNumber}>
+      <li key="ellipsis2" className={`${styles.pageNumber} ${ellipsisTheme}`}>
         ...
       </li>
     );
@@ -85,8 +98,8 @@ const RenderPageNumbers = ({
       to={`/search/${totalPages}?q=${encodeURIComponent(query)}`}
       className={
         currentPage === totalPages
-          ? `${styles.pageNumber} ${styles.active}`
-          : styles.pageNumber
+          ? `${styles.pageNumber} ${pageNumberTheme} ${styles.active}`
+          : `${styles.pageNumber} ${pageNumberTheme}`
       }
     >
       {totalPages}

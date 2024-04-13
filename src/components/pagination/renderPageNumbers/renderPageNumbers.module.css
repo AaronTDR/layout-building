@@ -1,15 +1,59 @@
 .pageNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 2.5rem;
   min-height: 2.5rem;
-  text-align: center;
-  font-size: var(--text-md);
+  font-size: var(--text-lg);
+  border: 1px solid white;
+
   border-radius: var(--principal-border-radius);
   background-color: inherit;
 }
 
-.pageNumber.active {
+/* On light mode */
+.pageNumberLightMode {
+  background-color: var(--background-tertiary-light-mode);
+  border-color: rgb(43, 43, 43, 0.3);
+  color: var(--text-primary-dark);
 }
 
-.active {
-  background-color: orange;
+.pageNumberLightMode:hover {
+  background-color: rgba(15, 17, 17, 0.2);
+}
+
+.pageNumberLightMode.active {
+  background-color: #191919;
+  color: var(--text-primary-light);
+}
+
+/* On dark mode */
+.pageNumberDarkMode {
+  background-color: var(--background-tertiary-dark-mode);
+  border-color: rgba(227, 230, 230, 0.3);
+  color: var(--text-primary-light);
+}
+
+.pageNumberDarkMode:hover {
+  background-color: rgba(227, 227, 227, 0.2);
+}
+
+.pageNumberDarkMode.active {
+  background-color: var(--background-tertiary-light-mode);
+  color: var(--text-primary-dark);
+}
+
+/* * Ellipsis classes */
+/* On light mode */
+.ellipsisLight {
+  background-color: var(--background-tertiary-light-mode);
+  border-color: rgb(43, 43, 43, 0.3);
+  color: var(--text-primary-dark);
+}
+
+/* On dark mode */
+.ellipsisDark {
+  background-color: var(--background-tertiary-dark-mode);
+  border-color: rgba(227, 230, 230, 0.3);
+  color: var(--text-primary-light);
 }
