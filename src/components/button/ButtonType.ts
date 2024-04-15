@@ -8,6 +8,7 @@ type ButtonWithText = {
   cssText: string;
   icon?: IconDefinition;
   cssIcon?: string;
+  inlineStyles?: React.CSSProperties;
 };
 
 type ButtonWithoutText = {
@@ -18,6 +19,7 @@ type ButtonWithoutText = {
   cssText?: string;
   icon: IconDefinition;
   cssIcon: string;
+  inlineStyles?: React.CSSProperties;
 };
 
 export type ButtonType = ButtonWithText | ButtonWithoutText;
