@@ -7,37 +7,3 @@
   display: flex;
   gap: 8px;
 }
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 2.5rem;
-  min-height: 2.5rem;
-  font-size: var(--text-sm);
-  border-width: 1px;
-  border-style: solid;
-  border-radius: var(--principal-border-radius);
-}
-
-/* On light mode */
-.buttonsLightMode {
-  background-color: var(--background-tertiary-light-mode);
-  border-color: rgb(43, 43, 43, 0.3);
-  color: var(--text-primary-dark);
-}
-
-.buttonsLightMode:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-/* On light mode */
-.buttonsDarkMode {
-  background-color: var(--background-tertiary-dark-mode);
-  border-color: rgba(227, 230, 230, 0.3);
-  color: var(--text-primary-light);
-}
-
-.buttonsDarkMode:hover {
-  background-color: rgba(227, 227, 227, 0.2);
-}
