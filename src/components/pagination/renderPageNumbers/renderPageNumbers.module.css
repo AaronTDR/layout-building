@@ -24,6 +24,7 @@
 
 .buttonsLightMode:hover {
   background-color: rgba(15, 17, 17, 0.2);
+  border-color: rgba(43, 43, 43, 0.3);
 }
 
 /* On dark mode */

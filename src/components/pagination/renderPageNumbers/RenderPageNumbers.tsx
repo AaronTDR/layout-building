@@ -30,6 +30,7 @@ const RenderPageNumbers = ({
 
   const { isDarkMode } = useContext(ThemeContext);
 
+  /* Defines the theme color */
   const buttonTheme = isDarkMode
     ? styles.buttonsDarkMode
     : styles.buttonsLightMode;
