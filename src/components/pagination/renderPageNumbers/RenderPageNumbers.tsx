@@ -90,8 +90,8 @@ const RenderPageNumbers = ({
       to={`/search/1?q=${encodeURIComponent(query)}`}
       className={
         currentPage === 1
-          ? `${styles.pageNumber} ${pageNumberTheme} ${styles.active} `
-          : `${styles.pageNumber} ${pageNumberTheme}`
+          ? `${styles.paginationItem} ${pageNumberTheme} ${styles.active} `
+          : `${styles.paginationItem} ${pageNumberTheme}`
       }
     >
       1
@@ -101,7 +101,10 @@ const RenderPageNumbers = ({
   // Add ellipsis if startPage is greater than 2
   if (startPage > 2) {
     pageNumbers.push(
-      <li key="ellipsis1" className={`${styles.pageNumber} ${ellipsisTheme}`}>
+      <li
+        key="ellipsis1"
+        className={`${styles.paginationItem} ${ellipsisTheme}`}
+      >
         ...
       </li>
     );
@@ -115,8 +118,8 @@ const RenderPageNumbers = ({
         to={`/search/${i}?q=${encodeURIComponent(query)}`}
         className={
           currentPage === i
-            ? `${styles.pageNumber} ${pageNumberTheme} ${styles.active}`
-            : `${styles.pageNumber} ${pageNumberTheme}`
+            ? `${styles.paginationItem} ${pageNumberTheme} ${styles.active}`
+            : `${styles.paginationItem} ${pageNumberTheme}`
         }
       >
         {i}
@@ -127,7 +130,10 @@ const RenderPageNumbers = ({
   // Add ellipsis if endPage is less than totalPages - 1
   if (endPage < totalPages - 1) {
     pageNumbers.push(
-      <li key="ellipsis2" className={`${styles.pageNumber} ${ellipsisTheme}`}>
+      <li
+        key="ellipsis2"
+        className={`${styles.paginationItem} ${ellipsisTheme}`}
+      >
         ...
       </li>
     );
@@ -140,8 +146,8 @@ const RenderPageNumbers = ({
       to={`/search/${totalPages}?q=${encodeURIComponent(query)}`}
       className={
         currentPage === totalPages
-          ? `${styles.pageNumber} ${pageNumberTheme} ${styles.active}`
-          : `${styles.pageNumber} ${pageNumberTheme}`
+          ? `${styles.paginationItem} ${pageNumberTheme} ${styles.active}`
+          : `${styles.paginationItem} ${pageNumberTheme}`
       }
     >
       {totalPages}
@@ -155,7 +161,7 @@ const RenderPageNumbers = ({
         key={"previous"}
         onClick={handlePrev}
         disabled={isDisabledPrev}
-        cssButton={`${styles.buttons} ${buttonTheme}`}
+        cssButton={`${styles.paginationItem} ${buttonTheme}`}
         icon={faArrowLeft}
         cssIcon=""
         inlineStyles={disabledPrevStyle}
@@ -165,7 +171,7 @@ const RenderPageNumbers = ({
         key={"next"}
         onClick={handleNext}
         disabled={isDisabledNext}
-        cssButton={`${styles.buttons} ${buttonTheme}`}
+        cssButton={`${styles.paginationItem} ${buttonTheme}`}
         icon={faArrowRight}
         cssIcon=""
         inlineStyles={disabledNextStyle}

@@ -1,13 +1,18 @@
-.buttons {
+.paginationItem {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 2.5rem;
   min-height: 2.5rem;
-  font-size: var(--text-sm);
   border-width: 1px;
   border-style: solid;
   border-radius: var(--principal-border-radius);
+}
+
+/* Add font size to left and right buttons*/
+.paginationItem.buttonsLightMode,
+.paginationItem.buttonsDarkMode {
+  font-size: var(--text-sm);
 }
 
 /* On light mode */
@@ -32,16 +37,12 @@
   background-color: rgba(227, 227, 227, 0.2);
 }
 
-.pageNumber {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 2.5rem;
-  min-height: 2.5rem;
+/* Add font size to page number and ellipsis items */
+.paginationItem.pageNumberLightMode,
+.paginationItem.pageNumberDarkMode,
+.paginationItem.ellipsisLight,
+.paginationItem.ellipsisDark {
   font-size: var(--text-lg);
-  border: 1px solid white;
-  border-radius: var(--principal-border-radius);
-  background-color: inherit;
 }
 
 /* On light mode */
