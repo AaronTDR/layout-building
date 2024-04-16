@@ -49,7 +49,7 @@ import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 const categoriesElements = [
   {
     path: "#",
-    text: "Vehicles",
+    text: "Technology",
     cssLink: borderLinkStyles.borderLink,
   },
   {
@@ -59,12 +59,7 @@ const categoriesElements = [
   },
   {
     path: "#",
-    text: "Technology",
-    cssLink: borderLinkStyles.borderLink,
-  },
-  {
-    path: "#",
-    text: "Home",
+    text: "Home and furniture",
     cssLink: borderLinkStyles.borderLink,
   },
   {
@@ -74,12 +69,17 @@ const categoriesElements = [
   },
   {
     path: "#",
-    text: "Fashion",
+    text: "Clothing",
     cssLink: borderLinkStyles.borderLink,
   },
   {
     path: "#",
     text: "Sports",
+    cssLink: borderLinkStyles.borderLink,
+  },
+  {
+    path: "#",
+    text: "Vehicles",
     cssLink: borderLinkStyles.borderLink,
   },
 ];
@@ -176,7 +176,7 @@ const StickyBar = () => {
   const categoriesElementsDropDownMenu = [
     {
       path: "#",
-      text: "Vehicles",
+      text: "Technology",
       cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
@@ -188,13 +188,7 @@ const StickyBar = () => {
     },
     {
       path: "#",
-      text: "Technology",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Home",
+      text: "Home and furniture",
       cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
@@ -206,13 +200,19 @@ const StickyBar = () => {
     },
     {
       path: "#",
-      text: "Fashion",
+      text: "Clothing",
       cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
     {
       path: "#",
       text: "Sports",
+      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
+      onClick: () => setIsOpen(!isOpen),
+    },
+    {
+      path: "#",
+      text: "Vehicles",
       cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
       onClick: () => setIsOpen(!isOpen),
     },
