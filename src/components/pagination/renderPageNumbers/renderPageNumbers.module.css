@@ -1,0 +1,94 @@
+.paginationItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--principal-border-radius);
+}
+
+/* Add font size to left and right buttons*/
+.paginationItem.buttonsLightMode,
+.paginationItem.buttonsDarkMode {
+  font-size: var(--text-sm);
+}
+
+/* On light mode */
+.buttonsLightMode {
+  background-color: var(--background-tertiary-light-mode);
+  border-color: rgba(43, 43, 43, 0.3);
+  color: var(--text-primary-dark);
+}
+
+.buttonsLightMode:hover {
+  background-color: rgba(15, 17, 17, 0.2);
+  border-color: rgba(43, 43, 43, 0.3);
+}
+
+/* On dark mode */
+.buttonsDarkMode {
+  background-color: var(--background-tertiary-dark-mode);
+  border-color: rgba(227, 230, 230, 0.3);
+  color: var(--text-primary-light);
+}
+
+.buttonsDarkMode:hover {
+  background-color: rgba(227, 227, 227, 0.2);
+}
+
+/* Add font size to page number and ellipsis items */
+.paginationItem.pageNumberLightMode,
+.paginationItem.pageNumberDarkMode,
+.paginationItem.ellipsisLight,
+.paginationItem.ellipsisDark {
+  font-size: var(--text-lg);
+}
+
+/* On light mode */
+.pageNumberLightMode {
+  background-color: var(--background-tertiary-light-mode);
+  border-color: rgba(43, 43, 43, 0.3);
+  color: var(--text-primary-dark);
+}
+
+.pageNumberLightMode:hover {
+  background-color: rgba(15, 17, 17, 0.2);
+}
+
+.pageNumberLightMode.active {
+  background-color: #191919;
+  color: var(--text-primary-light);
+}
+
+/* On dark mode */
+.pageNumberDarkMode {
+  background-color: var(--background-tertiary-dark-mode);
+  border-color: rgba(227, 230, 230, 0.3);
+  color: var(--text-primary-light);
+}
+
+.pageNumberDarkMode:hover {
+  background-color: rgba(227, 227, 227, 0.2);
+}
+
+.pageNumberDarkMode.active {
+  background-color: var(--background-tertiary-light-mode);
+  color: var(--text-primary-dark);
+}
+
+/* * Ellipsis classes */
+/* On light mode */
+.ellipsisLight {
+  background-color: var(--background-tertiary-light-mode);
+  border-color: rgba(43, 43, 43, 0.3);
+  color: var(--text-primary-dark);
+}
+
+/* On dark mode */
+.ellipsisDark {
+  background-color: var(--background-tertiary-dark-mode);
+  border-color: rgba(227, 230, 230, 0.3);
+  color: var(--text-primary-light);
+}

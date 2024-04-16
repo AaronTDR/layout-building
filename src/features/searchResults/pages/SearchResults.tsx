@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import {
   faFaceSadTear,
   faMagnifyingGlassMinus,
@@ -15,92 +15,146 @@ import Layout from "../../../components/layout/Layout";
 import styles from "./searchResults.module.css";
 
 /* Types */
-import { SecondDataItemType } from "./SearchResultsType";
 import { Item } from "../../../types/ResultAPIType";
 
-const SearchResults = () => {
-  const [results, setResults] = useState<Item[]>([]);
-  const [fetchError, setFetchError] = useState(false);
-  const [loading, setLoading] = useState(true);
+import {
+  SecondDataItemType,
+  ResultsType,
+  PagesType,
+  QueryType,
+} from "./SearchResultsType";
 
+const SearchResults = () => {
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+  const [results, setResults] = useState<ResultsType>([]);
+  const [pages, setPages] = useState<PagesType>([]);
+  const [fetchError, setFetchError] = useState(false);
+
+  const { page } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get("q");
 
+  // Auxiliary state to manage changes in 'query'
+  const [queryState, setQueryState] = useState(query);
+
+  const itemsPerPage = 20;
+  const accessToken = "";
+
+  /*
+This effect ensures that the page automatically scrolls to the top (y=0) whenever the state of currentPage changes. This ensures that the user starts from the beginning of the page when navigating between them, even when using the browser's scroll arrows and browsing history.
+*/
   useEffect(() => {
-    const fetchSearchResults = async () => {
-      try {
-        setLoading(true);
-        if (query) {
-          const response: Response = await fetch(
-            `https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(
-              query
-            )}&status=active&app_version=v2&condition=new&offset=0&limit=20`
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (query !== queryState) {
+      setPages([]);
+      setQueryState(query);
+    }
+  }, [query]);
+
+  useEffect(() => {
+    const currentPage = Number(page);
+    // currentPage is updated every time the page changes to show the updated page at all times
+    setCurrentPage(currentPage);
+
+    if (!pages[currentPage - 1]) {
+      const offset = currentPage * itemsPerPage - itemsPerPage;
+      fetchSearchResults(query, offset);
+    }
+  }, [query, location, pages]);
+
+  useEffect(() => {
+    setPages((prevPages) => {
+      const updatedPages = [...prevPages];
+      updatedPages[currentPage - 1] = results;
+      return updatedPages;
+    });
+  }, [results]);
+
+  const fetchSearchResults = async (query: QueryType, offset: number) => {
+    try {
+      setLoading(true);
+      if (query) {
+        const response = await fetch(
+          `https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(
+            query
+          )}&status=active&app_version=v2&condition=new&offset=${offset}&limit=${itemsPerPage}`
+        );
+
+        if (!response.ok) {
+          setFetchError(true);
+          console.error(
+            `Failed to fetch search results. Status: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+        setTotalItems(data.paging.total);
+        setResults(data.results);
+
+        // Get IDs from results
+        const itemIds = data.results.map((result: Item) => result.id);
+
+        if (itemIds.length > 0) {
+          // Make the second request with the IDs to get the ID and images of each item
+          const idsString = itemIds.join(",");
+
+          // The ML API receives a series of IDs, followed by the attributes that will be requested
+          const secondResponse = await fetch(
+            `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures` /* ,
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            } */
           );
 
-          if (!response.ok) {
+          if (!secondResponse.ok) {
             setFetchError(true);
-            console.error(
-              `Failed to fetch search results. Status: ${response.status}`
-            );
-          }
-
-          const data = await response.json();
-          setResults(data.results);
-
-          // Get IDs from results
-          const itemIds = data.results.map((result: Item) => result.id);
-
-          if (itemIds.length > 0) {
-            // Make the second request with the IDs to get the ID and images of each item
-            const idsString = itemIds.join(",");
-
-            // The ML API receives a series of IDs, followed by the attributes that will be requested
-            const secondResponse: Response = await fetch(
-              `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`
-            );
-
-            if (!secondResponse.ok) {
-              setFetchError(true);
-              if (secondResponse.status === 429) {
-                console.log("Too many requests: ", secondResponse.status);
-                return results;
-              }
-              throw new Error(
-                `Failed to fetch item details. Status: ${secondResponse.status}`
+            if (secondResponse.status === 429) {
+              console.warn(
+                "WARNING: Too many requests, status: ",
+                secondResponse.status
               );
+              return results;
             }
-
-            const secondData = await secondResponse.json();
-            // Update the results that were in the state by adding the 'pictureArr' property to each item which will contain the images obtained in secondResponse.
-            setResults((prevResults) => {
-              return prevResults.map((result) => {
-                const matchingItem = secondData.find(
-                  (item: SecondDataItemType) =>
-                    item.code === 200 && item.body.id === result.id
-                );
-
-                if (matchingItem && matchingItem.body.pictures) {
-                  return {
-                    ...result,
-                    picturesArr: matchingItem.body.pictures,
-                  };
-                }
-
-                return result;
-              });
-            });
+            throw new Error(
+              `Failed to fetch item pictures. Status: ${secondResponse.status}`
+            );
           }
-        }
-      } catch (error) {
-        console.error("Error fetching search results:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchSearchResults();
-  }, [query]);
+          const secondData = await secondResponse.json();
+          // Update the results that were in the state by adding the 'pictureArr' property to each item which will contain the images obtained in secondResponse.
+          setResults((prevResults) => {
+            return prevResults.map((result) => {
+              const matchingItem = secondData.find(
+                (item: SecondDataItemType) =>
+                  item.code === 200 && item.body.id === result.id
+              );
+
+              if (matchingItem && matchingItem.body.pictures) {
+                return {
+                  ...result,
+                  picturesArr: matchingItem.body.pictures,
+                };
+              }
+
+              return result;
+            });
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   let content;
 
@@ -121,7 +175,13 @@ const SearchResults = () => {
       />
     );
   } else {
-    content = <MainResults results={results} />;
+    content = (
+      <MainResults
+        results={pages[currentPage - 1]}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
+      />
+    );
   }
 
   return (

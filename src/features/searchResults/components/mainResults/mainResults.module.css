@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
   grid-column: var(--grid-column);
   justify-content: center;
   width: 100%;

@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
-import { ThemeProvider } from "./contexts/ThemeProvider";
 import routes from "./routes";
+
+import { ThemeProvider } from "./contexts/ThemeProvider";
 
 import "./index.module.css";
 
