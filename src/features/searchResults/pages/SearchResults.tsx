@@ -43,6 +43,13 @@ const SearchResults = () => {
   const itemsPerPage = 20;
   const accessToken = "";
 
+  /* /* 
+This effect ensures that the page automatically scrolls to the top (y=0) whenever the state of currentPage changes. This ensures that the user starts from the beginning of the page when navigating between them, even when using the browser's scroll arrows and browsing history.
+*/
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   useEffect(() => {
     if (query !== queryState) {
       setPages([]);
