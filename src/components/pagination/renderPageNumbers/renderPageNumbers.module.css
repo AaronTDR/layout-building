@@ -18,15 +18,15 @@
 /* On light mode */
 .buttonsLightMode {
   background-color: var(--background-tertiary-light-mode);
-  border-color: rgb(43, 43, 43, 0.3);
+  border-color: rgba(43, 43, 43, 0.3);
   color: var(--text-primary-dark);
 }
 
 .buttonsLightMode:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(15, 17, 17, 0.2);
 }
 
-/* On light mode */
+/* On dark mode */
 .buttonsDarkMode {
   background-color: var(--background-tertiary-dark-mode);
   border-color: rgba(227, 230, 230, 0.3);
@@ -48,7 +48,7 @@
 /* On light mode */
 .pageNumberLightMode {
   background-color: var(--background-tertiary-light-mode);
-  border-color: rgb(43, 43, 43, 0.3);
+  border-color: rgba(43, 43, 43, 0.3);
   color: var(--text-primary-dark);
 }
 
@@ -81,7 +81,7 @@
 /* On light mode */
 .ellipsisLight {
   background-color: var(--background-tertiary-light-mode);
-  border-color: rgb(43, 43, 43, 0.3);
+  border-color: rgba(43, 43, 43, 0.3);
   color: var(--text-primary-dark);
 }
 
