@@ -173,50 +173,18 @@ const StickyBar = () => {
       onClick: () => setIsOpen(!isOpen),
     },
   ];
-  const categoriesElementsDropDownMenu = [
-    {
-      path: "#",
-      text: "Technology",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Supermarket",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Home and furniture",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Construction",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Clothing",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Sports",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Vehicles",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-  ];
+
+  const stateAndStylesDropdownMenu = (domains) =>
+    domains.map((domain) => {
+      const domainCopy = { ...domain };
+
+      domainCopy.cssLink = `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`;
+
+      domainCopy.onClick = () => setIsOpen(!isOpen);
+
+      return domainCopy;
+    });
+
   return (
     <div className={`${containerTheme.theme} ${stickyBar.stickyContainer}`}>
       <div className={stickyBar.stickyTopContainer}>
@@ -264,7 +232,7 @@ const StickyBar = () => {
                 <List
                   ulTagCss={stickyBar.menuUl}
                   liTagCss={stickyBar.accordionItemList}
-                  elements={categoriesElementsDropDownMenu}
+                  elements={stateAndStylesDropdownMenu(categoriesElements)}
                 />
               </AccordionItem>
               <AccordionItem
