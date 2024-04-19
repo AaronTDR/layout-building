@@ -46,39 +46,39 @@ import StickyBarContainerTheme from "./theme/StickyBarContainerTheme.module.css"
 /* utils */
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
-const categoriesElements = [
+const domainLinks = [
   {
-    path: "#",
+    path: "/domain/technology",
     text: "Technology",
     cssLink: borderLinkStyles.borderLink,
   },
   {
-    path: "#",
+    path: "/domain/supermarket",
     text: "Supermarket",
     cssLink: borderLinkStyles.borderLink,
   },
   {
-    path: "#",
+    path: "/domain/home-and-furniture",
     text: "Home and furniture",
     cssLink: borderLinkStyles.borderLink,
   },
   {
-    path: "#",
+    path: "/domain/construction",
     text: "Construction",
     cssLink: borderLinkStyles.borderLink,
   },
   {
-    path: "#",
+    path: "/domain/clothing",
     text: "Clothing",
     cssLink: borderLinkStyles.borderLink,
   },
   {
-    path: "#",
+    path: "/domain/sports",
     text: "Sports",
     cssLink: borderLinkStyles.borderLink,
   },
   {
-    path: "#",
+    path: "/domain/vehicles",
     text: "Vehicles",
     cssLink: borderLinkStyles.borderLink,
   },
@@ -232,7 +232,7 @@ const StickyBar = () => {
                 <List
                   ulTagCss={stickyBar.menuUl}
                   liTagCss={stickyBar.accordionItemList}
-                  elements={stateAndStylesDropdownMenu(categoriesElements)}
+                  elements={stateAndStylesDropdownMenu(domainLinks)}
                 />
               </AccordionItem>
               <AccordionItem
@@ -288,7 +288,7 @@ const StickyBar = () => {
         <ShoppingCart />
       </div>
       <div className={stickyBar.stickyBottomContainer}>
-        <List ulTagCss={stickyBar.stickyList} elements={categoriesElements} />
+        <List ulTagCss={stickyBar.stickyList} elements={domainLinks} />
       </div>
     </div>
   );
