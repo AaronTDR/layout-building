@@ -7,6 +7,7 @@ import {
 
 /* Components */
 import Message from "../../../components/message/Message";
+import Categories from "./components/categories/Categories";
 
 /* Utils */
 import { getDomains } from "./utils/getDomains";
@@ -27,7 +28,9 @@ const Domain = () => {
     );
   }
 
-  const domain = domains.find((d) => d.toLowerCase() === name.toLowerCase());
+  const domain = domains.find(
+    (d) => d.name.toLowerCase() === name.toLowerCase()
+  );
 
   // Handle the case where the domain is not found
   if (!domain) {
@@ -40,7 +43,7 @@ const Domain = () => {
     );
   }
 
-  return <div>Domain: {domain}</div>;
+  return <Categories domain={domain} />;
 };
 
 export default Domain;
