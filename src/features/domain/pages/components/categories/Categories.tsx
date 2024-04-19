@@ -1,4 +1,7 @@
-const Categories = ({ domain }) => {
+/* Types */
+import { CategoriesType } from "./CategoriesType";
+
+const Categories = ({ domain }: CategoriesType) => {
   return (
     <div>
       <ul>
