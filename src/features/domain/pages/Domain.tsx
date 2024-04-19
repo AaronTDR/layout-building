@@ -17,6 +17,7 @@ const Domain = () => {
 
   const domains = getDomains();
 
+  // Handles the case where name or domains do not exist
   if (!name || !domains) {
     // return <div>Domain not found</div>;
     return (
@@ -38,7 +39,7 @@ const Domain = () => {
       <Message
         icon={faMagnifyingGlassMinus}
         title="Domain not found"
-        message="Oops! It seems that the domain you’re trying to access is not available."
+        message="Oops! It seems that the domain you're trying to access is not available."
       />
     );
   }
