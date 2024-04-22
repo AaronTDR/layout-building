@@ -23,7 +23,6 @@
 /* * Typography */
 :root {
   --font-family: "Roboto", Arial, sans-serif;
-
   --title-lg: 1.5rem;
   --title-md: 1.3125rem;
   --title-sm: 1rem;

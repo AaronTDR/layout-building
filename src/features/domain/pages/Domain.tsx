@@ -1,5 +1,8 @@
 import { useParams } from "react-router-dom";
 
+/* Components */
+import Layout from "../../../components/layout/Layout";
+
 import {
   faFaceSadTear,
   faMagnifyingGlassMinus,
@@ -7,10 +10,13 @@ import {
 
 /* Components */
 import Message from "../../../components/message/Message";
-import Categories from "./components/categories/Categories";
+import Categories from "../components/categories/Categories";
+
+/* Styles */
+import styles from "./domain.module.css";
 
 /* Utils */
-import { getDomains } from "./utils/getDomains";
+import { getDomains } from "../utils/getDomains";
 
 const Domain = () => {
   const { name } = useParams();
@@ -44,7 +50,13 @@ const Domain = () => {
     );
   }
 
-  return <Categories domain={domain} />;
+  return (
+    <Layout css={styles.container}>
+      <main className={styles.content}>
+        <Categories domain={domain} />
+      </main>
+    </Layout>
+  );
 };
 
 export default Domain;
