@@ -21,6 +21,7 @@ import UserProfileDropdown from "../userProfileDropdown/UserProfileDropdown";
 import DropdownMenu from "../../components/dropdownMenu/DropdownMenu";
 import Logo from "../logo/Logo";
 import HeaderButton from "../headerButton/HeaderButton";
+import NavList from "../navList/NavList";
 import List from "../list/List";
 import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
 import SearchBar from "../../features/home/components/searchBar/SearchBar";
@@ -51,36 +52,43 @@ const domainLinks = [
     path: "/domain/technology",
     text: "Technology",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
     path: "/domain/supermarket",
     text: "Supermarket",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
     path: "/domain/home-and-furniture",
     text: "Home and furniture",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
     path: "/domain/construction",
     text: "Construction",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
     path: "/domain/clothing",
     text: "Clothing",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
     path: "/domain/sports",
     text: "Sports",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
     path: "/domain/vehicles",
     text: "Vehicles",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
 ];
 
@@ -181,6 +189,8 @@ const StickyBar = () => {
       domainCopy.cssLink = `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`;
 
       domainCopy.onClick = () => setIsOpen(!isOpen);
+
+      delete domainCopy.cssLinkActive;
 
       return domainCopy;
     });
@@ -288,7 +298,7 @@ const StickyBar = () => {
         <ShoppingCart />
       </div>
       <div className={stickyBar.stickyBottomContainer}>
-        <List ulTagCss={stickyBar.stickyList} elements={domainLinks} />
+        <NavList ulTagCss={stickyBar.stickyList} elements={domainLinks} />
       </div>
     </div>
   );
