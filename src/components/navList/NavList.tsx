@@ -3,9 +3,12 @@ import { NavLink } from "react-router-dom";
 /* components */
 import Icon from "../../components/icon/Icon";
 
-const NavList = ({ ulTagCss, liTagCss, elements }) => {
-  const cssUl = ulTagCss || null;
-  const cssLi = liTagCss || null;
+/* Types */
+import { NavListType } from "./NavListType";
+
+const NavList = ({ ulTagCss, liTagCss, elements }: NavListType) => {
+  const cssUl = ulTagCss || "";
+  const cssLi = liTagCss || "";
   return (
     <ul className={cssUl}>
       {elements.map((el, i) => (
