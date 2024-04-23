@@ -47,6 +47,14 @@ import StickyBarContainerTheme from "./theme/StickyBarContainerTheme.module.css"
 /* utils */
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
+type domainLinksType = {
+  path: string;
+  text: string;
+  cssLink: string;
+  onClick: () => void;
+  cssLinkActive?: string;
+};
+
 const domainLinks = [
   {
     path: "/domain/technology",
@@ -182,7 +190,7 @@ const StickyBar = () => {
     },
   ];
 
-  const stateAndStylesDropdownMenu = (domains) =>
+  const stateAndStylesDropdownMenu = (domains: domainLinksType[]) =>
     domains.map((domain) => {
       const domainCopy = { ...domain };
 
