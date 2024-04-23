@@ -6,8 +6,6 @@
   gap: 20px;
   width: 100%;
   max-width: var(--max-width-page);
-
-  background-color: blue;
 }
 
 .category {
@@ -16,8 +14,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
-  background-color: blueviolet;
 }
 
 .iconContainer {
@@ -27,21 +23,34 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background-color: orange;
+  background-color: var(--background-tertiary-light-mode);
+}
+
+/* icon and name color on light mode */
+.iconLightMode {
+  color: var(--text-primary-dark);
+}
+
+.nameLight {
+  color: var(--text-primary-dark);
+}
+
+/* icon and name color on dark mode */
+.iconDarkMode {
+  color: var(--text-secondary-dark);
+}
+
+.nameDark {
+  color: var(--text-primary-light);
 }
 
 .icon {
   font-size: 2.4em;
-  color: var(--text-secondary-dark);
 }
 
 .nameContainer {
   width: 96px;
-  max-width: 96px;
   height: 63px;
-  max-height: 63px;
-
-  background-color: gray;
 }
 
 .name {
@@ -49,4 +58,26 @@
   font-weight: 600;
   text-align: center;
   padding: 0 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .categoriesList {
+    grid-template-columns: repeat(auto-fit, 100px);
+    grid-auto-rows: 170px;
+    gap: 10px;
+  }
+
+  .iconContainer {
+    width: 70px;
+    height: 70px;
+  }
+
+  .icon {
+    font-size: 1.9em;
+  }
+
+  .nameContainer {
+    width: 100%;
+    height: 63px;
+  }
 }
