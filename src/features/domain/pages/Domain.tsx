@@ -54,6 +54,7 @@ const Domain = () => {
       const scrolled =
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight;
+      setScrolledToBottom(scrolled);
     };
 
     window.addEventListener("scroll", onScroll);
