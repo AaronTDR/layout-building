@@ -21,11 +21,13 @@ import styles from "./domain.module.css";
 import { Item } from "../../../types/ResultAPIType";
 
 /* Utils */
+import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
 import { getDomains } from "../utils/getDomains";
 
 const Domain = () => {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [offset, setOffset] = useState(0);
+  const [scrolledToBottom, setScrolledToBottom] = useState(false);
 
   const [results, setResults] = useState<Item[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -44,18 +46,24 @@ const Domain = () => {
     (d) => d.name.toLowerCase() === name?.toLowerCase()
   );
 
+  const scrolledToBottomDebounced = useDebounce(scrolledToBottom, 300);
+
   // Add scroll event
   useEffect(() => {
     const onScroll = () => {
-      const scrolledToBottom =
+      const scrolled =
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight;
-      setIsAtBottom(scrolledToBottom);
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(
+    () => setIsAtBottom(scrolledToBottomDebounced),
+    [scrolledToBottom, scrolledToBottomDebounced]
+  );
 
   useEffect(() => {
     if (domain) {
