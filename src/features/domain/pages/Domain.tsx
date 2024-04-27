@@ -17,18 +17,21 @@ import Categories from "../components/categories/Categories";
 /* Styles */
 import styles from "./domain.module.css";
 
+/* Types */
+import { Item } from "../../../types/ResultAPIType";
+
 /* Utils */
 import { getDomains } from "../utils/getDomains";
 
 const Domain = () => {
-  const [isFirstRender, setIsFirstRender] = useState(true);
-  const [isAtBottom, setIsAtBottom] = useState(false);
-
   const [currentCategory, setCurrentCategory] = useState(0);
   const [offset, setOffset] = useState(0);
-  // const [categoriesLength, setCategoriesLength] = useState(0);
-  const [results, setResults] = useState([]);
+
+  const [results, setResults] = useState<Item[]>([]);
   const [error, setError] = useState<string | null>(null);
+
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [isAtBottom, setIsAtBottom] = useState(false);
 
   const { name } = useParams();
   const [nameState, setNameState] = useState(name);
@@ -41,12 +44,12 @@ const Domain = () => {
     (d) => d.name.toLowerCase() === name?.toLowerCase()
   );
 
+  // Add scroll event
   useEffect(() => {
     const onScroll = () => {
       const scrolledToBottom =
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight;
-      console.log("🚀 ~ onScroll ~ scrolledToBottom:", scrolledToBottom);
       setIsAtBottom(scrolledToBottom);
     };
 
@@ -56,27 +59,24 @@ const Domain = () => {
 
   useEffect(() => {
     if (domain) {
+      // If it is the first render, execution is canceled so as not to make a double request together with the third effect
       if (isFirstRender) {
         setIsFirstRender(false);
       } else {
+        // Make a new request if you change domain
         if (name !== nameState) {
-          console.log("name changed!", name);
-
           setNameState(name);
           setResults([]);
           setCurrentCategory(0);
           setOffset(0);
 
-          // Llama a fetchResults aquí
           fetchResults(domain.categories[0]?.id, 0);
         } else if (currentCategory + 1 === domain.categories.length) {
+          // Increase offset if results were shown for each category
           setOffset((prevOffset) => prevOffset + limit);
           setCurrentCategory(0);
         } else {
-          console.log(
-            "Fourth effect at condition-> domain exists and name === nameState)"
-          );
-
+          // Increase currentCategory to show next category
           setCurrentCategory((currentCategory) => currentCategory + 1);
         }
       }
@@ -84,14 +84,12 @@ const Domain = () => {
   }, [isAtBottom, name]);
 
   useEffect(() => {
-    console.log("new request");
     if (domain) {
       fetchResults(domain.categories[currentCategory]?.id, offset);
     }
   }, [currentCategory, offset]);
 
   const fetchResults = async (categoryId: string, offset: number) => {
-    console.log("🚀 ~ fetchResults ~ offset:", offset);
     try {
       const response = await fetch(
         `https://api.mercadolibre.com/sites/MLM/search?category=${categoryId}&status=active&offset=${offset}&limit=${limit}`
@@ -107,7 +105,7 @@ const Domain = () => {
 
       setResults((prevResults) => {
         const newResults = items.filter(
-          (result) => !prevResults.find((prev) => prev.id === result.id)
+          (result: item) => !prevResults.find((prev) => prev.id === result.id)
         );
         return [...prevResults, ...newResults];
       });
