@@ -12,6 +12,7 @@ const MainResults: React.FC<MainResultsType> = ({
   results,
   totalItems,
   itemsPerPage,
+  pagination,
 }) => {
   return (
     <main className={styles.container}>
@@ -20,11 +21,13 @@ const MainResults: React.FC<MainResultsType> = ({
           <ResultCard key={item.id} item={item} />
         ))}
       </div>
-      <Pagination
-        totalItems={totalItems}
-        itemsPerPage={itemsPerPage}
-        maxPagesToShow={5}
-      />
+      {pagination && (
+        <Pagination
+          totalItems={totalItems}
+          itemsPerPage={itemsPerPage}
+          maxPagesToShow={5}
+        />
+      )}
     </main>
   );
 };

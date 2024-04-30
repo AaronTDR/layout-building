@@ -27,7 +27,10 @@ import { getDomains } from "../utils/getDomains";
 const Domain = () => {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [offset, setOffset] = useState(0);
+
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
+  const [footerHeight, setFooterHeight] = useState(0);
+  console.log("🚀 ~ Domain ~ footerHeight:", footerHeight);
 
   const [results, setResults] = useState<Item[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -46,20 +49,31 @@ const Domain = () => {
     (d) => d.name.toLowerCase() === name?.toLowerCase()
   );
 
-  const scrolledToBottomDebounced = useDebounce(scrolledToBottom, 300);
+  const scrolledToBottomDebounced = useDebounce(scrolledToBottom, 200);
 
-  // Add scroll event
+  useEffect(() => {
+    // Obtén el elemento del footer
+    const footer = document.querySelector("footer");
+
+    // Obtén la altura del footer
+    const height = footer?.offsetHeight;
+
+    // Actualiza el estado con la altura del footer
+    setFooterHeight(height || 800);
+  }, []);
+
   useEffect(() => {
     const onScroll = () => {
+      const scrollOffset = 500; // puedes ajustar este valor
       const scrolled =
-        window.innerHeight + document.documentElement.scrollTop ===
-        document.documentElement.offsetHeight;
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - (footerHeight + scrollOffset);
       setScrolledToBottom(scrolled);
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [footerHeight]);
 
   useEffect(
     () => setIsAtBottom(scrolledToBottomDebounced),
@@ -72,7 +86,7 @@ const Domain = () => {
       if (isFirstRender) {
         setIsFirstRender(false);
       } else {
-        // Make a new request if you change domain
+        // Make a new request if domain changes
         if (name !== nameState) {
           setNameState(name);
           setResults([]);
@@ -149,8 +163,9 @@ const Domain = () => {
       <main className={styles.content}>
         <Categories domain={domain} />
       </main>
-      {/* <MainResults results={results} /> */}
-      {console.log(
+      {<MainResults results={results} pagination={false} />}
+      {
+        "" /* console.log(
         "Category: ",
         domain?.categories[currentCategory]?.name,
         "\n\n",
@@ -164,7 +179,8 @@ const Domain = () => {
         currentCategory,
         "\n\n",
         "Results: "
-      )}
+      ) */
+      }
       {/* {results} */ console.log(results)}
     </Layout>
   );
