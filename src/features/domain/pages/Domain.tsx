@@ -65,8 +65,8 @@ const Domain = () => {
       // Determinar dirección del scroll
       const direction = scrollPos > prevScrollPos ? "down" : "up";
 
-      setScrolledToBottom(scrolled);
-      setIsAtBottom(scrolled && direction === "down");
+      setScrolledToBottom(scrolled && direction === "down");
+      // setIsAtBottom(scrolled && direction === "down");
       setPrevScrollPos(scrollPos);
       setScrollDirection(direction);
     };
@@ -83,12 +83,13 @@ const Domain = () => {
     const height = footer?.offsetHeight;
 
     // Actualiza el estado con la altura del footer
-    setFooterHeight(height || 800);
+    height && setFooterHeight(height);
   }, []);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     setIsAtBottom(scrolledToBottomDebounced);
-  }, [scrolledToBottomDebounced]);
+  }, [scrolledToBottomDebounced]); */
+
   useEffect(() => {
     if (domain) {
       // If it is the first render, execution is canceled so as not to make a double request together with the third effect
@@ -113,7 +114,7 @@ const Domain = () => {
         }
       }
     }
-  }, [isAtBottom, name]);
+  }, [/* isAtBottom,  */ name, scrolledToBottomDebounced]);
 
   useEffect(() => {
     if (domain) {
