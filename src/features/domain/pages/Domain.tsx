@@ -41,6 +41,9 @@ const Domain = () => {
   const { name } = useParams();
   const [nameState, setNameState] = useState(name);
 
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState("down");
+
   const domains = getDomains();
 
   const limit = 20;
@@ -50,6 +53,27 @@ const Domain = () => {
   );
 
   const scrolledToBottomDebounced = useDebounce(scrolledToBottom, 200);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollPos = window.scrollY || window.pageYOffset;
+      const scrollOffset = 500; // Puedes ajustar este valor
+      const scrolled =
+        window.innerHeight + scrollPos >=
+        document.documentElement.offsetHeight - (footerHeight + scrollOffset);
+
+      // Determinar dirección del scroll
+      const direction = scrollPos > prevScrollPos ? "down" : "up";
+
+      setScrolledToBottom(scrolled);
+      setIsAtBottom(scrolled && direction === "down");
+      setPrevScrollPos(scrollPos);
+      setScrollDirection(direction);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [footerHeight, prevScrollPos]);
 
   useEffect(() => {
     // Obtén el elemento del footer
@@ -63,23 +87,8 @@ const Domain = () => {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => {
-      const scrollOffset = 500; // puedes ajustar este valor
-      const scrolled =
-        window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - (footerHeight + scrollOffset);
-      setScrolledToBottom(scrolled);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [footerHeight]);
-
-  useEffect(
-    () => setIsAtBottom(scrolledToBottomDebounced),
-    [scrolledToBottom, scrolledToBottomDebounced]
-  );
-
+    setIsAtBottom(scrolledToBottomDebounced);
+  }, [scrolledToBottomDebounced]);
   useEffect(() => {
     if (domain) {
       // If it is the first render, execution is canceled so as not to make a double request together with the third effect
