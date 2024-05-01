@@ -178,7 +178,7 @@ const Domain = () => {
       <div className={styles.content}>
         <Categories domain={domain} />
       </div>
-      {<MainResults results={results} pagination={false} />}
+      {<MainResults results={results} pagination={"false"} />}
       {
         "" /* console.log(
         "Category: ",
