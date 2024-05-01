@@ -30,13 +30,11 @@ const Domain = () => {
 
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
   const [footerHeight, setFooterHeight] = useState(0);
-  console.log("🚀 ~ Domain ~ footerHeight:", footerHeight);
 
   const [results, setResults] = useState<Item[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const [isFirstRender, setIsFirstRender] = useState(true);
-  const [isAtBottom, setIsAtBottom] = useState(false);
 
   const { name } = useParams();
   const [nameState, setNameState] = useState(name);
@@ -56,14 +54,25 @@ const Domain = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      const scrollPos = window.scrollY || window.pageYOffset;
-      const scrollOffset = 500; // Puedes ajustar este valor
+      const scrollPos = window.scrollY;
+      const scrollOffset = 500;
       const scrolled =
         window.innerHeight + scrollPos >=
         document.documentElement.offsetHeight - (footerHeight + scrollOffset);
+      console.log(
+        "🚀 ~ onScroll ~ window.innerHeight: ",
+        window.innerHeight,
+        "plus scrollPos: ",
+        scrollPos,
+        "is bigger or equal than: ",
+        document.documentElement.offsetHeight - (footerHeight + scrollOffset)
+      );
 
-      // Determinar dirección del scroll
+      console.log("🚀 ~ onScroll ~ scrolled:", scrolled);
+
+      // Determine scroll direction
       const direction = scrollPos > prevScrollPos ? "down" : "up";
+      console.log("🚀 ~ onScroll ~ direction:", direction);
 
       setScrolledToBottom(scrolled && direction === "down");
       // setIsAtBottom(scrolled && direction === "down");
@@ -76,19 +85,15 @@ const Domain = () => {
   }, [footerHeight, prevScrollPos]);
 
   useEffect(() => {
-    // Obtén el elemento del footer
+    // Get the footer element
     const footer = document.querySelector("footer");
 
-    // Obtén la altura del footer
+    // Get the height of the footer
     const height = footer?.offsetHeight;
 
-    // Actualiza el estado con la altura del footer
+    // Update the state with the height of the footer
     height && setFooterHeight(height);
   }, []);
-
-  /*   useEffect(() => {
-    setIsAtBottom(scrolledToBottomDebounced);
-  }, [scrolledToBottomDebounced]); */
 
   useEffect(() => {
     if (domain) {
@@ -114,7 +119,7 @@ const Domain = () => {
         }
       }
     }
-  }, [/* isAtBottom,  */ name, scrolledToBottomDebounced]);
+  }, [name, scrolledToBottomDebounced]);
 
   useEffect(() => {
     if (domain) {
@@ -170,9 +175,9 @@ const Domain = () => {
 
   return (
     <Layout css={styles.container}>
-      <main className={styles.content}>
+      <div className={styles.content}>
         <Categories domain={domain} />
-      </main>
+      </div>
       {<MainResults results={results} pagination={false} />}
       {
         "" /* console.log(
@@ -191,7 +196,8 @@ const Domain = () => {
         "Results: "
       ) */
       }
-      {/* {results} */ console.log(results)}
+      {/* {results} */
+      /* console.log(results) */}
     </Layout>
   );
 };
