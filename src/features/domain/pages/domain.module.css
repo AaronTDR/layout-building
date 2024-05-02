@@ -13,3 +13,12 @@
   align-items: center;
   width: 100%;
 }
+
+.loadingContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding-top: var(--spacing-xl);
+}

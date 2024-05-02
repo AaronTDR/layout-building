@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 /* Components */
+import Loading from "../../../components/loading/Loading";
 import Message from "../../../components/message/Message";
 import Categories from "../components/categories/Categories";
 
@@ -25,6 +26,8 @@ import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
 import { getDomains } from "../utils/getDomains";
 
 const Domain = () => {
+  const [loading, setLoading] = useState(true);
+
   const [currentCategory, setCurrentCategory] = useState(0);
   const [offset, setOffset] = useState(0);
 
@@ -107,6 +110,7 @@ const Domain = () => {
           setResults([]);
           setCurrentCategory(0);
           setOffset(0);
+          window.scrollTo(0, 0);
 
           fetchResults(domain.categories[0]?.id, 0);
         } else if (currentCategory + 1 === domain.categories.length) {
@@ -129,6 +133,7 @@ const Domain = () => {
 
   const fetchResults = async (categoryId: string, offset: number) => {
     try {
+      setLoading(true);
       const response = await fetch(
         `https://api.mercadolibre.com/sites/MLM/search?category=${categoryId}&status=active&offset=${offset}&limit=${limit}`
       );
@@ -150,6 +155,8 @@ const Domain = () => {
     } catch (error) {
       console.error("Error fetching results:", error);
       setError("Error fetching results");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -178,7 +185,12 @@ const Domain = () => {
       <div className={styles.content}>
         <Categories domain={domain} />
       </div>
-      {<MainResults results={results} pagination={"false"} />}
+      {loading && !error && (
+        <div className={styles.loadingContainer}>
+          <Loading />
+        </div>
+      )}
+      <MainResults results={results} pagination={"false"} />
       {
         "" /* console.log(
         "Category: ",
