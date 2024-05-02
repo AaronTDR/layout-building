@@ -151,7 +151,7 @@ const Domain = () => {
       });
     } catch (error) {
       console.error("Error fetching results:", error);
-      setFetchError("Error fetching results");
+      setFetchError("Could not get results, please try again later");
     } finally {
       // Deactivates the corresponding charging states
       if (offset === 0) {
@@ -162,37 +162,39 @@ const Domain = () => {
     }
   };
 
+  let content;
+
   if (fetchError) {
-    return (
+    content = (
       <Message
         icon={faFaceSadTear}
         title="Something went wrong"
-        message={fetchError}
+        message={fetchError || "Could not get results, please try again later"}
       />
     );
-  }
-
-  if (!domain) {
-    return (
+  } else if (!domain) {
+    content = (
       <Message
         icon={faMagnifyingGlassMinus}
         title="Domain not found"
         message="Oops! It seems that the domain you're trying to access is not available."
       />
     );
+  } else {
+    content = <MainResults results={results} pagination={"false"} />;
   }
 
   return (
     <Layout css={styles.container}>
       <div className={styles.content}>
-        <Categories domain={domain} />
+        {domain && <Categories domain={domain} />}
       </div>
       {loading && !fetchError && (
         <div className={styles.loadingContainer}>
           <Loading />
         </div>
       )}
-      <MainResults results={results} pagination={"false"} />
+      {content}
       {loadingMore && !loading && !fetchError && (
         <div className={styles.loadingMoreContainer}>
           <Loading />
