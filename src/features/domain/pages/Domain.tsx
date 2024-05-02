@@ -187,14 +187,14 @@ const Domain = () => {
   return (
     <Layout css={styles.container}>
       <div className={styles.content}>
-        <Categories domain={domain} />
+        {domain && <Categories domain={domain} />}
       </div>
       {loading && !fetchError && (
         <div className={styles.loadingContainer}>
           <Loading />
         </div>
       )}
-      {content /* <MainResults results={results} pagination={"false"} /> */}
+      {content}
       {loadingMore && !loading && !fetchError && (
         <div className={styles.loadingMoreContainer}>
           <Loading />
