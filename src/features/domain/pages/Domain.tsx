@@ -169,7 +169,7 @@ const Domain = () => {
       <Message
         icon={faFaceSadTear}
         title="Something went wrong"
-        message={fetchError}
+        message={fetchError || "Could not get results, please try again later"}
       />
     );
   } else if (!domain) {
