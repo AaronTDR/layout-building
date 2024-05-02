@@ -27,6 +27,8 @@ import { getDomains } from "../utils/getDomains";
 
 const Domain = () => {
   const [loading, setLoading] = useState(true);
+  //  Shown with infinite scroll
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const [currentCategory, setCurrentCategory] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -43,7 +45,6 @@ const Domain = () => {
   const [nameState, setNameState] = useState(name);
 
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState("down");
 
   const domains = getDomains();
 
@@ -62,25 +63,12 @@ const Domain = () => {
       const scrolled =
         window.innerHeight + scrollPos >=
         document.documentElement.offsetHeight - (footerHeight + scrollOffset);
-      console.log(
-        "🚀 ~ onScroll ~ window.innerHeight: ",
-        window.innerHeight,
-        "plus scrollPos: ",
-        scrollPos,
-        "is bigger or equal than: ",
-        document.documentElement.offsetHeight - (footerHeight + scrollOffset)
-      );
-
-      console.log("🚀 ~ onScroll ~ scrolled:", scrolled);
 
       // Determine scroll direction
       const direction = scrollPos > prevScrollPos ? "down" : "up";
-      console.log("🚀 ~ onScroll ~ direction:", direction);
 
       setScrolledToBottom(scrolled && direction === "down");
-      // setIsAtBottom(scrolled && direction === "down");
       setPrevScrollPos(scrollPos);
-      setScrollDirection(direction);
     };
 
     window.addEventListener("scroll", onScroll);
@@ -133,7 +121,13 @@ const Domain = () => {
 
   const fetchResults = async (categoryId: string, offset: number) => {
     try {
-      setLoading(true);
+      // If offset is 0 then it's loading results for the first time
+      if (offset === 0) {
+        setLoading(true);
+      } else {
+        // If offset is not 0 it's loading more results
+        setLoadingMore(true);
+      }
       const response = await fetch(
         `https://api.mercadolibre.com/sites/MLM/search?category=${categoryId}&status=active&offset=${offset}&limit=${limit}`
       );
@@ -148,7 +142,7 @@ const Domain = () => {
 
       setResults((prevResults) => {
         const newResults = items.filter(
-          (result: item) => !prevResults.find((prev) => prev.id === result.id)
+          (result: Item) => !prevResults.find((prev) => prev.id === result.id)
         );
         return [...prevResults, ...newResults];
       });
@@ -156,7 +150,12 @@ const Domain = () => {
       console.error("Error fetching results:", error);
       setError("Error fetching results");
     } finally {
-      setLoading(false);
+      // Deactivates the corresponding charging states
+      if (offset === 0) {
+        setLoading(false);
+      } else {
+        setLoadingMore(false);
+      }
     }
   };
 
@@ -191,25 +190,11 @@ const Domain = () => {
         </div>
       )}
       <MainResults results={results} pagination={"false"} />
-      {
-        "" /* console.log(
-        "Category: ",
-        domain?.categories[currentCategory]?.name,
-        "\n\n",
-        "ID: ",
-        domain?.categories[currentCategory]?.id,
-        "\n\n",
-        "offset: ",
-        offset,
-        "\n\n",
-        "current: ",
-        currentCategory,
-        "\n\n",
-        "Results: "
-      ) */
-      }
-      {/* {results} */
-      /* console.log(results) */}
+      {loadingMore && !loading && !error && (
+        <div className={styles.loadingMoreContainer}>
+          <Loading />
+        </div>
+      )}
     </Layout>
   );
 };
