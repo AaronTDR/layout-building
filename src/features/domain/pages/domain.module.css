@@ -1,0 +1,33 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.content {
+  grid-column: var(--grid-column);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.loadingContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding-top: var(--spacing-xl);
+}
+
+.loadingMoreContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}

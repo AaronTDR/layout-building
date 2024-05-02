@@ -178,6 +178,7 @@ This effect ensures that the page automatically scrolls to the top (y=0) wheneve
     content = (
       <MainResults
         results={pages[currentPage - 1]}
+        pagination={"true"}
         totalItems={totalItems}
         itemsPerPage={itemsPerPage}
       />

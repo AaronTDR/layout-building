@@ -18,3 +18,11 @@
 .borderLink:hover {
   border: solid 0.0625em rgba(204, 204, 204, 0.5);
 }
+
+.active {
+  border: solid 0.0625em var(--accent-color);
+}
+
+.active:hover {
+  border-color: var(--accent-color);
+}

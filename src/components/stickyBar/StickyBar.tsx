@@ -21,6 +21,7 @@ import UserProfileDropdown from "../userProfileDropdown/UserProfileDropdown";
 import DropdownMenu from "../../components/dropdownMenu/DropdownMenu";
 import Logo from "../logo/Logo";
 import HeaderButton from "../headerButton/HeaderButton";
+import NavList from "../navList/NavList";
 import List from "../list/List";
 import ShoppingCart from "../../components/shoppingCart/ShoppingCart";
 import SearchBar from "../../features/home/components/searchBar/SearchBar";
@@ -46,41 +47,56 @@ import StickyBarContainerTheme from "./theme/StickyBarContainerTheme.module.css"
 /* utils */
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
-const categoriesElements = [
+type domainLinksType = {
+  path: string;
+  text: string;
+  cssLink: string;
+  onClick: () => void;
+  cssLinkActive?: string;
+};
+
+const domainLinks = [
   {
-    path: "#",
-    text: "Vehicles",
-    cssLink: borderLinkStyles.borderLink,
-  },
-  {
-    path: "#",
-    text: "Supermarket",
-    cssLink: borderLinkStyles.borderLink,
-  },
-  {
-    path: "#",
+    path: "/domain/technology",
     text: "Technology",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
-    path: "#",
-    text: "Home",
+    path: "/domain/supermarket",
+    text: "Supermarket",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
-    path: "#",
+    path: "/domain/home-and-furniture",
+    text: "Home and furniture",
+    cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
+  },
+  {
+    path: "/domain/construction",
     text: "Construction",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
-    path: "#",
-    text: "Fashion",
+    path: "/domain/clothing",
+    text: "Clothing",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
   {
-    path: "#",
+    path: "/domain/sports",
     text: "Sports",
     cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
+  },
+  {
+    path: "/domain/vehicles",
+    text: "Vehicles",
+    cssLink: borderLinkStyles.borderLink,
+    cssLinkActive: borderLinkStyles.active,
   },
 ];
 
@@ -173,50 +189,20 @@ const StickyBar = () => {
       onClick: () => setIsOpen(!isOpen),
     },
   ];
-  const categoriesElementsDropDownMenu = [
-    {
-      path: "#",
-      text: "Vehicles",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Supermarket",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Technology",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Home",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Construction",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Fashion",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-    {
-      path: "#",
-      text: "Sports",
-      cssLink: `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`,
-      onClick: () => setIsOpen(!isOpen),
-    },
-  ];
+
+  const stateAndStylesDropdownMenu = (domains: domainLinksType[]) =>
+    domains.map((domain) => {
+      const domainCopy = { ...domain };
+
+      domainCopy.cssLink = `${accordionLinkTheme.theme} ${stickyBar.accordionItemListLink}`;
+
+      domainCopy.onClick = () => setIsOpen(!isOpen);
+
+      delete domainCopy.cssLinkActive;
+
+      return domainCopy;
+    });
+
   return (
     <div className={`${containerTheme.theme} ${stickyBar.stickyContainer}`}>
       <div className={stickyBar.stickyTopContainer}>
@@ -264,7 +250,7 @@ const StickyBar = () => {
                 <List
                   ulTagCss={stickyBar.menuUl}
                   liTagCss={stickyBar.accordionItemList}
-                  elements={categoriesElementsDropDownMenu}
+                  elements={stateAndStylesDropdownMenu(domainLinks)}
                 />
               </AccordionItem>
               <AccordionItem
@@ -320,7 +306,7 @@ const StickyBar = () => {
         <ShoppingCart />
       </div>
       <div className={stickyBar.stickyBottomContainer}>
-        <List ulTagCss={stickyBar.stickyList} elements={categoriesElements} />
+        <NavList ulTagCss={stickyBar.stickyList} elements={domainLinks} />
       </div>
     </div>
   );
