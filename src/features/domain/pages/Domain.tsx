@@ -26,18 +26,21 @@ import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
 import { getDomains } from "../utils/getDomains";
 
 const Domain = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   //  Shown with infinite scroll
   const [loadingMore, setLoadingMore] = useState(false);
 
+  // States to determine category and offset request
   const [currentCategory, setCurrentCategory] = useState(0);
   const [offset, setOffset] = useState(0);
 
+  // States for infinite scroll
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
   const [footerHeight, setFooterHeight] = useState(0);
 
+  // Results obtained
   const [results, setResults] = useState<Item[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [fetchError, setFetchError] = useState<string | null>(null);
 
   const [isFirstRender, setIsFirstRender] = useState(true);
 
@@ -148,7 +151,7 @@ const Domain = () => {
       });
     } catch (error) {
       console.error("Error fetching results:", error);
-      setError("Error fetching results");
+      setFetchError("Error fetching results");
     } finally {
       // Deactivates the corresponding charging states
       if (offset === 0) {
@@ -159,12 +162,12 @@ const Domain = () => {
     }
   };
 
-  if (error) {
+  if (fetchError) {
     return (
       <Message
         icon={faFaceSadTear}
         title="Something went wrong"
-        message={error}
+        message={fetchError}
       />
     );
   }
@@ -184,13 +187,13 @@ const Domain = () => {
       <div className={styles.content}>
         <Categories domain={domain} />
       </div>
-      {loading && !error && (
+      {loading && !fetchError && (
         <div className={styles.loadingContainer}>
           <Loading />
         </div>
       )}
       <MainResults results={results} pagination={"false"} />
-      {loadingMore && !loading && !error && (
+      {loadingMore && !loading && !fetchError && (
         <div className={styles.loadingMoreContainer}>
           <Loading />
         </div>

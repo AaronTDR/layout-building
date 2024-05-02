@@ -1,5 +1,6 @@
-/* Components */
 import { useContext } from "react";
+
+/* Components */
 import Icon from "../../../../components/icon/Icon";
 import TextTruncate from "../../../../components/textTruncate/TextTruncate";
 
