@@ -30,6 +30,4 @@
   align-items: center;
   margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-xl);
-  /* height: 100vh; */
-  /* padding-top: var(--spacing-xl); */
 }
