@@ -40,6 +40,7 @@ const SearchResults = () => {
   // Auxiliary state to manage changes in 'query'
   const [queryState, setQueryState] = useState(query);
 
+  const maximumItemsAllowed = 1000;
   const itemsPerPage = 20;
   const accessToken = "";
 
@@ -94,7 +95,22 @@ This effect ensures that the page automatically scrolls to the top (y=0) wheneve
         }
 
         const data = await response.json();
-        setTotalItems(data.paging.total);
+
+        const totalItems = data.paging.total;
+
+        if (totalItems <= maximumItemsAllowed) {
+          setTotalItems(data.paging.total);
+        } else {
+          setTotalItems(maximumItemsAllowed);
+        }
+
+        totalItems > maximumItemsAllowed &&
+          console.warn(
+            `The number of results for this request exceeds the maximum limit that the ML API has set for public users. Therefore, the number of results has been adjusted accordingly.
+  \nTotal paging: ${data.paging.total}
+  \nMaximum allowed: 1000`
+          );
+
         setResults(data.results);
 
         // Get IDs from results
