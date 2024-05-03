@@ -12,7 +12,7 @@ const List = ({ ulTagCss, liTagCss, elements }: ListType) => {
   return (
     <ul className={cssUl}>
       {elements.map((el, i) => (
-        <li key={i} onClick={el.onClick} className={cssLi}>
+        <li key={el.id || i} onClick={el.onClick} className={cssLi}>
           <Link
             to={el.path}
             title={(el.titleLink && el.titleLink) || ""}
