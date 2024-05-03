@@ -48,51 +48,59 @@ import StickyBarContainerTheme from "./theme/StickyBarContainerTheme.module.css"
 import { getThemeClasses } from "../../utils/getThemeClasses/getThemeClasses";
 
 type domainLinksType = {
+  id: string;
   path: string;
   text: string;
   cssLink: string;
-  onClick: () => void;
+  onClick?: () => void;
   cssLinkActive?: string;
 };
 
 const domainLinks = [
   {
+    id: "technology",
     path: "/domain/technology",
     text: "Technology",
     cssLink: borderLinkStyles.borderLink,
     cssLinkActive: borderLinkStyles.active,
   },
   {
+    id: "supermarket",
     path: "/domain/supermarket",
     text: "Supermarket",
     cssLink: borderLinkStyles.borderLink,
     cssLinkActive: borderLinkStyles.active,
   },
   {
+    id: "home-and-furniture",
     path: "/domain/home-and-furniture",
     text: "Home and furniture",
     cssLink: borderLinkStyles.borderLink,
     cssLinkActive: borderLinkStyles.active,
   },
   {
+    id: "construction",
     path: "/domain/construction",
     text: "Construction",
     cssLink: borderLinkStyles.borderLink,
     cssLinkActive: borderLinkStyles.active,
   },
   {
+    id: "clothing",
     path: "/domain/clothing",
     text: "Clothing",
     cssLink: borderLinkStyles.borderLink,
     cssLinkActive: borderLinkStyles.active,
   },
   {
+    id: "sports",
     path: "/domain/sports",
     text: "Sports",
     cssLink: borderLinkStyles.borderLink,
     cssLinkActive: borderLinkStyles.active,
   },
   {
+    id: "vehicles",
     path: "/domain/vehicles",
     text: "Vehicles",
     cssLink: borderLinkStyles.borderLink,
@@ -145,6 +153,7 @@ const StickyBar = () => {
 
   const dropdownMenuPrincipalList = [
     {
+      id: "home",
       path: "/",
       text: "Home",
       cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
@@ -152,6 +161,7 @@ const StickyBar = () => {
       onClick: () => setIsOpen(!isOpen),
     },
     {
+      id: "wish-list",
       path: "#",
       text: "Wish List",
       cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
@@ -159,6 +169,7 @@ const StickyBar = () => {
       onClick: () => setIsOpen(!isOpen),
     },
     {
+      id: "offers",
       path: "#",
       text: "Offers",
       cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
@@ -166,6 +177,7 @@ const StickyBar = () => {
       onClick: () => setIsOpen(!isOpen),
     },
     {
+      id: "trends",
       path: "#",
       text: "Trends",
       cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
@@ -175,6 +187,7 @@ const StickyBar = () => {
   ];
   const dropdownMenuSettingsList = [
     {
+      id: "language",
       path: "#",
       text: "Language",
       cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
@@ -182,6 +195,7 @@ const StickyBar = () => {
       onClick: () => setIsOpen(!isOpen),
     },
     {
+      id: "help",
       path: "#",
       text: "Help",
       cssLink: `${selectedMenuLinkTheme.theme} ${stickyBar.menuLink}`,
@@ -190,6 +204,7 @@ const StickyBar = () => {
     },
   ];
 
+  // Add styles and 'isOpen' state to each domain to use in accordion menu
   const stateAndStylesDropdownMenu = (domains: domainLinksType[]) =>
     domains.map((domain) => {
       const domainCopy = { ...domain };
@@ -263,7 +278,7 @@ const StickyBar = () => {
                 cssContentContainer={`${accordionContainerTheme.theme} ${stickyBar.accordionItemContentContainer}`}
                 expandDirection={"up"}
               >
-                {/* API content will be added...*/}
+                {/* API content will be added...(while the content 'children' is not added typescript show warning)*/}
               </AccordionItem>
             </Accordion>
             <ThemeButton

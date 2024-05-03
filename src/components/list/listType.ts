@@ -7,6 +7,7 @@ type IconType = {
 };
 
 type Element = {
+  id: string;
   path: string;
   text: string;
   cssLink: string;
