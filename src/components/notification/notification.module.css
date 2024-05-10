@@ -1,0 +1,247 @@
+.wrapper {
+  position: fixed;
+
+  /*   display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* bottom: 10px; */
+  /*   display: flex;
+  justify-content: center; */
+  /* grid-column: var(--grid-column); */
+
+  width: 100%;
+  max-width: var(--max-width-page);
+  /* height: 50px; */
+  z-index: 150;
+
+  background-color: #41a4f5;
+}
+
+.container {
+  position: absolute;
+  /*   bottom: 10px;
+  right: 10px; */
+  /* grid-column: var(--grid-column); */
+  display: flex;
+
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  font-size: 15px;
+  max-width: 400px;
+  /* min-width: 30%; ? minmax */
+  /* gap: 1px; */
+  padding: var(--spacing-xs);
+  /* opacity: 0.8; */
+  color: var(--text-primary-light);
+  z-index: 160;
+  /* animation: slideInFromRightTop 0.2s ease-out; */
+
+  background-color: blue;
+}
+
+/* *The fallowing classes add wrapper position */
+
+.wrapperTop {
+  top: 175px;
+}
+
+.wrapperBottom {
+  bottom: 10px;
+}
+
+/* *The following classes add direction to the animation */
+.slideInFromLeftTop {
+  /* top: 120px; */
+  left: 10px;
+  top: 0;
+  animation: slideInFromLeft 0.2s ease-out;
+}
+
+.slideInFromRightTop {
+  /* top: 120px; */
+  right: 10px;
+  top: 0;
+  animation: slideInFromRight 0.2s ease-out;
+}
+
+.slideInFromLeftBottom {
+  /* bottom: 10px; */
+  left: 10px;
+  bottom: 0;
+  animation: slideInFromLeft 0.2s ease-out;
+}
+
+.slideInFromRightBottom {
+  /* bottom: 10px; */
+  right: 10px;
+  bottom: 0;
+  animation: slideInFromRight 0.2s ease-out;
+}
+
+.iconMessageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  /* max-width: 600px; */
+
+  height: 100%;
+  /* min-width: 30px; */
+  /*   width: 50px;
+  min-width: 30px; */
+  /* min-width: 20px; */
+
+  background-color: orangered;
+}
+
+.iconMessage {
+  font-size: var(--title-md);
+  /* color: orange; */
+}
+
+.content {
+  /* max-width: 600px; */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 85%;
+  /* margin-bottom: var(--spacing-xs); */
+  /* padding: 0 var(--spacing-sm); */
+
+  background-color: crimson;
+}
+
+.messageContainer {
+  display: flex;
+  width: 100%;
+  /*   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; */
+
+  background-color: blueviolet;
+}
+
+.message {
+  width: 90%;
+  /* font-size: 15px; */
+}
+
+.closeButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  cursor: pointer;
+  /* height: 100%; */
+  /* min-width: 20px; */
+
+  /* padding-right: var(--spacing-xs); */
+
+  background-color: yellow;
+}
+
+.closeIconContent {
+  /*? margin-left: auto; */
+
+  /* background-color: pink; */
+}
+
+.closeIcon {
+  /* font-size: 15px; */
+  /* color: red; */
+  /* background-color: #41a4f5; */
+}
+
+.actionButton {
+  /* width: 100%; */
+  font-size: var(--text-md);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: auto;
+  /* padding: var(--spacing-sm); */
+  /* border-radius: 3px; */
+  cursor: pointer;
+
+  background-color: var(--button-background-color);
+}
+
+.actionButton:hover {
+  border: none;
+}
+
+/** Notification types */
+.success {
+  background-color: /* #a6f057 */ var(--success-color);
+}
+
+.warning {
+  background-color: #f75d81;
+}
+
+.notice {
+  background-color: #41a4f5;
+}
+
+.other {
+  background-color: #7266ba;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1328px) {
+  .container {
+    max-width: 40%;
+    min-width: 30%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 40%;
+    min-width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 50%;
+    min-width: 30%;
+  }
+
+  .wrapperTop,
+  .wrapperBottom {
+    top: 76px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 90%;
+    min-width: 80%;
+  }
+}
