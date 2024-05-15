@@ -23,49 +23,108 @@ const Notification = ({
   message,
   icon,
   displayDuration,
-  // closeButton,
   actionButton,
   textButton,
-  onAction,
+  onPressButton,
 }: NotificationType) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [translate, setTranslate] = useState({
+    translateX: "",
+    translateY: "",
+  });
+  // Notification status when exiting the screen
+  const [isExiting, setIsExiting] = useState(false);
+
+  /* Notification slide direction*/
+  useEffect(() => {
+    if (isVisible) {
+      if (slipDirection === "toRightTop") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideInFromLeftTop,
+          translateY: styles.containerTop,
+        }));
+      } else if (slipDirection === "toLeftTop") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideInFromRightTop,
+          translateY: styles.containerTop,
+        }));
+      } else if (slipDirection === "toRightBottom") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideInFromLeftBottom,
+          translateY: styles.containerBottom,
+        }));
+      } else if (slipDirection === "toLeftBottom") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideInFromRightBottom,
+          translateY: styles.containerBottom,
+        }));
+      } else {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideInFromRightTop,
+        }));
+      }
+    } else if (isExiting) {
+      if (slipDirection === "toRightTop") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideOutToLeftTop,
+
+          translateY: styles.containerTop,
+        }));
+      } else if (slipDirection === "toLeftTop") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideOutToRightTop,
+
+          translateY: styles.containerTop,
+        }));
+      } else if (slipDirection === "toRightBottom") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideOutToLeftBottom,
+          translateY: styles.containerBottom,
+        }));
+      } else if (slipDirection === "toLeftBottom") {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideOutToRightBottom,
+
+          translateY: styles.containerBottom,
+        }));
+      } else {
+        setTranslate((prev) => ({
+          ...prev,
+          translateX: styles.slideInFromRightTop,
+        }));
+      }
+
+      // After the duration of the animation, completely hide the component
+      const timer = setTimeout(() => {
+        setIsExiting(false);
+      }, 130); // Allow the return animation to occur, but hide the element before the animation ends to prevent the notification from being displayed again.
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, isExiting, slipDirection]);
 
   // Notification icon
   let iconType;
-
-  // Positioning
-  let translateX;
-  let translateY;
 
   // Notification style
   let notificationTypeStyle;
   let iconTypeStyle;
   let buttonHover;
 
-  /* Notification slide direction*/
-  if (slipDirection === "toRightTop") {
-    translateY = styles.containerTop;
-    translateX = styles.slideInFromLeftTop;
-  } else if (slipDirection === "toLeftTop") {
-    translateY = styles.containerTop;
-    translateX = styles.slideInFromRightTop;
-  } else if (slipDirection === "toRightBottom") {
-    translateY = styles.containerBottom;
-    translateX = styles.slideInFromLeftBottom;
-  } else if (slipDirection === "toLeftBottom") {
-    translateY = styles.containerBottom;
-    translateX = styles.slideInFromRightBottom;
-  } else {
-    translateX = styles.slideInFromRightTop;
-  }
-
+  /* Type of notification */
   if (type === "success") {
-    /* Type of notification */
     iconType = icon || faCheck;
     notificationTypeStyle = styles.successContent;
     iconTypeStyle = styles.successIcon;
     buttonHover = styles.successButtonHover;
-    // setIconType(faCheck);
   } else if (type === "warning") {
     iconType = icon || faTriangleExclamation;
     notificationTypeStyle = styles.warningContent;
@@ -86,18 +145,16 @@ const Notification = ({
     iconType = icon || faCheck;
   }
 
-  const containerStyles = `${styles.container} ${translateY}`;
-  let wrapperStyles = `${styles.wrapper} ${notificationTypeStyle} ${
+  const wrapperStyles = `${styles.wrapper} ${notificationTypeStyle} ${
     css ? css : ""
   }`;
-
-  wrapperStyles += " " + translateX;
 
   // Remove notification if 'displayDuration' is passed
   useEffect(() => {
     if (displayDuration && isVisible) {
       const timer = setTimeout(() => {
         setIsVisible(false);
+        setIsExiting(true);
       }, displayDuration);
 
       return () => {
@@ -108,15 +165,16 @@ const Notification = ({
 
   const handleClose = () => {
     setIsVisible(false);
+    setIsExiting(true);
   };
 
-  if (!isVisible) {
-    return null;
-  }
-
   return (
-    <div className={containerStyles}>
-      <div className={wrapperStyles}>
+    <div
+      className={`${styles.container} ${translate.translateY} ${
+        !isVisible && !isExiting ? styles.hidden : ""
+      }`}
+    >
+      <div className={`${wrapperStyles} ${translate.translateX}`}>
         <div className={`${styles.iconMessageContainer} ${iconTypeStyle}`}>
           <Icon icon={iconType} css={styles.iconMessage} />
         </div>
@@ -132,7 +190,7 @@ const Notification = ({
         {actionButton && (
           <button
             type="button"
-            onClick={onAction}
+            onClick={onPressButton}
             className={`${styles.actionButton} ${buttonHover}`}
           >
             {textButton}

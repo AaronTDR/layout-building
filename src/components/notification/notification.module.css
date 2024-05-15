@@ -28,29 +28,54 @@
   bottom: 10px;
 }
 
-/* *The following classes add direction to the animation */
+/* *Moving inside the screen */
 .slideInFromLeftTop {
   left: 10px;
   top: 0;
-  animation: slideInFromLeft 0.2s ease-out;
-}
-
-.slideInFromRightTop {
-  right: 10px;
-  top: 0;
-  animation: slideInFromRight 0.2s ease-out;
+  animation: slideInFromLeft var(--transition-duration-medium) ease-out;
 }
 
 .slideInFromLeftBottom {
   left: 10px;
   bottom: 0;
-  animation: slideInFromLeft 0.2s ease-out;
+  animation: slideInFromLeft var(--transition-duration-medium) ease-out;
+}
+
+.slideInFromRightTop {
+  right: 10px;
+  top: 0;
+  animation: slideInFromRight var(--transition-duration-medium) ease-out;
 }
 
 .slideInFromRightBottom {
   right: 10px;
   bottom: 0;
-  animation: slideInFromRight 0.2s ease-out;
+  animation: slideInFromRight var(--transition-duration-medium) ease-out;
+}
+
+/* *Moving outside the screen */
+.slideOutToLeftTop {
+  left: 10px;
+  top: 0;
+  animation: slideOutToLeft var(--transition-duration-medium) ease-out;
+}
+
+.slideOutToLeftBottom {
+  left: 10px;
+  bottom: 0;
+  animation: slideOutToLeft var(--transition-duration-medium) ease-out;
+}
+
+.slideOutToRightTop {
+  right: 10px;
+  top: 0;
+  animation: slideOutToRight var(--transition-duration-medium) ease-out;
+}
+
+.slideOutToRightBottom {
+  right: 10px;
+  bottom: 0;
+  animation: slideOutToRight var(--transition-duration-medium) ease-out;
 }
 
 .wrapper > .iconMessageContainer {
@@ -167,7 +192,11 @@
   color: #68051c;
 }
 
-/* *Animaciones de entrada */
+.hidden {
+  display: none;
+}
+
+/* *Moving inside the screen animations */
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -190,13 +219,7 @@
   }
 }
 
-.slideOutToLeftBottom {
-  /* left: 10px; */
-  bottom: 0;
-  animation: slideOutToLeft 0.2s ease-out;
-}
-
-/* *Animaciones de salida */
+/* *Moving outside the screen animations */
 @keyframes slideOutToLeft {
   0% {
     transform: translateX(0);
@@ -204,6 +227,17 @@
   }
   100% {
     transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
     opacity: 0;
   }
 }

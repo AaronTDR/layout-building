@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export type NotificationType = {
-  slipDirection: "toRightTop" | "toLeftTop" | "toRightBottom" | "toLeftBottom";
+  slipDirection: "toRightTop" | "toRightBottom" | "toLeftTop" | "toLeftBottom";
   type: "success" | "warning" | "notice" | "fail";
   css?: string;
   message: string;
@@ -9,5 +9,5 @@ export type NotificationType = {
   displayDuration?: number;
   actionButton?: boolean;
   textButton?: string;
-  onAction?: () => void;
+  onPressButton?: () => void;
 };
