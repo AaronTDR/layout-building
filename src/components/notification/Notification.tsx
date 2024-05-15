@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faXmark,
+  faCheck,
+  faTriangleExclamation,
+  faBell,
+  faExclamation,
+} from "@fortawesome/free-solid-svg-icons";
 
 /* Components */
 import Icon from "../../components/icon/Icon";
@@ -17,30 +23,37 @@ const Notification = ({
   message,
   icon,
   displayDuration,
-  closeButton,
+  // closeButton,
   actionButton,
   textButton,
   onAction,
 }: NotificationType) => {
   const [isVisible, setIsVisible] = useState(true);
 
+  // Notification icon
+  let iconType;
+
+  // Positioning
   let translateX;
   let translateY;
-  let notificationType;
-  let typeIcon;
+
+  // Notification style
+  let notificationTypeStyle;
+  let iconTypeStyle;
+  let buttonHover;
 
   /* Notification slide direction*/
   if (slipDirection === "toRightTop") {
-    translateY = styles.wrapperTop;
+    translateY = styles.containerTop;
     translateX = styles.slideInFromLeftTop;
   } else if (slipDirection === "toLeftTop") {
-    translateY = styles.wrapperTop;
+    translateY = styles.containerTop;
     translateX = styles.slideInFromRightTop;
   } else if (slipDirection === "toRightBottom") {
-    translateY = styles.wrapperBottom;
+    translateY = styles.containerBottom;
     translateX = styles.slideInFromLeftBottom;
   } else if (slipDirection === "toLeftBottom") {
-    translateY = styles.wrapperBottom;
+    translateY = styles.containerBottom;
     translateX = styles.slideInFromRightBottom;
   } else {
     translateX = styles.slideInFromRightTop;
@@ -48,23 +61,37 @@ const Notification = ({
 
   if (type === "success") {
     /* Type of notification */
-    notificationType = styles.success;
+    iconType = icon || faCheck;
+    notificationTypeStyle = styles.successContent;
+    iconTypeStyle = styles.successIcon;
+    buttonHover = styles.successButtonHover;
+    // setIconType(faCheck);
   } else if (type === "warning") {
-    notificationType = styles.warning;
+    iconType = icon || faTriangleExclamation;
+    notificationTypeStyle = styles.warningContent;
+    iconTypeStyle = styles.warningIcon;
+    buttonHover = styles.warningButtonHover;
   } else if (type === "notice") {
-    notificationType = styles.notice;
-  } else if (type === "other") {
-    notificationType = styles.other;
+    iconType = icon || faBell;
+    notificationTypeStyle = styles.noticeContent;
+    iconTypeStyle = styles.noticeIcon;
+    buttonHover = styles.noticeButtonHover;
+  } else if (type === "fail") {
+    iconType = icon || faExclamation;
+    notificationTypeStyle = styles.failContent;
+    iconTypeStyle = styles.failIcon;
+    buttonHover = styles.failButtonHover;
   } else {
-    notificationType = "";
+    notificationTypeStyle = "";
+    iconType = icon || faCheck;
   }
 
-  const wrapperStyles = `${styles.wrapper} ${translateY}`;
-  let containerStyles = `${styles.container} ${notificationType} ${
+  const containerStyles = `${styles.container} ${translateY}`;
+  let wrapperStyles = `${styles.wrapper} ${notificationTypeStyle} ${
     css ? css : ""
   }`;
 
-  containerStyles += " " + translateX;
+  wrapperStyles += " " + translateX;
 
   // Remove notification if 'displayDuration' is passed
   useEffect(() => {
@@ -88,37 +115,29 @@ const Notification = ({
   }
 
   return (
-    <div className={wrapperStyles}>
-      <div className={containerStyles}>
-        {icon && (
-          <div className={styles.iconMessageContainer}>
-            <Icon icon={icon || typeIcon} css={styles.iconMessage} />
-          </div>
-        )}
-        <div className={styles.content}>
-          <div className={styles.messageContainer}>
-            <div className={styles.message}>{message}</div>
-            {closeButton && (
-              <div
-                onClick={handleClose}
-                className={styles.closeButtonContainer}
-              >
-                <div className={styles.closeIconContent}>
-                  <Icon icon={faXmark} css={styles.closeIcon} />
-                </div>
-              </div>
-            )}
-          </div>
-          {actionButton && (
-            <button
-              type="button"
-              onClick={onAction}
-              className={styles.actionButton}
-            >
-              {textButton}
-            </button>
-          )}
+    <div className={containerStyles}>
+      <div className={wrapperStyles}>
+        <div className={`${styles.iconMessageContainer} ${iconTypeStyle}`}>
+          <Icon icon={iconType} css={styles.iconMessage} />
         </div>
+        <div className={styles.messageContainer}>
+          <div className={styles.message}>{message}</div>
+        </div>
+        <div
+          onClick={handleClose}
+          className={`${styles.closeButtonContainer} ${buttonHover}`}
+        >
+          <Icon icon={faXmark} css={styles.closeIcon} />
+        </div>
+        {actionButton && (
+          <button
+            type="button"
+            onClick={onAction}
+            className={`${styles.actionButton} ${buttonHover}`}
+          >
+            {textButton}
+          </button>
+        )}
       </div>
     </div>
   );

@@ -1,173 +1,113 @@
-.wrapper {
+.container {
   position: fixed;
-
-  /*   display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* bottom: 10px; */
-  /*   display: flex;
-  justify-content: center; */
-  /* grid-column: var(--grid-column); */
-
   width: 100%;
   max-width: var(--max-width-page);
-  /* height: 50px; */
   z-index: 150;
-
-  background-color: #41a4f5;
 }
 
-.container {
+.wrapper {
   position: absolute;
-  /*   bottom: 10px;
-  right: 10px; */
-  /* grid-column: var(--grid-column); */
-  display: flex;
-
-  /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
-  /* flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: 15% 75% 10%;
+  grid-template-rows: auto auto;
   font-size: 15px;
+  width: 40%;
   max-width: 400px;
-  /* min-width: 30%; ? minmax */
-  /* gap: 1px; */
-  padding: var(--spacing-xs);
-  /* opacity: 0.8; */
+  border-radius: var(--small-border-radius);
   color: var(--text-primary-light);
   z-index: 160;
-  /* animation: slideInFromRightTop 0.2s ease-out; */
-
-  background-color: blue;
 }
 
 /* *The fallowing classes add wrapper position */
 
-.wrapperTop {
+.containerTop {
   top: 175px;
 }
 
-.wrapperBottom {
+.containerBottom {
   bottom: 10px;
 }
 
 /* *The following classes add direction to the animation */
 .slideInFromLeftTop {
-  /* top: 120px; */
   left: 10px;
   top: 0;
   animation: slideInFromLeft 0.2s ease-out;
 }
 
 .slideInFromRightTop {
-  /* top: 120px; */
   right: 10px;
   top: 0;
   animation: slideInFromRight 0.2s ease-out;
 }
 
 .slideInFromLeftBottom {
-  /* bottom: 10px; */
   left: 10px;
   bottom: 0;
   animation: slideInFromLeft 0.2s ease-out;
 }
 
 .slideInFromRightBottom {
-  /* bottom: 10px; */
   right: 10px;
   bottom: 0;
   animation: slideInFromRight 0.2s ease-out;
 }
 
-.iconMessageContainer {
+.wrapper > .iconMessageContainer {
+  grid-row: span 2;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 15%;
-  /* max-width: 600px; */
-
-  height: 100%;
-  /* min-width: 30px; */
-  /*   width: 50px;
-  min-width: 30px; */
-  /* min-width: 20px; */
-
-  background-color: orangered;
+  justify-content: center;
+  border-top-left-radius: var(--small-border-radius);
+  border-bottom-left-radius: var(--small-border-radius);
 }
 
 .iconMessage {
   font-size: var(--title-md);
-  /* color: orange; */
 }
 
 .content {
-  /* max-width: 600px; */
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   width: 85%;
-  /* margin-bottom: var(--spacing-xs); */
-  /* padding: 0 var(--spacing-sm); */
-
-  background-color: crimson;
 }
 
-.messageContainer {
+.wrapper > .messageContainer {
+  grid-column: 2;
   display: flex;
-  width: 100%;
-  /*   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%; */
-
-  background-color: blueviolet;
+  justify-content: center;
+  padding: var(--spacing-sm) 0;
 }
 
 .message {
   width: 90%;
-  /* font-size: 15px; */
 }
 
-.closeButtonContainer {
+.wrapper > .closeButtonContainer {
+  grid-column: 3;
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 10%;
+  justify-content: flex-end;
+  padding: var(--spacing-sm);
+  border-top-right-radius: var(--small-border-radius);
   cursor: pointer;
-  /* height: 100%; */
-  /* min-width: 20px; */
-
-  /* padding-right: var(--spacing-xs); */
-
-  background-color: yellow;
+  transition: color var(--transition-duration-medium) ease;
 }
 
-.closeIconContent {
-  /*? margin-left: auto; */
-
-  /* background-color: pink; */
-}
-
-.closeIcon {
-  /* font-size: 15px; */
-  /* color: red; */
-  /* background-color: #41a4f5; */
-}
-
-.actionButton {
-  /* width: 100%; */
+.wrapper > .actionButton {
+  grid-column: 2 / span 2;
+  grid-row: 2;
   font-size: var(--text-md);
   font-weight: 600;
   text-transform: uppercase;
   margin-left: auto;
-  /* padding: var(--spacing-sm); */
-  /* border-radius: 3px; */
+  padding: var(--spacing-sm);
+  border-bottom-right-radius: var(--small-border-radius);
   cursor: pointer;
-
-  background-color: var(--button-background-color);
+  transition: color var(--transition-duration-medium) ease;
 }
 
 .actionButton:hover {
@@ -175,22 +115,59 @@
 }
 
 /** Notification types */
-.success {
-  background-color: /* #a6f057 */ var(--success-color);
+.successIcon {
+  background-color: #53cd35;
 }
 
-.warning {
-  background-color: #f75d81;
+.warningIcon {
+  background-color: #ff8c07;
 }
 
-.notice {
+.noticeIcon {
+  background-color: #0c87ec;
+}
+
+.failIcon {
+  background-color: #f41c4f;
+}
+
+.successContent {
+  background-color: var(--success-color);
+}
+
+.warningContent {
+  background-color: #ffaa48;
+}
+
+.noticeContent {
   background-color: #41a4f5;
 }
 
-.other {
-  background-color: #7266ba;
+.failContent {
+  background-color: #f75d81;
 }
 
+.wrapper > .actionButton.successButtonHover:hover,
+.wrapper > .closeButtonContainer.successButtonHover:hover {
+  color: #215314;
+}
+
+.wrapper > .actionButton.warningButtonHover:hover,
+.wrapper > .closeButtonContainer.warningButtonHover:hover {
+  color: #693800;
+}
+
+.wrapper > .actionButton.noticeButtonHover:hover,
+.wrapper > .closeButtonContainer.noticeButtonHover:hover {
+  color: #05365e;
+}
+
+.wrapper > .actionButton.failButtonHover:hover,
+.wrapper > .closeButtonContainer.failButtonHover:hover {
+  color: #68051c;
+}
+
+/* *Animaciones de entrada */
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -213,34 +190,51 @@
   }
 }
 
+.slideOutToLeftBottom {
+  /* left: 10px; */
+  bottom: 0;
+  animation: slideOutToLeft 0.2s ease-out;
+}
+
+/* *Animaciones de salida */
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 1328px) {
-  .container {
+  .wrapper {
     max-width: 40%;
     min-width: 30%;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .container {
+  .wrapper {
     max-width: 40%;
     min-width: 30%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .container {
-    max-width: 50%;
-    min-width: 30%;
+  .wrapper {
+    max-width: 70%;
+    min-width: 50%;
   }
 
-  .wrapperTop,
-  .wrapperBottom {
+  .containerTop {
     top: 76px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .container {
+  .wrapper {
     max-width: 90%;
     min-width: 80%;
   }
