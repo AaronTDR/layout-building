@@ -120,8 +120,6 @@ const Domain = () => {
   }, [name, scrolledToBottomDebounced]);
 
   useEffect(() => {
-    console.log("from effect");
-    console.log("🚀 ~ SuseEffect ~ offset:", offset);
     if (domain) {
       fetchResults(domain.categories[currentCategory]?.id, offset);
     }
