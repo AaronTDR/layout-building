@@ -72,7 +72,7 @@ const Domain = () => {
       const direction = scrollPos > prevScrollPos ? "down" : "up";
 
       setScrolledToBottom(
-        scrolled && direction === "down" && offset <= 40 /* maxOffsetAllowed */
+        scrolled && direction === "down" && offset <= maxOffsetAllowed
       );
       setPrevScrollPos(scrollPos);
     };
@@ -214,12 +214,12 @@ const Domain = () => {
           <Loading />
         </div>
       )}
-      {offset > 40 /* && !loadingMore */ /* maxOffsetAllowed */ && (
+      {offset > maxOffsetAllowed && (
         <Notification
           slipDirection="toLeftBottom"
           type={"notice"}
           message="All results for your search have been displayed"
-          displayDuration={3500}
+          displayDuration={3300}
         />
       )}
     </Layout>
