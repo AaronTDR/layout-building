@@ -18,8 +18,7 @@
   z-index: 160;
 }
 
-/* *The fallowing classes add wrapper position */
-
+/* *The fallowing classes add container position */
 .containerTop {
   top: 175px;
 }
