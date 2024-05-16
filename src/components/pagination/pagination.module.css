@@ -8,3 +8,10 @@
   display: flex;
   gap: 8px;
 }
+
+@media screen and (max-width: 320px) {
+  .ul {
+    flex-wrap: wrap;
+    font-size: 85%;
+  }
+}

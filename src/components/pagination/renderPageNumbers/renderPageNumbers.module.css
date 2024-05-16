@@ -92,3 +92,20 @@
   border-color: rgba(227, 230, 230, 0.3);
   color: var(--text-primary-light);
 }
+
+@media screen and (max-width: 320px) {
+  .paginationItem {
+    min-width: 2.5em;
+    min-height: 2.5em;
+  }
+  .paginationItem.pageNumberLightMode,
+  .paginationItem.pageNumberDarkMode,
+  .paginationItem.ellipsisLight,
+  .paginationItem.ellipsisDark {
+    font-size: 1em;
+  }
+  .paginationItem.buttonsLightMode,
+  .paginationItem.buttonsDarkMode {
+    font-size: 1em;
+  }
+}
