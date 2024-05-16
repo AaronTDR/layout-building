@@ -32,7 +32,7 @@ const Notification = ({
     translateX: "",
     translateY: "",
   });
-  // Notification status when exiting the screen
+  // Notification state when exiting the screen
   const [isExiting, setIsExiting] = useState(false);
 
   /* Notification slide direction*/
@@ -73,14 +73,12 @@ const Notification = ({
         setTranslate((prev) => ({
           ...prev,
           translateX: styles.slideOutToLeftTop,
-
           translateY: styles.containerTop,
         }));
       } else if (slipDirection === "toLeftTop") {
         setTranslate((prev) => ({
           ...prev,
           translateX: styles.slideOutToRightTop,
-
           translateY: styles.containerTop,
         }));
       } else if (slipDirection === "toRightBottom") {
@@ -93,7 +91,6 @@ const Notification = ({
         setTranslate((prev) => ({
           ...prev,
           translateX: styles.slideOutToRightBottom,
-
           translateY: styles.containerBottom,
         }));
       } else {
@@ -103,13 +100,27 @@ const Notification = ({
         }));
       }
 
-      // After the duration of the animation, completely hide the component
+      // Hide the element before the animation ends
       const timer = setTimeout(() => {
         setIsExiting(false);
       }, 130); // Allow the return animation to occur, but hide the element before the animation ends to prevent the notification from being displayed again.
       return () => clearTimeout(timer);
     }
   }, [isVisible, isExiting, slipDirection]);
+
+  // Remove notification if 'displayDuration' is passed
+  useEffect(() => {
+    if (displayDuration && isVisible) {
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        setIsExiting(true);
+      }, displayDuration);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [displayDuration, isVisible]);
 
   // Notification icon
   let iconType;
@@ -148,20 +159,6 @@ const Notification = ({
   const wrapperStyles = `${styles.wrapper} ${notificationTypeStyle} ${
     css ? css : ""
   }`;
-
-  // Remove notification if 'displayDuration' is passed
-  useEffect(() => {
-    if (displayDuration && isVisible) {
-      const timer = setTimeout(() => {
-        setIsVisible(false);
-        setIsExiting(true);
-      }, displayDuration);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [displayDuration, isVisible]);
 
   const handleClose = () => {
     setIsVisible(false);
