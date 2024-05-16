@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-/* Components */
-import MainResults from "../../searchResults/components/mainResults/MainResults";
-import Layout from "../../../components/layout/Layout";
-
 import {
   faFaceSadTear,
   faMagnifyingGlassMinus,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* Components */
+import Notification from "../../../components/notification/Notification";
+import MainResults from "../../searchResults/components/mainResults/MainResults";
+import Layout from "../../../components/layout/Layout";
 import Loading from "../../../components/loading/Loading";
 import Message from "../../../components/message/Message";
 import Categories from "../components/categories/Categories";
@@ -26,6 +25,7 @@ import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
 import { getDomains } from "../utils/getDomains";
 
 const Domain = () => {
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const [loading, setLoading] = useState(false);
   //  Shown with infinite scroll
   const [loadingMore, setLoadingMore] = useState(false);
@@ -36,22 +36,23 @@ const Domain = () => {
 
   // States for infinite scroll
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
 
   // Results obtained
   const [results, setResults] = useState<Item[]>([]);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
-  const [isFirstRender, setIsFirstRender] = useState(true);
-
   const { name } = useParams();
   const [nameState, setNameState] = useState(name);
 
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-
-  const domains = getDomains();
+  // The constants 'maxItemsAllowed' and 'maxOffsetAllowed' store the maximum quantity for a request that the ML API allows.
+  const maxItemsAllowed = 1000;
+  const maxOffsetAllowed = 980;
 
   const limit = 20;
+
+  const domains = getDomains();
 
   const domain = domains.find(
     (d) => d.name.toLowerCase() === name?.toLowerCase()
@@ -70,7 +71,9 @@ const Domain = () => {
       // Determine scroll direction
       const direction = scrollPos > prevScrollPos ? "down" : "up";
 
-      setScrolledToBottom(scrolled && direction === "down");
+      setScrolledToBottom(
+        scrolled && direction === "down" && offset <= maxOffsetAllowed
+      );
       setPrevScrollPos(scrollPos);
     };
 
@@ -141,6 +144,14 @@ const Domain = () => {
 
       const data = await response.json();
 
+      const totalItems = data.paging.total;
+      totalItems > maxItemsAllowed &&
+        console.warn(
+          `The number of results for this request exceeds the maximum limit that the ML API has set for public users. Therefore, the number of results has been adjusted accordingly.
+  \nTotal paging: ${data.paging.total}
+  \nMaximum allowed: 1000`
+        );
+
       const items = data.results;
 
       setResults((prevResults) => {
@@ -195,10 +206,19 @@ const Domain = () => {
         </div>
       )}
       {content}
+
       {loadingMore && !loading && !fetchError && (
         <div className={styles.loadingMoreContainer}>
           <Loading />
         </div>
+      )}
+      {offset > maxOffsetAllowed && (
+        <Notification
+          slipDirection="toLeftBottom"
+          type={"notice"}
+          message="All results for your search have been displayed"
+          displayDuration={3300}
+        />
       )}
     </Layout>
   );

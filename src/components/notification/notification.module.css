@@ -1,0 +1,274 @@
+.container {
+  position: fixed;
+  width: 100%;
+  max-width: var(--max-width-page);
+  z-index: 150;
+}
+
+.wrapper {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 15% 75% 10%;
+  grid-template-rows: auto auto;
+  font-size: 15px;
+  width: 40%;
+  max-width: 400px;
+  border-radius: var(--small-border-radius);
+  color: var(--text-primary-light);
+  z-index: 160;
+}
+
+/* *The fallowing classes add container position */
+.containerTop {
+  top: 175px;
+}
+
+.containerBottom {
+  bottom: 10px;
+}
+
+/* *Moving inside the screen */
+.slideInFromLeftTop {
+  left: 10px;
+  top: 0;
+  animation: slideInFromLeft var(--transition-duration-medium) ease-out;
+}
+
+.slideInFromLeftBottom {
+  left: 10px;
+  bottom: 0;
+  animation: slideInFromLeft var(--transition-duration-medium) ease-out;
+}
+
+.slideInFromRightTop {
+  right: 10px;
+  top: 0;
+  animation: slideInFromRight var(--transition-duration-medium) ease-out;
+}
+
+.slideInFromRightBottom {
+  right: 10px;
+  bottom: 0;
+  animation: slideInFromRight var(--transition-duration-medium) ease-out;
+}
+
+/* *Moving outside the screen */
+.slideOutToLeftTop {
+  left: 10px;
+  top: 0;
+  animation: slideOutToLeft var(--transition-duration-medium) ease-out;
+}
+
+.slideOutToLeftBottom {
+  left: 10px;
+  bottom: 0;
+  animation: slideOutToLeft var(--transition-duration-medium) ease-out;
+}
+
+.slideOutToRightTop {
+  right: 10px;
+  top: 0;
+  animation: slideOutToRight var(--transition-duration-medium) ease-out;
+}
+
+.slideOutToRightBottom {
+  right: 10px;
+  bottom: 0;
+  animation: slideOutToRight var(--transition-duration-medium) ease-out;
+}
+
+.wrapper > .iconMessageContainer {
+  grid-row: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: var(--small-border-radius);
+  border-bottom-left-radius: var(--small-border-radius);
+}
+
+.iconMessage {
+  font-size: var(--title-md);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 85%;
+}
+
+.wrapper > .messageContainer {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) 0;
+}
+
+.message {
+  width: 90%;
+}
+
+.wrapper > .closeButtonContainer {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--spacing-sm);
+  border-top-right-radius: var(--small-border-radius);
+  cursor: pointer;
+  transition: color var(--transition-duration-medium) ease;
+}
+
+.wrapper > .actionButton {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  font-size: var(--text-md);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: auto;
+  padding: var(--spacing-sm);
+  border-bottom-right-radius: var(--small-border-radius);
+  cursor: pointer;
+  transition: color var(--transition-duration-medium) ease;
+}
+
+.actionButton:hover {
+  border: none;
+}
+
+/** Notification types */
+.successIcon {
+  background-color: #53cd35;
+}
+
+.warningIcon {
+  background-color: #ff8c07;
+}
+
+.noticeIcon {
+  background-color: #0c87ec;
+}
+
+.failIcon {
+  background-color: #f41c4f;
+}
+
+.successContent {
+  background-color: var(--success-color);
+}
+
+.warningContent {
+  background-color: #ffaa48;
+}
+
+.noticeContent {
+  background-color: #41a4f5;
+}
+
+.failContent {
+  background-color: #f75d81;
+}
+
+.wrapper > .actionButton.successButtonHover:hover,
+.wrapper > .closeButtonContainer.successButtonHover:hover {
+  color: #215314;
+}
+
+.wrapper > .actionButton.warningButtonHover:hover,
+.wrapper > .closeButtonContainer.warningButtonHover:hover {
+  color: #693800;
+}
+
+.wrapper > .actionButton.noticeButtonHover:hover,
+.wrapper > .closeButtonContainer.noticeButtonHover:hover {
+  color: #05365e;
+}
+
+.wrapper > .actionButton.failButtonHover:hover,
+.wrapper > .closeButtonContainer.failButtonHover:hover {
+  color: #68051c;
+}
+
+.hidden {
+  display: none;
+}
+
+/* *Moving inside the screen animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* *Moving outside the screen animations */
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1328px) {
+  .wrapper {
+    max-width: 40%;
+    min-width: 30%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    max-width: 40%;
+    min-width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    max-width: 70%;
+    min-width: 50%;
+  }
+
+  .containerTop {
+    top: 76px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    max-width: 90%;
+    min-width: 80%;
+  }
+}
