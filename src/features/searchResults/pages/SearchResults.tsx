@@ -45,6 +45,9 @@ const SearchResults = () => {
   const [isFirstRender, setIsFirstRender] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   console.log("🚀 ~ SearchResults ~ loadingMore:", loadingMore);
+  // difference between an initial state of loading and a state in which there are really no results
+  const [resultsLoaded, setResultsLoaded] = useState(false);
+  console.log("🚀 ~ SearchResults ~ resultsLoaded:", resultsLoaded);
 
   const { page } = useParams();
   const location = useLocation();
@@ -68,6 +71,7 @@ const SearchResults = () => {
   useEffect(() => {
     if (!isMobile)
       if (query !== queryState) {
+        setResultsLoaded(false);
         setPages([]);
         setQueryState(query);
       }
@@ -121,6 +125,7 @@ const SearchResults = () => {
       // } else {
       // Make a new request if query changes
       if (query !== queryState) {
+        setResultsLoaded(false);
         setQueryState(query);
         setResults([]);
         // setCurrentCategory(0);
@@ -131,7 +136,7 @@ const SearchResults = () => {
           query,
           0,
           itemsPerPage,
-          itemsPerPage,
+          setResultsLoaded,
           setLoading,
           setLoadingMore,
           maximumItemsAllowed,
@@ -145,7 +150,7 @@ const SearchResults = () => {
           query,
           offset,
           itemsPerPage,
-          itemsPerPage,
+          setResultsLoaded,
           setLoading,
           setLoadingMore,
           maximumItemsAllowed,
@@ -280,7 +285,7 @@ const SearchResults = () => {
         message="The search could not be completed. Please try again later."
       />
     );
-  } else if (!results.length && !loading && !loadingMore) {
+  } else if (!results.length && !loading && !loadingMore && resultsLoaded) {
     content = (
       <Message
         icon={faMagnifyingGlassMinus}
@@ -292,7 +297,7 @@ const SearchResults = () => {
     content = (
       <MainResults
         results={!isMobile ? pages[currentPage - 1] : results}
-        pagination={"true"}
+        pagination={"false"}
         totalItems={totalItems}
         itemsPerPage={itemsPerPage}
       />

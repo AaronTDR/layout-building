@@ -2,7 +2,7 @@ export const getResultsInfiniteScroll = async (
   query,
   offset,
   itemsPerPage,
-  limit,
+  setResultsLoaded,
   setLoading,
   setLoadingMore,
   maxItemsAllowed,
@@ -46,6 +46,7 @@ export const getResultsInfiniteScroll = async (
       );
       return [...prevResults, ...newResults];
     });
+    setResultsLoaded(true);
   } catch (error) {
     console.error("Error fetching results:", error);
     setFetchError("Could not get results, please try again later");
