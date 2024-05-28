@@ -17,20 +17,34 @@ import styles from "./searchResults.module.css";
 /* Types */
 import { Item } from "../../../types/ResultAPIType";
 
+/* Helpers */
+import { getResultsPagination } from "../helpers/getResultsPagination/getResultsPagination";
+import { getResultsInfiniteScroll } from "../helpers/getResultsInfiniteScroll/getResultsInfiniteScroll";
+
 import {
   SecondDataItemType,
   ResultsType,
   PagesType,
   QueryType,
 } from "./SearchResultsType";
+import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
+import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll/useInfiniteScroll";
 
 const SearchResults = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  console.log("🚀 ~ SearchResults ~ loading:", loading);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [results, setResults] = useState<ResultsType>([]);
+  console.log("🚀 ~ SearchResults ~ results:", results);
   const [pages, setPages] = useState<PagesType>([]);
   const [fetchError, setFetchError] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+  const [offset, setOffset] = useState(0);
+  console.log("🚀 ~ SearchResults ~ offset:", offset);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  console.log("🚀 ~ SearchResults ~ loadingMore:", loadingMore);
 
   const { page } = useParams();
   const location = useLocation();
@@ -41,41 +55,127 @@ const SearchResults = () => {
   const [queryState, setQueryState] = useState(query);
 
   const maximumItemsAllowed = 1000;
+  const maxOffsetAllowed = 980;
   const itemsPerPage = 20;
   const accessToken = "";
 
+  // * On desktop
   // Go to top
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!isMobile) window.scrollTo(0, 0);
   }, [currentPage]);
 
   useEffect(() => {
-    if (query !== queryState) {
-      setPages([]);
-      setQueryState(query);
-    }
+    if (!isMobile)
+      if (query !== queryState) {
+        setPages([]);
+        setQueryState(query);
+      }
   }, [query]);
 
   useEffect(() => {
-    const currentPage = Number(page);
-    // currentPage is updated every time the page changes to show the updated page at all times
-    setCurrentPage(currentPage);
+    if (!isMobile) {
+      const currentPage = Number(page);
+      // currentPage is updated every time the page changes to show the updated page at all times
+      setCurrentPage(currentPage);
 
-    if (!pages[currentPage - 1]) {
-      const offset = currentPage * itemsPerPage - itemsPerPage;
-      fetchSearchResults(query, offset);
+      if (!pages[currentPage - 1]) {
+        const offset = currentPage * itemsPerPage - itemsPerPage;
+        // fetchSearchResults(query, offset);
+        getResultsPagination(
+          query,
+          offset,
+          maximumItemsAllowed,
+          itemsPerPage,
+          setLoading,
+          results,
+          setResults,
+          setFetchError,
+          setTotalItems
+        );
+      }
     }
   }, [query, location, pages]);
 
   useEffect(() => {
-    setPages((prevPages) => {
-      const updatedPages = [...prevPages];
-      updatedPages[currentPage - 1] = results;
-      return updatedPages;
-    });
+    if (!isMobile) {
+      setPages((prevPages) => {
+        const updatedPages = [...prevPages];
+        updatedPages[currentPage - 1] = results;
+        return updatedPages;
+      });
+    }
   }, [results]);
 
-  const fetchSearchResults = async (query: QueryType, offset: number) => {
+  // * On mobile
+  const scrolledToBottomDebounced = useDebounce(
+    useInfiniteScroll(maxOffsetAllowed, offset),
+    200
+  );
+
+  useEffect(() => {
+    if (isMobile && query) {
+      // If it is the first render, execution is canceled so as not to make a double request
+      // if (isFirstRender) {
+      //   setIsFirstRender(false);
+      // } else {
+      // Make a new request if query changes
+      if (query !== queryState) {
+        setQueryState(query);
+        setResults([]);
+        // setCurrentCategory(0);
+        setOffset(0);
+        window.scrollTo(0, 0);
+
+        getResultsInfiniteScroll(
+          query,
+          0,
+          itemsPerPage,
+          itemsPerPage,
+          setLoading,
+          setLoadingMore,
+          maximumItemsAllowed,
+          results,
+          setResults,
+          setFetchError
+        );
+      } else {
+        setOffset((prevOffset) => prevOffset + itemsPerPage);
+        getResultsInfiniteScroll(
+          query,
+          offset,
+          itemsPerPage,
+          itemsPerPage,
+          setLoading,
+          setLoadingMore,
+          maximumItemsAllowed,
+          results,
+          setResults,
+          setFetchError
+        );
+      }
+      // }
+    }
+  }, [query, scrolledToBottomDebounced]);
+
+  /*   useEffect(() => {
+    if (isMobile && query) {
+      getResultsInfiniteScroll(
+        query,
+        offset,
+        itemsPerPage,
+        itemsPerPage,
+        setLoading,
+        setLoadingMore,
+        maximumItemsAllowed,
+        results,
+        setResults,
+        setFetchError
+      );
+    }
+  }, [offset]); */
+
+  /*  const fetchSearchResults = async (query: QueryType, offset: number) => {
     try {
       setLoading(true);
       if (query) {
@@ -120,12 +220,12 @@ const SearchResults = () => {
 
           // The ML API receives a series of IDs, followed by the attributes that will be requested
           const secondResponse = await fetch(
-            `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures` /* ,
+            `https://api.mercadolibre.com/items?ids=${idsString}&attributes=id,pictures`,
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
               },
-            } */
+            }
           );
 
           if (!secondResponse.ok) {
@@ -169,7 +269,7 @@ const SearchResults = () => {
       setLoading(false);
     }
   };
-
+ */
   let content;
 
   if (fetchError && !results) {
@@ -180,7 +280,7 @@ const SearchResults = () => {
         message="The search could not be completed. Please try again later."
       />
     );
-  } else if (!results.length && !loading) {
+  } else if (!results.length && !loading && !loadingMore) {
     content = (
       <Message
         icon={faMagnifyingGlassMinus}
@@ -191,7 +291,7 @@ const SearchResults = () => {
   } else {
     content = (
       <MainResults
-        results={pages[currentPage - 1]}
+        results={!isMobile ? pages[currentPage - 1] : results}
         pagination={"true"}
         totalItems={totalItems}
         itemsPerPage={itemsPerPage}
@@ -207,6 +307,12 @@ const SearchResults = () => {
         </div>
       )}
       {content}
+
+      {loadingMore && !loading && !fetchError && (
+        <div className={styles.loadingMoreContainer}>
+          <Loading />
+        </div>
+      )}
     </Layout>
   );
 };
