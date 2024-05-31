@@ -17,13 +17,13 @@ export const getResultsInfiniteScroll = async (state, setState) => {
   const { query, offset, itemsPerPage, maxItemsAllowed } = state;
   console.log("🚀 ~ getResultsInfiniteScroll ~ offset:", offset);
   try {
-    // If offset is 0 then it's loading results for the first time
-    if (offset === 0) {
-      setState((prevState) => ({ ...prevState, loading: true }));
-    } else {
-      // If offset is not 0 it's loading more results
-      setState((prevState) => ({ ...prevState, loadingMore: true }));
-    }
+    // Update loading state
+    setState((prevState) => ({
+      ...prevState,
+      loading: offset === 0,
+      loadingMore: offset !== 0,
+    }));
+
     const response = await fetch(
       `https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(
         query
@@ -51,10 +51,12 @@ export const getResultsInfiniteScroll = async (state, setState) => {
         (result: Item) =>
           !prevState.results.find((prev) => prev.id === result.id)
       );
-      return { ...prevState, results: [...prevState.results, ...newResults] };
+      return {
+        ...prevState,
+        results: [...prevState.results, ...newResults],
+        resultsLoaded: true,
+      };
     });
-
-    setState((prevState) => ({ ...prevState, resultsLoaded: true }));
   } catch (error) {
     console.error("Error fetching results:", error);
     setState((prevState) => ({
@@ -62,12 +64,10 @@ export const getResultsInfiniteScroll = async (state, setState) => {
       setFetchError: "Could not get results, please try again later",
     }));
   } finally {
-    // Deactivates the corresponding charging states
-    if (offset === 0) {
-      setState((prevState) => ({ ...prevState, loading: false }));
-    } else {
-      // If offset is not 0 it's loading more results
-      setState((prevState) => ({ ...prevState, loadingMore: false }));
-    }
+    setState((prevState) => ({
+      ...prevState,
+      loading: false,
+      loadingMore: false,
+    }));
   }
 };

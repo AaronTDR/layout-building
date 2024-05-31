@@ -69,11 +69,6 @@ const SearchResults = () => {
     totalItems,
     itemsPerPage,
   } = state;
-  // console.log("🚀 ~ SearchResults ~ itemsPerPage:", itemsPerPage);
-  // console.log("🚀 ~ SearchResults ~ results:", results);
-  // console.log("🚀 ~ SearchResults ~ pages:", pages);
-  // console.log("🚀 ~ SearchResults ~ currentPage:", currentPage);
-  // console.log("🚀 ~ SearchResults ~ offset:", offset);
 
   useEffect(() => {
     if (!isMobile) window.scrollTo(0, 0);
@@ -127,7 +122,6 @@ const SearchResults = () => {
         setState((prevState) => ({ ...prevState, isFirstRender: false }));
       } else {
         if (query !== queryState) {
-          console.log("******");
           setQueryState(query);
           setState((prevState) => ({
             ...prevState,
@@ -151,7 +145,15 @@ const SearchResults = () => {
 
   useEffect(() => {
     if (isMobile && query) {
-      getResultsInfiniteScroll({ ...state, query, offset }, setState);
+      getResultsInfiniteScroll(
+        {
+          query,
+          offset,
+          itemsPerPage,
+          maxItemsAllowed: state.maxItemsAllowed,
+        },
+        setState
+      );
     }
   }, [offset]);
 
