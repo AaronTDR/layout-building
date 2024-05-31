@@ -1,22 +1,28 @@
-export const getResultsInfiniteScroll = async (
-  query,
-  offset,
-  itemsPerPage,
-  setResultsLoaded,
-  setLoading,
-  setLoadingMore,
-  maxItemsAllowed,
-  results,
-  setResults,
-  setFetchError
-) => {
+type State = {
+  loading: boolean;
+  currentPage: number;
+  totalItems: number;
+  results: ResultsType;
+  pages: PagesType;
+  fetchError: boolean;
+  isMobile: boolean;
+  offset: number;
+  isFirstRender: boolean;
+  loadingMore: boolean;
+  resultsLoaded: boolean;
+};
+
+export const getResultsInfiniteScroll = async (state, setState) => {
+  console.log("🚀 ~ getResultsInfiniteScroll ~ state:", state);
+  const { query, offset, itemsPerPage, maxItemsAllowed } = state;
+  console.log("🚀 ~ getResultsInfiniteScroll ~ offset:", offset);
   try {
     // If offset is 0 then it's loading results for the first time
     if (offset === 0) {
-      setLoading(true);
+      setState((prevState) => ({ ...prevState, loading: true }));
     } else {
       // If offset is not 0 it's loading more results
-      setLoadingMore(true);
+      setState((prevState) => ({ ...prevState, loadingMore: true }));
     }
     const response = await fetch(
       `https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(
@@ -40,22 +46,34 @@ export const getResultsInfiniteScroll = async (
 
     const items = data.results;
 
-    setResults((prevResults) => {
+    // setResults((prevResults) => {
+    //   const newResults = items.filter(
+    //     (result: Item) => !prevResults.find((prev) => prev.id === result.id)
+    //   );
+    //   return [...prevResults, ...newResults];
+    // });
+    setState((prevState) => {
       const newResults = items.filter(
-        (result: Item) => !prevResults.find((prev) => prev.id === result.id)
+        (result: Item) =>
+          !prevState.results.find((prev) => prev.id === result.id)
       );
-      return [...prevResults, ...newResults];
+      return { ...prevState, results: [...prevState.results, ...newResults] };
     });
-    setResultsLoaded(true);
+
+    setState((prevState) => ({ ...prevState, resultsLoaded: true }));
   } catch (error) {
     console.error("Error fetching results:", error);
-    setFetchError("Could not get results, please try again later");
+    setState((prevState) => ({
+      ...prevState,
+      setFetchError: "Could not get results, please try again later",
+    }));
   } finally {
     // Deactivates the corresponding charging states
     if (offset === 0) {
-      setLoading(false);
+      setState((prevState) => ({ ...prevState, loading: false }));
     } else {
-      setLoadingMore(false);
+      // If offset is not 0 it's loading more results
+      setState((prevState) => ({ ...prevState, loadingMore: false }));
     }
   }
 };

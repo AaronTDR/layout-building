@@ -1,40 +1,44 @@
 import { useState, useEffect } from "react";
 
-export const useInfiniteScroll = (maxOffsetAllowed, offset) => {
+export const useInfiniteScroll = (isMobile, maxOffsetAllowed, offset) => {
   // States for infinite scroll
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
   useEffect(() => {
-    const onScroll = () => {
-      const scrollPos = window.scrollY;
-      const scrollOffset = 500;
-      const scrolled =
-        window.innerHeight + scrollPos >=
-        document.documentElement.offsetHeight - (footerHeight + scrollOffset);
+    if (isMobile) {
+      const onScroll = () => {
+        const scrollPos = window.scrollY;
+        const scrollOffset = 500;
+        const scrolled =
+          window.innerHeight + scrollPos >=
+          document.documentElement.offsetHeight - (footerHeight + scrollOffset);
 
-      // Determine scroll direction
-      const direction = scrollPos > prevScrollPos ? "down" : "up";
+        // Determine scroll direction
+        const direction = scrollPos > prevScrollPos ? "down" : "up";
 
-      setScrolledToBottom(
-        scrolled && direction === "down" && offset <= maxOffsetAllowed
-      );
-      setPrevScrollPos(scrollPos);
-    };
+        setScrolledToBottom(
+          scrolled && direction === "down" && offset <= maxOffsetAllowed
+        );
+        setPrevScrollPos(scrollPos);
+      };
 
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
   }, [footerHeight, prevScrollPos]);
 
   useEffect(() => {
-    // Get the footer element
-    const footer = document.querySelector("footer");
+    if (isMobile) {
+      // Get the footer element
+      const footer = document.querySelector("footer");
 
-    // Get the height of the footer
-    const height = footer?.offsetHeight;
+      // Get the height of the footer
+      const height = footer?.offsetHeight;
 
-    // Update the state with the height of the footer
-    height && setFooterHeight(height);
+      // Update the state with the height of the footer
+      height && setFooterHeight(height);
+    }
   }, []);
 
   return scrolledToBottom;

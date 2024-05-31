@@ -1,16 +1,24 @@
-export const getResultsPagination = async (
-  query: QueryType,
-  offset: number,
-  maxItemsAllowed,
-  itemsPerPage,
-  setLoading,
-  results,
-  setResults,
-  setFetchError,
-  setTotalItems
-) => {
+type State = {
+  loading: boolean;
+  currentPage: number;
+  totalItems: number;
+  results: ResultsType;
+  pages: PagesType;
+  fetchError: boolean;
+  isMobile: boolean;
+  offset: number;
+  isFirstRender: boolean;
+  loadingMore: boolean;
+  resultsLoaded: boolean;
+};
+
+export const getResultsPagination = async (state, setState) => {
+  const { query, offset, itemsPerPage, maxItemsAllowed, results } = state;
+  console.log("🚀 ~ getResultsPagination ~ results:", results);
+  console.log("🚀 ~ getResultsPagination ~ itemsPerPage:", itemsPerPage);
+  console.log("🚀 ~ getResultsPagination ~ offset:", offset);
   try {
-    setLoading(true);
+    setState((prevState) => ({ ...prevState, loading: true }));
 
     if (query) {
       const response = await fetch(
@@ -20,7 +28,7 @@ export const getResultsPagination = async (
       );
 
       if (!response.ok) {
-        setFetchError(true);
+        setState((prevState) => ({ ...prevState, setFetchError: true }));
         console.error(
           `Failed to fetch search results. Status: ${response.status}`
         );
@@ -31,9 +39,15 @@ export const getResultsPagination = async (
       const totalItems = data.paging.total;
 
       if (totalItems <= maxItemsAllowed) {
-        setTotalItems(data.paging.total);
+        setState((prevState) => ({
+          ...prevState,
+          totalItems: data.paging.total,
+        }));
       } else {
-        setTotalItems(maxItemsAllowed);
+        setState((prevState) => ({
+          ...prevState,
+          totalItems: maxItemsAllowed,
+        }));
       }
 
       totalItems > maxItemsAllowed &&
@@ -43,7 +57,7 @@ export const getResultsPagination = async (
   \nMaximum allowed: 1000`
         );
 
-      setResults(data.results);
+      setState((prevState) => ({ ...prevState, results: data.results }));
 
       // Get IDs from results
       const itemIds = data.results.map((result: Item) => result.id);
@@ -63,7 +77,7 @@ export const getResultsPagination = async (
         );
 
         if (!secondResponse.ok) {
-          setFetchError(true);
+          setState((prevState) => ({ ...prevState, fetchError: true }));
           if (secondResponse.status === 429) {
             console.warn(
               "WARNING: Too many requests, status: ",
@@ -78,7 +92,7 @@ export const getResultsPagination = async (
 
         const secondData = await secondResponse.json();
         // Update the results that were in the state by adding the 'pictureArr' property to each item which will contain the images obtained in secondResponse.
-        setResults((prevResults) => {
+        /* setResults((prevResults) => {
           return prevResults.map((result) => {
             const matchingItem = secondData.find(
               (item: SecondDataItemType) =>
@@ -94,12 +108,32 @@ export const getResultsPagination = async (
 
             return result;
           });
+        }); */
+        setState((prevState) => {
+          return {
+            ...prevState,
+            results: prevState.results.map((result) => {
+              const matchingItem = secondData.find(
+                (item: SecondDataItemType) =>
+                  item.code === 200 && item.body.id === result.id
+              );
+
+              if (matchingItem && matchingItem.body.pictures) {
+                return {
+                  ...result,
+                  picturesArr: matchingItem.body.pictures,
+                };
+              }
+
+              return result;
+            }),
+          };
         });
       }
     }
   } catch (error) {
     console.error("Error fetching search results:", error);
   } finally {
-    setLoading(false);
+    setState((prevState) => ({ ...prevState, loading: false }));
   }
 };
