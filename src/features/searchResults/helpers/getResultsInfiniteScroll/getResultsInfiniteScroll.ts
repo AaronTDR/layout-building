@@ -46,12 +46,6 @@ export const getResultsInfiniteScroll = async (state, setState) => {
 
     const items = data.results;
 
-    // setResults((prevResults) => {
-    //   const newResults = items.filter(
-    //     (result: Item) => !prevResults.find((prev) => prev.id === result.id)
-    //   );
-    //   return [...prevResults, ...newResults];
-    // });
     setState((prevState) => {
       const newResults = items.filter(
         (result: Item) =>

@@ -82,16 +82,12 @@ const SearchResults = () => {
   useEffect(() => {
     if (!isMobile) {
       if (query !== queryState) {
-        console.log("***************************************");
         setQueryState(query);
         setState((prevState) => ({
           ...prevState,
           resultsLoaded: false,
           pages: [],
-          // results: [],
         }));
-        // console.log("🚀 ~ useEffect ~ state:", state);
-        // getResultsPagination(state, setState);
       }
     }
   }, [query]);
@@ -106,7 +102,7 @@ const SearchResults = () => {
         getResultsPagination({ ...state, offset, query }, setState);
       }
     }
-  }, [/* page, */ pages, query, location /* , isMobile, itemsPerPage */]);
+  }, [pages, query, location]);
 
   useEffect(() => {
     if (!isMobile) {
@@ -116,7 +112,7 @@ const SearchResults = () => {
         return { ...prevState, pages: updatedPages };
       });
     }
-  }, [results /* , isMobile, currentPage */]);
+  }, [results]);
 
   // * On mobile
 
@@ -131,6 +127,7 @@ const SearchResults = () => {
         setState((prevState) => ({ ...prevState, isFirstRender: false }));
       } else {
         if (query !== queryState) {
+          console.log("******");
           setQueryState(query);
           setState((prevState) => ({
             ...prevState,
@@ -147,17 +144,6 @@ const SearchResults = () => {
             ...prevState,
             offset: prevState.offset + itemsPerPage,
           }));
-          // getResultsInfiniteScroll(
-          //   { ...state, query, offset },
-          //   setState
-          // ); .then(
-          //   () => {
-          //     setState((prevState) => ({
-          //       ...prevState,
-          //       offset: prevState.offset + itemsPerPage,
-          //     }));
-          //   }
-          // );
         }
       }
     }

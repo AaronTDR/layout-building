@@ -14,9 +14,7 @@ type State = {
 
 export const getResultsPagination = async (state, setState) => {
   const { query, offset, itemsPerPage, maxItemsAllowed, results } = state;
-  console.log("🚀 ~ getResultsPagination ~ results:", results);
-  console.log("🚀 ~ getResultsPagination ~ itemsPerPage:", itemsPerPage);
-  console.log("🚀 ~ getResultsPagination ~ offset:", offset);
+
   try {
     setState((prevState) => ({ ...prevState, loading: true }));
 
@@ -92,23 +90,6 @@ export const getResultsPagination = async (state, setState) => {
 
         const secondData = await secondResponse.json();
         // Update the results that were in the state by adding the 'pictureArr' property to each item which will contain the images obtained in secondResponse.
-        /* setResults((prevResults) => {
-          return prevResults.map((result) => {
-            const matchingItem = secondData.find(
-              (item: SecondDataItemType) =>
-                item.code === 200 && item.body.id === result.id
-            );
-
-            if (matchingItem && matchingItem.body.pictures) {
-              return {
-                ...result,
-                picturesArr: matchingItem.body.pictures,
-              };
-            }
-
-            return result;
-          });
-        }); */
         setState((prevState) => {
           return {
             ...prevState,
