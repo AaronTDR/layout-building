@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+
 import { useDebounce } from "../useDebounce/useDebounce";
 import { useInfiniteScroll } from "../useInfiniteScroll/useInfiniteScroll";
+import { useHttp } from "../useHttp/useHttp";
 
 const useInfiniteScrollResults = (initialState, query) => {
   const [state, setState] = useState(initialState);
@@ -69,10 +71,6 @@ const useInfiniteScrollResults = (initialState, query) => {
     useInfiniteScroll(isMobile, 1000, offset),
     350
   );
-
-  useEffect(() => {
-    if (!isMobile) window.scrollTo(0, 0);
-  }, [state.currentPage]);
 
   useEffect(() => {
     if (isMobile && query) {
