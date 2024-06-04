@@ -19,7 +19,8 @@ import { Item } from "../../../types/ResultAPIType";
 
 /* Helpers */
 import { getResultsPagination } from "../helpers/getResultsPagination/getResultsPagination";
-import { getResultsInfiniteScroll } from "../helpers/getResultsInfiniteScroll/getResultsInfiniteScroll";
+// import { getResultsInfiniteScroll } from "../helpers/getResultsInfiniteScroll/getResultsInfiniteScroll";
+import useInfiniteScrollResults from "../../../hooks/useInfiniteScrollResults/useInfiniteScrollResults";
 
 import {
   SecondDataItemType,
@@ -31,7 +32,22 @@ import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
 import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll/useInfiniteScroll";
 
 const SearchResults = () => {
-  const [state, setState] = useState({
+  const initialScrollingState = {
+    isMobile: true,
+    isFirstRender: true,
+    itemsPerPage: 20,
+    maxItemsAllowed: 1000,
+    offset: 0,
+    results: [],
+    loading: false,
+    loadingMore: false,
+    resultsLoaded: false,
+    fetchError: false,
+    // currentPage: 1,
+    // totalItems: 0,
+    // pages: [],
+  };
+  /*   const [state, setState] = useState({
     loading: false,
     currentPage: 1,
     totalItems: 0,
@@ -45,7 +61,9 @@ const SearchResults = () => {
     isFirstRender: true,
     loadingMore: false,
     resultsLoaded: false,
-  });
+  }); */
+  // const [scrollState, getResultsInfiniteScroll, setScrollState] =
+  //   useInfiniteScrollResults(initialState);
 
   const { page } = useParams();
   const location = useLocation();
@@ -53,109 +71,143 @@ const SearchResults = () => {
   const query = searchParams.get("q");
 
   // Auxiliary state to manage changes in 'query'
-  const [queryState, setQueryState] = useState(query);
+  // const [queryState, setQueryState] = useState(query);
+
+  // const {
+  //   isFirstRender,
+  //   isMobile,
+  //   currentPage,
+  //   pages,
+  //   results,
+  //   offset,
+  //   fetchError,
+  //   loading,
+  //   loadingMore,
+  //   resultsLoaded,
+  //   totalItems,
+  //   itemsPerPage,
+  // } = state;
+  // const {
+  //   isFirstRender,
+  //   isMobile,
+  //   currentPage,
+  //   pages,
+  //   results,
+  //   offset,
+  //   fetchError,
+  //   loading,
+  //   loadingMore,
+  //   resultsLoaded,
+  //   totalItems,
+  //   itemsPerPage,
+  //   maxItemsAllowed,
+  // } = scrollState;
+
+  const [scrollingState] = useInfiniteScrollResults(
+    initialScrollingState,
+    query
+  );
 
   const {
-    isFirstRender,
-    isMobile,
     currentPage,
-    pages,
     results,
-    offset,
     fetchError,
     loading,
     loadingMore,
     resultsLoaded,
     totalItems,
     itemsPerPage,
-  } = state;
+    pages,
+    isMobile,
+    // offset,
+    // isFirstRender,
+  } = scrollingState;
 
-  useEffect(() => {
-    if (!isMobile) window.scrollTo(0, 0);
-  }, [currentPage]);
+  // useEffect(() => {
+  //   if (!isMobile) window.scrollTo(0, 0);
+  // }, [currentPage]);
 
-  useEffect(() => {
-    if (!isMobile) {
-      if (query !== queryState) {
-        setQueryState(query);
-        setState((prevState) => ({
-          ...prevState,
-          resultsLoaded: false,
-          pages: [],
-        }));
-      }
-    }
-  }, [query]);
+  // useEffect(() => {
+  //   if (!isMobile) {
+  //     if (query !== queryState) {
+  //       setQueryState(query);
+  //       setState((prevState) => ({
+  //         ...prevState,
+  //         resultsLoaded: false,
+  //         pages: [],
+  //       }));
+  //     }
+  //   }
+  // }, [query]);
 
-  useEffect(() => {
-    if (!isMobile) {
-      const currentPage = Number(page);
-      setState((prevState) => ({ ...prevState, currentPage }));
-      if (!pages[currentPage - 1]) {
-        const offset = currentPage * itemsPerPage - itemsPerPage;
-        setState((prevState) => ({ ...prevState, offset }));
-        getResultsPagination({ ...state, offset, query }, setState);
-      }
-    }
-  }, [pages, query, location]);
+  // useEffect(() => {
+  //   if (!isMobile) {
+  //     const currentPage = Number(page);
+  //     setState((prevState) => ({ ...prevState, currentPage }));
+  //     if (!pages[currentPage - 1]) {
+  //       const offset = currentPage * itemsPerPage - itemsPerPage;
+  //       setState((prevState) => ({ ...prevState, offset }));
+  //       getResultsPagination({ ...state, offset, query }, setState);
+  //     }
+  //   }
+  // }, [pages, query, location]);
 
-  useEffect(() => {
-    if (!isMobile) {
-      setState((prevState) => {
-        const updatedPages = [...prevState.pages];
-        updatedPages[currentPage - 1] = results;
-        return { ...prevState, pages: updatedPages };
-      });
-    }
-  }, [results]);
+  // useEffect(() => {
+  //   if (!isMobile) {
+  //     setState((prevState) => {
+  //       const updatedPages = [...prevState.pages];
+  //       updatedPages[currentPage - 1] = results;
+  //       return { ...prevState, pages: updatedPages };
+  //     });
+  //   }
+  // }, [results]);
 
   // * On mobile
 
-  const scrolledToBottomDebounced = useDebounce(
-    useInfiniteScroll(isMobile, 1000, offset),
-    350
-  );
+  // const scrolledToBottomDebounced = useDebounce(
+  //   useInfiniteScroll(isMobile, 1000, offset),
+  //   350
+  // );
 
-  useEffect(() => {
-    if (isMobile && query) {
-      if (isFirstRender) {
-        setState((prevState) => ({ ...prevState, isFirstRender: false }));
-      } else {
-        if (query !== queryState) {
-          setQueryState(query);
-          setState((prevState) => ({
-            ...prevState,
-            resultsLoaded: false,
-            results: [],
-            offset: 0,
-          }));
+  // useEffect(() => {
+  //   if (isMobile && query) {
+  //     if (isFirstRender) {
+  //       setScrollState((prevState) => ({ ...prevState, isFirstRender: false }));
+  //     } else {
+  //       if (query !== queryState) {
+  //         setQueryState(query);
+  //         setScrollState((prevState) => ({
+  //           ...prevState,
+  //           resultsLoaded: false,
+  //           results: [],
+  //           offset: 0,
+  //         }));
 
-          window.scrollTo(0, 0);
+  //         window.scrollTo(0, 0);
 
-          getResultsInfiniteScroll({ ...state, query, offset: 0 }, setState);
-        } else {
-          setState((prevState) => ({
-            ...prevState,
-            offset: prevState.offset + itemsPerPage,
-          }));
-        }
-      }
-    }
-  }, [query, scrolledToBottomDebounced]);
+  //         getResultsInfiniteScroll(
+  //           // { ...scrollState, query, offset: 0 },
+  //           // setState
+  //           query,
+  //           0,
+  //           itemsPerPage,
+  //           maxItemsAllowed
+  //         );
+  //       } else {
+  //         setScrollState((prevState) => ({
+  //           ...prevState,
+  //           offset: prevState.offset + itemsPerPage,
+  //         }));
+  //       }
+  //     }
+  //   }
+  // }, [query, scrolledToBottomDebounced]);
 
-  useEffect(() => {
-    if (isMobile && query) {
-      getResultsInfiniteScroll(
-        {
-          query,
-          offset,
-          itemsPerPage,
-          maxItemsAllowed: state.maxItemsAllowed,
-        },
-        setState
-      );
-    }
-  }, [offset]);
+  // useEffect(() => {
+  //   if (isMobile && query) {
+  //     getResultsInfiniteScroll(query, offset, itemsPerPage, maxItemsAllowed);
+  //   }
+  // }, [offset]);
 
   let content;
 
