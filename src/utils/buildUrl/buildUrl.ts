@@ -1,4 +1,4 @@
-export const buildUrl = (type, endpoint, params = {}) => {
+export const buildUrl = (BASE_URL, type, endpoint, params = {}) => {
   const queryParams = Object.keys(params)
     .map((key) => {
       if (type === "SEARCH") {

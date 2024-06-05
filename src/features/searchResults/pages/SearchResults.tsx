@@ -122,6 +122,7 @@ const SearchResults = () => {
     // offset,
     // isFirstRender,
   } = scrollingState;
+  console.log("🚀 ~ SearchResults ~ results:", results);
 
   // useEffect(() => {
   //   if (!isMobile) window.scrollTo(0, 0);
