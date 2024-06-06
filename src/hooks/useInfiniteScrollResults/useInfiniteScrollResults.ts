@@ -20,7 +20,7 @@ const useInfiniteScrollResults = (initialState, query) => {
   const BASE_URL = "https://api.mercadolibre.com";
 
   const accessToken =
-    "APP_USR-6094347472813542-060419-00ee6f5ba3ecff060e199539280870a8-1525368630";
+    "APP_USR-6094347472813542-060517-66f0441043da6efac6361a1a8677eb2f-1525368630";
 
   const getResults = async (query, offset, itemsPerPage, maxItemsAllowed) => {
     console.log("🚀 ~ getResults ~ offset:", offset);
@@ -123,62 +123,6 @@ const useInfiniteScrollResults = (initialState, query) => {
       }));
     }
   };
-
-  // const fetchResults = async (query, offset, itemsPerPage, maxItemsAllowed) => {
-  //   try {
-  //     setState((prevState) => ({
-  //       ...prevState,
-  //       loading: offset === 0,
-  //       loadingMore: offset !== 0,
-  //     }));
-
-  //     const response = await fetch(
-  //       `https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(
-  //         query
-  //       )}&status=active&app_version=v2&condition=new&offset=${offset}&limit=${itemsPerPage}`
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-
-  //     const data = await response.json();
-  //     const totalItems = data.paging.total;
-
-  //     if (totalItems > maxItemsAllowed) {
-  //       console.warn(
-  //         `The number of results for this request exceeds the maximum limit that the ML API has set for public users. Therefore, the number of results has been adjusted accordingly.
-  //         \nTotal paging: ${data.paging.total}
-  //         \nMaximum allowed: 1000`
-  //       );
-  //     }
-
-  //     const items = data.results;
-
-  //     setState((prevState) => {
-  //       const newResults = items.filter(
-  //         (result) => !prevState.results.find((prev) => prev.id === result.id)
-  //       );
-  //       return {
-  //         ...prevState,
-  //         results: [...prevState.results, ...newResults],
-  //         resultsLoaded: true,
-  //       };
-  //     });
-  //   } catch (error) {
-  //     console.error("Error fetching results:", error);
-  //     setState((prevState) => ({
-  //       ...prevState,
-  //       fetchError: "Could not get results, please try again later",
-  //     }));
-  //   } finally {
-  //     setState((prevState) => ({
-  //       ...prevState,
-  //       loading: false,
-  //       loadingMore: false,
-  //     }));
-  //   }
-  // };
 
   const scrolledToBottomDebounced = useDebounce(
     useInfiniteScroll(isMobile, 1000, offset),
