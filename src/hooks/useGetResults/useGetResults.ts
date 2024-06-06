@@ -33,12 +33,12 @@ export const useGetResults = (
           limit: itemsPerPage,
         };
 
-        const searchURL = buildUrl(
+        const searchURL = buildUrl({
           BASE_URL,
-          "SEARCH",
-          "/sites/MLM/search",
-          searchParams
-        );
+          type: "SEARCH",
+          endpoint: "/sites/MLM/search",
+          params: searchParams,
+        });
         const data = await sendRequest(searchURL);
 
         const totalItems = data.paging.total;
@@ -61,12 +61,12 @@ export const useGetResults = (
             attributes: "id,pictures",
           };
 
-          const picturesURL = buildUrl(
+          const picturesURL = buildUrl({
             BASE_URL,
-            "MULTIGET",
-            "/items",
-            picturesParams
-          );
+            type: "MULTIGET",
+            endpoint: "/items",
+            params: picturesParams,
+          });
           const headers = {
             Authorization: `Bearer ${accessToken}`,
           };
@@ -128,12 +128,12 @@ export const useGetResults = (
             offset,
             limit: itemsPerPage,
           };
-          const searchURL = buildUrl(
+          const searchURL = buildUrl({
             BASE_URL,
-            "SEARCH",
-            "/sites/MLM/search",
-            searchParams
-          );
+            type: "SEARCH",
+            endpoint: "/sites/MLM/search",
+            params: searchParams,
+          });
           const data = await sendRequest(searchURL);
           const totalItems = data.paging.total;
           if (totalItems <= maxItemsAllowed) {
@@ -163,12 +163,12 @@ export const useGetResults = (
               ids: idsString,
               attributes: "id,pictures",
             };
-            const picturesURL = buildUrl(
+            const picturesURL = buildUrl({
               BASE_URL,
-              "MULTIGET",
-              "/items",
-              picturesParams
-            );
+              type: "MULTIGET",
+              endpoint: "/items",
+              params: picturesParams,
+            });
             const headers = {
               Authorization: `Bearer ${accessToken}`,
             };

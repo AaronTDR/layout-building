@@ -1,4 +1,8 @@
-export const buildUrl = (BASE_URL, type, endpoint, params = {}) => {
+/* Types */
+import { buildUrlTypes } from "./BuildUrlTypes";
+
+export const buildUrl = (args: buildUrlTypes): string => {
+  const { BASE_URL, type, endpoint, params = {} } = args;
   const queryParams = Object.keys(params)
     .map((key) => {
       if (type === "SEARCH") {
