@@ -18,6 +18,7 @@ const useInfiniteScrollResults = (
     state;
 
   const getResults = useGetResults(
+    isMobile,
     setState,
     BASE_URL,
     accessToken,

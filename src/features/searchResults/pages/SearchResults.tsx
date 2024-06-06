@@ -61,7 +61,13 @@ const SearchResults = () => {
 
   const [state, setState] = useState(initialState);
 
-  const [paginationState] = usePaginationResults(initialState, query, page);
+  const [paginationState] = usePaginationResults(
+    initialState,
+    BASE_URL,
+    accessToken,
+    query,
+    page
+  );
 
   const [scrollingState] = useInfiniteScrollResults(
     initialState,
