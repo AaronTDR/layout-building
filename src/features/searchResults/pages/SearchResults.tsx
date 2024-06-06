@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
+
 import { useLocation, useParams } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 import {
   faFaceSadTear,
   faMagnifyingGlassMinus,
 } from "@fortawesome/free-solid-svg-icons";
+
+/* Custom hooks */
+import useInfiniteScrollResults from "../../../hooks/useInfiniteScrollResults/useInfiniteScrollResults";
+import usePaginationResults from "../../../hooks/usePaginationResults/usePaginationResults";
 
 /* Components */
 import Loading from "../../../components/loading/Loading";
@@ -17,11 +23,6 @@ import styles from "./searchResults.module.css";
 /* Types */
 import { Item } from "../../../types/ResultAPIType";
 
-/* Helpers */
-import { getResultsPagination } from "../helpers/getResultsPagination/getResultsPagination";
-// import { getResultsInfiniteScroll } from "../helpers/getResultsInfiniteScroll/getResultsInfiniteScroll";
-import useInfiniteScrollResults from "../../../hooks/useInfiniteScrollResults/useInfiniteScrollResults";
-
 import {
   SecondDataItemType,
   ResultsType,
@@ -32,8 +33,9 @@ import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
 import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll/useInfiniteScroll";
 
 const SearchResults = () => {
-  const initialScrollingState = {
-    isMobile: true,
+  // Initial state used in both custom hooks
+  const initialState = {
+    isMobile,
     isFirstRender: true,
     itemsPerPage: 20,
     maxItemsAllowed: 1000,
@@ -43,70 +45,29 @@ const SearchResults = () => {
     loadingMore: false,
     resultsLoaded: false,
     fetchError: false,
-    // currentPage: 1,
-    // totalItems: 0,
-    // pages: [],
-  };
-  /*   const [state, setState] = useState({
-    loading: false,
     currentPage: 1,
     totalItems: 0,
-    itemsPerPage: 20,
-    maxItemsAllowed: 1000,
-    results: [],
     pages: [],
-    fetchError: false,
-    isMobile: true,
-    offset: 0,
-    isFirstRender: true,
-    loadingMore: false,
-    resultsLoaded: false,
-  }); */
-  // const [scrollState, getResultsInfiniteScroll, setScrollState] =
-  //   useInfiniteScrollResults(initialState);
+  };
 
   const { page } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get("q");
 
-  // Auxiliary state to manage changes in 'query'
-  // const [queryState, setQueryState] = useState(query);
+  const [state, setState] = useState(initialState);
 
-  // const {
-  //   isFirstRender,
-  //   isMobile,
-  //   currentPage,
-  //   pages,
-  //   results,
-  //   offset,
-  //   fetchError,
-  //   loading,
-  //   loadingMore,
-  //   resultsLoaded,
-  //   totalItems,
-  //   itemsPerPage,
-  // } = state;
-  // const {
-  //   isFirstRender,
-  //   isMobile,
-  //   currentPage,
-  //   pages,
-  //   results,
-  //   offset,
-  //   fetchError,
-  //   loading,
-  //   loadingMore,
-  //   resultsLoaded,
-  //   totalItems,
-  //   itemsPerPage,
-  //   maxItemsAllowed,
-  // } = scrollState;
+  const [paginationState] = usePaginationResults(initialState, query, page);
 
-  const [scrollingState] = useInfiniteScrollResults(
-    initialScrollingState,
-    query
-  );
+  const [scrollingState] = useInfiniteScrollResults(initialState, query);
+
+  useEffect(() => {
+    if (isMobile) {
+      setState(scrollingState);
+    } else {
+      setState(paginationState);
+    }
+  }, [paginationState, scrollingState]);
 
   const {
     currentPage,
@@ -118,97 +79,7 @@ const SearchResults = () => {
     totalItems,
     itemsPerPage,
     pages,
-    isMobile,
-    // offset,
-    // isFirstRender,
-  } = scrollingState;
-  console.log("🚀 ~ SearchResults ~ results:", results);
-
-  // useEffect(() => {
-  //   if (!isMobile) window.scrollTo(0, 0);
-  // }, [currentPage]);
-
-  // useEffect(() => {
-  //   if (!isMobile) {
-  //     if (query !== queryState) {
-  //       setQueryState(query);
-  //       setState((prevState) => ({
-  //         ...prevState,
-  //         resultsLoaded: false,
-  //         pages: [],
-  //       }));
-  //     }
-  //   }
-  // }, [query]);
-
-  // useEffect(() => {
-  //   if (!isMobile) {
-  //     const currentPage = Number(page);
-  //     setState((prevState) => ({ ...prevState, currentPage }));
-  //     if (!pages[currentPage - 1]) {
-  //       const offset = currentPage * itemsPerPage - itemsPerPage;
-  //       setState((prevState) => ({ ...prevState, offset }));
-  //       getResultsPagination({ ...state, offset, query }, setState);
-  //     }
-  //   }
-  // }, [pages, query, location]);
-
-  // useEffect(() => {
-  //   if (!isMobile) {
-  //     setState((prevState) => {
-  //       const updatedPages = [...prevState.pages];
-  //       updatedPages[currentPage - 1] = results;
-  //       return { ...prevState, pages: updatedPages };
-  //     });
-  //   }
-  // }, [results]);
-
-  // * On mobile
-
-  // const scrolledToBottomDebounced = useDebounce(
-  //   useInfiniteScroll(isMobile, 1000, offset),
-  //   350
-  // );
-
-  // useEffect(() => {
-  //   if (isMobile && query) {
-  //     if (isFirstRender) {
-  //       setScrollState((prevState) => ({ ...prevState, isFirstRender: false }));
-  //     } else {
-  //       if (query !== queryState) {
-  //         setQueryState(query);
-  //         setScrollState((prevState) => ({
-  //           ...prevState,
-  //           resultsLoaded: false,
-  //           results: [],
-  //           offset: 0,
-  //         }));
-
-  //         window.scrollTo(0, 0);
-
-  //         getResultsInfiniteScroll(
-  //           // { ...scrollState, query, offset: 0 },
-  //           // setState
-  //           query,
-  //           0,
-  //           itemsPerPage,
-  //           maxItemsAllowed
-  //         );
-  //       } else {
-  //         setScrollState((prevState) => ({
-  //           ...prevState,
-  //           offset: prevState.offset + itemsPerPage,
-  //         }));
-  //       }
-  //     }
-  //   }
-  // }, [query, scrolledToBottomDebounced]);
-
-  // useEffect(() => {
-  //   if (isMobile && query) {
-  //     getResultsInfiniteScroll(query, offset, itemsPerPage, maxItemsAllowed);
-  //   }
-  // }, [offset]);
+  } = state;
 
   let content;
 
@@ -232,7 +103,7 @@ const SearchResults = () => {
     content = (
       <MainResults
         results={!isMobile ? pages[currentPage - 1] : results}
-        pagination={"false"}
+        pagination={isMobile ? "false" : "true"}
         totalItems={totalItems}
         itemsPerPage={itemsPerPage}
       />
