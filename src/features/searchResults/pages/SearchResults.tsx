@@ -33,6 +33,10 @@ import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
 import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll/useInfiniteScroll";
 
 const SearchResults = () => {
+  const BASE_URL = "https://api.mercadolibre.com";
+
+  const accessToken =
+    "APP_USR-6094347472813542-060615-94eed962956dcfa4a9bc484b04a08825-1525368630";
   // Initial state used in both custom hooks
   const initialState = {
     isMobile,
@@ -59,7 +63,12 @@ const SearchResults = () => {
 
   const [paginationState] = usePaginationResults(initialState, query, page);
 
-  const [scrollingState] = useInfiniteScrollResults(initialState, query);
+  const [scrollingState] = useInfiniteScrollResults(
+    initialState,
+    BASE_URL,
+    accessToken,
+    query
+  );
 
   useEffect(() => {
     if (isMobile) {
