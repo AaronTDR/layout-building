@@ -4,5 +4,5 @@ export type UseInfiniteScrollResultsType = (
   initialState: StateType,
   BASE_URL: string,
   accessToken: string,
-  query: string
+  query: string | null
 ) => [StateType, React.Dispatch<React.SetStateAction<StateType>>];

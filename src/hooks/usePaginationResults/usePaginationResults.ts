@@ -52,7 +52,7 @@ const usePaginationResults: UsePaginationResultsType = (
   }, [query]);
 
   useEffect(() => {
-    if (!isMobile) {
+    if (!isMobile && query) {
       const currentPage = Number(page);
       setState((prevState) => ({ ...prevState, currentPage }));
       if (!pages[currentPage - 1]) {
