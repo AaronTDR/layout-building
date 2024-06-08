@@ -5,7 +5,10 @@ import { useDebounce } from "../useDebounce/useDebounce";
 import { useInfiniteScroll } from "../useInfiniteScroll/useInfiniteScroll";
 import { useGetResults } from "../../hooks/useGetResults/useGetResults";
 
-const useInfiniteScrollResults = (
+/* Types */
+import { UseInfiniteScrollResultsType } from "./UseInfiniteScrollResultsType";
+
+const useInfiniteScrollResults: UseInfiniteScrollResultsType = (
   initialState,
   BASE_URL,
   accessToken,

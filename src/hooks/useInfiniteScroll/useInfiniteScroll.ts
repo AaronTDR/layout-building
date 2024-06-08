@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-export const useInfiniteScroll = (isMobile, maxOffsetAllowed, offset) => {
+export const useInfiniteScroll = (
+  isMobile: boolean,
+  maxOffsetAllowed: number,
+  offset: number
+) => {
   // States for infinite scroll
   const [scrolledToBottom, setScrolledToBottom] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);

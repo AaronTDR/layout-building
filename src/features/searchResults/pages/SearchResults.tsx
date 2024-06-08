@@ -21,24 +21,16 @@ import Layout from "../../../components/layout/Layout";
 import styles from "./searchResults.module.css";
 
 /* Types */
-import { Item } from "../../../types/ResultAPIType";
-
-import {
-  SecondDataItemType,
-  ResultsType,
-  PagesType,
-  QueryType,
-} from "./SearchResultsType";
-import { useDebounce } from "../../../hooks/useDebounce/useDebounce";
-import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll/useInfiniteScroll";
+import { StateType } from "../../../types/ItemsByQueryType";
 
 const SearchResults = () => {
   const BASE_URL = "https://api.mercadolibre.com";
 
   const accessToken =
-    "APP_USR-6094347472813542-060615-94eed962956dcfa4a9bc484b04a08825-1525368630";
+    "APP_USR-6094347472813542-060719-6cb9908623b4da3d2daf48b6b1eeff37-1525368630";
+
   // Initial state used in both custom hooks
-  const initialState = {
+  const initialState: StateType = {
     isMobile,
     isFirstRender: true,
     itemsPerPage: 20,
@@ -59,7 +51,7 @@ const SearchResults = () => {
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get("q");
 
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState<StateType>(initialState);
 
   const [paginationState] = usePaginationResults(
     initialState,

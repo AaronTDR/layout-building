@@ -1,5 +1,5 @@
 type Params = {
-  [key: string]: string;
+  [key: string]: string | number;
 };
 
 type RequestType = "SEARCH" | "MULTIGET";

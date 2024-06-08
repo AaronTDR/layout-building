@@ -5,7 +5,7 @@ export const useHttp = (defaultHeaders = {}) => {
   const [error, setError] = useState(null);
 
   const sendRequest = useCallback(
-    async (url, body = null, headers = {}) => {
+    async (url: string, body = null, headers = {}) => {
       setLoading(true);
       setError(null);
 

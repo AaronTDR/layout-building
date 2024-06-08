@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 
+/* Custom hooks */
 import { useGetResults } from "../useGetResults/useGetResults";
 
-const usePaginationResults = (
+/* Types */
+import { UsePaginationResultsType } from "./UsePaginationResultsType";
+
+const usePaginationResults: UsePaginationResultsType = (
   initialState,
   BASE_URL,
   accessToken,

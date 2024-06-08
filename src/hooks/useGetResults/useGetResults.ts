@@ -1,10 +1,14 @@
 /* Custom hooks */
 import { useHttp } from "../useHttp/useHttp";
 
+/* Types */
+import { UseGetResultsType } from "./UseGetResultsType";
+import { Item, resType } from "../../types/ResultAPIType";
+
 /* Utils */
 import { buildUrl } from "../../utils/buildUrl/buildUrl";
 
-export const useGetResults = (
+export const useGetResults: UseGetResultsType = (
   isMobile,
   setState,
   BASE_URL,
@@ -14,7 +18,7 @@ export const useGetResults = (
 ) => {
   const { sendRequest } = useHttp();
 
-  const getResults = async (query, offset) => {
+  const getResults = async (query: string, offset: number) => {
     if (isMobile) {
       // *On mobile device
       try {
@@ -51,7 +55,7 @@ export const useGetResults = (
           );
         }
 
-        const itemIds = data.results.map((result) => result.id);
+        const itemIds = data.results.map((result: Item) => result.id);
 
         if (itemIds.length > 0) {
           const idsString = itemIds.join(",");
@@ -73,9 +77,9 @@ export const useGetResults = (
 
           const secondData = await sendRequest(picturesURL, null, headers);
 
-          const completeResults = data.results.map((result) => {
+          const completeResults = data.results.map((result: Item) => {
             const matchingItem = secondData.find(
-              (item) => item.code === 200 && item.body.id === result.id
+              (item: resType) => item.code === 200 && item.body.id === result.id
             );
             if (matchingItem && matchingItem.body.pictures) {
               return {
@@ -90,8 +94,8 @@ export const useGetResults = (
             const uniqueResults = [
               ...prevState.results,
               ...completeResults.filter(
-                (newResult) =>
-                  !prevState.results.find(
+                (newResult: Item) =>
+                  !prevState.results?.find(
                     (prevResult) => prevResult.id === newResult.id
                   )
               ),
@@ -173,13 +177,15 @@ export const useGetResults = (
               Authorization: `Bearer ${accessToken}`,
             };
             const secondData = await sendRequest(picturesURL, null, headers);
+
             // Adds the 'pictureArr' property to each item which will contain the images obtained in secondResponse.
             setState((prevState) => {
               return {
                 ...prevState,
-                results: prevState.results.map((result) => {
+                results: prevState.results?.map((result) => {
                   const matchingItem = secondData.find(
-                    (item) => item.code === 200 && item.body.id === result.id
+                    (item: resType) =>
+                      item.code === 200 && item.body.id === result.id
                   );
                   if (matchingItem && matchingItem.body.pictures) {
                     return {

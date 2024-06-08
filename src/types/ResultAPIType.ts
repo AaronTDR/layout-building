@@ -11,3 +11,15 @@ export type Item = {
   shipping: { free_shipping: string | null };
   picturesArr?: PicturesArr;
 };
+
+export type ResultsType = Item[];
+
+export type resType = {
+  code: number;
+  body: {
+    id: string;
+    pictures?: Picture[];
+  };
+};
+
+export type QueryType = string | null;
