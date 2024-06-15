@@ -12,6 +12,7 @@ import useInfiniteScrollResults from "../../../hooks/useInfiniteScrollResults/us
 import usePaginationResults from "../../../hooks/usePaginationResults/usePaginationResults";
 
 /* Components */
+import Notification from "../../../components/notification/Notification";
 import Loading from "../../../components/loading/Loading";
 import Message from "../../../components/message/Message";
 import MainResults from "../components/mainResults/MainResults";
@@ -69,6 +70,8 @@ const SearchResults = () => {
     query
   );
 
+  const maxOffsetAllowed = 980;
+
   useEffect(() => {
     if (isMobile) {
       setState(scrollingState);
@@ -78,6 +81,7 @@ const SearchResults = () => {
   }, [paginationState, scrollingState]);
 
   const {
+    offset,
     currentPage,
     results,
     fetchError,
@@ -136,6 +140,14 @@ const SearchResults = () => {
         <div className={styles.loadingMoreContainer}>
           <Loading />
         </div>
+      )}
+      {offset > maxOffsetAllowed && (
+        <Notification
+          slipDirection="toLeftBottom"
+          type={"notice"}
+          message="All results for your search have been displayed"
+          displayDuration={3300}
+        />
       )}
     </Layout>
   );
