@@ -41,7 +41,7 @@ const SearchResults = () => {
     loading: false,
     loadingMore: false,
     resultsLoaded: false,
-    fetchError: false,
+    fetchError: null,
     currentPage: 1,
     totalItems: 0,
     pages: [],

@@ -13,7 +13,7 @@ export type StateType = {
   loading: boolean;
   loadingMore: boolean;
   resultsLoaded: boolean;
-  fetchError: boolean | string;
+  fetchError: null | string;
   currentPage: number;
   totalItems: number;
   pages: PagesType;
