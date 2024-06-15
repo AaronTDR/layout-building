@@ -23,3 +23,11 @@
   height: 100vh;
   padding-top: var(--spacing-xl);
 }
+
+.loadingMoreContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
