@@ -21,6 +21,7 @@ import Layout from "../../../components/layout/Layout";
 import styles from "./searchResults.module.css";
 
 /* Types */
+import { MainResultsType } from "../../../features/searchResults/components/mainResults/MainResultsType";
 import { StateType } from "../../../types/ItemsByQueryType";
 
 const SearchResults = () => {
@@ -90,6 +91,18 @@ const SearchResults = () => {
 
   let content;
 
+  const mainResultsProps: MainResultsType = isMobile
+    ? {
+        results,
+        pagination: false,
+      }
+    : {
+        results: pages[currentPage - 1],
+        pagination: true,
+        totalItems,
+        itemsPerPage,
+      };
+
   if (fetchError && !results.length) {
     content = (
       <Message
@@ -107,14 +120,7 @@ const SearchResults = () => {
       />
     );
   } else {
-    content = (
-      <MainResults
-        results={!isMobile ? pages[currentPage - 1] : results}
-        pagination={isMobile ? "false" : "true"}
-        totalItems={totalItems}
-        itemsPerPage={itemsPerPage}
-      />
-    );
+    content = <MainResults {...mainResultsProps} />;
   }
 
   return (
