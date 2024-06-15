@@ -3,14 +3,14 @@ import { Item } from "../../../../types/ResultAPIType";
 
 type MainResultsWithoutPagination = {
   results: Item[];
-  pagination: "false";
+  pagination: false;
   totalItems?: never;
   itemsPerPage?: never;
 };
 
 type MainResultsWithPagination = {
   results: Item[];
-  pagination: "true";
+  pagination: true;
   totalItems: number;
   itemsPerPage: number;
 };

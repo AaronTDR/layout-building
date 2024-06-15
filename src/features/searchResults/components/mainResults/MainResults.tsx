@@ -46,7 +46,7 @@ const MainResults: React.FC<MainResultsType> = ({
           <ResultCard key={item.id} item={item} />
         ))}
       </div>
-      {pagination === "true" && (
+      {pagination && (
         <Pagination
           totalItems={totalItems}
           itemsPerPage={itemsPerPage}
