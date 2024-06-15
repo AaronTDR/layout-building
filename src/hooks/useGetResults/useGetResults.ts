@@ -90,6 +90,7 @@ export const useGetResults: UseGetResultsType = (
             return result;
           });
 
+          // Filter duplicate items
           setState((prevState) => {
             const uniqueResults = [
               ...prevState.results,
